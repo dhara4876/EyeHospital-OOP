@@ -4,10 +4,12 @@
  */
 package Users;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Asus
  */
-public class Accountant {
-    
+public class Accountant implements Serializable {
+    final private static long serialVersionUID = 123L;
 }
