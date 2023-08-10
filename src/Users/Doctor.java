@@ -5,21 +5,15 @@
 package Users;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
-/**
- *
- * @author Asus
- */
-public class Specialist extends Employee implements Serializable {
 
-    public class Doctor extends Specialist {
-
-        public class Employee extends User implements Serializable {
-
-            private static final long serialVersionUID = 13L;
-            private 
-        }
-    }
+public class Doctor extends Specialist implements Serializable {
+    
+     public Doctor(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ, String specialty) {
+        super(name, ID, password, email, gender, DOB, Designation, Salary, DoJ, specialty);
+     }
+    
 }
-//methodaddnewdiagnosis
-}
+
+    
