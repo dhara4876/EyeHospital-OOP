@@ -52,7 +52,7 @@ public class CommonDashbboardSceneController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("AddFacultyScene.fxml"));
             accountantMenuBar.setCenter(root);
         } catch (IOException ex) {
-            Logger.getLogger(CommonDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommonDashbboardSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
