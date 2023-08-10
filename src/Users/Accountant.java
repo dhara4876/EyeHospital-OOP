@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author Asus
  */
 public class Accountant extends Employee implements Serializable{
-    private static final long serialVersionUID = 13L;
+    private static final long serialVersionUID = 345L;
 
     public Accountant(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ) {
         super(name, ID, password, email, gender, DOB, Designation, Salary, DoJ);

@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author Asus
  */
 public class ExpenseRecord implements Serializable {
-    private static final long serialVersionUID = 13L; 
+    private static final long serialVersionUID = 345L; 
     private Double Amount;
     private String SpentOn;
     private LocalDate DateSpent;

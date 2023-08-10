@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author Asus
  */
 public class Pharmacist extends Employee implements Serializable{
-    private static final long serialVersionUID = 13L; 
+    private static final long serialVersionUID = 345L; 
     //request stock to accountant method
     //add new medicine method
 

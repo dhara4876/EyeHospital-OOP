@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @author Asus
  */
 public class Medicine implements Serializable{
-    private static final long serialVersionUID = 13L;
+    private static final long serialVersionUID = 345L;
     
     private String medicineName;
     private Double medicinePrice;

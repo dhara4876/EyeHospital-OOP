@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author Asus
  */
 public class Bill implements Serializable {
-    private static final long serialVersionUID = 13L;
+    private static final long serialVersionUID = 345L;
     private Integer patientId;
     private Double totalDue;
     private LocalDate billedOn;

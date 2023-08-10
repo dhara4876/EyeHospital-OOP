@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 
 public class Doctor extends Specialist implements Serializable {
+    private static final long serialVersionUID = 345L;
     
      public Doctor(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ, String specialty) {
         super(name, ID, password, email, gender, DOB, Designation, Salary, DoJ, specialty);

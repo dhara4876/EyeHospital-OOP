@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author Asus
  */
 public abstract class User implements Serializable{
-    private static final long serialVersionUID = 13L;
+    private static final long serialVersionUID = 345L;
     public String name;
     public final Integer ID;
     protected String password;
