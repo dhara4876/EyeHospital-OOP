@@ -15,14 +15,14 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView layoutX="67.0" layoutY="150.0" prefHeight="200.0" prefWidth="298.0">
+      <TableView fx:id="taskTableView" layoutX="67.0" layoutY="150.0" prefHeight="200.0" prefWidth="298.0">
         <columns>
-          <TableColumn prefWidth="78.0" text="Name" />
-          <TableColumn prefWidth="95.0" text="Designation" />
-            <TableColumn prefWidth="124.0" text="Task" />
+          <TableColumn fx:id="nameTableColoumn" prefWidth="78.0" text="Name" />
+          <TableColumn fx:id="designationTableColoumn" prefWidth="95.0" text="Designation" />
+            <TableColumn fx:id="taskTableColoumn" prefWidth="124.0" text="Task" />
         </columns>
       </TableView>
-      <Button layoutX="414.0" layoutY="277.0" mnemonicParsing="false" text="Mark as Done" />
+      <Button layoutX="414.0" layoutY="277.0" mnemonicParsing="false" onAction="#markAsDoneOnClick" text="Mark as Done" />
       <Label layoutX="392.0" layoutY="181.0" prefHeight="79.0" prefWidth="157.0" text="Click on a task to choose it to mark as Done" wrapText="true" />
    </children>
 </AnchorPane>

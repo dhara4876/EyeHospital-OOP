@@ -15,7 +15,7 @@
          </font>
       </Label>
       <TextField fx:id="enterPatientIdTextField" layoutX="76.0" layoutY="146.0" promptText="Enter Patient ID to admit" />
-      <Label fx:id="currentPatientStatusLabel" layoutX="76.0" layoutY="200.0" prefHeight="21.0" prefWidth="158.0" text="Patient update Status" />
-      <Button layoutX="347.0" layoutY="169.0" mnemonicParsing="false" text="Add" />
+      <Label fx:id="currentPatientStatusLabel" layoutX="91.0" layoutY="200.0" prefHeight="21.0" prefWidth="158.0" text="Patient update Status" />
+      <Button layoutX="348.0" layoutY="195.0" mnemonicParsing="false" onAction="#addButtonOnClick" text="Add" />
    </children>
 </AnchorPane>
