@@ -4,10 +4,15 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Asus
  */
-public class Diagnosis {
+public class Diagnosis implements Serializable{
+    private static final long serialVersionUID = 345L;
+    
+    
     
 }
