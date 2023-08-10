@@ -12,7 +12,7 @@ import java.time.LocalDate;
  */
 
 public abstract class Specialist extends Employee {
-    private static final long serialVersionUID = 13L;
+    private static final long serialVersionUID = 345L;
 
     public String specialty;
     

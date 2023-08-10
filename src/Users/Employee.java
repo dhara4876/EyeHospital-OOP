@@ -13,7 +13,7 @@ import java.time.LocalDate;
  */
 public abstract class Employee extends User implements Serializable {
 
-    private static final long serialVersionUID = 13L;
+    private static final long serialVersionUID = 345L;
 
     public String designation;
     protected double salary;

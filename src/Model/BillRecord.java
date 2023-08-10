@@ -8,6 +8,6 @@ package Model;
  *
  * @author Asus
  */
-public class BillRecord {
+public class BillRecord  {
     
 }

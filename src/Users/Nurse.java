@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author Asus
  */
 public class Nurse extends Employee implements Serializable{
-    private static final long serialVersionUID = 13L; {
+    private static final long serialVersionUID = 345L; {
     
 }
 
