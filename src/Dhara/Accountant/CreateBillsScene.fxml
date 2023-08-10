@@ -18,8 +18,8 @@
       <Label fx:id="treatmentPriceLabel" layoutX="424.0" layoutY="152.0" text="price" />
       <Label fx:id="treatmentPriceLabel" layoutX="424.0" layoutY="190.0" text="price" />
       <ComboBox fx:id="patientComboBox" layoutX="34.0" layoutY="162.0" onAction="#onClickPatientComboBox" prefHeight="31.0" prefWidth="180.0" promptText="choose patient" />
-      <DatePicker layoutX="215.0" layoutY="285.0" onAction="#onClickBilledOnDatePicker" prefHeight="31.0" prefWidth="180.0" promptText="billed on" />
-      <DatePicker layoutX="215.0" layoutY="337.0" onAction="#onClickDueByDatePicker" prefHeight="31.0" prefWidth="180.0" promptText="due by" />
+      <DatePicker fx:id="BilledOnDatePicker" layoutX="215.0" layoutY="285.0" prefHeight="31.0" prefWidth="180.0" promptText="billed on" />
+      <DatePicker fx:id="DueByDatePicker" layoutX="215.0" layoutY="337.0" prefHeight="31.0" prefWidth="180.0" promptText="due by" />
       <Button layoutX="457.0" layoutY="291.0" mnemonicParsing="false" onAction="#addBillOnClick" prefHeight="59.0" prefWidth="114.0" text="add" />
       <Label layoutX="34.0" layoutY="132.0" />
       <Label fx:id="patientNameLabel" layoutX="50.0" layoutY="200.0" text="Patient name" />
