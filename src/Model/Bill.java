@@ -53,11 +53,11 @@ public class Bill implements Serializable {
         this.billedOn = billedOn;
     }
 
-    public Localdate getDueBy() {
+    public LocalDate getDueBy() {
         return dueBy;
     }
 
-    public void setDueBy(Localdate dueBy) {
+    public void setDueBy(LocalDate dueBy) {
         this.dueBy = dueBy;
     }
 
