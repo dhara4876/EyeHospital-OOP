@@ -75,13 +75,6 @@ public abstract class User implements Serializable{
         return "User{" + "name=" + name + ", ID=" + ID + ", password=" + password + ", email=" + email + ", gender=" + gender + ", DOB=" + DOB + '}';
     }
     
-public static void userLogin(Integer ID, String password); {
-}
 
-//public static void userLogout(Integer ID, String password); {
-}
-
-//public static void signup(Integer ID, String password); {
-}
 }
 

@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author Asus
  */
-public class Optometrist extends Employee implements Serializable{
+public class Optometrist extends S implements Serializable{
     private static final long serialVersionUID = 13L; {
     
 }

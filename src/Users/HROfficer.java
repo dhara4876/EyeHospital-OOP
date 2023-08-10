@@ -5,12 +5,8 @@
 package Users;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
-/**
- *
- * @author Asus
- */
-public class HROfficerpublic extends Employee implements Serializable{
-    private static final long serialVersionUID = 13L; {
-    
-}
+
+public class HROfficer extends Employee implements Serializable{
+    private static final long serialVersionUID = 13L;
