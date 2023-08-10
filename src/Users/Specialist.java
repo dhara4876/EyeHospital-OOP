@@ -4,12 +4,11 @@
  */
 package Users;
 
-import java.io.Serializable;
-
 /**
  *
  * @author Asus
  */
-public class Patient implements Serializable {
+public class Specialist {
+    private String qualification;
     
 }
