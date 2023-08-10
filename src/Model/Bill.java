@@ -16,11 +16,11 @@ public class Bill implements Serializable {
     private Integer patientId;
     private Double totalDue;
     private LocalDate billedOn;
-    private Localdate dueBy;
+    private LocalDate dueBy;
     private Boolean paidStatus;
     private Integer accountantId;
 
-    public Bill(Integer patientId, Double totalDue, LocalDate billedOn, Localdate dueBy, Boolean paidStatus, Integer accountantId) {
+    public Bill(Integer patientId, Double totalDue, LocalDate billedOn, LocalDate dueBy, Boolean paidStatus, Integer accountantId) {
         this.patientId = patientId;
         this.totalDue = totalDue;
         this.billedOn = billedOn;
