@@ -18,7 +18,7 @@
       </Label>
       <TextField fx:id="enterPatientIdTextField" layoutX="135.0" layoutY="82.0" promptText="search patient Id here" />
       <Button layoutX="369.0" layoutY="82.0" mnemonicParsing="false" onAction="#searchButtonOnClick" text="Search" />
-      <TableView fx:id="patientTableView" layoutX="53.0" layoutY="139.0" prefHeight="200.0" prefWidth="450.0">
+      <TableView layoutX="53.0" layoutY="139.0" prefHeight="200.0" prefWidth="450.0">
         <columns>
           <TableColumn fx:id="patientIdTableColoumn" prefWidth="75.0" text="patient Id" />
           <TableColumn fx:id="patientNameTableColoumn" prefWidth="108.0" text="patient name" />
