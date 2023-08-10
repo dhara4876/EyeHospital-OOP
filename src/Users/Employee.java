@@ -4,10 +4,20 @@
  */
 package Users;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 /**
  *
  * @author Asus
  */
-public class Employee {
+public abstract class Employee extends User implements Serializable{
+    private static final long serialVersionUID = 13L;
+    
+    public String designation;
+    protected double salary;
+    protected final LocalDate DOJ;
+    
     
 }
