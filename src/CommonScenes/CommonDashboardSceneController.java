@@ -13,13 +13,15 @@ import javafx.fxml.Initializable;
  *
  * @author Asus
  */
-public class CommonDashbboardSceneController implements Initializable {
+public class CommonDashboardSceneController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         // TODO
     }    
     
