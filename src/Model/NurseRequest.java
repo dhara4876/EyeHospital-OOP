@@ -46,6 +46,11 @@ public class NurseRequest implements Serializable {
     public void setRequestDetails(String requestDetails) {
         this.requestDetails = requestDetails;
     }
+
+    @Override
+    public String toString() {
+        return "NurseRequest{" + "nurseId=" + nurseId + ", doctorId=" + doctorId + ", requestDetails=" + requestDetails + '}';
+    }
     
     
     
