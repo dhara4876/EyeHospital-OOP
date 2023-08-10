@@ -8,6 +8,6 @@ package Model;
  *
  * @author Asus
  */
-public class Schedule {
+public class schedule {
     
 }
