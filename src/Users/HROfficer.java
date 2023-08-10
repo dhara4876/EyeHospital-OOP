@@ -4,10 +4,13 @@
  */
 package Users;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Asus
  */
-public class HROfficer {
+public class HROfficerpublic extends Employee implements Serializable{
+    private static final long serialVersionUID = 13L; {
     
 }

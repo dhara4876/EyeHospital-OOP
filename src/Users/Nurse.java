@@ -10,6 +10,6 @@ import java.io.Serializable;
  *
  * @author Asus
  */
-public class Nurse implements Serializable {
-    final private static long serialVersionUID = 123L;
+public class Nurse extends Employee implements Serializable{
+    private static final long serialVersionUID = 13L; {
 }
