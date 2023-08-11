@@ -4,7 +4,10 @@
  */
 package Dhara.Accountant;
 
+import Model.Diagnosis;
+import Model.Medicine;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,21 +24,26 @@ import javafx.scene.control.TextArea;
 public class CreateBillsSceneController implements Initializable {
 
     @FXML
-    private ComboBox<?> treatmentComboBox;
+    private ComboBox<String> treatmentComboBox;
     @FXML
-    private ComboBox<?> medicineComboBox;
+    private ComboBox<String> medicineComboBox;
     @FXML
-    private ComboBox<?> treatmentQuantityComboBox;
+    private ComboBox<String> treatmentQuantityComboBox;
     @FXML
-    private ComboBox<?> medicineQuantityComboBox;
+    private ComboBox<String> medicineQuantityComboBox;
     @FXML
     private Label treatmentPriceLabel;
     @FXML
-    private ComboBox<?> patientComboBox;
+    private ComboBox<Integer> patientComboBox;
     @FXML
     private Label patientNameLabel;
     @FXML
     private TextArea totalOutputTextField;
+    
+    private ArrayList<Medicine> medList = new ArrayList<>();
+    private ArrayList <Diagnosis> diagList = new ArrayList<>();
+    
+    
 
     /**
      * Initializes the controller class.
@@ -47,6 +55,26 @@ public class CreateBillsSceneController implements Initializable {
 
     @FXML
     private void onClickTreatmentComboBox(ActionEvent event) {
+        
+        medList.add(new Medicine("Square painkiller",100));
+        medList.add(new Medicine("Beximco Eye Drop",200));
+        medList.add(new Medicine("BD eye hospital special medicine",300));
+        medList.add(new Medicine("Poison",400));
+        medList.add(new Medicine("Eye Cancer drops",500));
+        
+        for(Medicine m: medList){
+            medicineComboBox.getItems().add(m.getMedicineName());
+        }
+        
+        diagList.add(new Diagnosis("Square painkiller",100));
+        
+        
+        
+        for (int i = 1; i <= 10; i++) {
+            medicineQuantityComboBox.getItems().add(Integer.toString(i));
+            treatmentQuantityComboBox.getItems().add(Integer.toString(i));
+        }
+       
     }
 
     @FXML

@@ -14,9 +14,9 @@ public class Diagnosis implements Serializable{
     private static final long serialVersionUID = 345L;
     
     private String diagnosisName;
-    private Double treatmentCost;
+    private String treatmentCost;
 
-    public Diagnosis(String diagnosisName, Double treatmentCost) {
+    public Diagnosis(String diagnosisName, String treatmentCost) {
         this.diagnosisName = diagnosisName;
         this.treatmentCost = treatmentCost;
     }
@@ -29,11 +29,11 @@ public class Diagnosis implements Serializable{
         this.diagnosisName = diagnosisName;
     }
 
-    public Double getTreatmentCost() {
+    public String getTreatmentCost() {
         return treatmentCost;
     }
 
-    public void setTreatmentCost(Double treatmentCost) {
+    public void setTreatmentCost(String treatmentCost) {
         this.treatmentCost = treatmentCost;
     }
 

@@ -14,9 +14,9 @@ public class Medicine implements Serializable{
     private static final long serialVersionUID = 345L;
     
     private String medicineName;
-    private Double medicinePrice;
+    private Integer medicinePrice;
 
-    public Medicine(String medicineName, Double medicinePrice) {
+    public Medicine(String medicineName, Integer medicinePrice) {
         this.medicineName = medicineName;
         this.medicinePrice = medicinePrice;
     }
@@ -29,11 +29,11 @@ public class Medicine implements Serializable{
         this.medicineName = medicineName;
     }
 
-    public Double getMedicinePrice() {
+    public Integer getMedicinePrice() {
         return medicinePrice;
     }
 
-    public void setMedicinePrice(Double medicinePrice) {
+    public void setMedicinePrice(Integer medicinePrice) {
         this.medicinePrice = medicinePrice;
     }
 
