@@ -11,7 +11,7 @@ import java.time.LocalDate;
  *
  * @author Asus
  */
-public abstract class Employee extends User implements Serializable {
+public  class Employee extends User implements Serializable {
 
     private static final long serialVersionUID = 345L;
 
@@ -19,13 +19,14 @@ public abstract class Employee extends User implements Serializable {
     protected double salary;
     protected final LocalDate DOJ;
 
-    public Employee(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary,
-        LocalDate DoJ) {
+    public Employee(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String designation, Double salary,
+                    LocalDate doj) {
         super(name, ID, password, email, gender, DOB);
         this.designation = designation;
         this.salary = salary;
-        this.DOJ = null;
+        this.DOJ = doj;
     }
+
 
     public String getDesignation() {
         return designation;
