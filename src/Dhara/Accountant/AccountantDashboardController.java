@@ -4,6 +4,7 @@
  */
 package Dhara.Accountant;
 
+import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,12 +18,24 @@ import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
+
+
 /**
+ * 
  * FXML Controller class
  *
  * @author Asus
  */
 public class AccountantDashboardController implements Initializable {
+    private Accountant accountant;
+
+    public Accountant getAccountant() {
+        return accountant;
+    }
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
 
     @FXML
     private BorderPane accountantDashBoardBorderPane;
