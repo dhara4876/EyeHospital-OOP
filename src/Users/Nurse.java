@@ -23,70 +23,9 @@ import javafx.collections.ObservableList;
  * @author Asus
  */
 public class Nurse extends Employee implements Serializable{
-    private static final long serialVersionUID = 345L; {
+    private static final long serialVersionUID = 345L; 
     
-        public static boolean admitPatient(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
-        
-        Bill newBill = new Bill(
-                patientId,
-                accountantId,
-                totalDue,
-                
-                dueBy);
-        System.out.println("Bill made:"+newBill.toString());
-
-        File f = null;
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-        try {
-
-            f = new File("BillObjects.bin");
-
-            if (f.exists()) {
-                fos = new FileOutputStream(f, true);
-                oos = new AppendableObjectOutputStream(fos);
-
-            } else {
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);
-            }
-
-            oos.writeObject(newBill);
-            oos.close();
-            return true;
-            
-        } catch (IOException e) {
-            if(oos!=null){
-                try {
-                    oos.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            System.out.println("Error writing Object to binary file");
-            return false;
-       
-        }
-    }
-    
-    public static ObservableList<Bill> readBillList(){
-        ObservableList<Bill> BillList = FXCollections.observableArrayList();
-        Bill b;
-        ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("BillObjects.bin"));
-            while(true){
-                b = (Bill) ois.readObject();
-                System.out.println("The faculty u read: "+b.toString());
-                BillList.add(b);
-            }
-        }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
-        System.out.println(BillList);
-        return BillList;
-    }
-    
-    
+     
 
 
     public Nurse(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ) {

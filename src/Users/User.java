@@ -88,7 +88,7 @@ public abstract class User implements Serializable{
         int passflag=0;
         int userType=0;
         try {
-            f = new File("LoginInfoObjects.bin");
+            f = new File("LoginInfo.bin");
             fis = new FileInputStream(f);
             ois = new ObjectInputStream(fis);
             LoginInfo tempLogin;
