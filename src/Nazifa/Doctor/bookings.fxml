@@ -19,7 +19,7 @@
         <columns>
           <TableColumn prefWidth="75.0" text="Patient ID" />
           <TableColumn prefWidth="75.0" text="Patient" />
-            <TableColumn prefWidth="122.0" text="Remaining slot" />
+            <TableColumn prefWidth="122.0" text="Available Slot" />
             <TableColumn prefWidth="138.0" text="Doctor" />
         </columns>
       </TableView>

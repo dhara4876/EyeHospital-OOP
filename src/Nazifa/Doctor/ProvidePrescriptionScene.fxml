@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="431.0" prefWidth="695.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <Label layoutX="154.0" layoutY="47.0" text="PRESCRIBE NEW PATIENT">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="patientTableView" layoutX="54.0" layoutY="100.0" prefHeight="280.0" prefWidth="249.0">
+        <columns>
+          <TableColumn prefWidth="135.66665649414062" text="Patient Name" />
+          <TableColumn prefWidth="112.33334350585938" text="Patient ID" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="diagnosisComboBox" layoutX="329.0" layoutY="100.0" prefWidth="150.0" promptText="Select Diagnosis" />
+      <ComboBox fx:id="durationConboBox" layoutX="329.0" layoutY="355.0" prefWidth="150.0" promptText="Select Duration" />
+      <ComboBox fx:id="medicineComboBox" layoutX="329.0" layoutY="228.0" prefWidth="150.0" promptText="Select Medicine " />
+      <ComboBox fx:id="treatmentComboBox" layoutX="329.0" layoutY="165.0" prefWidth="150.0" promptText="Select Treatment" />
+      <ComboBox fx:id="doseComboBox" layoutX="329.0" layoutY="292.0" prefWidth="150.0" promptText="Select Dose" />
+      <Button layoutX="518.0" layoutY="228.0" mnemonicParsing="false" onAction="#prescribeOnClick" prefWidth="163.0" text="Prescribe" />
+   </children>
+</AnchorPane>
