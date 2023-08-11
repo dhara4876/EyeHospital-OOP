@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <Label layoutX="175.0" layoutY="37.0" text="Assign Tasks To Nurse">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="181.0" layoutY="104.0" text="Name" />
+      <ComboBox fx:id="selectNurseComboBox" layoutX="264.0" layoutY="100.0" prefWidth="150.0" promptText="select a nurse" />
+      <Label layoutX="181.0" layoutY="145.0" text="Details of the task:" />
+      <TextArea fx:id="nurseTaskDetailTextArea" layoutX="179.0" layoutY="174.0" prefHeight="279.0" prefWidth="251.0" />
+      <Button layoutX="274.0" layoutY="464.0" mnemonicParsing="false" onAction="#assignTaskToNurseOnClick" text="Assign" />
+      <Button layoutX="38.0" layoutY="37.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
+   </children>
+</AnchorPane>

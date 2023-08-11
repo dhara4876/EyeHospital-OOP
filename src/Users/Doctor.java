@@ -14,7 +14,47 @@ public class Doctor extends Specialist implements Serializable {
      public Doctor(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ, String specialty) {
         super(name, ID, password, email, gender, DOB, Designation, Salary, DoJ, specialty);
         
-        
+        Doctor newDoctor = new Doctor(
+                patientId,
+                accountantId,
+                totalDue,
+                
+                dueBy);
+        System.out.println("Bill made:"+newBill.toString());
+
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+
+            f = new File("BillObjects.bin");
+
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            oos.writeObject(newBill);
+            oos.close();
+            return true;
+            
+        } catch (IOException e) {
+            if(oos!=null){
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            return false;
+       
+        }
+    }
         
      }
 
@@ -71,7 +111,7 @@ public class Doctor extends Specialist implements Serializable {
         return "Doctor{" + '}';
     }
     
-    
+   
     
 }
 
