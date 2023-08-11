@@ -4,7 +4,7 @@
  */
 package Dhara.Accountant;
 
-import Model.Diagnosis;
+import Model.Treatment;
 import Model.Medicine;
 import java.net.URL;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class CreateBillsSceneController implements Initializable {
     private TextArea totalOutputTextField;
     
     private ArrayList<Medicine> medList = new ArrayList<>();
-    private ArrayList <Diagnosis> diagList = new ArrayList<>();
+    private ArrayList <Treatment> treatmentList = new ArrayList<>();
     
     
 
@@ -66,7 +66,15 @@ public class CreateBillsSceneController implements Initializable {
             medicineComboBox.getItems().add(m.getMedicineName());
         }
         
-        diagList.add(new Diagnosis("Square painkiller",100));
+        treatmentList.add(new Treatment("eye cancer chemo",40000));
+        treatmentList.add(new Treatment("Lasik surgery",50000));
+        treatmentList.add(new Treatment("Just Checkup",900));
+        treatmentList.add(new Treatment("Normal Surgery",10000));
+        
+        for(Treatment t: treatmentList){
+            medicineComboBox.getItems().add(t.getTreatmentName());
+        }
+        
         
         
         
