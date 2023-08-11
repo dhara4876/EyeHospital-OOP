@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package Dhara.Accountant;
+package Dhara;
 
-import Model.Treatment;
 import Model.Medicine;
+import Model.Treatment;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
@@ -22,6 +23,8 @@ import javafx.scene.control.TextArea;
  * @author Asus
  */
 public class CreateBillsSceneController implements Initializable {
+
+ 
 
     @FXML
     private ComboBox<String> treatmentComboBox;
@@ -46,6 +49,10 @@ public class CreateBillsSceneController implements Initializable {
     
     private ArrayList<Medicine> medList = new ArrayList<>();
     private ArrayList <Treatment> treatmentList = new ArrayList<>();
+    @FXML
+    private DatePicker BilledOnDatePicker;
+    @FXML
+    private DatePicker DueByDatePicker;
     
     
 
@@ -106,42 +113,52 @@ public class CreateBillsSceneController implements Initializable {
             }
     }
 
-    @FXML
-    private void treatmentQuantityComboBox(ActionEvent event) {
-        
-    }
 
     @FXML
     private void onClickMedQuantityCombobox(ActionEvent event) {
     }
 
-    @FXML
-    private void onClickPatientComboBox(ActionEvent event) {
-        
-    }
-
-    @FXML
-    private void onClickBilledOnDatePicker(ActionEvent event) {
-    }
-
-    @FXML
-    private void onClickDueByDatePicker(ActionEvent event) {
-    }
 
     @FXML
     private void addBillOnClick(ActionEvent event) {
+               for (CartItem c: cartList)
+        {
+            if (c.getProductName().equals(CB_Product.getValue()))
+            {
+                int curval = Integer.parseInt(CB_Quantity.getValue());
+                
+                if (curval + c.getQuantity() > 10)
+                {
+                    Alert a = new Alert(AlertType.ERROR);
+                    
+                    a.setContentText("Quantity exceeds the maximum allowed(10)");
+                    
+                    a.showAndWait();
+                    return;
+                }
+                
+                c.setQuantity(c.getQuantity() + curval);
+                
+                return;
+            }
+        
     }
 
     @FXML
     private void onClickAddTreatmentButton(ActionEvent event) {
     }
 
-    @FXML
-    private void onClickAddMedicineButton(ActionEvent event) {
-    }
 
     @FXML
     private void backButtonOnClick(ActionEvent event) {
     }
     
 }
+
+    @FXML
+    private void onClickAddTreatmentButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void backButtonOnClick(ActionEvent event) {
+    }
