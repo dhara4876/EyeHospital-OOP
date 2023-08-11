@@ -76,7 +76,7 @@ public class CreateBillsSceneController implements Initializable {
         
         
         
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 0; i <= 10; i++) {
             medicineQuantityComboBox.getItems().add(Integer.toString(i));
             treatmentQuantityComboBox.getItems().add(Integer.toString(i));
         }
@@ -85,6 +85,12 @@ public class CreateBillsSceneController implements Initializable {
 
     @FXML
     private void onClickTreatmentComboBox(ActionEvent event) {
+        for (Treatment t: treatmentList)
+            if (treatmentComboBox.getValue().equals(t.getTreatmentName()))
+            {
+                treatmentPriceLabel.setText(Float.toString(t.getTreatmentCost()));
+                
+            }
         
         
        
