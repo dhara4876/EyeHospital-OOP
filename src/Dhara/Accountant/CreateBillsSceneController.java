@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package Dhara.Accountant;
+package Dhara;
 
 import Model.Bill;
 import Model.Cart;
@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -46,7 +47,6 @@ public class CreateBillsSceneController implements Initializable {
     @FXML
     private Label treatmentPriceLabel;
     
-    @FXML
     private Label medicinePriceLabel;
     
     @FXML
@@ -63,8 +63,8 @@ public class CreateBillsSceneController implements Initializable {
     private DatePicker BilledOnDatePicker;
     @FXML
     private DatePicker DueByDatePicker;
-    @FXML
     private TextField addPaidStatusTextField;
+   
     
     
 
@@ -115,6 +115,7 @@ public class CreateBillsSceneController implements Initializable {
        
     }
 
+    @FXML
     private void onClickMedsComboBox(ActionEvent event) {
          for (Medicine m: medList)
             if (medicineComboBox.getValue().equals(m.getMedicineName()))
@@ -177,7 +178,6 @@ public class CreateBillsSceneController implements Initializable {
     private void backButtonOnClick(ActionEvent event) {
     }
 
-    @FXML
     private void addMedicineOnClick(ActionEvent event) {
          for (Cart c: cartList)
         {
@@ -206,7 +206,6 @@ public class CreateBillsSceneController implements Initializable {
         )); 
     }
 
-    @FXML
     private void onClickShowTotalButton(ActionEvent event) {
         
         int totalpayable = 0;
@@ -221,6 +220,18 @@ public class CreateBillsSceneController implements Initializable {
 
     @FXML
     private void onClickMedQuantityCombobox(ActionEvent event) {
+    }
+
+    @FXML
+    private void treatmentQuantityComboBox(ActionEvent event) {
+    }
+
+    @FXML
+    private void onClickPatientComboBox(ActionEvent event) {
+    }
+
+    @FXML
+    private void onClickAddMedicineButton(ActionEvent event) {
     }
         
     }
