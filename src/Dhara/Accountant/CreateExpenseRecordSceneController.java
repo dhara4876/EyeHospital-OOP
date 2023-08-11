@@ -9,17 +9,25 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.PieChart;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author Asus
  */
-public class SeeMedicineBillChartReportController implements Initializable {
+public class CreateExpenseRecordSceneController implements Initializable {
 
     @FXML
-    private PieChart SpenditureReportPieChart;
+    private DatePicker expenseRecordDatePicker;
+    @FXML
+    private TextField addAmountTextField;
+    @FXML
+    private ComboBox<?> chooseSpendReasonComboBox;
+    @FXML
+    private TextField detailsTextField;
 
     /**
      * Initializes the controller class.
@@ -30,7 +38,15 @@ public class SeeMedicineBillChartReportController implements Initializable {
     }    
 
     @FXML
-    private void onClickViewChart(ActionEvent event) {
+    private void addButtonOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void backButtonOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void OnClickChooseSpendReason(ActionEvent event) {
     }
     
 }

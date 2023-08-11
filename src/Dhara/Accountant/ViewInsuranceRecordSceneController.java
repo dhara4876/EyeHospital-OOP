@@ -9,17 +9,21 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.PieChart;
+import javafx.scene.control.TableColumn;
 
 /**
  * FXML Controller class
  *
  * @author Asus
  */
-public class SeeMedicineBillChartReportController implements Initializable {
+public class ViewInsuranceRecordSceneController implements Initializable {
 
     @FXML
-    private PieChart SpenditureReportPieChart;
+    private TableColumn<?, ?> itemTableColoumn;
+    @FXML
+    private TableColumn<?, ?> InsuranceAmountTableColoumn;
+    @FXML
+    private TableColumn<?, ?> dateOfIssueTableColoumn;
 
     /**
      * Initializes the controller class.
@@ -30,7 +34,11 @@ public class SeeMedicineBillChartReportController implements Initializable {
     }    
 
     @FXML
-    private void onClickViewChart(ActionEvent event) {
+    private void addInsuranceInstanceonClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void viewDetailsOnButton(ActionEvent event) {
     }
     
 }
