@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Dhara.Accountant.SeeMedicineBillChartReportController">
    <children>
       <PieChart fx:id="SpenditureReportPieChart" layoutX="134.0" layoutY="104.0" prefHeight="240.0" prefWidth="333.0" />
       <Label layoutX="145.0" layoutY="51.0" text="VIEW SPENDITURE REPORT">

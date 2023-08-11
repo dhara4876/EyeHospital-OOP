@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Dhara.Accountant.UpdateBillStatusSceneController">
    <children>
       <TableView fx:id="pendingBillTableColoumn" layoutX="28.0" layoutY="168.0" prefHeight="200.0" prefWidth="303.0">
         <columns>
