@@ -8,6 +8,6 @@ package Model;
  *
  * @author Asus
  */
-public class Booking {
+public class AppointmentRequest {
     
 }
