@@ -4,6 +4,8 @@
  */
 package Dhara;
 
+import Model.Bill;
+import Model.Cart;
 import Model.Medicine;
 import Model.Treatment;
 import java.net.URL;
@@ -12,6 +14,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -49,6 +53,7 @@ public class CreateBillsSceneController implements Initializable {
     
     private ArrayList<Medicine> medList = new ArrayList<>();
     private ArrayList <Treatment> treatmentList = new ArrayList<>();
+    private ArrayList <Cart> cartList = new ArrayList<>();
     @FXML
     private DatePicker BilledOnDatePicker;
     @FXML
@@ -103,7 +108,6 @@ public class CreateBillsSceneController implements Initializable {
        
     }
 
-    @FXML
     private void onClickMedsComboBox(ActionEvent event) {
          for (Medicine m: medList)
             if (medicineComboBox.getValue().equals(m.getMedicineName()))
@@ -114,18 +118,24 @@ public class CreateBillsSceneController implements Initializable {
     }
 
 
-    @FXML
-    private void onClickMedQuantityCombobox(ActionEvent event) {
-    }
-
 
     @FXML
     private void addBillOnClick(ActionEvent event) {
-               for (CartItem c: cartList)
+        Bill.add(new Cart(treatmentComboBox.getValue(), 
+                Float.parseFloat(treatmentPriceLabel.getText()), 
+                Integer.parseInt(treatmentQuantityComboBox.getValue())
+
+        
+    }
+
+    
+    @FXML
+    private void onClickAddTreatmentButton(ActionEvent event) {
+                       for (Cart c: cartList)
         {
-            if (c.getProductName().equals(CB_Product.getValue()))
+            if (c.getProductName().equals(treatmentComboBox.getValue()))
             {
-                int curval = Integer.parseInt(CB_Quantity.getValue());
+                int curval = Integer.parseInt(treatmentQuantityComboBox.getValue());
                 
                 if (curval + c.getQuantity() > 10)
                 {
@@ -141,24 +151,61 @@ public class CreateBillsSceneController implements Initializable {
                 
                 return;
             }
+            cartList.add(new Cart(treatmentComboBox.getValue(), 
+                Float.parseFloat(treatmentPriceLabel.getText()), 
+                Integer.parseInt(treatmentQuantityComboBox.getValue())
+        )); 
+    }
+    }
+
+ 
+    @FXML
+    private void backButtonOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void addMedicineOnClick(ActionEvent event) {
+         for (Cart c: cartList)
+        {
+            if (c.getProductName().equals(medicineComboBox.getValue()))
+            {
+                int curval = Integer.parseInt(medicineQuantityComboBox.getValue());
+                
+                if (curval + c.getQuantity() > 10)
+                {
+                    Alert a = new Alert(AlertType.ERROR);
+                    
+                    a.setContentText("Quantity exceeds the maximum allowed(10)");
+                    
+                    a.showAndWait();
+                    return;
+                }
+                
+                c.setQuantity(c.getQuantity() + curval);
+                
+                return;
+            }
+    }
+        cartList.add(new Cart(medicineComboBox.getValue(), 
+                Float.parseFloat(medicinePriceLabel.getText()), 
+                Integer.parseInt(medicineQuantityComboBox.getValue())
+        )); 
+    }
+
+    @FXML
+    private void onClickShowTotalButton(ActionEvent event) {
+        String returnstr = "";
+        int totalpayable = 0;
+        for (Cart c: cartList)
+        {
+            returnstr += (c.toString() + "\n");
+            totalpayable += c.getTotalAmount();
+        }
+            
+        returnstr += "\n\nTotal Payable: " + Integer.toString(totalpayable);
+        totalOutputTextField.setText(returnstr);
+    }
         
     }
-
-    @FXML
-    private void onClickAddTreatmentButton(ActionEvent event) {
-    }
-
-
-    @FXML
-    private void backButtonOnClick(ActionEvent event) {
-    }
     
-}
 
-    @FXML
-    private void onClickAddTreatmentButton(ActionEvent event) {
-    }
-
-    @FXML
-    private void backButtonOnClick(ActionEvent event) {
-    }

@@ -12,13 +12,13 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dhara.CreateBillsSceneController">
    <children>
       <ComboBox fx:id="treatmentComboBox" layoutX="224.0" layoutY="147.0" onAction="#onClickTreatmentComboBox" prefHeight="31.0" prefWidth="180.0" promptText="choose treatment" />
-      <ComboBox fx:id="medicineComboBox" layoutX="224.0" layoutY="185.0" onAction="#onClickMedsComboBox" prefHeight="31.0" prefWidth="180.0" promptText="choose medicine" />
+      <ComboBox fx:id="medicineComboBox" layoutX="224.0" layoutY="185.0" prefHeight="31.0" prefWidth="180.0" promptText="choose medicine" />
       <ComboBox fx:id="treatmentQuantityComboBox" layoutX="489.0" layoutY="147.0" prefHeight="31.0" prefWidth="26.0" />
       <ComboBox fx:id="medicineQuantityComboBox" layoutX="489.0" layoutY="185.0" onAction="#onClickMedQuantityCombobox" prefHeight="31.0" prefWidth="35.0" />
       <Label fx:id="treatmentPriceLabel" layoutX="424.0" layoutY="152.0" text="price" />
       <Label fx:id="medicinePriceLabel" layoutX="424.0" layoutY="190.0" text="price" />
       <ComboBox fx:id="patientComboBox" layoutX="26.0" layoutY="147.0" prefHeight="31.0" prefWidth="180.0" promptText="choose patient" />
-      <DatePicker fx:id="BilledOnDatePicker" layoutX="215.0" layoutY="285.0" prefHeight="31.0" prefWidth="180.0" promptText="billed on" />
+      <DatePicker fx:id="BilledOnDatePicker" layoutX="215.0" layoutY="305.0" prefHeight="31.0" prefWidth="180.0" promptText="billed on" />
       <DatePicker fx:id="DueByDatePicker" layoutX="215.0" layoutY="337.0" prefHeight="31.0" prefWidth="180.0" promptText="due by" />
       <Button layoutX="457.0" layoutY="291.0" mnemonicParsing="false" onAction="#addBillOnClick" prefHeight="59.0" prefWidth="114.0" text="add" />
       <Label layoutX="34.0" layoutY="132.0" />
@@ -34,5 +34,7 @@
             <Font name="System Bold" size="31.0" />
          </font>
       </Label>
+      <Button layoutX="548.0" layoutY="185.0" mnemonicParsing="false" onAction="#addMedicineOnClick" prefHeight="31.0" prefWidth="51.0" text="add" />
+      <Button layoutX="215.0" layoutY="266.0" mnemonicParsing="false" onAction="#onClickShowTotalButton" text="show total" />
    </children>
 </AnchorPane>
