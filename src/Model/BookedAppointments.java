@@ -8,6 +8,6 @@ package Model;
  *
  * @author Asus
  */
-public class Booking {
-    
+public class BookedAppointments {
+    //fields doctor, doctor id,select test/exam from combobox, patient, patient id
 }
