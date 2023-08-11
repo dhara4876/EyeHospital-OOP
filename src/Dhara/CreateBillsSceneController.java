@@ -8,6 +8,7 @@ import Model.Bill;
 import Model.Cart;
 import Model.Medicine;
 import Model.Treatment;
+import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -61,6 +63,8 @@ public class CreateBillsSceneController implements Initializable {
     private DatePicker BilledOnDatePicker;
     @FXML
     private DatePicker DueByDatePicker;
+    @FXML
+    private TextField addPaidStatusTextField;
     
     
 
@@ -125,7 +129,7 @@ public class CreateBillsSceneController implements Initializable {
     @FXML
     private void addBillOnClick(ActionEvent event) {
         try{
-            Boolean addStatus = Accountant.addNewBill(Integer.valueOf(patientComboBox.getValue()), Integer.valueOf(totalOutputTextField.getText()), BilledOnDatePicker.getValue(), DueByDatePicker.getValue(), Double.parseDouble(salaryTextField.getText()), designationComboBox.getValue(), deptComboBox.getValue());
+            Boolean addStatus = Accountant.addNewBill(Integer.valueOf(patientComboBox.getValue()), Integer.valueOf(totalOutputTextField.getText()), BilledOnDatePicker.getValue(), DueByDatePicker.getValue(),addPaidStatusTextField.getText());
 
             if (addStatus) {
                 Alert a = new Alert(AlertType.INFORMATION);
@@ -213,6 +217,10 @@ public class CreateBillsSceneController implements Initializable {
             
         
         totalOutputTextField.setText(Integer.toString(totalpayable));
+    }
+
+    @FXML
+    private void onClickMedQuantityCombobox(ActionEvent event) {
     }
         
     }

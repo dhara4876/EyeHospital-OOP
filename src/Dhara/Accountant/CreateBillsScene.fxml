@@ -5,6 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -36,5 +37,6 @@
       </Label>
       <Button layoutX="548.0" layoutY="185.0" mnemonicParsing="false" onAction="#addMedicineOnClick" prefHeight="31.0" prefWidth="51.0" text="add" />
       <Button layoutX="215.0" layoutY="266.0" mnemonicParsing="false" onAction="#onClickShowTotalButton" text="show total" />
+      <TextField fx:id="addPaidStatusTextField" layoutX="325.0" layoutY="266.0" prefHeight="31.0" prefWidth="114.0" />
    </children>
 </AnchorPane>

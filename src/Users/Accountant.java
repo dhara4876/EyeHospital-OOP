@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class Accountant extends Employee implements Serializable{
     private static final long serialVersionUID = 345L;
     
-    public static boolean addNewBill(Integer patientId, Integer totalDue, LocalDate billedOn, LocalDate dueBy, boolean paidStatus) throws IOException {
+    public static boolean addNewBill(Integer patientId, Integer totalDue, LocalDate billedOn, LocalDate dueBy, String paidStatus) throws IOException {
         Bill newBill = new Bill(
                 patientId,
                 totalDue,

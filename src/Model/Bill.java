@@ -17,15 +17,15 @@ public class Bill implements Serializable {
     private Integer totalDue;
     private LocalDate billedOn;
     private LocalDate dueBy;
-    private Boolean paidStatus;
+    private String paidStatus = "unpaid";
     
 
-    public Bill(Integer patientId, Integer totalDue, LocalDate billedOn, LocalDate dueBy, Boolean paidStatus) {
+    public Bill(Integer patientId, Integer totalDue, LocalDate billedOn, LocalDate dueBy, String paidStatus) {
         this.patientId = patientId;
         this.totalDue = totalDue;
         this.billedOn = billedOn;
         this.dueBy = dueBy;
-        this.paidStatus = null;
+        this.paidStatus = paidStatus;
         
     }
 
@@ -61,13 +61,14 @@ public class Bill implements Serializable {
         this.dueBy = dueBy;
     }
 
-    public Boolean getPaidStatus() {
+    public String getPaidStatus() {
         return paidStatus;
     }
 
-    public void setPaidStatus(Boolean paidStatus) {
+    public void setPaidStatus(String paidStatus) {
         this.paidStatus = paidStatus;
     }
+
 
 
     
