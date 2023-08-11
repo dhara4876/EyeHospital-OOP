@@ -3,20 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/BookingRequestScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/BookingRequest.java</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/SendPrescriptionToPharmacistScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/ViewPrescriptionScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/ViewDiagnosisScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/PayMedicalBillScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/AssignTaskToNurseScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/CompleteAppointmentScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/DiagnoseScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/RespondToNurse.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/ConfirmedAppointmentScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/PiechartDisplayScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/PiechartDisplayScene.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/ProvidePrescriptionScene.fxml</file>
+
         </group>
     </open-files>
 </project-private>

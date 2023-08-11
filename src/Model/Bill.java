@@ -14,19 +14,21 @@ import java.time.LocalDate;
 public class Bill implements Serializable {
     private static final long serialVersionUID = 345L;
     private Integer patientId;
-    private Double totalDue;
+    private Integer totalDue;
     private LocalDate billedOn;
     private LocalDate dueBy;
     private Boolean paidStatus;
     private Integer accountantId;
+    
 
-    public Bill(Integer patientId, Double totalDue, LocalDate billedOn, LocalDate dueBy, Boolean paidStatus, Integer accountantId) {
+    public Bill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy) {
         this.patientId = patientId;
-        this.totalDue = totalDue;
-        this.billedOn = billedOn;
-        this.dueBy = dueBy;
-        this.paidStatus = paidStatus;
         this.accountantId = accountantId;
+        this.totalDue = totalDue;
+        this.billedOn = LocalDate.now();
+        this.dueBy = dueBy;
+        this.paidStatus = false;
+        
     }
 
     public Integer getPatientId() {
@@ -37,11 +39,11 @@ public class Bill implements Serializable {
         this.patientId = patientId;
     }
 
-    public Double getTotalDue() {
+    public Integer getTotalDue() {
         return totalDue;
     }
 
-    public void setTotalDue(Double totalDue) {
+    public void setTotalDue(Integer totalDue) {
         this.totalDue = totalDue;
     }
 
@@ -77,9 +79,13 @@ public class Bill implements Serializable {
         this.accountantId = accountantId;
     }
 
+
+
+    
+
     @Override
     public String toString() {
-        return "Bill{" + "patientId=" + patientId + ", totalDue=" + totalDue + ", billedOn=" + billedOn + ", dueBy=" + dueBy + ", paidStatus=" + paidStatus + ", accountantId=" + accountantId + '}';
+        return "Bill{" + "patientId=" + patientId + ", totalDue=" + totalDue + ", billedOn=" + billedOn + ", dueBy=" + dueBy + ", paidStatus=" + paidStatus + ", accountantId=" + '}';
     }
     
     
