@@ -4,9 +4,12 @@
  */
 package CommonScenes;
 
+import Users.Accountant;
+import Users.Director;
 import Users.Doctor;
 import Users.HROfficer;
 import Users.Nurse;
+import Users.Optometrist;
 import Users.Patient;
 import Users.Pharmacist;
 import Users.User;
@@ -146,7 +149,7 @@ public class LoginSceneController implements Initializable {
                         Scene accountsScene = new Scene(accountsOfficerDashboard);
                         
                         AccountsOfficerDashboardController a = accountsLoader.getController();
-                        a.setOfficer((AccountsOfficer) User.getInstance(id, "AccountsOfficer"));
+                        a.setOfficer((Accountant) User.getInstance(id, "AccountsOfficer"));
                         
                         Stage accountsStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         accountsStage.setScene(accountsScene);
