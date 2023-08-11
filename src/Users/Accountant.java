@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,13 +21,14 @@ import java.time.LocalDate;
 public class Accountant extends Employee implements Serializable{
     private static final long serialVersionUID = 345L;
     
-    public static boolean addNewBill(Integer patientId, Integer totalDue, LocalDate billedOn, LocalDate dueBy, String paidStatus) throws IOException {
+    public static boolean addNewBill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
+        
         Bill newBill = new Bill(
                 patientId,
+                accountantId,
                 totalDue,
-                billedOn,
-                dueBy,
-                paidStatus);
+                
+                dueBy);
         System.out.println("Bill made:"+newBill.toString());
 
         File f = null;
@@ -50,7 +53,11 @@ public class Accountant extends Employee implements Serializable{
             
         } catch (IOException e) {
             if(oos!=null){
-                oos.close();
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             System.out.println("Error writing Object to binary file");
             return false;

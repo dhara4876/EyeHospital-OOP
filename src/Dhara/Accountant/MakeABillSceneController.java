@@ -34,6 +34,15 @@ import javafx.scene.control.TextField;
 public class MakeABillSceneController implements Initializable {
 
  
+    private Accountant accountant;
+
+    public Accountant getAccountant() {
+        return accountant;
+    }
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
 
     @FXML
     private ComboBox<String> treatmentComboBox;
@@ -45,28 +54,27 @@ public class MakeABillSceneController implements Initializable {
     private ComboBox<String> medicineQuantityComboBox;
     @FXML
     private Label treatmentPriceLabel;
-    
+
     @FXML
     private Label medicinePriceLabel;
-    
+
     @FXML
     private ComboBox<Integer> patientComboBox;
     @FXML
     private Label patientNameLabel;
     @FXML
     private TextArea totalOutputTextField;
-    
+
     private ArrayList<Medicine> medList = new ArrayList<>();
-    private ArrayList <Treatment> treatmentList = new ArrayList<>();
-    private ArrayList <Cart> cartList = new ArrayList<>();
+    private ArrayList<Treatment> treatmentList = new ArrayList<>();
+    private ArrayList<Cart> cartList = new ArrayList<>();
     @FXML
     private DatePicker BilledOnDatePicker;
     @FXML
     private DatePicker DueByDatePicker;
     @FXML
     private TextField addPaidStatusTextField;
-    
-    
+
 
     /**
      * Initializes the controller class.
@@ -128,16 +136,11 @@ public class MakeABillSceneController implements Initializable {
 
     @FXML
     private void addBillOnClick(ActionEvent event) {
-        try{
-            Boolean addStatus = Accountant.addNewBill(Integer.valueOf(patientComboBox.getValue()), Integer.valueOf(totalOutputTextField.getText()), BilledOnDatePicker.getValue(), DueByDatePicker.getValue(),addPaidStatusTextField.getText());
-
-            if (addStatus) {
-                Alert a = new Alert(AlertType.INFORMATION);
-                a.setContentText("New Bill added");
-                a.showAndWait();
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(MakeABillSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        Boolean addStatus = Accountant.addNewBill(patientComboBox.getValue(), this.accountant.getID(), Integer.valueOf(totalOutputTextField.getText()), DueByDatePicker.getValue());
+        if (addStatus) {
+            Alert a = new Alert(AlertType.INFORMATION);
+            a.setContentText("New Bill added");
+            a.showAndWait();
         }
         
     }
@@ -175,6 +178,7 @@ public class MakeABillSceneController implements Initializable {
  
     @FXML
     private void backButtonOnClick(ActionEvent event) {
+        
     }
 
     @FXML
