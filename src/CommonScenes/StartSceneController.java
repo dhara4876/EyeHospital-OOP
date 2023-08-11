@@ -4,8 +4,20 @@
  */
 package CommonScenes;
 
+import Model.LoginInfo;
+import Users.Accountant;
+import Users.AppendableObjectOutputStream;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,18 +61,14 @@ public class StartSceneController implements Initializable {
     }
 
     @FXML
-    private void loginOnClick(ActionEvent event) {
-        try {
+    private void loginOnClick(ActionEvent event) throws IOException {
+        System.out.println(LocalDate.now());
+         try {
             Parent scene2Parent = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
             Scene scene2 = new Scene(scene2Parent);
-            //stg.setScene(scene2);
-            //Stage s2 = new Stage(); s2.setScene(scene2);  s2.show();
             
             Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            //Stage stg2 = (Stage)((Node)b1).getScene().getWindow();
-            //if b1 is the fxid of thee button
             
-            //Stage stg2 = (Stage)((Node)myAnchorPane).getScene().getWindow();
             
             
             stg2.setScene(scene2);
@@ -69,5 +77,78 @@ public class StartSceneController implements Initializable {
             Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
     
-}
-}
+        
+
+                
+
+    }
+    
+
+    @FXML
+    private void tempbuttonOnClick(ActionEvent event) throws IOException, ClassNotFoundException {
+        
+    
+        LocalDate date = LocalDate.of(2023, 7, 5);
+        ArrayList<LoginInfo> infoList = new ArrayList<>();
+        LoginInfo login = new LoginInfo(12,"pass","Accountant");     
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            
+            f = new File("LoginInfo.bin");
+            
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+                
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+            
+            oos.writeObject(login);
+            oos.close();
+            
+        } catch (IOException e) {
+            if(oos!=null){
+                try {
+                    oos.close();
+                } catch (IOException x) {
+                    Logger.getLogger(LoginInfo.class.getName()).log(Level.SEVERE, null, x);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            
+        }
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream (new FileInputStream("LoginInfo.bin"));
+        } catch (IOException x) {
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, x);
+        }
+        
+        try {
+            while (true) {
+                Object obj = ois.readObject();
+                if  (obj instanceof LoginInfo){
+                      LoginInfo deserializedInfo = (LoginInfo) obj;
+                        infoList.add(deserializedInfo);
+                    }
+                }
+            
+        } catch (EOFException e) {
+
+        }finally{System.out.println(infoList);}
+            
+        
+        
+                
+        
+        
+    }  
+    
+    }
+    
+
+    

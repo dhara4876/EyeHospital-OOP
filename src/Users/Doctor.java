@@ -21,7 +21,13 @@ public class Doctor extends Specialist implements Serializable {
 
     public Doctor(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ, String specialty) {
         super(name, ID, password, email, gender, DOB, Designation, Salary, DoJ, specialty);
-    }
+
+        
+       
+        
+     }
+
+    
   
     public static boolean addNewMedicine(String medicineName, Integer medicinePrice){
             Medicine newMedicine = new Medicine(
@@ -63,6 +69,7 @@ public class Doctor extends Specialist implements Serializable {
 
         }
     }
+
 
 
 

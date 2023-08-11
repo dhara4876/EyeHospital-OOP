@@ -5,23 +5,54 @@
 package Users;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  *
  * @author Asus
  */
-public class Patient implements Serializable {
-    private String name;
-    private Integer Id;
 
-    public Patient(String name, Integer Id) {
-        this.name = name;
-        this.Id = Id;
+public class Patient extends User implements Serializable {
+    private static final long serialVersionUID = 345L;
+
+    public Patient(String name, int ID, String password, String email, String gender, LocalDate DOB) {
+        super(name, ID, password, email, gender, DOB);
+
+
     }
 
     public String getName() {
         return name;
     }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" + '}';
+    }
+    
+    
+    
 
     public Integer getId() {
         return Id;
@@ -39,4 +70,5 @@ public class Patient implements Serializable {
     public void setId(Integer Id) {
         this.Id = Id;
     }
+
 }
