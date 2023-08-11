@@ -16,5 +16,6 @@
       </Label>
       <TextField fx:id="enterNameTextField" layoutX="207.0" layoutY="162.0" promptText="enter name" />
       <TextField fx:id="passwordTextField" layoutX="207.0" layoutY="210.0" promptText="enter password" />
+      <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
    </children>
 </AnchorPane>

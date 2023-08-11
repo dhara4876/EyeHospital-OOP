@@ -4,19 +4,26 @@
  */
 package Dhara.Accountant;
 
-import Users.Accountant;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
 
 /**
  * FXML Controller class
  *
  * @author Asus
  */
-public class BillMenuItemSceneController implements Initializable {
+public class ViewInsuranceRecordSceneController implements Initializable {
+
+    @FXML
+    private TableColumn<?, ?> itemTableColoumn;
+    @FXML
+    private TableColumn<?, ?> InsuranceAmountTableColoumn;
+    @FXML
+    private TableColumn<?, ?> dateOfIssueTableColoumn;
 
     /**
      * Initializes the controller class.
@@ -27,23 +34,11 @@ public class BillMenuItemSceneController implements Initializable {
     }    
 
     @FXML
-    private void OnClickCreateNewBillButton(ActionEvent event) {
+    private void addInsuranceInstanceonClick(ActionEvent event) {
     }
 
     @FXML
-    private void onClickUpdatePendingBillStatusButton(ActionEvent event) {
-    }
-
-    @FXML
-    private void OnClickViewPastRecordsButton(ActionEvent event) {
-    }
-
-    void setAccountant(Accountant accountant) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @FXML
-    private void onActionChartButton(ActionEvent event) {
+    private void viewDetailsOnButton(ActionEvent event) {
     }
     
 }

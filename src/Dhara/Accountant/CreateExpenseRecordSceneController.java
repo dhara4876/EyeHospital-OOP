@@ -4,19 +4,30 @@
  */
 package Dhara.Accountant;
 
-import Users.Accountant;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author Asus
  */
-public class BillMenuItemSceneController implements Initializable {
+public class CreateExpenseRecordSceneController implements Initializable {
+
+    @FXML
+    private DatePicker expenseRecordDatePicker;
+    @FXML
+    private TextField addAmountTextField;
+    @FXML
+    private ComboBox<?> chooseSpendReasonComboBox;
+    @FXML
+    private TextField detailsTextField;
 
     /**
      * Initializes the controller class.
@@ -27,23 +38,15 @@ public class BillMenuItemSceneController implements Initializable {
     }    
 
     @FXML
-    private void OnClickCreateNewBillButton(ActionEvent event) {
+    private void addButtonOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void onClickUpdatePendingBillStatusButton(ActionEvent event) {
+    private void backButtonOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void OnClickViewPastRecordsButton(ActionEvent event) {
-    }
-
-    void setAccountant(Accountant accountant) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @FXML
-    private void onActionChartButton(ActionEvent event) {
+    private void OnClickChooseSpendReason(ActionEvent event) {
     }
     
 }
