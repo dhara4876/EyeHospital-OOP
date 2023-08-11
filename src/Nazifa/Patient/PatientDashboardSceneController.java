@@ -4,6 +4,7 @@
  */
 package Nazifa.Patient;
 
+import Users.Patient;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -15,6 +16,17 @@ import javafx.fxml.Initializable;
  */
 public class PatientDashboardSceneController implements Initializable {
 
+    private Patient patient;
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+    
+    
     
     /**
      * Initializes the controller class.

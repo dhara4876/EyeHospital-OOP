@@ -4,6 +4,7 @@
  */
 package Nushrat;
 
+import Users.Optometrist;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -14,6 +15,16 @@ import javafx.fxml.Initializable;
  * @author Asus
  */
 public class OptometristDashboardSceneController implements Initializable {
+private Optometrist optometrist;
+
+    public Optometrist getOptometrist() {
+        return optometrist;
+    }
+
+    public void setOptometrist(Optometrist optometrist) {
+        this.optometrist = optometrist;
+    }
+
 
     /**
      * Initializes the controller class.
