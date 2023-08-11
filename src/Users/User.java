@@ -141,8 +141,114 @@ public abstract class User implements Serializable{
                 if(ois != null) ois.close();
             } catch (IOException ex) { }
         }
-        //code 0 - unhandled exception
+        }
+       public static User getInstance(int id, String type){
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "";
+        switch(type){
+            case "Doctor":
+                path="DoctorObjects.bin";
+                break;
+            case "Patient":
+                path="PatientObjects.bin";
+                break;
+            case "Pharmacist":
+                path="PharmacistObjects.bin";
+                break;
+            case "Nurse":
+                path="NurseObjects.bin";
+                break;
+            case "Director":
+                path="DirectorObjects.bin";
+                break;
+            case "AccountsOfficer":
+                path="AccountsOfficerObjects.bin";
+                break;
+            case "HROfficer":
+                path="HROfficerObjects.bin";
+                break;
+            case "LabTechnician":
+                path="LabTechnicianObjects.bin";
+                break;
+        }
+        
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            User tempUser = null;
+            try{
+                System.out.println("Printing user objects");
+                while(true){
+                    switch(type){
+                        case "Doctor": 
+                            tempUser = (Doctor) ois.readObject();
+                            System.out.println("Reading doc");
+                            System.out.println(tempUser.toString());
+                            break;
+                        case "Patient": 
+                            tempUser = (Patient) ois.readObject();
+                            System.out.println("Reading pat");
+                            System.out.println(tempUser.toString());
+                            break;
+                        case "Pharmacist": 
+                            tempUser = (Pharmacist) ois.readObject();
+                            System.out.println("Reading pharma");
+                            System.out.println(tempUser.toString());
+                            break;
+                        case "Nurse": 
+                            tempUser = (Nurse) ois.readObject();
+                            System.out.println("Reading nurse");
+                            System.out.println(tempUser.toString());
+                            break;
+                        case "Director": 
+                            tempUser = (Director) ois.readObject();                            
+                            System.out.println("Reading director");
+                            System.out.println(tempUser.toString());
+                            break;
+                        case "AccountsOfficer": 
+                            tempUser = (Accountant) ois.readObject();
+                            System.out.println("Reading accounts");
+                            System.out.println(tempUser.toString());
+                            break;
+                        case "HROfficer": 
+                            tempUser = (HROfficer) ois.readObject();
+                            System.out.println("Reading HR");
+                            System.out.println(tempUser.toString());
+                            break;
+                        case "LabTechnician": 
+                            tempUser = (Optometrist) ois.readObject();
+                            System.out.println("Reading technician");
+                            System.out.println(tempUser.toString());
+                            break;
+                    }
+                    if (id==tempUser.getID()){
+                        System.out.println("User found");
+                        System.out.print("tempUser:");
+                        System.out.println(tempUser.toString());
+                        return tempUser;
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        return null;
     }
+        //code 0 - unhandled exception
+    
        public static boolean isNumeric(String str) { 
         try {  
           Integer.parseInt(str);  

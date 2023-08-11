@@ -4,6 +4,8 @@
  */
 package CommonScenes;
 
+import Daiyan.DirectorDashboardSceneController;
+import Daiyan.HROfficerDashboardSceneController;
 import Dhara.Accountant.AccountantDashboardController;
 import Users.Accountant;
 import Users.Director;
@@ -131,11 +133,11 @@ public class LoginSceneController implements Initializable {
                     case 7:
                         System.out.println("Login Successful - Director");                //Managing Director authenticated
                         Parent directorDashboard = null;
-                        FXMLLoader directorLoader = new FXMLLoader(getClass().getResource("StartScene.fxml"));
+                        FXMLLoader directorLoader = new FXMLLoader(getClass().getResource("/Daiyan/DirectorDashboardScene.fxml"));
                         directorDashboard = (Parent) directorLoader.load();
                         Scene directorScene = new Scene(directorDashboard);
                         
-                        StartSceneController di = directorLoader.getController();
+                        DirectorDashboardSceneController di = directorLoader.getController();
                         di.setDirector((Director) User.getInstance(id, "Director"));
                         
                         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -159,12 +161,12 @@ public class LoginSceneController implements Initializable {
                     case 9:
                         System.out.println("Login Successful - HR Officer");                       //HR Officer authenticated
                         Parent HRDashboard = null;
-                        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("HROfficer/HRDashboard.fxml"));
+                        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("/Daiyan/HROfficerDashboardScene.fxml"));
                         HRDashboard = (Parent) HRLoader.load();
                         Scene HRScene = new Scene(HRDashboard);
                         
-                        StartSceneController hr = HRLoader.getController();
-                        hr.setHR((HROfficer) User.getInstance(id, "HROfficer"));
+                        HROfficerDashboardSceneController hr = HRLoader.getController();
+                        hr.setHrOfficer((HROfficer) User.getInstance(id, "HROfficer"));
                         
                         Stage hrStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         hrStage.setScene(HRScene);
