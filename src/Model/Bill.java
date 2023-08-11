@@ -25,8 +25,9 @@ public class Bill implements Serializable {
         this.patientId = patientId;
         this.accountantId = accountantId;
         this.totalDue = totalDue;
-        this.billedOn = LocalDate.now();
+        
         this.dueBy = dueBy;
+        this.billedOn = LocalDate.now();
         this.paidStatus = false;
         
     }
