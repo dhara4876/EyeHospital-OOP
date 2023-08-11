@@ -33,6 +33,10 @@ public class CreateBillsSceneController implements Initializable {
     private ComboBox<String> medicineQuantityComboBox;
     @FXML
     private Label treatmentPriceLabel;
+    
+    @FXML
+    private Label medicinePriceLabel;
+    
     @FXML
     private ComboBox<Integer> patientComboBox;
     @FXML
@@ -50,12 +54,6 @@ public class CreateBillsSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
-    @FXML
-    private void onClickTreatmentComboBox(ActionEvent event) {
-        
         medList.add(new Medicine("Square painkiller",100));
         medList.add(new Medicine("Beximco Eye Drop",200));
         medList.add(new Medicine("BD eye hospital special medicine",300));
@@ -82,15 +80,29 @@ public class CreateBillsSceneController implements Initializable {
             medicineQuantityComboBox.getItems().add(Integer.toString(i));
             treatmentQuantityComboBox.getItems().add(Integer.toString(i));
         }
+        // TODO
+    }    
+
+    @FXML
+    private void onClickTreatmentComboBox(ActionEvent event) {
+        
+        
        
     }
 
     @FXML
     private void onClickMedsComboBox(ActionEvent event) {
+         for (Medicine m: medList)
+            if (medicineComboBox.getValue().equals(m.getMedicineName()))
+            {
+                medicinePriceLabel.setText(Float.toString(m.getMedicinePrice()));
+                
+            }
     }
 
     @FXML
     private void treatmentQuantityComboBox(ActionEvent event) {
+        
     }
 
     @FXML
@@ -99,6 +111,7 @@ public class CreateBillsSceneController implements Initializable {
 
     @FXML
     private void onClickPatientComboBox(ActionEvent event) {
+        
     }
 
     @FXML
