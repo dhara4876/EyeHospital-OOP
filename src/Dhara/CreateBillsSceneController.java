@@ -8,9 +8,12 @@ import Model.Bill;
 import Model.Cart;
 import Model.Medicine;
 import Model.Treatment;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -121,10 +124,17 @@ public class CreateBillsSceneController implements Initializable {
 
     @FXML
     private void addBillOnClick(ActionEvent event) {
-        Bill.add(new Cart(treatmentComboBox.getValue(), 
-                Float.parseFloat(treatmentPriceLabel.getText()), 
-                Integer.parseInt(treatmentQuantityComboBox.getValue())
+        try{
+            Boolean addStatus = Accountant.addNewBill(Integer.valueOf(patientComboBox.getValue()), Integer.valueOf(totalOutputTextField.getText()), BilledOnDatePicker.getValue(), DueByDatePicker.getValue(), Double.parseDouble(salaryTextField.getText()), designationComboBox.getValue(), deptComboBox.getValue());
 
+            if (addStatus) {
+                Alert a = new Alert(AlertType.INFORMATION);
+                a.setContentText("New Bill added");
+                a.showAndWait();
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(CreateBillsSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
@@ -194,16 +204,15 @@ public class CreateBillsSceneController implements Initializable {
 
     @FXML
     private void onClickShowTotalButton(ActionEvent event) {
-        String returnstr = "";
+        
         int totalpayable = 0;
         for (Cart c: cartList)
         {
-            returnstr += (c.toString() + "\n");
             totalpayable += c.getTotalAmount();
         }
             
-        returnstr += "\n\nTotal Payable: " + Integer.toString(totalpayable);
-        totalOutputTextField.setText(returnstr);
+        
+        totalOutputTextField.setText(Integer.toString(totalpayable));
     }
         
     }
