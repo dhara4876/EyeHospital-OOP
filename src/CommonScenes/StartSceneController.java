@@ -4,8 +4,18 @@
  */
 package CommonScenes;
 
+import Model.LoginInfo;
+import Users.Accountant;
+import Users.AppendableObjectOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,4 +80,63 @@ public class StartSceneController implements Initializable {
         }
     
 }
+
+    @FXML
+    private void tempbuttonOnClick(ActionEvent event) throws IOException{
+        try {
+            LocalDate date = LocalDate.of(2023, 7, 5);
+            Accountant accountant = new Accountant("akif",3,"3","akif@gmail.com","m",date,"Accountant",3.23,date);
+            
+            File f = null;
+            FileOutputStream fos = null;
+            ObjectOutputStream oos = null;
+            try {
+                
+                f = new File("Accountant.bin");
+                
+                if (f.exists()) {
+                    fos = new FileOutputStream(f, true);
+                    oos = new AppendableObjectOutputStream(fos);
+                    
+                } else {
+                    fos = new FileOutputStream(f);
+                    oos = new ObjectOutputStream(fos);
+                }
+                
+                oos.writeObject(accountant);
+                oos.close();
+                
+            } catch (IOException e) {
+                if(oos!=null){
+                    try {
+                        oos.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                System.out.println("Error writing Object to binary file");
+                
+            }
+            
+            ObjectInputStream ois = null;
+            try {
+                ois = new ObjectInputStream (new FileInputStream("Accountant.bin"));
+            } catch (IOException ex) {
+                Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            while(true){
+                try {
+                    accountant = (Accountant) ois.readObject();
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
 }
+    
+}
+    

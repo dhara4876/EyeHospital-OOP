@@ -163,8 +163,8 @@ public abstract class User implements Serializable{
             case "Director":
                 path="DirectorObjects.bin";
                 break;
-            case "AccountsOfficer":
-                path="AccountsOfficerObjects.bin";
+            case "Accountant":
+                path="Accountant.bin";
                 break;
             case "HROfficer":
                 path="HROfficerObjects.bin";
