@@ -4,6 +4,7 @@
  */
 package CommonScenes;
 
+import Dhara.Accountant.AccountantDashboardController;
 import Users.Accountant;
 import Users.Director;
 import Users.Doctor;
@@ -74,11 +75,11 @@ public class LoginSceneController implements Initializable {
                     case 3:
                         System.out.println("Login Successful - Doctor");                         //Doctor authenticated
                         Parent doctorDashboard = null;
-                        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("doctor/DoctorDashboard.fxml"));
+                        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("StartScene.fxml"));
                         doctorDashboard = (Parent) doctorLoader.load(); // /nazifa/Doctor/DoctorWelcomeScene.fxml
                         Scene doctorScene = new Scene(doctorDashboard);
                         
-                        DoctorDashboardController d = doctorLoader.getController();
+                        StartSceneController d = doctorLoader.getController();
                         d.setDoc((Doctor) User.getInstance(id, "Doctor"));
                         
                         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -88,11 +89,11 @@ public class LoginSceneController implements Initializable {
                     case 4:
                         System.out.println("Login Successful - Patient");                          //Patient authenticated
                         Parent patientDashboard = null;
-                        FXMLLoader patientLoader = new FXMLLoader(getClass().getResource("patient/PatientDashboard.fxml"));
+                        FXMLLoader patientLoader = new FXMLLoader(getClass().getResource("StartScene.fxml"));
                         patientDashboard = (Parent) patientLoader.load();
                         Scene patientScene = new Scene(patientDashboard);
                         
-                        PatientDashboardController p = patientLoader.getController();
+                        StartSceneController p = patientLoader.getController();
                         p.setPatient((Patient) User.getInstance(id, "Patient"));
                         
                         Stage patientStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -102,11 +103,11 @@ public class LoginSceneController implements Initializable {
                     case 5:
                         System.out.println("Login Successful - Pharmacist");                       //Pharmacist authenticated
                         Parent pharmacistDashboard = null;
-                        FXMLLoader pharmaLoader = new FXMLLoader(getClass().getResource("pharmacist/PharmacistDashboard.fxml"));
+                        FXMLLoader pharmaLoader = new FXMLLoader(getClass().getResource("StartScene.fxml"));
                         pharmacistDashboard = (Parent) pharmaLoader.load();
                         Scene pharmaScene = new Scene(pharmacistDashboard);
                         
-                        PharmacistDashboardController ph = pharmaLoader.getController();
+                        StartSceneController ph = pharmaLoader.getController();
                         ph.setPharmacist((Pharmacist) User.getInstance(id, "Pharmacist"));
                         
                         Stage pharmaStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -116,11 +117,11 @@ public class LoginSceneController implements Initializable {
                     case 6:
                         System.out.println("Login Successful - Nurse");                            //Nurse authenticated
                         Parent nurseDashboard = null;
-                        FXMLLoader nurseLoader = new FXMLLoader(getClass().getResource("nurse/NurseDashboard.fxml"));
+                        FXMLLoader nurseLoader = new FXMLLoader(getClass().getResource("StartScene.fxml"));
                         nurseDashboard = (Parent) nurseLoader.load();
                         Scene nurseScene = new Scene(nurseDashboard);
                         
-                        NurseDashboardController nu = nurseLoader.getController();
+                        StartSceneController nu = nurseLoader.getController();
                         nu.setNurse((Nurse) User.getInstance(id, "Nurse"));
                         
                         Stage nurseStage  = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -130,11 +131,11 @@ public class LoginSceneController implements Initializable {
                     case 7:
                         System.out.println("Login Successful - Director");                //Managing Director authenticated
                         Parent directorDashboard = null;
-                        FXMLLoader directorLoader = new FXMLLoader(getClass().getResource("director/DirectorDashboard.fxml"));
+                        FXMLLoader directorLoader = new FXMLLoader(getClass().getResource("StartScene.fxml"));
                         directorDashboard = (Parent) directorLoader.load();
                         Scene directorScene = new Scene(directorDashboard);
                         
-                        DirectorDashboardController di = directorLoader.getController();
+                        StartSceneController di = directorLoader.getController();
                         di.setDirector((Director) User.getInstance(id, "Director"));
                         
                         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -144,12 +145,12 @@ public class LoginSceneController implements Initializable {
                     case 8:
                         System.out.println("Login Successful - Accountant");                  //Accounts Officer authenticated
                         Parent accountsOfficerDashboard = null;
-                        FXMLLoader accountsLoader = new FXMLLoader(getClass().getResource("accountsofficer/AccountsOfficerDashboard.fxml"));
+                        FXMLLoader accountsLoader = new FXMLLoader(getClass().getResource("/Dhara/Accountant/AccountantDashboard.fxml"));
                         accountsOfficerDashboard = (Parent) accountsLoader.load();
                         Scene accountsScene = new Scene(accountsOfficerDashboard);
                         
-                        AccountsOfficerDashboardController a = accountsLoader.getController();
-                        a.setOfficer((Accountant) User.getInstance(id, "AccountsOfficer"));
+                        AccountantDashboardController a = accountsLoader.getController();
+                        a.setAccountant((Accountant) User.getInstance(id, "AccountsOfficer"));
                         
                         Stage accountsStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         accountsStage.setScene(accountsScene);
@@ -162,7 +163,7 @@ public class LoginSceneController implements Initializable {
                         HRDashboard = (Parent) HRLoader.load();
                         Scene HRScene = new Scene(HRDashboard);
                         
-                        HRDashboardController hr = HRLoader.getController();
+                        StartSceneController hr = HRLoader.getController();
                         hr.setHR((HROfficer) User.getInstance(id, "HROfficer"));
                         
                         Stage hrStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -176,8 +177,8 @@ public class LoginSceneController implements Initializable {
                         LabTechnicianDashboard = (Parent) labLoader.load();
                         Scene labScene = new Scene(LabTechnicianDashboard);
                         
-                        LabTechnicianDashboardController l = labLoader.getController();
-                        l.setLabTechnician((Optometrist) User.getInstance(id, "Optometrist"));
+                        StartSceneController o = labLoader.getController();
+                        l.setOptometrist((Optometrist) User.getInstance(id, "Optometrist"));
                         
                         Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         labStage.setScene(labScene);
