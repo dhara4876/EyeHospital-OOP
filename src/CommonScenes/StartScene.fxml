@@ -5,11 +5,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommonScenes.StartSceneController">
    <children>
-      <Button layoutX="256.0" layoutY="230.0" mnemonicParsing="false" text="Register" />
-      <Button layoutX="265.0" layoutY="185.0" mnemonicParsing="false" text="Login" />
+      <Button layoutX="256.0" layoutY="230.0" mnemonicParsing="false" onAction="#registerOnClick" text="Register" />
+      <Button layoutX="265.0" layoutY="185.0" mnemonicParsing="false" onAction="#loginOnClick" text="Login" />
       <Label layoutX="129.0" layoutY="124.0" text="BANGLADESH EYE HOSPITAL">
          <font>
             <Font name="System Bold" size="24.0" />
