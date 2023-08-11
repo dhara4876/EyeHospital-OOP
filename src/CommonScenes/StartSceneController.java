@@ -25,12 +25,8 @@ import javafx.stage.Stage;
  */
 public class StartSceneController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
 
     @FXML
@@ -40,10 +36,7 @@ public class StartSceneController implements Initializable {
             Scene scene2 = new Scene(scene2Parent);
             
             Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            //Stage stg2 = (Stage)((Node)b1).getScene().getWindow();
-            //if b1 is the fxid of thee button
             
-            //Stage stg2 = (Stage)((Node)myAnchorPane).getScene().getWindow();
             
             
             stg2.setScene(scene2);
