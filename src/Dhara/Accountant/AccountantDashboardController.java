@@ -93,7 +93,7 @@ public class AccountantDashboardController implements Initializable {
     @FXML
     private void signOutOnClick(ActionEvent event) {
          try {
-            Parent root = FXMLLoader.load(getClass().getResource(".fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
             accountantDashBoardBorderPane.setCenter(root);
         } catch (IOException ex) {
             Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
@@ -102,12 +102,10 @@ public class AccountantDashboardController implements Initializable {
 
     @FXML
     private void myDashboardOnClick(MouseEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("AccountantWelcomeScene.fxml"));
-            accountantDashBoardBorderPane.setCenter(root);
-        } catch (IOException ex) {
-            Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
-    
+
 }
+   
+    
+    
+

@@ -9,5 +9,6 @@
       <Button layoutX="177.0" layoutY="169.0" mnemonicParsing="false" onAction="#onClickUpdatePendingBillStatusButton" text="Update Pending Bill Status" />
       <Button layoutX="193.0" layoutY="212.0" mnemonicParsing="false" onAction="#OnClickViewPastRecordsButton" text="View Past Bill Records" />
       <Button layoutX="243.0" layoutY="253.0" mnemonicParsing="false" onAction="#onActionChartButton" text="Chart" />
+      <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
    </children>
 </AnchorPane>
