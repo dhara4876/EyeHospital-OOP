@@ -4,19 +4,74 @@
  */
 package Users;
 
+import Model.Medicine;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Doctor extends Specialist implements Serializable {
+
     private static final long serialVersionUID = 345L;
-    
-     public Doctor(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ, String specialty) {
+
+    public Doctor(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ, String specialty) {
         super(name, ID, password, email, gender, DOB, Designation, Salary, DoJ, specialty);
+
         
-        
+       
         
      }
+
+    
+  
+    public static boolean addNewMedicine(String medicineName, Integer medicinePrice){
+            Medicine newMedicine = new Medicine(
+                medicineName,
+                medicinePrice);
+
+        System.out.println("medicine made:" + newMedicine.toString());
+
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+
+            f = new File("newMedicine.bin");
+
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            oos.writeObject(newMedicine);
+            oos.close();
+            return true;
+
+        } catch (IOException e) {
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Doctor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            return false;
+
+        }
+    }
+
+
+
 
     public String getSpecialty() {
         return specialty;
@@ -71,8 +126,6 @@ public class Doctor extends Specialist implements Serializable {
         return "Doctor{" + '}';
     }
     
-    
+   
     
 }
-
-    

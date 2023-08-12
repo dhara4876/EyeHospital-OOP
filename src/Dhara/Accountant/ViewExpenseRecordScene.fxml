@@ -8,14 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dhara.Accountant.ViewExpenseRecordSceneController">
    <children>
       <TableView layoutX="57.0" layoutY="148.0" prefHeight="200.0" prefWidth="252.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Amount" />
-          <TableColumn prefWidth="75.0" text="Spent on" />
-            <TableColumn prefWidth="101.0" text="Date spent" />
+          <TableColumn fx:id="amountTableColoumn" prefWidth="75.0" text="Amount" />
+          <TableColumn fx:id="spentOnTableColoumn" prefWidth="75.0" text="Spent on" />
+            <TableColumn fx:id="dateSpenttableColoumn" prefWidth="101.0" text="Date spent" />
         </columns>
       </TableView>
       <Button layoutX="411.0" layoutY="248.0" mnemonicParsing="false" text="Search" />
@@ -25,6 +24,6 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
    </children>
 </AnchorPane>
