@@ -96,6 +96,7 @@ public class StartSceneController implements Initializable {
         LoginInfo login2 = new LoginInfo(32,"pass","Pharmacist");
         LoginInfo login3 = new LoginInfo(42,"pass","Optometrist");
         LoginInfo login4 = new LoginInfo(52,"pass","Doctor");
+        LoginInfo login5 = new LoginInfo(62,"pass","Nurse");
         File f = null;
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
@@ -116,6 +117,7 @@ public class StartSceneController implements Initializable {
             oos.writeObject(login2);
             oos.writeObject(login3);
             oos.writeObject(login4);
+            oos.writeObject(login5);
             oos.close();
             
         } catch (IOException e) {

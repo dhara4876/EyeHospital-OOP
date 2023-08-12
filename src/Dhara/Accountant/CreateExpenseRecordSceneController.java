@@ -47,7 +47,7 @@ public class CreateExpenseRecordSceneController implements Initializable {
     @FXML
     private TextField addAmountTextField;
     @FXML
-    private ComboBox<?> chooseSpendReasonComboBox;
+    private ComboBox<String> chooseSpendReasonComboBox;
     @FXML
     private TextField detailsTextField;
 
@@ -57,10 +57,13 @@ public class CreateExpenseRecordSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //chooseSpendReasonComboBox.getItems().addAll()
+        
     }    
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
+        
     }
 
     @FXML
