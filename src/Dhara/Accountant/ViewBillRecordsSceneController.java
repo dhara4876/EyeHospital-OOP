@@ -70,7 +70,9 @@ public class ViewBillRecordsSceneController implements Initializable {
 
     @FXML
     private void searchButtonOnClick(ActionEvent event) {
-    }
+
+        }
+    
 
     @FXML
     private void backButtonOnClick(ActionEvent event) {

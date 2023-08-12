@@ -5,8 +5,11 @@
 package Dhara.Accountant;
 
 import CommonScenes.StartSceneController;
+import Model.Bill;
+import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -30,15 +34,15 @@ import javafx.stage.Stage;
 public class UpdateBillStatusSceneController implements Initializable {
 
     @FXML
-    private TableView<?> pendingBillTableColoumn;
+    private TableView<Bill> pendingBillTableColoumn;
     @FXML
-    private TableColumn<?, ?> patientIdTableColoumn;
+    private TableColumn<Bill, Integer> patientIdTableColoumn;
     @FXML
-    private TableColumn<?, ?> amountTableColoumn;
+    private TableColumn<Bill, Integer> amountTableColoumn;
     @FXML
-    private TableColumn<?, ?> billedOntableColoumn;
+    private TableColumn<Bill, LocalDate> billedOntableColoumn;
     @FXML
-    private TableColumn<?, ?> billedBytableColoumn;
+    private TableColumn<Bill, LocalDate> billedBytableColoumn;
     @FXML
     private TextField enterIdTextField;
 
@@ -52,6 +56,11 @@ public class UpdateBillStatusSceneController implements Initializable {
 
     @FXML
     private void updateStatusButtonOnClick(ActionEvent event) {
+        patientIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
+        amountTableColoumn.setCellValueFactory(new PropertyValueFactory<>("totalDue"));
+        billedOntableColoumn.setCellValueFactory(new PropertyValueFactory<>("billedOn"));
+        billedBytableColoumn.setCellValueFactory(new PropertyValueFactory<>("dueBy"));
+        pendingBillTableColoumn.setItems(Accountant.readBillList());
     }
 
     @FXML
