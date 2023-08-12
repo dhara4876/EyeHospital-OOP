@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Nushrat.Pharmacist.PharmacistDashboardController">
+<BorderPane fx:id="commonBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Nushrat.Pharmacist.PharmacistDashboardController">
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #001824;" BorderPane.alignment="CENTER">
          <children>
@@ -37,7 +36,7 @@
                   <Font name="System Bold" size="9.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#medRecomBtnOnClick" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Medicine Recommendations" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button mnemonicParsing="false" onMouseClicked="#medRecomApproveBtnOnClick" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Medicine Recommendations Approve" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="9.0" />
                </font>
@@ -47,7 +46,7 @@
                   <Font name="System Bold" size="9.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#patientPurchaseHistoryBtnOnClick" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Patients’ Purchase History" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button mnemonicParsing="false" onMouseClicked="#medExpiryTrackingBtnOnClick" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Medicine Expiry Tracking" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="9.0" />
                </font>
