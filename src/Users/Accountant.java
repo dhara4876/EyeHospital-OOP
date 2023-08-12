@@ -94,6 +94,21 @@ public class Accountant extends Employee implements Serializable{
         return BillList;
     }
     
+       public static ObservableList<ChartData> readChartDataList() {
+        ObservableList<ChartData> ChartList = FXCollections.observableArrayList();
+        
+        List<Bill> dataList = Accountant.readBillList();
+        for (Bill data : dataList) {
+
+            Integer patientId = data.getPatientId(); // Get patientId from original object
+            Integer totalDue = data.getTotalDue();
+            ChartData barChartData = new ChartData(patientId, totalDue);
+            ChartList.add(barChartData);
+
+        }
+        return ChartList;
+       }
+    
      public static ObservableList<String> getPatientList(){
         Set<String> patientSet = new HashSet<>();
         ObservableList<Bill> BillList = readBillList();
@@ -108,23 +123,10 @@ public class Accountant extends Employee implements Serializable{
  
 
      
-    public static ObservableList<ChartData> readChartDataList() {
-        ObservableList<ChartData> ChartList = FXCollections.observableArrayList();
-        ChartData b;
-        List<Bill> dataList = Accountant.readBillList();
-        for (Bill data : dataList) {
-
-            Integer patientId = data.getPatientId(); // Get patientId from original object
-            Integer totalDue = data.getTotalDue();
-            ChartData barChartData = new ChartData(patientId, totalDue);
-            ChartList.add(barChartData);
-
-        }
-        return ChartList;
-  
+ 
 
 
-     }
+     
     
     public static boolean CreateExpenseRecord(
         Double Amount, String SpentOn, LocalDate DateSpent){

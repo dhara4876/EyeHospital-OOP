@@ -4,11 +4,14 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Asus
  */
-public class ChartData {
+public class ChartData implements Serializable{
+    private static final long serialVersionUID = 345L;
     
     private Integer patientId;
     private Integer totalDue;

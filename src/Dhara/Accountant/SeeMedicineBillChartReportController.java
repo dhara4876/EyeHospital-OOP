@@ -5,6 +5,7 @@
 package Dhara.Accountant;
 
 import CommonScenes.StartSceneController;
+import Model.Bill;
 import Model.ChartData;
 import Users.Accountant;
 import java.io.IOException;
@@ -43,23 +44,25 @@ public class SeeMedicineBillChartReportController implements Initializable {
 
 
     @FXML
-    private BarChart<Integer, Integer> BillBarChart;
+    private BarChart<String, Integer> BillBarChart;
     @FXML
     private NumberAxis xaxis;
     @FXML
     private CategoryAxis yaxis;
+    
+@Override
+public void initialize(URL url, ResourceBundle rb) {
+    ObservableList<Bill> billList = Accountant.readBillList();
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        XYChart.Series<Integer, Integer> series = new XYChart.Series<>();
-        ObservableList<ChartData> chartDataList = Accountant.readChartDataList();
+    XYChart.Series<String, Integer> series = new XYChart.Series<>();
+    for (Bill bill : billList) {
+        series.getData().add(new XYChart.Data<String, Integer>(Integer.toString(bill.getPatientId()), bill.getTotalDue()));
 
-        for (ChartData chartData : chartDataList) {
-            series.getData().add(new XYChart.Data<>(chartData.getPatientId(), chartData.getTotalDue()));
-        }
-
-        BillBarChart.getData().add(series);
     }
+
+    BillBarChart.getData().add(series);
+}
+    
 
     @FXML
     private void backButtonOnClick(ActionEvent event) {
