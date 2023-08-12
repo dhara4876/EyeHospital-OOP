@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <Label layoutX="51.0" layoutY="44.0" text="Display  The Orders">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="ordersTableView" layoutX="51.0" layoutY="86.0" prefHeight="200.0" prefWidth="271.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Order ID" />
+          <TableColumn prefWidth="97.0" text="Customer Name" />
+            <TableColumn prefWidth="97.0" text="Order Date" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="sortordersComboBox" layoutX="335.0" layoutY="111.0" prefWidth="150.0" promptText="Sort" />
+      <TextField fx:id="filterOrdersTextField" layoutX="336.0" layoutY="152.0" promptText="Search to Filter" />
+      <Button layoutX="336.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#filterBtnOnClick" text="Click to Filter" />
+      <Button layoutX="458.0" layoutY="351.0" mnemonicParsing="false" onMouseClicked="#dashboardBtnOnClick" text="Back to Dashboard" />
+   </children>
+</AnchorPane>
