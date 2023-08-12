@@ -50,25 +50,25 @@ public class Patient extends User implements Serializable {
     public String toString() {
         return "Patient{" + '}';
     }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public LocalDate getDOB() {
+        return DOB;
+    }
     
-    
-    
-
-    public Integer getId() {
-        return Id;
-    }
-
-    @Override
-    public String toString() {
-        return "Patient{" + "name=" + name + ", Id=" + Id + '}';
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setId(Integer Id) {
-        this.Id = Id;
-    }
-
 }
+    
+    
+
+ 

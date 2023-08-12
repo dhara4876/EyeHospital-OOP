@@ -45,8 +45,8 @@ public class ProvidePrescriptionSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<Patient> namedata = FXCollections.observableArrayList(new Patient("Asif", 111),new Patient("Alif", 222),new Patient("Afif", 333));
-        prescribePatientTableView.setItems(namedata);
+        //ObservableList<Patient> namedata = FXCollections.observableArrayList(new Patient("Asif", 111),new Patient("Alif", 222),new Patient("Afif", 333));
+        //prescribePatientTableView.setItems(namedata);
     }    
 
     @FXML
