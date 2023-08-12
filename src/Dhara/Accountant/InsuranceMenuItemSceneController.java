@@ -83,6 +83,6 @@ public class InsuranceMenuItemSceneController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    } 
     
 }

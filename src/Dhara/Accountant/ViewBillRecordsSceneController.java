@@ -13,7 +13,9 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -47,7 +50,9 @@ public class ViewBillRecordsSceneController implements Initializable {
     @FXML
     private TextField searchPatientidTextfield;
     @FXML
-    private TextField showTotalTextField;
+    private TableColumn<Bill, Boolean> paidStatusTableColoumn;
+    @FXML
+    private TableColumn< Bill, Integer> accountantIdTableColoumn;
 
     /**
      * Initializes the controller class.
@@ -58,22 +63,46 @@ public class ViewBillRecordsSceneController implements Initializable {
         totalTableColoumn.setCellValueFactory(new PropertyValueFactory<>("totalDue"));
         billedOntableColoumn.setCellValueFactory(new PropertyValueFactory<>("billedOn"));
         billedByTableColoumn.setCellValueFactory(new PropertyValueFactory<>("dueBy"));
+        paidStatusTableColoumn.setCellValueFactory(new PropertyValueFactory<>("paidStatus"));
+        accountantIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("accountantId"));
+        
         billRecodsTableView.setItems(Accountant.readBillList());
     }
         // TODO
-      
-
-    @FXML
-    private void onClickPatientsButton(ActionEvent event) {
-        
-    }
 
     @FXML
     private void searchButtonOnClick(ActionEvent event) {
 
-        }
-    
+    String searchText = searchPatientidTextfield.getText().toLowerCase();
+    ObservableList<Bill> billList = Accountant.readBillList();
 
+    FilteredList<Bill> filteredBillList = new FilteredList<>(billList, p -> true);
+
+        if (!searchText.isEmpty()) {
+            filteredBillList.setPredicate(bill -> {
+                if (bill.getPatientId().toString().contains(searchText)) {
+                    return true;
+                } else if (bill.getTotalDue().toString().contains(searchText)) {
+                    return true;
+                } else if (bill.getBilledOn().toString().contains(searchText)) {
+                    return true;
+                } else if (bill.getDueBy().toString().contains(searchText)) {
+                    return true;
+                } else if (bill.getPaidStatus().toString().contains(searchText)) {
+                    return true;
+                } else if (bill.getAccountantId().toString().contains(searchText)) {
+                    return true;
+                }
+                return false;
+            });
+        }
+
+    billRecodsTableView.setItems(filteredBillList);
+}
+
+        
+    
+            
     @FXML
     private void backButtonOnClick(ActionEvent event) {
         try {
@@ -89,6 +118,11 @@ public class ViewBillRecordsSceneController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void loadAllOnClick(ActionEvent event) {
+        billRecodsTableView.setItems(Accountant.readBillList());
     }
     
 }
