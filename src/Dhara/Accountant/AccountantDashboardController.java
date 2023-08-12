@@ -14,9 +14,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 
@@ -70,12 +73,21 @@ public class AccountantDashboardController implements Initializable {
 
     @FXML
     private void expinditureOnClick(ActionEvent event) {
-         try {
-            Parent root = FXMLLoader.load(getClass().getResource("ExpenditureMenuItemScene.fxml"));
-            accountantDashBoardBorderPane.setCenter(root);
+         Parent parent = null;
+        FXMLLoader accLoader = new FXMLLoader(getClass().getResource("ExpenditureMenuItem.fxml"));
+        try {
+            parent = (Parent) accLoader.load();
         } catch (IOException ex) {
             Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Scene HRScene = new Scene(parent);
+        
+        ExpenditureMenuItemController m = accLoader.getController();
+        m.setAccountant(this.accountant);
+
+        Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        HRStage.setScene(HRScene);
+        HRStage.show();
     }
 
     @FXML

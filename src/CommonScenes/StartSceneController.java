@@ -28,6 +28,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
@@ -36,6 +37,7 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class StartSceneController implements Initializable {
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -90,7 +92,9 @@ public class StartSceneController implements Initializable {
     
         LocalDate date = LocalDate.of(2023, 7, 5);
         ArrayList<LoginInfo> infoList = new ArrayList<>();
-        LoginInfo login = new LoginInfo(12,"pass","Accountant");     
+        LoginInfo login = new LoginInfo(12,"pass","Accountant");
+        LoginInfo login2 = new LoginInfo(32,"pass","Pharmacist");
+        LoginInfo login3 = new LoginInfo(42,"pass","Optometrist");
         File f = null;
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
@@ -108,6 +112,8 @@ public class StartSceneController implements Initializable {
             }
             
             oos.writeObject(login);
+            oos.writeObject(login2);
+            oos.writeObject(login3);
             oos.close();
             
         } catch (IOException e) {
@@ -147,8 +153,75 @@ public class StartSceneController implements Initializable {
         
         
     }  
+
+    @FXML
+    private void tempTwo(ActionEvent event) throws IOException, ClassNotFoundException {
+        Double d = 3000.0;
+        Integer i = 12;
+         LocalDate date = LocalDate.of(2001, 7, 5);
+         LocalDate date2 = LocalDate.of(2023,4,5);
+        ArrayList<Accountant> accList = new ArrayList<>();
+        Accountant accountant = new Accountant("Bro",i,"pass",
+                "yea@gmail.com","m", date2,
+                "Accoountant",d,date);     
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            
+            f = new File("A.bin");
+            
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+                
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+            
+            oos.writeObject(accountant);
+            oos.close();
+            
+        } catch (IOException e) {
+            if(oos!=null){
+                try {
+                    oos.close();
+                } catch (IOException x) {
+                    Logger.getLogger(LoginInfo.class.getName()).log(Level.SEVERE, null, x);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            
+        }
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream (new FileInputStream("A.bin"));
+        } catch (IOException x) {
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, x);
+        }
+        
+        try {
+            while (true) {
+                Object obj = ois.readObject();
+                if  (obj instanceof Accountant){
+                      Accountant deserializedAcc = (Accountant) obj;
+                        accList.add(deserializedAcc);
+                    }
+                }
+            
+        } catch (EOFException e) {
+
+        }finally{
+            ois.close();
+            {System.out.println(accList);}
+            
+    }
     
     }
+    
+
+}
     
 
     
