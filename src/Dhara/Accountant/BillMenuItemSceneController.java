@@ -116,7 +116,6 @@ private Accountant accountant;
         }
     }
 
-    @FXML
     private void backButtonOnClick(ActionEvent event) {
          try {
             Parent scene2Parent = FXMLLoader.load(getClass().getResource("AccountantDashboard.fxml"));

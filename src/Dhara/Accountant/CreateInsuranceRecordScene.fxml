@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Dhara.Accountant.CreateInsuranceRecordSceneController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dhara.Accountant.CreateInsuranceRecordSceneController">
    <children>
-      <TextField layoutX="107.0" layoutY="72.0" />
-      <TextField layoutX="107.0" layoutY="113.0" />
+      <TextField fx:id="ItemTextField" layoutX="107.0" layoutY="209.0" prefHeight="38.0" prefWidth="187.0" text="Item ensured" />
+      <TextField fx:id="amtTextField" layoutX="107.0" layoutY="258.0" prefHeight="35.0" prefWidth="187.0" text="Insurance Amount" />
+      <Button layoutX="375.0" layoutY="247.0" mnemonicParsing="false" onAction="#addButtonOnClick" text="Add" />
+      <Button layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
+      <Label layoutX="140.0" layoutY="86.0" text="CREATE INSURANCE RECORD">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="DOIdatepicker" layoutX="107.0" layoutY="305.0" prefHeight="31.0" prefWidth="187.0" promptText="Date of Issue" />
    </children>
 </AnchorPane>

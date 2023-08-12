@@ -15,7 +15,7 @@
           <TableColumn fx:id="patientIdTableColoumn" prefWidth="92.0" text="patient ID" />
           <TableColumn fx:id="totalTableColoumn" prefWidth="58.0" text="Total" />
             <TableColumn fx:id="billedOntableColoumn" prefWidth="75.0" text="Billed On" />
-            <TableColumn fx:id="billedByTableColoumn" prefWidth="75.0" text="Billed By" />
+            <TableColumn fx:id="billedByTableColoumn" prefWidth="75.0" text="Due By" />
         </columns>
       </TableView>
       <TextField fx:id="searchPatientidTextfield" layoutX="345.0" layoutY="125.0" prefHeight="31.0" prefWidth="160.0" promptText="type patient id" />
