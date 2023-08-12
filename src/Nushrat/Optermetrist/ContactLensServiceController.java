@@ -2,30 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package Nushrat;
+package Nushrat.Optermetrist;
 
-import Users.Pharmacist;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
- * @author Asus
+ * @author user
  */
-public class PharmacistDashboardSceneController implements Initializable {
-    
-    private Pharmacist pharmacist;
+public class ContactLensServiceController implements Initializable {
 
-    public Pharmacist getPharmacist() {
-        return pharmacist;
-    }
-
-    public void setPharmacist(Pharmacist pharmacist) {
-        this.pharmacist = pharmacist;
-    }
-    
+    @FXML
+    private TableView<?> contactLensServicesTabelView;
 
     /**
      * Initializes the controller class.
@@ -34,5 +28,13 @@ public class PharmacistDashboardSceneController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void completeContactLensServicesBtnOnClick(MouseEvent event) {
+    }
+
+    @FXML
+    private void dashboardBtnOnClick(MouseEvent event) {
+    }
     
 }
