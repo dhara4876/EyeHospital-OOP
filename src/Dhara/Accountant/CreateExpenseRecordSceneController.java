@@ -4,14 +4,23 @@
  */
 package Dhara.Accountant;
 
+import Users.Accountant;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -19,6 +28,18 @@ import javafx.scene.control.TextField;
  * @author Asus
  */
 public class CreateExpenseRecordSceneController implements Initializable {
+    private Accountant accountant;
+
+    public Accountant getAccountant() {
+        return accountant;
+    }
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
+    
+    
+    
 
     @FXML
     private DatePicker expenseRecordDatePicker;
@@ -43,6 +64,21 @@ public class CreateExpenseRecordSceneController implements Initializable {
 
     @FXML
     private void backButtonOnClick(ActionEvent event) {
+        Parent parent = null;
+        FXMLLoader accLoader = new FXMLLoader(getClass().getResource("ExpenditureMenuItem.fxml"));
+        try {
+            parent = (Parent) accLoader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(CreateExpenseRecordSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene HRScene = new Scene(parent);
+        
+        ExpenditureMenuItemController m = accLoader.getController();
+        m.setAccountant(this.accountant);
+
+        Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        HRStage.setScene(HRScene);
+        HRStage.show();
     }
 
     @FXML

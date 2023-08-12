@@ -5,6 +5,7 @@
 package Dhara.Accountant;
 
 import CommonScenes.StartSceneController;
+import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,6 +28,17 @@ import javafx.stage.Stage;
  */
 public class ViewExpenseRecordSceneController implements Initializable {
 
+    private Accountant accountant;
+
+    public Accountant getAccountant() {
+        return accountant;
+    }
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
+    
+    
     @FXML
     private TableColumn<?, ?> amountTableColoumn;
     @FXML
@@ -44,19 +56,24 @@ public class ViewExpenseRecordSceneController implements Initializable {
 
     @FXML
     private void backButtonOnClick(ActionEvent event) {
+       
+           Parent parent = null;
+        FXMLLoader accLoader = new FXMLLoader(getClass().getResource("ExpenditureMenuItem.fxml"));
         try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("BillMenuItemScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
+            parent = (Parent) accLoader.load();
         } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewExpenseRecordSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Scene HRScene = new Scene(parent);
+        
+        ExpenditureMenuItemController m = accLoader.getController();
+        m.setAccountant(this.accountant);
+
+        Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        HRStage.setScene(HRScene);
+        HRStage.show();
+
+        
     }
     
 }
