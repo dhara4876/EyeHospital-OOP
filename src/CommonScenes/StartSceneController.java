@@ -46,7 +46,7 @@ public class StartSceneController implements Initializable {
     @FXML
     private void registerOnClick(ActionEvent event) {
         try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("RegisterScene.fxml"));
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("RegisterAsWhat.fxml"));
             Scene scene2 = new Scene(scene2Parent);
             
             Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -95,6 +95,8 @@ public class StartSceneController implements Initializable {
         LoginInfo login = new LoginInfo(12,"pass","Accountant");
         LoginInfo login2 = new LoginInfo(32,"pass","Pharmacist");
         LoginInfo login3 = new LoginInfo(42,"pass","Optometrist");
+        LoginInfo login4 = new LoginInfo(52,"pass","Doctor");
+        LoginInfo login5 = new LoginInfo(62,"pass","Nurse");
         File f = null;
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
@@ -114,6 +116,8 @@ public class StartSceneController implements Initializable {
             oos.writeObject(login);
             oos.writeObject(login2);
             oos.writeObject(login3);
+            oos.writeObject(login4);
+            oos.writeObject(login5);
             oos.close();
             
         } catch (IOException e) {
@@ -157,7 +161,7 @@ public class StartSceneController implements Initializable {
     @FXML
     private void tempTwo(ActionEvent event) throws IOException, ClassNotFoundException {
         Double d = 3000.0;
-        Integer i = 12;
+        int i = 12;
          LocalDate date = LocalDate.of(2001, 7, 5);
          LocalDate date2 = LocalDate.of(2023,4,5);
         ArrayList<Accountant> accList = new ArrayList<>();
@@ -188,7 +192,7 @@ public class StartSceneController implements Initializable {
                 try {
                     oos.close();
                 } catch (IOException x) {
-                    Logger.getLogger(LoginInfo.class.getName()).log(Level.SEVERE, null, x);
+                    Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, x);
                 }
             }
             System.out.println("Error writing Object to binary file");

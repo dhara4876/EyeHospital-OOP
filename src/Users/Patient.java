@@ -4,21 +4,98 @@
  */
 package Users;
 
+import CommonScenes.RegisterSceneController;
+import Model.LoginInfo;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Asus
  */
-
 public class Patient extends User implements Serializable {
     private static final long serialVersionUID = 345L;
+    private Boolean addmitted;
+    private String patientNotes;
 
     public Patient(String name, int ID, String password, String email, String gender, LocalDate DOB) {
         super(name, ID, password, email, gender, DOB);
+        this.addmitted = false;
+        this.patientNotes = "";
+    }
+    
+        
+        
+    
 
-
+    public String getName() {
+        return name;
     }
 
-}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" + '}';
+    }
+
+    @Override
+    public boolean Register() {
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            f = new File("Patient.bin");
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "PatientObjects");
+            oos.writeObject(this);
+            oos.writeObject(toAddLogin);
+
+            oos.close();
+            System.out.println("Patient added successfully");
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }}

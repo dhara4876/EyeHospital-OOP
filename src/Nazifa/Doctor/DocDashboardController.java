@@ -14,8 +14,12 @@ import javafx.fxml.Initializable;
  *
  * @author Asus
  */
-public class DoctorDashboardSceneController implements Initializable {
-    
+
+public class DocDashboardController implements Initializable {
+
+    /**
+     * Initializes the controller class.
+     */
     private Doctor doctor;
 
     public Doctor getDoctor() {
@@ -27,10 +31,8 @@ public class DoctorDashboardSceneController implements Initializable {
     }
     
     
-
-    /**
-     * Initializes the controller class.
-     */
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

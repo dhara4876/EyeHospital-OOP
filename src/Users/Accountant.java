@@ -4,9 +4,12 @@
  */
 package Users;
 
+import CommonScenes.RegisterSceneController;
 import Model.Bill;
+import Model.ChartData;
 import Model.ExpenseRecord;
 import Model.InsuranceRecord;
+import Model.LoginInfo;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -16,6 +19,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +33,7 @@ import javafx.collections.ObservableList;
 public class Accountant extends Employee implements Serializable{
     private static final long serialVersionUID = 345L;
     
+   //goal 1
     public static boolean addNewBill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
         
         Bill newBill = new Bill(
@@ -74,7 +79,7 @@ public class Accountant extends Employee implements Serializable{
        
         }
     }
-    
+    //goal 2
     public static ObservableList<Bill> readBillList(){
         ObservableList<Bill> BillList = FXCollections.observableArrayList();
         Bill b;
@@ -92,17 +97,18 @@ public class Accountant extends Employee implements Serializable{
         return BillList;
     }
     
-     public static ObservableList<String> getPatientList(){
-        Set<String> patientSet = new HashSet<>();
-        ObservableList<Bill> BillList = readBillList();
-        for (Bill i : BillList) {
-            patientSet.add(Integer.toString(i.getPatientId()));
-        }
-        System.out.println(patientSet.toString());
-        ObservableList<String> patientList = FXCollections.observableArrayList(patientSet);
-        return patientList;
-    }
+   
 
+     
+ 
+    
+ 
+
+     
+ 
+
+
+      //goal 3
     
     public static boolean CreateExpenseRecord(
         Double Amount, String SpentOn, LocalDate DateSpent){
@@ -149,6 +155,7 @@ public class Accountant extends Employee implements Serializable{
         }
     }
     
+     //goal 4
     
     public static ObservableList<ExpenseRecord> readExpenseRecordList() {
         ObservableList<ExpenseRecord> ExpenseList = FXCollections.observableArrayList();
@@ -169,7 +176,7 @@ public class Accountant extends Employee implements Serializable{
     }
         
         
-    
+     //goal 5
     
     public static boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue){
         
@@ -217,7 +224,7 @@ public class Accountant extends Employee implements Serializable{
         
     
     
- 
+  //goal 6
         
         public static ObservableList<InsuranceRecord> readInsuranceRecordList(){
         ObservableList<InsuranceRecord> InRecList = FXCollections.observableArrayList();
@@ -288,8 +295,46 @@ public class Accountant extends Employee implements Serializable{
     public String toString() {
         return "Accountant{" + '}';
     }
+
+    @Override
+    public boolean Register() {
+      File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            f = new File("Accountant.bin");
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "Accountant");
+            oos.writeObject(this);
+            oos.writeObject(toAddLogin);
+
+            oos.close();
+            System.out.println("Accountant added successfully");
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }
+    }
     
     
     
     
-}
+

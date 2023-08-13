@@ -4,13 +4,18 @@
  */
 package Users;
 
+import CommonScenes.RegisterSceneController;
 import Model.LoginInfo;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -79,7 +84,7 @@ public abstract class User implements Serializable{
     public String toString() {
         return "User{" + "name=" + name + ", ID=" + ID + ", password=" + password + ", email=" + email + ", gender=" + gender + ", DOB=" + DOB + '}';
     }
-    
+    //common 1
     public static int userLogin(int idcheck, String passcheck){
         File f = null;
         FileInputStream fis = null;      
@@ -123,14 +128,14 @@ public abstract class User implements Serializable{
             
             if (idflag==1){
                 if(passflag==1){
-                    //errorLabel.setText("Login Successful");
+                    
                     return userType;
                 }
                 else{return 2;}
-                //code 2 - errorLabel.setText("Error, wrong password");
+                
             }
             else{return 1;}
-                //code 1 - errorLabel.setText("Error, user not found");
+                
         
         } catch (IOException ex) {
             System.out.println("IOException on entire file handling");
@@ -164,13 +169,13 @@ public abstract class User implements Serializable{
                 path="DirectorObjects.bin";
                 break;
             case "Accountant":
-                path="A.bin";
+                path="Accountant.bin";
                 break;
             case "HROfficer":
                 path="HROfficerObjects.bin";
                 break;
-            case "LabTechnician":
-                path="LabTechnicianObjects.bin";
+            case "Optometrist":
+                path="Optometrist.bin";
                 break;
         }
         
@@ -220,7 +225,7 @@ public abstract class User implements Serializable{
                             break;
                         case "LabTechnician": 
                             tempUser = (Optometrist) ois.readObject();
-                            System.out.println("Reading technician");
+                            System.out.println("Reading optometrist");
                             System.out.println(tempUser.toString());
                             break;
                     }
@@ -247,13 +252,15 @@ public abstract class User implements Serializable{
         }
         return null;
     }
-        //code 0 - unhandled exception
-    
+        
+       public abstract boolean Register();
+       
        public static boolean isNumeric(String str) { 
         try {  
           Integer.parseInt(str);  
           return true;
         } catch(NumberFormatException e){return false;}
     }
+
 }
 

@@ -6,21 +6,14 @@ package Dhara.Nurse;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
  *
  * @author Asus
  */
-public class NurseWelcomeSceneController implements Initializable {
-
-    @FXML
-    private Label nurseNameTextField;
-    @FXML
-    private Label nurseIdTextField;
+public class AddPatientDetailsController implements Initializable {
 
     /**
      * Initializes the controller class.

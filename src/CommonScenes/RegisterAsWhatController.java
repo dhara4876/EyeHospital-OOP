@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package Dhara.Accountant;
+package CommonScenes;
 
-import CommonScenes.StartSceneController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,7 +23,7 @@ import javafx.stage.Stage;
  *
  * @author Asus
  */
-public class InsuranceMenuItemSceneController implements Initializable {
+public class RegisterAsWhatController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -35,43 +34,9 @@ public class InsuranceMenuItemSceneController implements Initializable {
     }    
 
     @FXML
-    private void makeNewInsuranceOnClick(ActionEvent event) {
-       try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("CreateInsuranceRecordScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void viewPastInsuranceOnClick(ActionEvent event) {
-         try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("ViewInsuranceRecordScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void BackOnClick(ActionEvent event) {
+    private void patientButtonOnClick(ActionEvent event) {
         try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("AccountantDashboard.fxml"));
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("RegisterScene.fxml"));
             Scene scene2 = new Scene(scene2Parent);
             
             Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -83,6 +48,40 @@ public class InsuranceMenuItemSceneController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } 
+    }
+
+    @FXML
+    private void employeeButtonOnClick(ActionEvent event) {
+        try {
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("EmployeeRegisterScene.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
+            
+            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+            
+            
+            stg2.setScene(scene2);
+            stg2.show();
+        } catch (IOException ex) {
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void backButtonOnclick(ActionEvent event) {
+        try {
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
+            
+            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+            
+            
+            stg2.setScene(scene2);
+            stg2.show();
+        } catch (IOException ex) {
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
