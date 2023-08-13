@@ -21,9 +21,7 @@ public class Patient extends User implements Serializable {
 
     }
 
-<<<<<<< Updated upstream
-    
-=======
+
     public String getName() {
         return name;
     }
@@ -53,7 +51,7 @@ public class Patient extends User implements Serializable {
         return "Patient{" + '}';
     }
 
->>>>>>> Stashed changes
+
 }
     
     
