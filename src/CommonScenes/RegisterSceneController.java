@@ -123,13 +123,13 @@ public class RegisterSceneController implements Initializable {
             failureNull.show();
             return;
         }
-
-        Patient toAdd = new Patient(name, ID, password, email, gender, DOB);
-        if (Patient.addPatient(toAdd)) {
-            success.show();
-        } else {
-            failure.show();
-        }
+Patient toAdd = new Patient(name, ID, password, email, gender, DOB);
+    
+    if (toAdd.Register()) {
+        success.show();
+    } else {
+        failure.show();
+    }
     }
 
     @FXML

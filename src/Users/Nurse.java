@@ -5,6 +5,7 @@
 package Users;
 
 import Model.Bill;
+import Model.LoginInfo;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -76,8 +77,47 @@ public class Nurse extends Employee implements Serializable{
     public String toString() {
         return "Nurse{" + '}';
     }
+
+    @Override
+    public boolean Register() {
+       File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            f = new File("NurseObjects.bin");
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "Nurse");
+            oos.writeObject(this);
+            oos.writeObject(toAddLogin);
+
+            oos.close();
+            System.out.println("Nurse added successfully");
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(Nurse.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Nurse.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }}
+
     
     
     
     
-}
+    
+

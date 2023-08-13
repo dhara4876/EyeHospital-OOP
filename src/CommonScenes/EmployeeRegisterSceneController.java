@@ -4,8 +4,15 @@
  */
 package CommonScenes;
 
+import Users.Accountant;
+import Users.Director;
+import Users.Doctor;
 import Users.Employee;
+import Users.HROfficer;
+import Users.Nurse;
+import Users.Optometrist;
 import Users.Patient;
+import Users.Pharmacist;
 import Users.User;
 import java.io.IOException;
 import java.net.URL;
@@ -61,6 +68,8 @@ public class EmployeeRegisterSceneController implements Initializable {
     private TextField emailTextField;
     @FXML
     private TextField genderTextField;
+    @FXML
+    private DatePicker dojDatePicker;
     
     
     @Override
@@ -106,10 +115,49 @@ public class EmployeeRegisterSceneController implements Initializable {
         LocalDate DOB = DOBDatePicker.getValue();
         if (DOB==null) {failureNull.show();return;}
         
+        String designation = designationtextField.getText();
+        if (designation.isEmpty()) {failureNull.show();return;}
         
-       
+        Double salary = Double.parseDouble(salaryTextField.getText());
+        if (designation.isEmpty()) {failureNull.show();return;}
+        
+        LocalDate doj = dojDatePicker.getValue();
+        if (doj==null) {failureNull.show();return;}
+        
+        
+       String employeeType = designationtextField.getText();
+    employeeType = employeeType.toLowerCase();
+    
+    Employee toAdd;
+    
+    if (employeeType.equals("accountant")) {
+        toAdd = new Accountant(name, ID, password, email, gender, DOB, designation, salary, doj);
+    } else if (employeeType.equals("director")) {
+        toAdd = new Director(name, ID, password, email, gender, DOB, designation, salary, doj);
+    } else if (employeeType.equals("doctor")) {
+        toAdd = new Doctor(name, ID, password, email, gender, DOB, designation, salary, doj);
+    } else if (employeeType.equals("optometrist")) {
+        toAdd = new Optometrist(name, ID, password, email, gender, DOB, designation, salary, doj);
+    } else if (employeeType.equals("nurse")) {
+        toAdd = new Nurse(name, ID, password, email, gender, DOB, designation, salary, doj);
+    } else if (employeeType.equals("pharmacist")) {
+        toAdd = new Pharmacist(name, ID, password, email, gender, DOB, designation, salary, doj);
+    } else if (employeeType.equals("hrofficer")) {
+        toAdd = new HROfficer(name, ID, password, email, gender, DOB, designation, salary, doj);
+    } else {
+        
+        return;
     }
-
+    
+if (toAdd.Register()) {
+        success.show();
+    } else {
+        failure.show();
+    }
+}
+        
+    
+ 
         
     
 

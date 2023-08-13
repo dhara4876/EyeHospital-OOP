@@ -4,8 +4,15 @@
  */
 package Users;
 
+import Model.LoginInfo;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -64,6 +71,46 @@ public class Pharmacist extends Employee implements Serializable{
     public String toString() {
         return "Pharmacist{" + '}';
     }
+
+    @Override
+    public boolean Register() {
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            f = new File("Pharmacist.bin");
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "Pharmacist");
+            oos.writeObject(this);
+            oos.writeObject(toAddLogin);
+
+            oos.close();
+            System.out.println("Accountant added successfully");
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }
+
+ 
+    }
     
     
-}
+
