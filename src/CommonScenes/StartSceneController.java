@@ -161,7 +161,7 @@ public class StartSceneController implements Initializable {
     @FXML
     private void tempTwo(ActionEvent event) throws IOException, ClassNotFoundException {
         Double d = 3000.0;
-        Integer i = 12;
+        int i = 12;
          LocalDate date = LocalDate.of(2001, 7, 5);
          LocalDate date2 = LocalDate.of(2023,4,5);
         ArrayList<Accountant> accList = new ArrayList<>();
@@ -192,7 +192,7 @@ public class StartSceneController implements Initializable {
                 try {
                     oos.close();
                 } catch (IOException x) {
-                    Logger.getLogger(LoginInfo.class.getName()).log(Level.SEVERE, null, x);
+                    Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, x);
                 }
             }
             System.out.println("Error writing Object to binary file");
