@@ -5,7 +5,11 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
+<<<<<<< Updated upstream
 <BorderPane fx:id="doctorDashBoardBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dhara.Accountant.AccountantDashboardController">
+=======
+<BorderPane fx:id="doctorDashBoardBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Nazifa.Doctor.DoctorDashboardSceneController">
+>>>>>>> Stashed changes
    <top>
       <MenuBar onDragDetected="#myDashboardOnClick" BorderPane.alignment="CENTER">
         <menus>

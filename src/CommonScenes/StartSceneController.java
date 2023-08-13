@@ -90,7 +90,14 @@ public class StartSceneController implements Initializable {
     
         LocalDate date = LocalDate.of(2023, 7, 5);
         ArrayList<LoginInfo> infoList = new ArrayList<>();
+<<<<<<< Updated upstream
         LoginInfo login = new LoginInfo(12,"pass","Accountant");     
+=======
+        LoginInfo login = new LoginInfo(12,"pass","Accountant");
+        LoginInfo login2 = new LoginInfo(32,"pass","Pharmacist");
+        LoginInfo login3 = new LoginInfo(62,"pass","Doctor");
+        LoginInfo login4 = new LoginInfo(52,"pass","Doctor");
+>>>>>>> Stashed changes
         File f = null;
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
