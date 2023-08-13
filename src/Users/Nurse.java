@@ -77,7 +77,7 @@ public class Nurse extends Employee implements Serializable{
     public String toString() {
         return "Nurse{" + '}';
     }
-
+//common goal
     @Override
     public boolean Register() {
        File f = null;
@@ -113,7 +113,26 @@ public class Nurse extends Employee implements Serializable{
             }
         }
         return false;
-    }}
+    }
+
+//public static boolean addPatientDetails
+//public static boolean viewPatientDetails
+//public static boolean viewAdmittedPatients
+//public static boolean admitPatient
+//public static boolean giveTaskToDoctor
+//public static boolean viewTasksFromDoctor
+    
+//chart
+//barchart??
+    
+//postfeedback commongoal
+
+    
+
+
+
+
+}
 
     
     
