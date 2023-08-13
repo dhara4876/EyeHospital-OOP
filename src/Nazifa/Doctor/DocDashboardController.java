@@ -4,7 +4,6 @@
  */
 package Nazifa.Doctor;
 
-import Users.Doctor;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -14,19 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author Asus
  */
-public class DoctorDashboardSceneController implements Initializable {
-    
-    private Doctor doctor;
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-    
-    
+public class DocDashboardController implements Initializable {
 
     /**
      * Initializes the controller class.
