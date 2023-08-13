@@ -69,12 +69,8 @@ public class ProvidePrescriptionSceneController implements Initializable {
     @FXML
     private void prescribeOnClick(ActionEvent event) {
     }
-<<<<<<< Updated upstream
-    
-}
-=======
+
 
 }
 
 
->>>>>>> Stashed changes
