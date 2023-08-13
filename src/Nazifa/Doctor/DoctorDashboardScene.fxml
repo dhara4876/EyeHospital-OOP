@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Nazifa.Doctor.DoctorDashboardSceneController">
-    
-</AnchorPane>
+<BorderPane fx:id="doctorDashBoardBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dhara.Accountant.AccountantDashboardController">
+   <top>
+      <MenuBar onDragDetected="#myDashboardOnClick" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="MyDashboard" />
+          <Menu mnemonicParsing="false" text="MyDesk">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#bookingsOnClick" text="Bookings" />
+                  <MenuItem mnemonicParsing="false" onAction="#prescribeOnClick" text="Prescribe" />
+                  <MenuItem mnemonicParsing="false" onAction="#viewPrescriptionOnClick" text="View prescription" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" onAction="#signOutOnClick" text="Sign Out" />
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

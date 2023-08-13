@@ -21,54 +21,9 @@ public class Patient extends User implements Serializable {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Patient{" + '}';
-    }
     
-    
-    
-
-    public Integer getId() {
-        return Id;
-    }
-
-    @Override
-    public String toString() {
-        return "Patient{" + "name=" + name + ", Id=" + Id + '}';
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setId(Integer Id) {
-        this.Id = Id;
-    }
-
 }
+    
+    
+
+ 

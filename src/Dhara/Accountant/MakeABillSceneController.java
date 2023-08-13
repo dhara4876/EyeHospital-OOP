@@ -118,10 +118,6 @@ public class MakeABillSceneController implements Initializable {
         // TODO
     }    
 
-
-        
-       
-    
     @FXML
     private void onClickTreatmentComboBox(ActionEvent event) {
         updateStatus.setText("..");
