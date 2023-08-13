@@ -4,6 +4,7 @@
  */
 package Dhara.Accountant;
 
+import CommonScenes.StartSceneController;
 import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
@@ -46,40 +47,57 @@ public class ExpenditureMenuItemController implements Initializable {
 
     @FXML
     private void onClickMakeRecordButton(ActionEvent event) {
-         Parent parent = null;
-        FXMLLoader accLoader = new FXMLLoader(getClass().getResource("CreateExpenseRecordScene.fxml"));
         try {
-            parent = (Parent) accLoader.load();
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("CreateExpenseRecordScene.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
+            
+            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+            
+            
+            stg2.setScene(scene2);
+            stg2.show();
         } catch (IOException ex) {
-            Logger.getLogger(ExpenditureMenuItemController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Scene HRScene = new Scene(parent);
-        
-        CreateExpenseRecordSceneController m = accLoader.getController();
-        m.setAccountant(this.accountant);
-
-        Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        HRStage.setScene(HRScene);
-        HRStage.show();
-    }
+    } 
+         
+    
 
     @FXML
     private void onClickViewRecordButton(ActionEvent event) {
-        Parent parent = null;
-        FXMLLoader accLoader = new FXMLLoader(getClass().getResource("ViewExpenseRecordScene.fxml"));
         try {
-            parent = (Parent) accLoader.load();
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("ViewExpenseRecordScene.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
+            
+            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+            
+            
+            stg2.setScene(scene2);
+            stg2.show();
         } catch (IOException ex) {
-            Logger.getLogger(ExpenditureMenuItemController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Scene HRScene = new Scene(parent);
-        
-        ViewExpenseRecordSceneController m = accLoader.getController();
-        m.setAccountant(this.accountant);
+    } 
 
-        Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        HRStage.setScene(HRScene);
-        HRStage.show();
+    @FXML
+    private void backOnclick(ActionEvent event) {
+        try {
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("AccountantDashboard.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
+            
+            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+            
+            
+            stg2.setScene(scene2);
+            stg2.show();
+        } catch (IOException ex) {
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
     }
     
-}
+    
+

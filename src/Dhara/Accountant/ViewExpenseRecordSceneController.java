@@ -57,23 +57,22 @@ public class ViewExpenseRecordSceneController implements Initializable {
     @FXML
     private void backButtonOnClick(ActionEvent event) {
        
-           Parent parent = null;
-        FXMLLoader accLoader = new FXMLLoader(getClass().getResource("ExpenditureMenuItem.fxml"));
-        try {
-            parent = (Parent) accLoader.load();
+           try {
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("ExpenditureMenuItem.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
+            
+            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+            
+            
+            stg2.setScene(scene2);
+            stg2.show();
         } catch (IOException ex) {
-            Logger.getLogger(ViewExpenseRecordSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Scene HRScene = new Scene(parent);
-        
-        ExpenditureMenuItemController m = accLoader.getController();
-        m.setAccountant(this.accountant);
-
-        Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        HRStage.setScene(HRScene);
-        HRStage.show();
+    } 
 
         
     }
     
-}
+

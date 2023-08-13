@@ -4,6 +4,7 @@
  */
 package Dhara.Accountant;
 
+import CommonScenes.StartSceneController;
 import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
@@ -46,7 +47,7 @@ public class CreateExpenseRecordSceneController implements Initializable {
     @FXML
     private TextField addAmountTextField;
     @FXML
-    private ComboBox<?> chooseSpendReasonComboBox;
+    private ComboBox<String> chooseSpendReasonComboBox;
     @FXML
     private TextField detailsTextField;
 
@@ -56,30 +57,32 @@ public class CreateExpenseRecordSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //chooseSpendReasonComboBox.getItems().addAll()
+        
     }    
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
+        
     }
 
     @FXML
     private void backButtonOnClick(ActionEvent event) {
-        Parent parent = null;
-        FXMLLoader accLoader = new FXMLLoader(getClass().getResource("ExpenditureMenuItem.fxml"));
-        try {
-            parent = (Parent) accLoader.load();
+       try {
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("ExpenditureMenuItem.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
+            
+            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+            
+            
+            stg2.setScene(scene2);
+            stg2.show();
         } catch (IOException ex) {
-            Logger.getLogger(CreateExpenseRecordSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Scene HRScene = new Scene(parent);
-        
-        ExpenditureMenuItemController m = accLoader.getController();
-        m.setAccountant(this.accountant);
-
-        Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        HRStage.setScene(HRScene);
-        HRStage.show();
-    }
+    } 
+    
 
     @FXML
     private void OnClickChooseSpendReason(ActionEvent event) {

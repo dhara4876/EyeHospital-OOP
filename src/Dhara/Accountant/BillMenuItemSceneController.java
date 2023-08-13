@@ -116,7 +116,6 @@ private Accountant accountant;
         }
     }
 
-    @FXML
     private void backButtonOnClick(ActionEvent event) {
          try {
             Parent scene2Parent = FXMLLoader.load(getClass().getResource("AccountantDashboard.fxml"));
@@ -131,6 +130,24 @@ private Accountant accountant;
         } catch (IOException ex) {
             Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void BackOnClick(ActionEvent event) {
+        try {
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("AccountantDashboard.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
+            
+            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+            
+            
+            stg2.setScene(scene2);
+            stg2.show();
+        } catch (IOException ex) {
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }
     
 }
