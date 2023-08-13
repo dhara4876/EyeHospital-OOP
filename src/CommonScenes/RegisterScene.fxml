@@ -23,6 +23,6 @@
       <TextField fx:id="emailTextField" layoutX="207.0" layoutY="258.0" promptText="Email" />
       <DatePicker fx:id="DOBDatePicker" layoutX="207.0" layoutY="337.0" prefHeight="31.0" prefWidth="187.0" promptText="Date of Birth" />
       <TextField fx:id="genderTextField" layoutX="207.0" layoutY="297.0" promptText="gender" />
-      <Button layoutX="422.0" layoutY="208.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
+      <Button layoutX="25.0" layoutY="26.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
    </children>
 </AnchorPane>
