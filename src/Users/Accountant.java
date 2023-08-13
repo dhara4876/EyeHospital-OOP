@@ -33,6 +33,7 @@ import javafx.collections.ObservableList;
 public class Accountant extends Employee implements Serializable{
     private static final long serialVersionUID = 345L;
     
+   //goal 1
     public static boolean addNewBill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
         
         Bill newBill = new Bill(
@@ -78,7 +79,7 @@ public class Accountant extends Employee implements Serializable{
        
         }
     }
-    
+    //goal 2
     public static ObservableList<Bill> readBillList(){
         ObservableList<Bill> BillList = FXCollections.observableArrayList();
         Bill b;
@@ -96,32 +97,8 @@ public class Accountant extends Employee implements Serializable{
         return BillList;
     }
     
-       public static ObservableList<ChartData> readChartDataList() {
-        ObservableList<ChartData> ChartList = FXCollections.observableArrayList();
-        
-        List<Bill> dataList = Accountant.readBillList();
-        for (Bill data : dataList) {
+   
 
-            Integer patientId = data.getPatientId(); // Get patientId from original object
-            Integer totalDue = data.getTotalDue();
-            ChartData barChartData = new ChartData(patientId, totalDue);
-            ChartList.add(barChartData);
-
-        }
-        return ChartList;
-       }
-    
-     public static ObservableList<String> getPatientList(){
-        Set<String> patientSet = new HashSet<>();
-        ObservableList<Bill> BillList = readBillList();
-        for (Bill i : BillList) {
-            patientSet.add(Integer.toString(i.getPatientId()));
-        }
-        System.out.println(patientSet.toString());
-        ObservableList<String> patientList = FXCollections.observableArrayList(patientSet);
-        return patientList;
-    }
-     
      
  
     
@@ -131,7 +108,7 @@ public class Accountant extends Employee implements Serializable{
  
 
 
-     
+      //goal 3
     
     public static boolean CreateExpenseRecord(
         Double Amount, String SpentOn, LocalDate DateSpent){
@@ -178,6 +155,7 @@ public class Accountant extends Employee implements Serializable{
         }
     }
     
+     //goal 4
     
     public static ObservableList<ExpenseRecord> readExpenseRecordList() {
         ObservableList<ExpenseRecord> ExpenseList = FXCollections.observableArrayList();
@@ -198,7 +176,7 @@ public class Accountant extends Employee implements Serializable{
     }
         
         
-    
+     //goal 5
     
     public static boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue){
         
@@ -246,7 +224,7 @@ public class Accountant extends Employee implements Serializable{
         
     
     
- 
+  //goal 6
         
         public static ObservableList<InsuranceRecord> readInsuranceRecordList(){
         ObservableList<InsuranceRecord> InRecList = FXCollections.observableArrayList();
