@@ -46,7 +46,7 @@ public class StartSceneController implements Initializable {
     @FXML
     private void registerOnClick(ActionEvent event) {
         try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("RegisterScene.fxml"));
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("RegisterAsWhat.fxml"));
             Scene scene2 = new Scene(scene2Parent);
             
             Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
