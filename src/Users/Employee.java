@@ -4,14 +4,22 @@
  */
 package Users;
 
+import CommonScenes.RegisterSceneController;
+import Model.LoginInfo;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Asus
  */
-public  class Employee extends User implements Serializable {
+public abstract  class Employee extends User implements Serializable {
 
     private static final long serialVersionUID = 345L;
 
@@ -26,6 +34,8 @@ public  class Employee extends User implements Serializable {
         this.salary = salary;
         this.DOJ = doj;
     }
+
+ 
 
 
     public String getDesignation() {
@@ -74,5 +84,9 @@ public  class Employee extends User implements Serializable {
     }
     
 
+       
+       
+       
+                  
     
 }
