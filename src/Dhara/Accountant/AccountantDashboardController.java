@@ -4,6 +4,7 @@
  */
 package Dhara.Accountant;
 
+import CommonScenes.StartSceneController;
 import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
@@ -14,9 +15,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 
@@ -70,32 +74,28 @@ public class AccountantDashboardController implements Initializable {
 
     @FXML
     private void expinditureOnClick(ActionEvent event) {
-         try {
-            Parent root = FXMLLoader.load(getClass().getResource("ExpenditureMenuItemScene.fxml"));
-            accountantDashBoardBorderPane.setCenter(root);
-        } catch (IOException ex) {
-            Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void signOutOnClick(ActionEvent event) {
-         try {
-            Parent root = FXMLLoader.load(getClass().getResource(".fxml"));
-            accountantDashBoardBorderPane.setCenter(root);
-        } catch (IOException ex) {
-            Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void myDashboardOnClick(MouseEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("AccountantWelcomeScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("ExpenditureMenuItem.fxml"));
             accountantDashBoardBorderPane.setCenter(root);
         } catch (IOException ex) {
             Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+    
+@FXML
+private void signOutOnClick(ActionEvent event) {
+    try {
+        Parent root = FXMLLoader.load(getClass().getResource("SignOut.fxml"));
+        accountantDashBoardBorderPane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+    }
 }
+
+
+}
+   
+    
+    
+

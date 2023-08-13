@@ -5,6 +5,7 @@
 package Users;
 
 import Model.Bill;
+import Model.ChartData;
 import Model.ExpenseRecord;
 import Model.InsuranceRecord;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -92,6 +94,21 @@ public class Accountant extends Employee implements Serializable{
         return BillList;
     }
     
+       public static ObservableList<ChartData> readChartDataList() {
+        ObservableList<ChartData> ChartList = FXCollections.observableArrayList();
+        
+        List<Bill> dataList = Accountant.readBillList();
+        for (Bill data : dataList) {
+
+            Integer patientId = data.getPatientId(); // Get patientId from original object
+            Integer totalDue = data.getTotalDue();
+            ChartData barChartData = new ChartData(patientId, totalDue);
+            ChartList.add(barChartData);
+
+        }
+        return ChartList;
+       }
+    
      public static ObservableList<String> getPatientList(){
         Set<String> patientSet = new HashSet<>();
         ObservableList<Bill> BillList = readBillList();
@@ -102,7 +119,14 @@ public class Accountant extends Employee implements Serializable{
         ObservableList<String> patientList = FXCollections.observableArrayList(patientSet);
         return patientList;
     }
+     
+ 
 
+     
+ 
+
+
+     
     
     public static boolean CreateExpenseRecord(
         Double Amount, String SpentOn, LocalDate DateSpent){
