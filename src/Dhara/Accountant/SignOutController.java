@@ -37,7 +37,7 @@ public class SignOutController implements Initializable {
     private void signoutOnClick(ActionEvent event) {
          Parent login=null;
         try {
-            login = FXMLLoader.load(getClass().getResource("/CommonScens/StartScene.fxml"));
+            login = FXMLLoader.load(getClass().getResource("/CommonScenes/StartScene.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(SignOutController.class.getName()).log(Level.SEVERE, null, ex);
         }
