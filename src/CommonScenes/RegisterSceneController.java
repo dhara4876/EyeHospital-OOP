@@ -132,7 +132,6 @@ Patient toAdd = new Patient(name, ID, password, email, gender, DOB);
     }
     }
 
-    @FXML
     private void backButtonOnClick(ActionEvent event) {
         try {
             Parent scene2Parent = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
