@@ -12,12 +12,12 @@
       <TextField fx:id="nameTextField" layoutX="72.0" layoutY="169.0" promptText="Name" />
       <TextField fx:id="idTextField" layoutX="72.0" layoutY="212.0" promptText="ID" />
       <TextField fx:id="passwordtextField" layoutX="76.0" layoutY="260.0" promptText="password" />
-      <TextField fx:id="emailTextField" layoutX="319.0" layoutY="154.0" promptText="email" />
-      <TextField fx:id="genderTextField" layoutX="319.0" layoutY="197.0" promptText="gender" />
+      <TextField fx:id="emailTextField" layoutX="319.0" layoutY="169.0" promptText="email" />
+      <TextField fx:id="genderTextField" layoutX="319.0" layoutY="212.0" promptText="gender" />
       <DatePicker fx:id="DOBDatePicker" layoutX="76.0" layoutY="300.0" prefHeight="31.0" prefWidth="187.0" promptText="DOB" />
-      <TextField fx:id="designationtextField" layoutX="319.0" layoutY="228.0" promptText="designation" />
-      <TextField fx:id="salaryTextField" layoutX="319.0" layoutY="276.0" promptText="salary" />
-      <Button layoutX="250.0" layoutY="346.0" mnemonicParsing="false" onAction="#addButtonOnClick" prefHeight="31.0" prefWidth="94.0" text="Register" />
+      <TextField fx:id="designationtextField" layoutX="319.0" layoutY="252.0" promptText="designation" />
+      <TextField fx:id="salaryTextField" layoutX="319.0" layoutY="291.0" promptText="salary" />
+      <Button layoutX="250.0" layoutY="340.0" mnemonicParsing="false" onAction="#addButtonOnClick" prefHeight="31.0" prefWidth="94.0" text="Register" />
       <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
       <Label layoutX="191.0" layoutY="109.0" text="Employee registration scene" />
       <Label layoutX="249.0" layoutY="74.0" text="SIGN UP">
@@ -25,6 +25,5 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dojDatePicker" layoutX="319.0" layoutY="307.0" prefHeight="31.0" prefWidth="187.0" promptText="doj" />
    </children>
 </AnchorPane>
