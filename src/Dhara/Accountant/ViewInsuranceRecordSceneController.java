@@ -46,7 +46,7 @@ public class ViewInsuranceRecordSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-           itemTableColoumn.setCellValueFactory(new PropertyValueFactory<>("item"));
+          itemTableColoumn.setCellValueFactory(new PropertyValueFactory<>("item"));
     InsuranceAmountTableColoumn.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
     dateOfIssueTableColoumn.setCellValueFactory(new PropertyValueFactory<>("dateOfIssue"));
       

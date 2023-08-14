@@ -107,7 +107,7 @@ public class HROfficer extends Employee implements Serializable {
         ObjectOutputStream oos = null;
 
         try {
-            f = new File("HROfficerObjects.bin");
+            f = new File("HROfficer.bin");
             if (f.exists()) {
                 fos = new FileOutputStream(f, true);
                 oos = new AppendableObjectOutputStream(fos);

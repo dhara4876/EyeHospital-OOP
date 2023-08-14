@@ -31,7 +31,7 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class RegisterSceneController implements Initializable {
-
+private Patient toAdd;
     @FXML
     private TextField idTextField;
     @FXML
@@ -58,8 +58,8 @@ public class RegisterSceneController implements Initializable {
      */
      @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        DOBDatePicker.setDayCellFactory(dp -> new DateCell(){
+
+        DOBDatePicker.setDayCellFactory(dp -> new DateCell() {
             @Override
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
@@ -69,6 +69,7 @@ public class RegisterSceneController implements Initializable {
             }
         });
     }
+
     @FXML
     private void registerButtonOnClick(ActionEvent event) {
         String name = nameTextField.getText();
@@ -123,13 +124,13 @@ public class RegisterSceneController implements Initializable {
             failureNull.show();
             return;
         }
-Patient toAdd = new Patient(name, ID, password, email, gender, DOB);
-    
-    if (toAdd.Register()) {
-        success.show();
-    } else {
-        failure.show();
-    }
+         toAdd = new Patient(name, ID, password, email, gender, DOB);
+
+        if (toAdd.Register()) {
+            success.show();
+        } else {
+            failure.show();
+        }
     }
 
     @FXML

@@ -72,7 +72,7 @@ public class Doctor extends Employee implements Serializable {
         ObjectOutputStream oos = null;
 
         try {
-            f = new File("Accountant.bin");
+            f = new File("Doctor.bin");
             if (f.exists()) {
                 fos = new FileOutputStream(f, true);
                 oos = new AppendableObjectOutputStream(fos);
@@ -81,12 +81,12 @@ public class Doctor extends Employee implements Serializable {
                 oos = new ObjectOutputStream(fos);
             }
 
-            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "Accountant");
+            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "Doctor");
             oos.writeObject(this);
             oos.writeObject(toAddLogin);
 
             oos.close();
-            System.out.println("Accountant added successfully");
+            System.out.println("Doctor added successfully");
             return true;
         } catch (IOException ex) {
             Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);

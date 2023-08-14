@@ -85,7 +85,7 @@ public class Nurse extends Employee implements Serializable{
         ObjectOutputStream oos = null;
 
         try {
-            f = new File("NurseObjects.bin");
+            f = new File("Nurse.bin");
             if (f.exists()) {
                 fos = new FileOutputStream(f, true);
                 oos = new AppendableObjectOutputStream(fos);

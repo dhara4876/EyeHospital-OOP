@@ -65,37 +65,47 @@ public class Patient extends User implements Serializable {
 
     @Override
     public boolean Register() {
-        File f = null;
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-
-        try {
-            f = new File("Patient.bin");
-            if (f.exists()) {
-                fos = new FileOutputStream(f, true);
-                oos = new AppendableObjectOutputStream(fos);
-            } else {
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);
-            }
-
-            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "PatientObjects");
-            oos.writeObject(this);
-            oos.writeObject(toAddLogin);
-
-            oos.close();
-            System.out.println("Patient added successfully");
-            return true;
-        } catch (IOException ex) {
-            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (oos != null) {
-                    oos.close();
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    File f = null;
+    FileOutputStream fos = null;      
+    ObjectOutputStream oos = null;
+    File f2 = null;
+    FileOutputStream fos2 = null;      
+    ObjectOutputStream oos2 = null;
+    try {
+        f = new File("Patient.bin");
+        if(f.exists()){
+            fos = new FileOutputStream(f,true);
+            oos = new AppendableObjectOutputStream(fos);                
         }
-        return false;
-    }}
+        else{
+            fos = new FileOutputStream(f);
+            oos = new ObjectOutputStream(fos);               
+        }
+        f2 = new File("LoginInfo.bin");
+        if(f2.exists()){
+            fos2 = new FileOutputStream(f2,true);
+            oos2 = new AppendableObjectOutputStream(fos2);                
+        }
+        else{
+            fos2 = new FileOutputStream(f2);
+            oos2 = new ObjectOutputStream(fos2);               
+        }
+        LoginInfo toAddLogin = new LoginInfo(toAdd.getID(), toAdd.getPassword(), "Patient");
+        oos.writeObject(toAdd);
+        oos2.writeObject(toAddLogin);
+        System.out.println("Sign up success");
+        return true;
+    } catch (IOException ex) {
+        Logger.getLogger(RegisterSceneController.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        try {
+            if(oos != null) oos.close();
+            if(oos2 != null) oos2.close();
+        } catch (IOException ex) {
+            Logger.getLogger(RegisterSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    return false;
+}
+
+    }

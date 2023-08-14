@@ -77,7 +77,7 @@ public class Director extends Employee implements Serializable{
         ObjectOutputStream oos = null;
 
         try {
-            f = new File("DirectorObjects.bin");
+            f = new File("Director.bin");
             if (f.exists()) {
                 fos = new FileOutputStream(f, true);
                 oos = new AppendableObjectOutputStream(fos);
