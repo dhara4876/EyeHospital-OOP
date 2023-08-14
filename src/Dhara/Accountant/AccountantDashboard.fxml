@@ -13,14 +13,14 @@
         <menus>
           <Menu mnemonicParsing="false" text="MyDesk">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#InsuranceOnClick" text="Insurance" />
                   <MenuItem mnemonicParsing="false" onAction="#BIllOnClick" text="Bill" />
+              <MenuItem mnemonicParsing="false" onAction="#InsuranceOnClick" text="Insurance" />
                   <MenuItem mnemonicParsing="false" onAction="#expinditureOnClick" text="Expenditure" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="SignOut">
+          <Menu mnemonicParsing="false" onAction="#signOutOnClick" text="Other">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#signOutOnClick" text="sign out" />
+                  <MenuItem mnemonicParsing="false" onAction="#signOutOnClick" text="SignOut" />
                </items></Menu>
         </menus>
       </MenuBar>

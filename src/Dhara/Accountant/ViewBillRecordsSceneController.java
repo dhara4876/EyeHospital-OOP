@@ -7,6 +7,7 @@ package Dhara.Accountant;
 import CommonScenes.StartSceneController;
 import Model.Bill;
 import Users.Accountant;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -28,6 +29,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -138,9 +140,7 @@ private void loadAllOnClick(ActionEvent event) {
     searchPatientidTextfield.clear();
 }
 
-    @FXML
-    private void makePDFonClick(ActionEvent event) {
-    }
+
 
     }
     

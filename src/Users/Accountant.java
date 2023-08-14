@@ -26,6 +26,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.swing.text.Document;
+
+
+
 
 /**
  *
@@ -116,17 +120,41 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
     }
 }
   
+  
+          //goal 7
+        
+        public static ObservableList<Bill> readAllBillsList(){
+        ObservableList<Bill> billList = FXCollections.observableArrayList();
+        Bill i;
+        ObjectInputStream ois = null;
+        try{
+            ois = new ObjectInputStream (new FileInputStream("BillObjects.bin"));
+            while(true){
+                i = (Bill) ois.readObject();
+                System.out.println("The Insurance u read: "+i.toString());
+                billList.add(i);
+            }
+        }
+        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
+        System.out.println(billList);
+        return billList;
+        
+    }
+  
+  // goal 4
+  
+
 
 
     
     public static boolean CreateExpenseRecord(
-        Double Amount, String SpentOn, LocalDate DateSpent){
+        Double Amount, String SpentOn, LocalDate DateSpent, String Details){
         
         ExpenseRecord newExpense = new ExpenseRecord(
                 Amount,
                 SpentOn,
-                DateSpent
-                
+                DateSpent,
+                Details
                 );
         System.out.println("Expense record made:"+newExpense.toString());
 
@@ -135,7 +163,7 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
         ObjectOutputStream oos = null;
         try {
 
-            f = new File("BillObjects.bin");
+            f = new File("ExpenseRecords.bin");
 
             if (f.exists()) {
                 fos = new FileOutputStream(f, true);
@@ -165,7 +193,7 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
     }
     //goal 3
  
-     //goal 4
+  
     
     public static ObservableList<ExpenseRecord> readExpenseRecordList() {
         ObservableList<ExpenseRecord> ExpenseList = FXCollections.observableArrayList();
@@ -185,6 +213,8 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
         return ExpenseList;
     }
         
+    
+    
         
      //goal 5
     
@@ -230,25 +260,7 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
        
         }
     }
-        
-        
-        public static ObservableList<Bill> readAllBillsList(){
-        ObservableList<Bill> billList = FXCollections.observableArrayList();
-        Bill i;
-        ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("BillObjects.bin"));
-            while(true){
-                i = (Bill) ois.readObject();
-                System.out.println("The Insurance u read: "+i.toString());
-                billList.add(i);
-            }
-        }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
-        System.out.println(billList);
-        return billList;
-        
-    }
+
       
     
   //goal 6
@@ -258,7 +270,7 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
         InsuranceRecord i;
         ObjectInputStream ois = null;
         try{
-            ois = new ObjectInputStream (new FileInputStream("BillObjects.bin"));
+            ois = new ObjectInputStream (new FileInputStream("InsuranceObjects.bin"));
             while(true){
                 i = (InsuranceRecord) ois.readObject();
                 System.out.println("The Insurance u read: "+i.toString());
