@@ -52,7 +52,7 @@ public class SeeMedicineBillChartReportController implements Initializable {
     
 @Override
 public void initialize(URL url, ResourceBundle rb) {
-    ObservableList<Bill> billList = Accountant.readBillList();
+    ObservableList<Bill> billList = Accountant.readAllBillsList();
 
     XYChart.Series<String, Integer> series = new XYChart.Series<>();
     for (Bill bill : billList) {

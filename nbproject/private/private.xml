@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/CommonScenes/StartSceneController.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/AccountantDashboardController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Nurse/NurseDashBoardSceneController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/AccountantDashboard.fxml</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/InsuranceMenuItemSceneController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/MakeABillSceneController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Nurse/NurseDashBoardScene.fxml</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/CreateExpenseRecordSceneController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Nurse.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/Bill.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Accountant.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/SeeMedicineBillChartReportController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Patient.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/AppointmentCompleted.java</file>
         </group>
     </open-files>
 </project-private>

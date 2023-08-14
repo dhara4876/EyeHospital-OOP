@@ -59,46 +59,53 @@ public class ViewBillRecordsSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        patientIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
-        totalTableColoumn.setCellValueFactory(new PropertyValueFactory<>("totalDue"));
-        billedOntableColoumn.setCellValueFactory(new PropertyValueFactory<>("billedOn"));
-        billedByTableColoumn.setCellValueFactory(new PropertyValueFactory<>("dueBy"));
-        paidStatusTableColoumn.setCellValueFactory(new PropertyValueFactory<>("paidStatus"));
-        accountantIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("accountantId"));
-        
-        billRecodsTableView.setItems(Accountant.readBillList());
+        ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
+    ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
+
+    accountantIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("accountantId"));
+    billedOntableColoumn.setCellValueFactory(new PropertyValueFactory<>("billedOn"));
+     patientIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
+      totalTableColoumn.setCellValueFactory(new PropertyValueFactory<>("totalDue"));
+      billedByTableColoumn.setCellValueFactory(new PropertyValueFactory<>("dueBy"));
+      paidStatusTableColoumn.setCellValueFactory(new PropertyValueFactory<>("paidStatus"));
+    
+    Accountant.readBillLists(paidBillList, pendingBillList);
+    
+    
+    billRecodsTableView.setItems(paidBillList);
     }
         // TODO
 
-    @FXML
-    private void searchButtonOnClick(ActionEvent event) {
+   
+ 
+   
+@FXML
+private void searchButtonOnClick(ActionEvent event) {
+    String searchText = searchPatientidTextfield.getText().trim().toLowerCase();
 
-    String searchText = searchPatientidTextfield.getText().toLowerCase();
-    ObservableList<Bill> billList = Accountant.readBillList();
+    ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
+    ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
 
-    FilteredList<Bill> filteredBillList = new FilteredList<>(billList, p -> true);
+    Accountant.readBillLists(paidBillList, pendingBillList);
 
-        if (!searchText.isEmpty()) {
-            filteredBillList.setPredicate(bill -> {
-                if (bill.getPatientId().toString().contains(searchText)) {
-                    return true;
-                } else if (bill.getTotalDue().toString().contains(searchText)) {
-                    return true;
-                } else if (bill.getBilledOn().toString().contains(searchText)) {
-                    return true;
-                } else if (bill.getDueBy().toString().contains(searchText)) {
-                    return true;
-                } else if (bill.getPaidStatus().toString().contains(searchText)) {
-                    return true;
-                } else if (bill.getAccountantId().toString().contains(searchText)) {
-                    return true;
-                }
-                return false;
-            });
+    FilteredList<Bill> filteredPaidBillList = new FilteredList<>(paidBillList);
+    filteredPaidBillList.setPredicate(bill -> {
+        if (searchText.isEmpty()) {
+            return true;
         }
+        return String.valueOf(bill.getPatientId()).contains(searchText) ||
+               String.valueOf(bill.getTotalDue()).contains(searchText) ||
+               String.valueOf(bill.getBilledOn()).contains(searchText) ||
+               String.valueOf(bill.getDueBy()).contains(searchText) ||
+               String.valueOf(bill.getAccountantId()).contains(searchText) ||
+               String.valueOf(bill.getPaidStatus()).toLowerCase().contains(searchText);
+    });
 
-    billRecodsTableView.setItems(filteredBillList);
+    billRecodsTableView.setItems(filteredPaidBillList);
 }
+
+
+
 
         
     
@@ -121,8 +128,20 @@ public class ViewBillRecordsSceneController implements Initializable {
     }
 
     @FXML
-    private void loadAllOnClick(ActionEvent event) {
-        billRecodsTableView.setItems(Accountant.readBillList());
+
+private void loadAllOnClick(ActionEvent event) {
+     ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
+    ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
+
+    Accountant.readBillLists(paidBillList, pendingBillList);
+    billRecodsTableView.setItems(paidBillList); 
+    searchPatientidTextfield.clear();
+}
+
+    @FXML
+    private void makePDFonClick(ActionEvent event) {
+    }
+
     }
     
-}
+

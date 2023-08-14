@@ -10,6 +10,7 @@ import Model.ChartData;
 import Model.ExpenseRecord;
 import Model.InsuranceRecord;
 import Model.LoginInfo;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -80,35 +81,43 @@ public class Accountant extends Employee implements Serializable{
         }
     }
     //goal 2
-    public static ObservableList<Bill> readBillList(){
-        ObservableList<Bill> BillList = FXCollections.observableArrayList();
-        Bill b;
-        ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("BillObjects.bin"));
-            while(true){
-                b = (Bill) ois.readObject();
-                System.out.println("The faculty u read: "+b.toString());
-                BillList.add(b);
+public static void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill> pendingBillList) {
+    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("BillObjects.bin"))) {
+        while (true) {
+            Bill bill = (Bill) ois.readObject();
+            System.out.println("Bill read: " + bill.toString());
+            if (bill.getPaidStatus()) {
+                paidBillList.add(bill);
+            } else {
+                pendingBillList.add(bill);
             }
         }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
-        System.out.println(BillList);
-        return BillList;
+    } catch (EOFException e) {
+        // End of file reached
+    } catch (IOException | ClassNotFoundException e) {
+        System.out.println("Error reading BillObjects.bin: " + e.getMessage());
     }
+}
     
-   
-
-     
- 
-    
- 
-
-     
- 
-
 
       //goal 3
+    
+  public static void editBillListAndRewrite(List<Bill> paidBillList, List<Bill> pendingBillList) {
+    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("BillObjects.bin"))) {
+        for (Bill bill : paidBillList) {
+            oos.writeObject(bill);
+        }
+        for (Bill bill : pendingBillList) {
+            oos.writeObject(bill);
+        }
+        System.out.println("BillList updated and written to bill.bin");
+    } catch (IOException e) {
+        System.out.println("Error writing updated BillList to file");
+    }
+}
+  
+
+
     
     public static boolean CreateExpenseRecord(
         Double Amount, String SpentOn, LocalDate DateSpent){
@@ -154,7 +163,8 @@ public class Accountant extends Employee implements Serializable{
        
         }
     }
-    
+    //goal 3
+ 
      //goal 4
     
     public static ObservableList<ExpenseRecord> readExpenseRecordList() {
@@ -222,7 +232,24 @@ public class Accountant extends Employee implements Serializable{
     }
         
         
-    
+        public static ObservableList<Bill> readAllBillsList(){
+        ObservableList<Bill> billList = FXCollections.observableArrayList();
+        Bill i;
+        ObjectInputStream ois = null;
+        try{
+            ois = new ObjectInputStream (new FileInputStream("BillObjects.bin"));
+            while(true){
+                i = (Bill) ois.readObject();
+                System.out.println("The Insurance u read: "+i.toString());
+                billList.add(i);
+            }
+        }
+        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
+        System.out.println(billList);
+        return billList;
+        
+    }
+      
     
   //goal 6
         
