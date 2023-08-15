@@ -10,6 +10,7 @@ import Dhara.Accountant.AccountantDashboardController;
 import Dhara.Nurse.NurseDashBoardSceneController;
 import Nazifa.Doctor.DoctorDashboardSceneController;
 import Nazifa.Patient.PatientDashboardSceneController;
+import Nushrat.Optermetrist.OptermetristDashboardController;
 import Nushrat.OptometristDashboardController;
 import Nushrat.Pharmacist.PharmacistDashboardController;
 import Nushrat.PharmacistDashboardController;
@@ -115,7 +116,7 @@ public class LoginSceneController implements Initializable {
                         pharmacistDashboard = (Parent) pharmaLoader.load();
                         Scene pharmaScene = new Scene(pharmacistDashboard);
                         
-                        PharmacistDashboardController ph = pharmaLoader.getController();
+                        PharmacistDashboardSceneController ph = pharmaLoader.getController();
                         ph.setPharmacist((Pharmacist) User.getInstance(id, "Pharmacist"));
                         
                         Stage pharmaStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -185,7 +186,7 @@ public class LoginSceneController implements Initializable {
                         OptometristDashboard = (Parent) labLoader.load();
                         Scene labScene = new Scene(OptometristDashboard);
                         
-                        OptometristDashboardController o = labLoader.getController();
+                        OptermetristDashboardSceneController o = labLoader.getController();
                         o.setOptometrist((Optometrist) User.getInstance(id, "Optometrist"));
                         
                         Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow();
