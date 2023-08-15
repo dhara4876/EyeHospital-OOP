@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author Asus
  */
+
 public class DocDashboardController implements Initializable {
 
     /**
@@ -28,6 +29,9 @@ public class DocDashboardController implements Initializable {
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
+    
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

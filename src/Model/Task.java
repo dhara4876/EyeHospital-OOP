@@ -8,6 +8,7 @@ package Model;
  *
  * @author Asus
  */
-//public class Schedule {
+public class Task {
     
-//}
+    
+}

@@ -5,6 +5,7 @@
 package Users;
 
 
+import Model.LoginInfo;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.io.File;
@@ -73,46 +74,7 @@ public class HROfficer extends Employee implements Serializable {
     }
 
   
-    public boolean addNewEmployee(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String designation, Double salary,
-                                  LocalDate doj)
-    {
-        File f = null;
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-
-        try {
-            f = new File("EmployeeData.bin");
-
-            if(f.exists()){
-                fos = new FileOutputStream(f,true);
-                oos = new AppendableObjectOutputStream(fos);
-
-            }
-            else{
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);
-
-            }
-            Employee emp=new Employee( name,  ID,  password,  email,  gender,  DOB,  designation,  salary, doj);
-            oos.writeObject(emp);
-
-            oos.close();
-            return true;
-        }catch (IOException ex) {
-
-            if(oos != null) try {
-                oos.close();
-                return false;
-
-            } catch (IOException ex1) {
-                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex1);
-                return false;
-            }
-
-        }
-
-        return false;
-    }
+  
     
     public static ArrayList<Employee> getEmpList() {
         ArrayList<Employee> empList = new ArrayList<Employee>();
@@ -137,5 +99,43 @@ public class HROfficer extends Employee implements Serializable {
             return empList;
         }
     }
-}
+
+    @Override
+    public boolean Register() {
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            f = new File("HROfficerObjects.bin");
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "HROfficer");
+            oos.writeObject(this);
+            oos.writeObject(toAddLogin);
+
+            oos.close();
+            System.out.println("HROfficer added successfully");
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(HROfficer.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(HROfficer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }}
+    
+
     
