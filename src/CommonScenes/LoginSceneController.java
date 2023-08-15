@@ -4,6 +4,7 @@
  */
 package CommonScenes;
 
+import Daiyan.AddEmployeeController;
 import Daiyan.DirectorDashboardSceneController;
 import Daiyan.HROfficerDashboardSceneController;
 import Dhara.Accountant.AccountantDashboardController;
@@ -167,11 +168,11 @@ public class LoginSceneController implements Initializable {
                     case 9:
                         System.out.println("Login Successful - HR Officer");                       //HR Officer authenticated
                         Parent HRDashboard = null;
-                        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("/Daiyan/HROfficerDashboardScene.fxml"));
+                        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("/Daiyan/AddEmployee.fxml"));
                         HRDashboard = (Parent) HRLoader.load();
                         Scene HRScene = new Scene(HRDashboard);
                         
-                        HROfficerDashboardSceneController hr = HRLoader.getController();
+                        AddEmployeeController hr = HRLoader.getController();
                         hr.setHrOfficer((HROfficer) User.getInstance(id, "HROfficer"));
                         
                         Stage hrStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -219,21 +220,5 @@ public class LoginSceneController implements Initializable {
     
     }
 
-    private void justGoToaccountantOnClick(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("/Dhara/Accountan/AccountantDashboard.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-    
+
 }

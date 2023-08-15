@@ -5,8 +5,11 @@
 package Dhara.Accountant;
 
 import CommonScenes.StartSceneController;
+import Model.InsuranceRecord;
+import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +21,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -28,17 +33,24 @@ import javafx.stage.Stage;
 public class ViewInsuranceRecordSceneController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> itemTableColoumn;
+    private TableColumn<InsuranceRecord, String> itemTableColoumn;
     @FXML
-    private TableColumn<?, ?> InsuranceAmountTableColoumn;
+    private TableColumn<InsuranceRecord, Double> InsuranceAmountTableColoumn;
     @FXML
-    private TableColumn<?, ?> dateOfIssueTableColoumn;
+    private TableColumn<InsuranceRecord, LocalDate> dateOfIssueTableColoumn;
+    @FXML
+    private TableView<InsuranceRecord> InsuranceTableView;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+          itemTableColoumn.setCellValueFactory(new PropertyValueFactory<>("item"));
+    InsuranceAmountTableColoumn.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
+    dateOfIssueTableColoumn.setCellValueFactory(new PropertyValueFactory<>("dateOfIssue"));
+      
+    InsuranceTableView.setItems(Accountant.readInsuranceRecordList());
         // TODO
     }    
 
@@ -61,6 +73,7 @@ public class ViewInsuranceRecordSceneController implements Initializable {
 
     @FXML
     private void viewDetailsOnButton(ActionEvent event) {
+        
     }
 
     @FXML

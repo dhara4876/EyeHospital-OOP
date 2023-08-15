@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dhara.Accountant.ViewInsuranceRecordSceneController">
    <children>
-      <TableView layoutX="28.0" layoutY="85.0" prefHeight="282.0" prefWidth="353.0">
+      <TableView fx:id="InsuranceTableView" layoutX="28.0" layoutY="85.0" prefHeight="282.0" prefWidth="353.0">
         <columns>
           <TableColumn fx:id="itemTableColoumn" prefWidth="75.0" text="item" />
           <TableColumn fx:id="InsuranceAmountTableColoumn" prefWidth="140.0" text="Insurance amount" />

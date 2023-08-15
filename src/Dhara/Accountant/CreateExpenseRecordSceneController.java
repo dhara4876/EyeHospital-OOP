@@ -11,6 +11,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -57,12 +60,22 @@ public class CreateExpenseRecordSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        //chooseSpendReasonComboBox.getItems().addAll()
-        
+      
+        ObservableList<String> items = FXCollections.observableArrayList(
+                "Machinery", "Tiles", "Bed", "Plumbing", "Electricity","Other"
+        );
+
+        chooseSpendReasonComboBox.setItems(items);
     }    
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
+        Boolean addStatus = Accountant.CreateExpenseRecord(Double.parseDouble((addAmountTextField.getText())), chooseSpendReasonComboBox.getValue(),  expenseRecordDatePicker.getValue(),detailsTextField.getText() );
+        if (addStatus) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("New Expense added");
+            a.showAndWait();
+        }
         
     }
 
@@ -84,8 +97,5 @@ public class CreateExpenseRecordSceneController implements Initializable {
     } 
     
 
-    @FXML
-    private void OnClickChooseSpendReason(ActionEvent event) {
-    }
     
 }

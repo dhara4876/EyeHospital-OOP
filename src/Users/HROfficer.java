@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+
 public class HROfficer extends Employee implements Serializable {
     private static final long serialVersionUID = 345L;
     
@@ -76,66 +77,84 @@ public class HROfficer extends Employee implements Serializable {
   
   
     
-    public static ArrayList<Employee> getEmpList() {
-        ArrayList<Employee> empList = new ArrayList<Employee>();
-        ObjectInputStream ois = null;
-        try {
-            Employee emp;
-            ois = new ObjectInputStream(new FileInputStream("EmployeeData.bin"));
 
-            while (true) {
-                emp = (Employee) ois.readObject();
-                empList.add(emp);
-            }
-
-        } catch (Exception ex) {
-            try {
-                if (ois != null) {
-                    ois.close();
-                }
-            } catch (IOException e) {
-
-            }
-            return empList;
+public boolean addNewEmployee(String usertype, String name, int ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ) {
+        String path = "";
+        Employee toAdd = null;
+        if (usertype=="Accountant"){
+            path = "Accountant.bin";
+            toAdd = new Accountant(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
         }
-    }
-
-    @Override
-    public boolean Register() {
+        else if (usertype=="Director"){
+            path = "Director.bin";
+            toAdd = new Director(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+        }
+        else if (usertype=="Doctor"){
+            path = "Doctor.bin";
+            toAdd = new Doctor(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+        }
+        else if (usertype=="HROfficer"){
+            path = "HROfficer.bin";
+            toAdd = new HROfficer(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+        }
+        else if (usertype=="Optometrist"){
+            path = "Optometrist.bin";
+            toAdd = new Optometrist(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+        }
+        else if (usertype=="Nurse"){
+            path = "Nurse.bin";
+            toAdd = new Nurse(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+        }
+        else if (usertype=="Pharmacist"){
+            path = "Pharmacist.bin";
+            toAdd = new Pharmacist(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+        }
+        
+        
         File f = null;
-        FileOutputStream fos = null;
+        FileOutputStream fos = null;      
         ObjectOutputStream oos = null;
-
+        File f2 = null;
+        FileOutputStream fos2 = null;      
+        ObjectOutputStream oos2 = null;
         try {
-            f = new File("HROfficerObjects.bin");
-            if (f.exists()) {
-                fos = new FileOutputStream(f, true);
-                oos = new AppendableObjectOutputStream(fos);
-            } else {
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);
+            f = new File(path);
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
             }
-
-            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "HROfficer");
-            oos.writeObject(this);
-            oos.writeObject(toAddLogin);
-
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+            f2 = new File("LoginInfo.bin");
+            if(f2.exists()){
+                fos2 = new FileOutputStream(f2,true);
+                oos2 = new AppendableObjectOutputStream(fos2);                
+            }
+            else{
+                fos2 = new FileOutputStream(f2);
+                oos2 = new ObjectOutputStream(fos2);               
+            }
+            LoginInfo toAddLogin = new LoginInfo(toAdd.getID(), toAdd.getPassword(), usertype);
+            oos.writeObject(toAdd);
+            oos2.writeObject(toAddLogin);
             oos.close();
-            System.out.println("HROfficer added successfully");
+            oos2.close();
+            System.out.println("Employee add success");
             return true;
         } catch (IOException ex) {
             Logger.getLogger(HROfficer.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                if (oos != null) {
-                    oos.close();
-                }
+                if(oos != null) {oos.close();oos2.close();}
             } catch (IOException ex) {
                 Logger.getLogger(HROfficer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return false;
-    }}
+      
+}}
     
 
     

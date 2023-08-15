@@ -16,11 +16,21 @@ public class ExpenseRecord implements Serializable {
     private Double Amount;
     private String SpentOn;
     private LocalDate DateSpent;
-
-    public ExpenseRecord(Double Amount, String SpentOn, LocalDate DateSpent) {
+    private String Details;
+ 
+    public ExpenseRecord(Double Amount, String SpentOn, LocalDate DateSpent, String Details) {
         this.Amount = Amount;
         this.SpentOn = SpentOn;
         this.DateSpent = DateSpent;
+        this.Details = Details;
+    }
+
+    public String getDetails() {
+        return Details;
+    }
+
+    public void setDetails(String Details) {
+        this.Details = Details;
     }
 
     public Double getAmount() {

@@ -31,7 +31,7 @@ public abstract class User implements Serializable{
     
     protected final LocalDate DOB;
 
-    public User(String name, int ID, String password, String email, String gender, LocalDate DOB) {
+    public User(String name, Integer ID, String password, String email, String gender, LocalDate DOB) {
         this.name = name;
         this.ID = ID;
         this.password = password;
@@ -154,25 +154,25 @@ public abstract class User implements Serializable{
         String path = "";
         switch(type){
             case "Doctor":
-                path="DoctorObjects.bin";
+                path="Doctor.bin";
                 break;
             case "Patient":
-                path="PatientObjects.bin";
+                path="Patient.bin";
                 break;
             case "Pharmacist":
-                path="PharmacistObjects.bin";
+                path="Pharmacist.bin";
                 break;
             case "Nurse":
-                path="NurseObjects.bin";
+                path="Nurse.bin";
                 break;
             case "Director":
-                path="DirectorObjects.bin";
+                path="Director.bin";
                 break;
             case "Accountant":
                 path="Accountant.bin";
                 break;
             case "HROfficer":
-                path="HROfficerObjects.bin";
+                path="HROfficer.bin";
                 break;
             case "Optometrist":
                 path="Optometrist.bin";
@@ -223,7 +223,7 @@ public abstract class User implements Serializable{
                             System.out.println("Reading HR");
                             System.out.println(tempUser.toString());
                             break;
-                        case "LabTechnician": 
+                        case "Optometrist": 
                             tempUser = (Optometrist) ois.readObject();
                             System.out.println("Reading optometrist");
                             System.out.println(tempUser.toString());
@@ -253,7 +253,7 @@ public abstract class User implements Serializable{
         return null;
     }
         
-       public abstract boolean Register();
+      
        
        public static boolean isNumeric(String str) { 
         try {  
