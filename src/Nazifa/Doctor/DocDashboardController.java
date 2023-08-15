@@ -4,6 +4,7 @@
  */
 package Nazifa.Doctor;
 
+import Users.Doctor;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -18,6 +19,16 @@ public class DocDashboardController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    private Doctor doctor;
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
