@@ -65,42 +65,7 @@ public class Doctor extends Employee implements Serializable {
     
     
 
-    @Override
-    public boolean Register() {
-       File f = null;
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-
-        try {
-            f = new File("Doctor.bin");
-            if (f.exists()) {
-                fos = new FileOutputStream(f, true);
-                oos = new AppendableObjectOutputStream(fos);
-            } else {
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);
-            }
-
-            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "Doctor");
-            oos.writeObject(this);
-            oos.writeObject(toAddLogin);
-
-            oos.close();
-            System.out.println("Doctor added successfully");
-            return true;
-        } catch (IOException ex) {
-            Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (oos != null) {
-                    oos.close();
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return false;
-    }
+    
     }
     
    

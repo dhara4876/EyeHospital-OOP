@@ -63,8 +63,8 @@ public class Patient extends User implements Serializable {
         return "Patient{" + '}';
     }
 
-    @Override
-    public boolean Register() {
+   
+    public boolean Register(Patient toAdd) {
     File f = null;
     FileOutputStream fos = null;      
     ObjectOutputStream oos = null;

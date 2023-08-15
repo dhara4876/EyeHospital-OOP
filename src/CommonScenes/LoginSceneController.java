@@ -4,6 +4,7 @@
  */
 package CommonScenes;
 
+import Daiyan.AddEmployeeController;
 import Daiyan.DirectorDashboardSceneController;
 import Daiyan.HROfficerDashboardSceneController;
 import Dhara.Accountant.AccountantDashboardController;
@@ -166,11 +167,11 @@ public class LoginSceneController implements Initializable {
                     case 9:
                         System.out.println("Login Successful - HR Officer");                       //HR Officer authenticated
                         Parent HRDashboard = null;
-                        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("/Daiyan/HROfficerDashboardScene.fxml"));
+                        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("/Daiyan/AddEmployee.fxml"));
                         HRDashboard = (Parent) HRLoader.load();
                         Scene HRScene = new Scene(HRDashboard);
                         
-                        HROfficerDashboardSceneController hr = HRLoader.getController();
+                        AddEmployeeController hr = HRLoader.getController();
                         hr.setHrOfficer((HROfficer) User.getInstance(id, "HROfficer"));
                         
                         Stage hrStage = (Stage)((Node)event.getSource()).getScene().getWindow();

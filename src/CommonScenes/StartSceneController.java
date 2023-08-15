@@ -7,6 +7,8 @@ package CommonScenes;
 import Model.LoginInfo;
 import Users.Accountant;
 import Users.AppendableObjectOutputStream;
+import Users.HROfficer;
+import Users.Patient;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -157,75 +159,39 @@ public class StartSceneController implements Initializable {
         
         
     }  
-
+private Patient toAdd;
     @FXML
     private void tempTwo(ActionEvent event) throws IOException, ClassNotFoundException {
-        Double d = 3000.0;
-        int i = 12;
-         LocalDate date = LocalDate.of(2001, 7, 5);
-         LocalDate date2 = LocalDate.of(2023,4,5);
-        ArrayList<Accountant> accList = new ArrayList<>();
-        Accountant accountant = new Accountant("Bro",i,"pass",
-                "yea@gmail.com","m", date2,
-                "Accoountant",d,date);     
-        File f = null;
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-        try {
-            
-            f = new File("A.bin");
-            
-            if (f.exists()) {
-                fos = new FileOutputStream(f, true);
-                oos = new AppendableObjectOutputStream(fos);
-                
-            } else {
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);
-            }
-            
-            oos.writeObject(accountant);
-            oos.close();
-            
-        } catch (IOException e) {
-            if(oos!=null){
-                try {
-                    oos.close();
-                } catch (IOException x) {
-                    Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, x);
-                }
-            }
-            System.out.println("Error writing Object to binary file");
-            
-        }
-        ObjectInputStream ois = null;
-        try {
-            ois = new ObjectInputStream (new FileInputStream("A.bin"));
-        } catch (IOException x) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, x);
-        }
         
-        try {
-            while (true) {
-                Object obj = ois.readObject();
-                if  (obj instanceof Accountant){
-                      Accountant deserializedAcc = (Accountant) obj;
-                        accList.add(deserializedAcc);
-                    }
-                }
-            
-        } catch (EOFException e) {
+  // Create an HROfficer object
+        HROfficer hrOfficer = new HROfficer("John Doe", 123, "password", "john@example.com", "Male",
+                LocalDate.of(1990, 1, 15), "HR Manager", 60000.0, LocalDate.of(2020, 5, 1));
 
-        }finally{
-            ois.close();
-            {System.out.println(accList);}
+        // Create a LoginInfo object for the HR Officer
+        LoginInfo loginInfo = new LoginInfo(hrOfficer.getID(), hrOfficer.getPassword(), "HROfficer");
+
+        // Write the HROfficer object to HROfficer.bin
+        try (ObjectOutputStream hrofficerOutputStream = new ObjectOutputStream(new FileOutputStream("HROfficer.bin"))) {
+            hrofficerOutputStream.writeObject(hrOfficer);
+            System.out.println("HROfficer object written to HROfficer.bin");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Write the LoginInfo object to LoginInfo.bin
+        try (ObjectOutputStream loginInfoOutputStream = new ObjectOutputStream(new FileOutputStream("LoginInfo.bin"))) {
+            loginInfoOutputStream.writeObject(loginInfo);
+            System.out.println("LoginInfo object written to LoginInfo.bin");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
             
     }
     
     }
     
 
-}
+
     
 
     

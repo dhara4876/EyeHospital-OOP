@@ -31,7 +31,7 @@ public abstract class User implements Serializable{
     
     protected final LocalDate DOB;
 
-    public User(String name, int ID, String password, String email, String gender, LocalDate DOB) {
+    public User(String name, Integer ID, String password, String email, String gender, LocalDate DOB) {
         this.name = name;
         this.ID = ID;
         this.password = password;
@@ -253,7 +253,7 @@ public abstract class User implements Serializable{
         return null;
     }
         
-       public abstract boolean Register();
+      
        
        public static boolean isNumeric(String str) { 
         try {  

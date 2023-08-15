@@ -126,7 +126,7 @@ private Patient toAdd;
         }
          toAdd = new Patient(name, ID, password, email, gender, DOB);
 
-        if (toAdd.Register()) {
+        if (toAdd.Register(toAdd)) {
             success.show();
         } else {
             failure.show();

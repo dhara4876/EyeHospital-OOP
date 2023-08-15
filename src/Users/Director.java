@@ -70,42 +70,8 @@ public class Director extends Employee implements Serializable{
         return "Director{" + '}';
     }
 
-    @Override
-    public boolean Register() {
-        File f = null;
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-
-        try {
-            f = new File("Director.bin");
-            if (f.exists()) {
-                fos = new FileOutputStream(f, true);
-                oos = new AppendableObjectOutputStream(fos);
-            } else {
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);
-            }
-
-            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "Director");
-            oos.writeObject(this);
-            oos.writeObject(toAddLogin);
-
-            oos.close();
-            System.out.println("Director added successfully");
-            return true;
-        } catch (IOException ex) {
-            Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (oos != null) {
-                    oos.close();
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return false;
-    }
+ 
+    
     }
     
 
