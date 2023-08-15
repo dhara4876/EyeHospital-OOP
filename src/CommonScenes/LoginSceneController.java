@@ -219,21 +219,5 @@ public class LoginSceneController implements Initializable {
     
     }
 
-    private void justGoToaccountantOnClick(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("/Dhara/Accountan/AccountantDashboard.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-    
+
 }
