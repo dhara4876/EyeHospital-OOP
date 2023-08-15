@@ -5,16 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommonScenes.StartSceneController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: image; -fx-background-color: ;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommonScenes.StartSceneController">
    <children>
-      <Button layoutX="280.0" layoutY="185.0" mnemonicParsing="false" onAction="#registerOnClick" text="Register" />
-      <Button layoutX="206.0" layoutY="185.0" mnemonicParsing="false" onAction="#loginOnClick" text="Login" />
+      <Button layoutX="294.0" layoutY="185.0" mnemonicParsing="false" onAction="#registerOnClick" text="Register" />
+      <Button layoutX="215.0" layoutY="185.0" mnemonicParsing="false" onAction="#loginOnClick" text="Login" />
       <Label layoutX="129.0" layoutY="124.0" text="BANGLADESH EYE HOSPITAL">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="27.0" layoutY="351.0" mnemonicParsing="false" onAction="#tempbuttonOnClick" text="TempButton" />
-      <Button layoutX="146.0" layoutY="351.0" mnemonicParsing="false" onAction="#tempTwo" text="Temp 2 button" />
    </children>
 </AnchorPane>
