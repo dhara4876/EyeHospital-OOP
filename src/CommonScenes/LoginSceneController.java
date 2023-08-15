@@ -10,8 +10,9 @@ import Dhara.Accountant.AccountantDashboardController;
 import Dhara.Nurse.NurseDashBoardSceneController;
 import Nazifa.Doctor.DoctorDashboardSceneController;
 import Nazifa.Patient.PatientDashboardSceneController;
-import Nushrat.OptometristDashboardSceneController;
-import Nushrat.PharmacistDashboardSceneController;
+import Nushrat.OptometristDashboardController;
+import Nushrat.Pharmacist.PharmacistDashboardController;
+import Nushrat.PharmacistDashboardController;
 import Users.Accountant;
 import Users.Director;
 import Users.Doctor;
@@ -110,11 +111,11 @@ public class LoginSceneController implements Initializable {
                     case 5:
                         System.out.println("Login Successful - Pharmacist");                       //Pharmacist authenticated
                         Parent pharmacistDashboard = null;
-                        FXMLLoader pharmaLoader = new FXMLLoader(getClass().getResource("/Nushrat/PharmacistDashboardScene.fxml"));
+                        FXMLLoader pharmaLoader = new FXMLLoader(getClass().getResource("/Nushrat/PharmacistDashboard.fxml"));
                         pharmacistDashboard = (Parent) pharmaLoader.load();
                         Scene pharmaScene = new Scene(pharmacistDashboard);
                         
-                        PharmacistDashboardSceneController ph = pharmaLoader.getController();
+                        PharmacistDashboardController ph = pharmaLoader.getController();
                         ph.setPharmacist((Pharmacist) User.getInstance(id, "Pharmacist"));
                         
                         Stage pharmaStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -180,11 +181,11 @@ public class LoginSceneController implements Initializable {
                     case 10:
                         System.out.println("Login Successful - Optometrist");                   //Lab Technician authenticated
                         Parent OptometristDashboard = null;
-                        FXMLLoader labLoader = new FXMLLoader(getClass().getResource("/Nushrat/OptometristDashboardScene.fxml"));
+                        FXMLLoader labLoader = new FXMLLoader(getClass().getResource("/Nushrat/OptometristDashboard.fxml"));
                         OptometristDashboard = (Parent) labLoader.load();
                         Scene labScene = new Scene(OptometristDashboard);
                         
-                        OptometristDashboardSceneController o = labLoader.getController();
+                        OptometristDashboardController o = labLoader.getController();
                         o.setOptometrist((Optometrist) User.getInstance(id, "Optometrist"));
                         
                         Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow();
