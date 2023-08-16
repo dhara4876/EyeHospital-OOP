@@ -11,8 +11,8 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dhara.Accountant.MakeABillSceneController">
    <children>
-      <ComboBox fx:id="medicineQuantityComboBox" layoutX="256.0" layoutY="136.0" prefHeight="31.0" prefWidth="104.0" promptText="qty" />
-      <ComboBox fx:id="treatmentQuantityComboBox" layoutX="256.0" layoutY="178.0" prefHeight="31.0" prefWidth="104.0" promptText="qty" />
+      <ComboBox fx:id="medicineQuantityComboBox" layoutX="283.0" layoutY="136.0" prefHeight="31.0" prefWidth="104.0" promptText="qty" />
+      <ComboBox fx:id="treatmentQuantityComboBox" layoutX="283.0" layoutY="178.0" prefHeight="31.0" prefWidth="104.0" promptText="qty" />
       <ComboBox fx:id="treatmentComboBox" layoutX="26.0" layoutY="178.0" onAction="#onClickTreatmentComboBox" prefHeight="31.0" prefWidth="170.0" promptText="choose treatment" />
       <ComboBox fx:id="medicineComboBox" layoutX="26.0" layoutY="136.0" onAction="#onClickMedsComboBox" prefHeight="31.0" prefWidth="170.0" promptText="choose medicine" />
       <Button layoutX="401.0" layoutY="136.0" mnemonicParsing="false" onAction="#addMedicineOnClick" prefHeight="31.0" prefWidth="155.0" text="add" />
@@ -34,5 +34,6 @@
       <TextField fx:id="patientIdTextField" layoutX="26.0" layoutY="93.0" prefHeight="31.0" prefWidth="131.0" promptText="add patient id" />
       <Label fx:id="updateStatus" layoutX="34.0" layoutY="240.0" prefHeight="21.0" prefWidth="196.0" />
       <Line endX="-91.0" endY="274.0" layoutX="123.0" layoutY="27.0" startX="435.0" startY="274.0" />
+      <Label layoutX="208.0" layoutY="99.0" text="Price" />
    </children>
 </AnchorPane>

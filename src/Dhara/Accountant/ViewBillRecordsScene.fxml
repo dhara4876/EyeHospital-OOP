@@ -29,6 +29,5 @@
       </Label>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="back" />
       <Button layoutX="415.0" layoutY="97.0" mnemonicParsing="false" onAction="#loadAllOnClick" text="Load All" />
-      <Button layoutX="501.0" layoutY="97.0" mnemonicParsing="false" text="make pdf" />
    </children>
 </AnchorPane>
