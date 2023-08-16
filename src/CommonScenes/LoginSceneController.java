@@ -67,7 +67,7 @@ public class LoginSceneController implements Initializable {
     private void onClickLoginButton(ActionEvent event) {
         if (enterIdTextField.getText() == null || enterIdTextField.getText().trim().isEmpty() || !User.isNumeric(enterIdTextField.getText())){
             idError.show();
-            //return;
+            
         }
         else if (passwordTextField.getText() == null || passwordTextField.getText().trim().isEmpty()) {noPass.show();}
         else {
