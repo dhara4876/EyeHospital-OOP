@@ -14,8 +14,8 @@
           <Menu mnemonicParsing="false" text="MyDesk">
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#BIllOnClick" text="Bill" />
-              <MenuItem mnemonicParsing="false" onAction="#InsuranceOnClick" text="Insurance" />
                   <MenuItem mnemonicParsing="false" onAction="#expinditureOnClick" text="Expenditure" />
+              <MenuItem mnemonicParsing="false" onAction="#InsuranceOnClick" text="Insurance" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" onAction="#signOutOnClick" text="Other">

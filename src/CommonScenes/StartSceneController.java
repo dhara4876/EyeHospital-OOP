@@ -88,7 +88,6 @@ public class StartSceneController implements Initializable {
     }
     
 
-    @FXML
     private void tempbuttonOnClick(ActionEvent event) throws IOException, ClassNotFoundException {
         
     
@@ -160,7 +159,6 @@ public class StartSceneController implements Initializable {
         
     }  
 private Patient toAdd;
-    @FXML
     private void tempTwo(ActionEvent event) throws IOException, ClassNotFoundException {
         
   // Create an HROfficer object

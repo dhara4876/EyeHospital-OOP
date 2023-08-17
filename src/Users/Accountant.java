@@ -97,7 +97,7 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
             }
         }
     } catch (EOFException e) {
-        // End of file reached
+        
     } catch (IOException | ClassNotFoundException e) {
         System.out.println("Error reading BillObjects.bin: " + e.getMessage());
     }
@@ -107,16 +107,30 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
       //goal 3
     
   public static void editBillListAndRewrite(List<Bill> paidBillList, List<Bill> pendingBillList) {
-    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("BillObjects.bin"))) {
-        for (Bill bill : paidBillList) {
-            oos.writeObject(bill);
+     try {
+        
+        File billFile = new File("BillObjects.bin");
+        if (billFile.exists()) {
+            billFile.delete();
         }
-        for (Bill bill : pendingBillList) {
-            oos.writeObject(bill);
+        
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("BillObjects.bin"))) {
+            
+            for (Bill bill : paidBillList) {
+                oos.writeObject(bill);
+            }
+            
+            
+            for (Bill bill : pendingBillList) {
+                oos.writeObject(bill);
+            }
+            
+            System.out.println("BillList updated and written to BillObjects.bin");
+        } catch (IOException e) {
+            System.out.println("Error writing updated BillList to file");
         }
-        System.out.println("BillList updated and written to bill.bin");
-    } catch (IOException e) {
-        System.out.println("Error writing updated BillList to file");
+    } catch (Exception e) {
+        System.out.println("Error deleting existing BillObjects.bin file");
     }
 }
   

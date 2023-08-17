@@ -15,7 +15,7 @@
           <TableColumn fx:id="patientIdTableColoumn" prefWidth="75.0" text="patient id" />
           <TableColumn fx:id="amountTableColoumn" prefWidth="75.0" text="amount" />
             <TableColumn fx:id="dueBytableColoumn" prefWidth="75.0" text="due by" />
-            <TableColumn fx:id="accountantIdTableColoumn" prefWidth="75.0" text="issued by" />
+            <TableColumn fx:id="accountantIdTableColoumn" prefWidth="75.0" text="Paid" />
         </columns>
       </TableView>
       <Button layoutX="360.0" layoutY="168.0" mnemonicParsing="false" onAction="#updateStatusButtonOnClick" prefHeight="66.0" prefWidth="129.0" text="Update Status to paid" wrapText="true" />
