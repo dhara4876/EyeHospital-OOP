@@ -14,9 +14,11 @@ import javafx.fxml.Initializable;
  *
  * @author Asus
  */
-public class DoctorDashboardSceneController implements Initializable {
+
+
+public class DocDashboardController implements Initializable {
     
-    private Doctor doctor;
+        private Doctor doctor;
 
     public Doctor getDoctor() {
         return doctor;
@@ -25,8 +27,6 @@ public class DoctorDashboardSceneController implements Initializable {
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
-    
-    
 
     /**
      * Initializes the controller class.

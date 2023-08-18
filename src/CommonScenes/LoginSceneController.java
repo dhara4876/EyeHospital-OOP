@@ -9,7 +9,8 @@ import Daiyan.DirectorDashboardSceneController;
 import Daiyan.HROfficerDashboardSceneController;
 import Dhara.Accountant.AccountantDashboardController;
 import Dhara.Nurse.NurseDashBoardSceneController;
-import Nazifa.Doctor.DoctorDashboardSceneController;
+import Nazifa.Doctor.DocDashboardController;
+
 import Nazifa.Patient.PatientDashboardSceneController;
 import Nushrat.OptometristDashboardSceneController;
 import Nushrat.PharmacistDashboardSceneController;
@@ -83,11 +84,11 @@ public class LoginSceneController implements Initializable {
                     case 3:
                         System.out.println("Login Successful - Doctor");                         //Doctor authenticated
                         Parent doctorDashboard = null;
-                        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("/Nazifa/Doctor/DoctorDashboardScene.fxml"));
+                        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("/Nazifa/Doctor/DocDashboard.fxml"));
                         doctorDashboard = (Parent) doctorLoader.load(); // /nazifa/Doctor/DoctorWelcomeScene.fxml
                         Scene doctorScene = new Scene(doctorDashboard);
                         
-                        DoctorDashboardSceneController d = doctorLoader.getController();
+                        DocDashboardController d = doctorLoader.getController();
                         d.setDoctor((Doctor) User.getInstance(id, "Doctor"));
                         
                         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -158,7 +159,7 @@ public class LoginSceneController implements Initializable {
                         Scene accountsScene = new Scene(accountsOfficerDashboard);
                         
                         AccountantDashboardController a = accountsLoader.getController();
-                        a.setAccountant((Accountant) User.getInstance(id, "AccountsOfficer"));
+                        a.setAccountant((Accountant) User.getInstance(id, "Accountant"));
                         
                         Stage accountsStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         accountsStage.setScene(accountsScene);
