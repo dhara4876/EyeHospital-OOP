@@ -52,10 +52,30 @@ public class TaskController implements Initializable {
 
     @FXML
     private void completeTasksButtonOnClick(ActionEvent event) {
+        Parent login = null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("CompleteTaskScene.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(TaskController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();
     }
 
     @FXML
     private void assignTasksButtonOnClick(ActionEvent event) {
+        Parent login = null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("AssignTaskToNurseScene.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(TaskController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();
     }
     
 }

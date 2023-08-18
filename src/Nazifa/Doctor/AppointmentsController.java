@@ -35,10 +35,30 @@ public class AppointmentsController implements Initializable {
 
     @FXML
     private void makeAppointmentButtonOnClick(ActionEvent event) {
+        Parent login = null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("DocDashboard.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(PrescriptionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();
     }
 
     @FXML
     private void viewAppointmentsButtonOnClick(ActionEvent event) {
+        Parent login = null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("DocDashboard.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(PrescriptionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();
     }
 
     @FXML

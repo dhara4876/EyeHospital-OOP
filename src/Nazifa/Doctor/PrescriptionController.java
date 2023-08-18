@@ -36,10 +36,30 @@ public class PrescriptionController implements Initializable {
 
     @FXML
     private void makePrescriptionButtonOnClick(ActionEvent event) {
+        Parent login = null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("MakePrescriptionScene.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(PrescriptionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();
     }
 
     @FXML
     private void viewPrescriptionButtonOnClick(ActionEvent event) {
+        Parent login = null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("ViewPrescriptionScene.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(PrescriptionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();
     }
 
     @FXML

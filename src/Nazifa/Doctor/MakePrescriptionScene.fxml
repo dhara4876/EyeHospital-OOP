@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="431.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="431.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Nazifa.Doctor.MakePrescriptionSceneController">
    <children>
       <Label layoutX="154.0" layoutY="47.0" text="PRESCRIBE NEW PATIENT">
          <font>
@@ -15,14 +15,15 @@
          </font>
       </Label>
       <ComboBox fx:id="diagnosisComboBox" layoutX="329.0" layoutY="100.0" prefWidth="150.0" promptText="Select Diagnosis" />
-      <ComboBox fx:id="durationConboBox" layoutX="329.0" layoutY="355.0" prefWidth="150.0" promptText="Select Duration" />
+      <ComboBox fx:id="durationComboBox" layoutX="329.0" layoutY="355.0" prefWidth="150.0" promptText="Select Duration" />
       <ComboBox fx:id="medicineComboBox" layoutX="329.0" layoutY="228.0" prefWidth="150.0" promptText="Select Medicine " />
       <ComboBox fx:id="treatmentComboBox" layoutX="329.0" layoutY="165.0" prefWidth="150.0" promptText="Select Treatment" />
       <ComboBox fx:id="doseComboBox" layoutX="329.0" layoutY="292.0" prefWidth="150.0" promptText="Select Dose" />
-      <Button layoutX="86.0" layoutY="355.0" mnemonicParsing="false" onAction="#prescribeOnClick" prefWidth="163.0" text="Prescribe" />
-      <TextField layoutX="97.0" layoutY="165.0" />
-      <TextField layoutX="97.0" layoutY="292.0" />
+      <Button layoutX="86.0" layoutY="355.0" mnemonicParsing="false" onAction="#prescribeButtonOnClick" prefWidth="163.0" text="Prescribe" />
+      <TextField fx:id="doctorIDTextField" layoutX="97.0" layoutY="165.0" />
+      <TextField fx:id="PatientIDTextField" layoutX="97.0" layoutY="292.0" />
       <Label layoutX="140.0" layoutY="104.0" text="Doctor ID:" />
       <Label layoutX="140.0" layoutY="232.0" text="Patient ID:" />
+      <Button layoutX="27.0" layoutY="28.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
    </children>
 </AnchorPane>
