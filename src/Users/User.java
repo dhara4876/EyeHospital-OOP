@@ -48,7 +48,7 @@ public abstract class User implements Serializable{
         return name;
     }
 
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 
@@ -213,7 +213,7 @@ public abstract class User implements Serializable{
                             System.out.println("Reading director");
                             System.out.println(tempUser.toString());
                             break;
-                        case "AccountsOfficer": 
+                        case "Accountant": 
                             tempUser = (Accountant) ois.readObject();
                             System.out.println("Reading accounts");
                             System.out.println(tempUser.toString());

@@ -70,7 +70,7 @@ public class CreateExpenseRecordSceneController implements Initializable {
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
-        Boolean addStatus = Accountant.CreateExpenseRecord(Double.parseDouble((addAmountTextField.getText())), chooseSpendReasonComboBox.getValue(),  expenseRecordDatePicker.getValue(),detailsTextField.getText() );
+        Boolean addStatus = accountant.CreateExpenseRecord(Double.parseDouble((addAmountTextField.getText())), chooseSpendReasonComboBox.getValue(),  expenseRecordDatePicker.getValue(),detailsTextField.getText() );
         if (addStatus) {
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setContentText("New Expense added");
@@ -80,20 +80,19 @@ public class CreateExpenseRecordSceneController implements Initializable {
     }
 
     @FXML
-    private void backButtonOnClick(ActionEvent event) {
-       try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("ExpenditureMenuItem.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void backButtonOnClick(ActionEvent event) throws IOException {
+      Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("ExpenditureMenuItem.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        ExpenditureMenuItemController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
+
     } 
     
 

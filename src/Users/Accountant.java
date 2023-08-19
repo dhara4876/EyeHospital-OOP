@@ -85,7 +85,7 @@ public class Accountant extends Employee implements Serializable{
         }
     }
     //goal 2
-public static void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill> pendingBillList) {
+public  static void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill> pendingBillList) {
     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("BillObjects.bin"))) {
         while (true) {
             Bill bill = (Bill) ois.readObject();
@@ -161,7 +161,7 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
 
 
     
-    public static boolean CreateExpenseRecord(
+    public boolean CreateExpenseRecord(
         Double Amount, String SpentOn, LocalDate DateSpent, String Details){
         
         ExpenseRecord newExpense = new ExpenseRecord(
@@ -232,7 +232,7 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
         
      //goal 5
     
-    public static boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue){
+    public boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue){
         
         
         InsuranceRecord newInsurance = new InsuranceRecord(
@@ -304,6 +304,24 @@ public static void readBillLists(ObservableList<Bill> paidBillList, ObservableLi
         super(name, ID, password, email, gender, DOB, Designation, Salary, DoJ);
     }
 
+    public LocalDate getDOJ() {
+        return DOJ;
+    }
+
+    public Integer getID() {
+        return ID;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public LocalDate getDOB() {
+        return DOB;
+    }
+
+    
+    
     public String getDesignation() {
         return designation;
     }

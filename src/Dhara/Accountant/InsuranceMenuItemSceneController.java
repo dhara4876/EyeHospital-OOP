@@ -5,6 +5,7 @@
 package Dhara.Accountant;
 
 import CommonScenes.StartSceneController;
+import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +26,16 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class InsuranceMenuItemSceneController implements Initializable {
+    
+    private Accountant accountant; 
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
+
+    public Accountant getAccountant() {
+        return accountant;
+    }
 
     /**
      * Initializes the controller class.
@@ -35,54 +46,50 @@ public class InsuranceMenuItemSceneController implements Initializable {
     }    
 
     @FXML
-    private void makeNewInsuranceOnClick(ActionEvent event) {
-       try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("CreateInsuranceRecordScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void makeNewInsuranceOnClick(ActionEvent event) throws IOException {
+       
+ Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("CreateInsuranceRecordScene.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        CreateInsuranceRecordSceneController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
     }
 
     @FXML
-    private void viewPastInsuranceOnClick(ActionEvent event) {
-         try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("ViewInsuranceRecordScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void viewPastInsuranceOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("ViewInsuranceRecordScene.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        ViewInsuranceRecordSceneController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
     }
 
     @FXML
-    private void BackOnClick(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("AccountantDashboard.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void BackOnClick(ActionEvent event) throws IOException {
+            Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("AccountantDashboard.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        AccountantDashboardController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
+    
     } 
     
 }

@@ -16,12 +16,10 @@
       <ComboBox fx:id="treatmentComboBox" layoutX="26.0" layoutY="178.0" onAction="#onClickTreatmentComboBox" prefHeight="31.0" prefWidth="170.0" promptText="choose treatment" />
       <ComboBox fx:id="medicineComboBox" layoutX="26.0" layoutY="136.0" onAction="#onClickMedsComboBox" prefHeight="31.0" prefWidth="170.0" promptText="choose medicine" />
       <Button layoutX="401.0" layoutY="136.0" mnemonicParsing="false" onAction="#addMedicineOnClick" prefHeight="31.0" prefWidth="155.0" text="add" />
-      <Button layoutX="420.0" layoutY="318.0" mnemonicParsing="false" onAction="#addBillOnClick" prefHeight="35.0" prefWidth="142.0" text="Add BILL" wrapText="true" />
+      <Button layoutX="247.0" layoutY="316.0" mnemonicParsing="false" onAction="#addBillOnClick" prefHeight="35.0" prefWidth="309.0" text="Add BILL" wrapText="true" />
       <Button layoutX="401.0" layoutY="235.0" mnemonicParsing="false" onAction="#onClickShowTotalButton" prefHeight="31.0" prefWidth="155.0" text="Show total" wrapText="true" />
       <Button layoutX="401.0" layoutY="178.0" mnemonicParsing="false" onAction="#onClickAddTreatmentButton" prefHeight="31.0" prefWidth="155.0" text="add" />
-      <TextField fx:id="addAccountantId" layoutX="34.0" layoutY="322.0" prefHeight="31.0" prefWidth="155.0" promptText="add accountant id" />
-      <TextField fx:id="totalOutputTextField" layoutX="247.0" layoutY="235.0" prefHeight="31.0" prefWidth="122.0" promptText="total here" />
-      <DatePicker fx:id="DueByDatePicker" layoutX="214.0" layoutY="322.0" prefHeight="31.0" prefWidth="187.0" promptText="datedue" />
+      <DatePicker fx:id="DueByDatePicker" layoutX="39.0" layoutY="318.0" prefHeight="31.0" prefWidth="187.0" promptText="datedue" />
       <Label fx:id="medicinePriceLabel" layoutX="208.0" layoutY="141.0" text="price" />
       <Label fx:id="treatmentPriceLabel" layoutX="208.0" layoutY="183.0" text="price" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
@@ -35,5 +33,6 @@
       <Label fx:id="updateStatus" layoutX="34.0" layoutY="240.0" prefHeight="21.0" prefWidth="196.0" />
       <Line endX="-91.0" endY="274.0" layoutX="123.0" layoutY="27.0" startX="435.0" startY="274.0" />
       <Label layoutX="208.0" layoutY="99.0" text="Price" />
+      <Label fx:id="totalOutputTextField" layoutX="289.0" layoutY="220.0" prefHeight="61.0" prefWidth="93.0" text="Total shown here" wrapText="true" />
    </children>
 </AnchorPane>

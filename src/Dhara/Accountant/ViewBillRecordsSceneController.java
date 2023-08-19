@@ -38,6 +38,16 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class ViewBillRecordsSceneController implements Initializable {
+    
+    private Accountant accountant; 
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
+
+    public Accountant getAccountant() {
+        return accountant;
+    }
 
     @FXML
     private TableView<Bill> billRecodsTableView;
@@ -71,7 +81,7 @@ public class ViewBillRecordsSceneController implements Initializable {
       billedByTableColoumn.setCellValueFactory(new PropertyValueFactory<>("dueBy"));
       paidStatusTableColoumn.setCellValueFactory(new PropertyValueFactory<>("paidStatus"));
     
-    Accountant.readBillLists(paidBillList, pendingBillList);
+    accountant.readBillLists(paidBillList, pendingBillList);
     
     
     billRecodsTableView.setItems(paidBillList);
@@ -113,20 +123,18 @@ private void searchButtonOnClick(ActionEvent event) {
     
             
     @FXML
-    private void backButtonOnClick(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("BillMenuItemScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void backButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("BillMenuItemScene.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        BillMenuItemSceneController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
     }
 
     @FXML

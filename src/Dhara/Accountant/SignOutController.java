@@ -4,6 +4,7 @@
  */
 package Dhara.Accountant;
 
+import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,26 +26,51 @@ import javafx.stage.Stage;
  */
 public class SignOutController implements Initializable {
 
+    private Accountant accountant;
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
+
+    public Accountant getAccountant() {
+        return accountant;
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void signoutOnClick(ActionEvent event) {
-         Parent login=null;
+        Parent login = null;
         try {
             login = FXMLLoader.load(getClass().getResource("/CommonScenes/StartScene.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(SignOutController.class.getName()).log(Level.SEVERE, null, ex);
         }
         Scene scene1 = new Scene(login);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene1);
         window.show();
     }
-    
+
+    @FXML
+    private void noButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("AccountantDashboard.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        AccountantDashboardController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
+    }
+
 }
