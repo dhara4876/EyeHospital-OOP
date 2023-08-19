@@ -76,7 +76,7 @@ private Accountant accountant;
     public void initialize(URL url, ResourceBundle rb) {
  
    
-    
+       
      amountTableColoumn.setCellValueFactory(new PropertyValueFactory<>("totalDue"));
     dueBytableColoumn.setCellValueFactory(new PropertyValueFactory<>("dueBy"));
      patientIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
@@ -85,7 +85,7 @@ private Accountant accountant;
 
     Accountant.readBillLists(paidBillList, pendingBillList);
 
-    
+     System.out.println("yas" + paidBillList+pendingBillList);
     pendingBillTable.setItems(pendingBillList);
 
         // TODO

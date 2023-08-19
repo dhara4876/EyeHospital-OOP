@@ -26,8 +26,8 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#addPatientDetailsOnClick" text="Add Patient Details" />
                   <MenuItem mnemonicParsing="false" onAction="#editDetailsOnClick" text="edit patient details" />
-                  <MenuItem mnemonicParsing="false" onAction="#admitPatientOnClick" text="AdmitPatient" />
-                  <MenuItem mnemonicParsing="false" onAction="#viewAdmittedPatientOnClick" text="View Admitted Patients" />
+                  <MenuItem mnemonicParsing="false" onAction="#admitPatientOnClickYas" text="AdmitPatient" />
+                  <MenuItem mnemonicParsing="false" text="View Admitted Patients" />
                   <MenuItem mnemonicParsing="false" onAction="#patientDetailsOnClick" text="View Patient Details" />
                   <MenuItem mnemonicParsing="false" onAction="#dischargePatientOnClick" text="Discharge patient" />
                </items>

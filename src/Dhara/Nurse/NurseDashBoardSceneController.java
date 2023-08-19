@@ -125,41 +125,13 @@ public class NurseDashBoardSceneController implements Initializable {
  
     
 
-    @FXML
     private void admitPatientOnClick(ActionEvent event) {
-         try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdmitPatientScene.fxml"));
-        Parent root = loader.load();
-
-       
-        AdmitPatientSceneController b = loader.getController();
-
         
-        b.setNurse(nurse);
-
-        nurseDashboardBorderpane.setCenter(root);
-    } catch (IOException ex) {
-        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
-    }
     }
     
 
-    @FXML
     private void viewAdmittedPatientOnClick(ActionEvent event) {
-         try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewAssignedtasksScene.fxml"));
-        Parent root = loader.load();
-
-       
-        ViewAssignedtasksSceneController b = loader.getController();
-
-        
-        b.setNurse(nurse);
-
-        nurseDashboardBorderpane.setCenter(root);
-    } catch (IOException ex) {
-        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
-    }
+         
     }
 
     
@@ -215,6 +187,28 @@ public class NurseDashBoardSceneController implements Initializable {
 
         
         b.setNurse(nurse);
+
+        nurseDashboardBorderpane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+
+
+
+    @FXML
+    private void admitPatientOnClickYas(ActionEvent event) {
+         try {
+             System.out.println("nurse is abt to be ");
+        //AdmitPatientSceneController.passNurse(nurse);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdmitPatientScene.fxml"));
+        Parent root = loader.load();
+
+       
+        //AdmitPatientSceneController b = loader.getController();
+
+         
+            // System.out.println("nurse pased"+ nurse.getName());
 
         nurseDashboardBorderpane.setCenter(root);
     } catch (IOException ex) {

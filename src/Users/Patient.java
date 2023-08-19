@@ -5,15 +5,20 @@
 package Users;
 
 import CommonScenes.RegisterSceneController;
+import Model.Bill;
 import Model.LoginInfo;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -21,14 +26,34 @@ import java.util.logging.Logger;
  */
 public class Patient extends User implements Serializable {
     private static final long serialVersionUID = 345L;
-    private Boolean addmitted;
+    private Boolean admittedStatus;
     private String patientNotes;
    
+    
+    public void markAsadmitted() {
+        this.admittedStatus = true;
+    }
 
     public Patient(String name, int ID, String password, String email, String gender, LocalDate DOB) {
         super(name, ID, password, email, gender, DOB);
-        this.addmitted = false;
+        this.admittedStatus = false;
         this.patientNotes = "";
+    }
+
+    public Boolean getAdmittedStatus() {
+        return admittedStatus;
+    }
+
+    public void setAdmittedStatus(Boolean admittedStatus) {
+        this.admittedStatus = admittedStatus;
+    }
+
+    public String getPatientNotes() {
+        return patientNotes;
+    }
+
+    public void setPatientNotes(String patientNotes) {
+        this.patientNotes = patientNotes;
     }
     
         
@@ -108,5 +133,6 @@ public class Patient extends User implements Serializable {
     }
     return false;
 }
+
 
     }
