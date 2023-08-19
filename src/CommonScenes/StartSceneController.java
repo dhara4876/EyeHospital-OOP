@@ -88,6 +88,7 @@ public class StartSceneController implements Initializable {
     }
     
 
+    @FXML
     private void tempbuttonOnClick(ActionEvent event) throws IOException, ClassNotFoundException {
         
     

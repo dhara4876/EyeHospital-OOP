@@ -23,6 +23,7 @@ public class Patient extends User implements Serializable {
     private static final long serialVersionUID = 345L;
     private Boolean addmitted;
     private String patientNotes;
+   
 
     public Patient(String name, int ID, String password, String email, String gender, LocalDate DOB) {
         super(name, ID, password, email, gender, DOB);
