@@ -77,9 +77,9 @@ public class AddEmployeeController implements Initializable {
      * Initializes the controller class.
      */
     
-        Alert idNumError = new Alert(Alert.AlertType.WARNING, "Error, ID must be a number only, less than 5 digits!");
-    Alert salaryNumError = new Alert(Alert.AlertType.WARNING, "Error, enter valid salary!");
-    Alert idExistsError = new Alert(Alert.AlertType.WARNING, "Error, ID exists, choose another!");
+        Alert idNumError = new Alert(Alert.AlertType.WARNING, "ID must be a number less than 5 digits!");
+    Alert salaryNumError = new Alert(Alert.AlertType.WARNING, "Salary must be a number");
+    Alert idExistsError = new Alert(Alert.AlertType.WARNING, "ID already exists ");
     Alert passError = new Alert(Alert.AlertType.WARNING, "Error, password must be at least 6 characters long!");
     Alert emailError = new Alert(Alert.AlertType.WARNING, "Error, valid email address!");
     Alert failure = new Alert(Alert.AlertType.WARNING, "Error, add new employee failed!");

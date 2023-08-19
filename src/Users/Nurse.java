@@ -26,6 +26,9 @@ import javafx.collections.ObservableList;
 public class Nurse extends Employee implements Serializable{
     private static final long serialVersionUID = 345L; 
     
+    
+    //public static boolean admitPatient(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
+    
      
 
 
