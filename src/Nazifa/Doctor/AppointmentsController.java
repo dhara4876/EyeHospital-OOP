@@ -37,7 +37,7 @@ public class AppointmentsController implements Initializable {
     private void makeAppointmentButtonOnClick(ActionEvent event) {
         Parent login = null;
         try {
-            login = FXMLLoader.load(getClass().getResource("DocDashboard.fxml"));
+            login = FXMLLoader.load(getClass().getResource("MakeAppointmentScene.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(PrescriptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,7 +51,7 @@ public class AppointmentsController implements Initializable {
     private void viewAppointmentsButtonOnClick(ActionEvent event) {
         Parent login = null;
         try {
-            login = FXMLLoader.load(getClass().getResource("DocDashboard.fxml"));
+            login = FXMLLoader.load(getClass().getResource("viewAppointments.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(PrescriptionController.class.getName()).log(Level.SEVERE, null, ex);
         }

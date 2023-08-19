@@ -51,7 +51,7 @@ public class TestsController implements Initializable {
     private void viewTestButtonOnClick(ActionEvent event) {
         Parent login = null;
         try {
-            login = FXMLLoader.load(getClass().getResource("DocDashboard.fxml"));
+            login = FXMLLoader.load(getClass().getResource("ViewTestsScene.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(PrescriptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -65,7 +65,7 @@ public class TestsController implements Initializable {
     private void assignTestButtonOnClick(ActionEvent event) {
         Parent login = null;
         try {
-            login = FXMLLoader.load(getClass().getResource("DocDashboard.fxml"));
+            login = FXMLLoader.load(getClass().getResource("AssignTestsScene.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(PrescriptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
