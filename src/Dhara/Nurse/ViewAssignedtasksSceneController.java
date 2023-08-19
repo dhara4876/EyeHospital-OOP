@@ -4,6 +4,7 @@
  */
 package Dhara.Nurse;
 
+import Users.Nurse;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,7 +18,22 @@ import javafx.scene.control.TableView;
  *
  * @author Asus
  */
+
+
+  
 public class ViewAssignedtasksSceneController implements Initializable {
+    
+    private Nurse nurse; 
+
+    public Nurse getNurse() {
+        return nurse;
+    }
+
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
+    }
+    
+
 
     @FXML
     private TableView<?> taskTableView;

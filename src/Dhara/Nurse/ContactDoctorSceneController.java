@@ -4,6 +4,7 @@
  */
 package Dhara.Nurse;
 
+import Users.Nurse;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,7 +19,16 @@ import javafx.scene.control.TextField;
  * @author Asus
  */
 public class ContactDoctorSceneController implements Initializable {
+  private Nurse nurse; 
 
+    public Nurse getNurse() {
+        return nurse;
+    }
+
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
+    }
+    
     @FXML
     private ComboBox<?> chooseDoctorComboBox;
     @FXML
