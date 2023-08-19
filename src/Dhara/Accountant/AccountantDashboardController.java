@@ -54,43 +54,76 @@ public class AccountantDashboardController implements Initializable {
 
     @FXML
     private void InsuranceOnClick(ActionEvent event) {
-         try {
-            Parent root = FXMLLoader.load(getClass().getResource("InsuranceMenuItemScene.fxml"));
-            accountantDashBoardBorderPane.setCenter(root);
-        } catch (IOException ex) {
-            Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InsuranceMenuItemScene.fxml"));
+        Parent root = loader.load();
+
+       
+        InsuranceMenuItemSceneController b = loader.getController();
+
+        
+        b.setAccountant(accountant);
+
+        accountantDashBoardBorderPane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     @FXML
     private void BIllOnClick(ActionEvent event) {
-         try {
-            Parent root = FXMLLoader.load(getClass().getResource("BillMenuItemScene.fxml"));
-            accountantDashBoardBorderPane.setCenter(root);
-        } catch (IOException ex) {
-            Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+          try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BillMenuItemScene.fxml"));
+        Parent root = loader.load();
+
+       
+        BillMenuItemSceneController b = loader.getController();
+
+        
+        b.setAccountant(accountant);
+
+        accountantDashBoardBorderPane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     @FXML
     private void expinditureOnClick(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("ExpenditureMenuItem.fxml"));
-            accountantDashBoardBorderPane.setCenter(root);
-        } catch (IOException ex) {
-            Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+           try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ExpenditureMenuItem.fxml"));
+        Parent root = loader.load();
+
+       
+        ExpenditureMenuItemController b = loader.getController();
+
+        
+        b.setAccountant(accountant);
+
+        accountantDashBoardBorderPane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
     
     
 @FXML
 private void signOutOnClick(ActionEvent event) {
-    try {
-        Parent root = FXMLLoader.load(getClass().getResource("SignOut.fxml"));
+     try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SignOut.fxml"));
+        Parent root = loader.load();
+
+       
+        SignOutController b = loader.getController();
+
+        
+        b.setAccountant(accountant);
+
         accountantDashBoardBorderPane.setCenter(root);
     } catch (IOException ex) {
         Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
     }
+
 }
 
 

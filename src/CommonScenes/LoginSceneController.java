@@ -50,11 +50,12 @@ public class LoginSceneController implements Initializable {
     private TextField passwordTextField;
     @FXML
     private TextField enterIdTextField;
-     Alert idError = new Alert(Alert.AlertType.WARNING, "Error, enter a valid ID!");
-    Alert noPass = new Alert(Alert.AlertType.WARNING, "Error, enter password!");
-    Alert someError = new Alert(Alert.AlertType.WARNING, "Error, enter proper login info!");
-    Alert noUser = new Alert(Alert.AlertType.WARNING, "Error, user not found");
-    Alert wrongPW = new Alert(Alert.AlertType.WARNING, "Error, wrong password");
+    
+    Alert userNotFound = new Alert(Alert.AlertType.WARNING, "user does not exist");
+    Alert incorrectPass = new Alert(Alert.AlertType.WARNING, "incorrect password");
+    Alert idWrong = new Alert(Alert.AlertType.WARNING, "ID invalid");
+    Alert miscError = new Alert(Alert.AlertType.WARNING, "Id or password incorrect");
+    Alert passEmpty = new Alert(Alert.AlertType.WARNING, "password field empty");
 
     /**
      * Initializes the controller class.
@@ -67,22 +68,22 @@ public class LoginSceneController implements Initializable {
     @FXML
     private void onClickLoginButton(ActionEvent event) {
         if (enterIdTextField.getText() == null || enterIdTextField.getText().trim().isEmpty() || !User.isNumeric(enterIdTextField.getText())){
-            idError.show();
+            idWrong.show();
             
         }
-        else if (passwordTextField.getText() == null || passwordTextField.getText().trim().isEmpty()) {noPass.show();}
+        else if (passwordTextField.getText() == null || passwordTextField.getText().trim().isEmpty()) {passEmpty.show();}
         else {
             try {
                 int id = Integer.parseInt(enterIdTextField.getText());
                 String pass = passwordTextField.getText();
-                int login = User.userLogin(id, pass);
+                int logIn = User.userLogin(id, pass);
                 
-                switch(login){
-                    case 0: someError.show(); break;        //Some exception
-                    case 1: noUser.show(); break;                  //User not found in database
-                    case 2: wrongPW.show(); break;                  //Authorisation failed
+                switch(logIn){
+                    case 0: miscError.show(); break;        
+                    case 1: userNotFound.show(); break;                  
+                    case 2: incorrectPass.show(); break;                  
                     case 3:
-                        System.out.println("Login Successful - Doctor");                         //Doctor authenticated
+                                               
                         Parent doctorDashboard = null;
                         FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("/Nazifa/Doctor/DocDashboard.fxml"));
                         doctorDashboard = (Parent) doctorLoader.load(); // /nazifa/Doctor/DoctorWelcomeScene.fxml
@@ -96,7 +97,7 @@ public class LoginSceneController implements Initializable {
                         doctorStage.show();
                         break;
                     case 4:
-                        System.out.println("Login Successful - Patient");                          //Patient authenticated
+                                           
                         Parent patientDashboard = null;
                         FXMLLoader patientLoader = new FXMLLoader(getClass().getResource("/Nazifa/Patient/PatientDashboardScene.fxml"));
                         patientDashboard = (Parent) patientLoader.load();
@@ -110,7 +111,7 @@ public class LoginSceneController implements Initializable {
                         patientStage.show();
                         break;
                     case 5:
-                        System.out.println("Login Successful - Pharmacist");                       //Pharmacist authenticated
+                                         
                         Parent pharmacistDashboard = null;
                         FXMLLoader pharmaLoader = new FXMLLoader(getClass().getResource("/Nushrat/PharmacistDashboardScene.fxml"));
                         pharmacistDashboard = (Parent) pharmaLoader.load();
@@ -124,7 +125,7 @@ public class LoginSceneController implements Initializable {
                         pharmaStage.show();
                         break;
                     case 6:
-                        System.out.println("Login Successful - Nurse");                            //Nurse authenticated
+                                                 
                         Parent nurseDashboard = null;
                         FXMLLoader nurseLoader = new FXMLLoader(getClass().getResource("/Dhara/Nurse/NurseDashBoardScene.fxml"));
                         nurseDashboard = (Parent) nurseLoader.load();
@@ -138,7 +139,7 @@ public class LoginSceneController implements Initializable {
                         nurseStage.show();
                         break;
                     case 7:
-                        System.out.println("Login Successful - Director");                //Managing Director authenticated
+                                       
                         Parent directorDashboard = null;
                         FXMLLoader directorLoader = new FXMLLoader(getClass().getResource("/Daiyan/DirectorDashboardScene.fxml"));
                         directorDashboard = (Parent) directorLoader.load();
@@ -152,7 +153,7 @@ public class LoginSceneController implements Initializable {
                         directorStage.show();
                         break;
                     case 8:
-                        System.out.println("Login Successful - Accountant");                  //Accounts Officer authenticated
+                        System.out.println("");                  //Accounts Officer authenticated
                         Parent accountsOfficerDashboard = null;
                         FXMLLoader accountsLoader = new FXMLLoader(getClass().getResource("/Dhara/Accountant/AccountantDashboard.fxml"));
                         accountsOfficerDashboard = (Parent) accountsLoader.load();

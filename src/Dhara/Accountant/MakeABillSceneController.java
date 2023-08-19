@@ -49,8 +49,6 @@ public class MakeABillSceneController implements Initializable {
     private Label updateStatus;
     @FXML
     private Label treatmentPriceLabel;
-    @FXML
-    private TextField addAccountantId;
 
     public Accountant getAccountant() {
         return accountant;
@@ -75,7 +73,7 @@ public class MakeABillSceneController implements Initializable {
 
     private ComboBox<Integer> patientComboBox;
     @FXML
-    private TextField totalOutputTextField;
+    private Label totalOutputTextField;
 
     private ArrayList<Medicine> medList = new ArrayList<>();
     private ArrayList<Treatment> treatmentList = new ArrayList<>();
@@ -111,7 +109,7 @@ public class MakeABillSceneController implements Initializable {
         
         
         
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             medicineQuantityComboBox.getItems().add(Integer.toString(i));
             treatmentQuantityComboBox.getItems().add(Integer.toString(i));
         }
@@ -145,7 +143,7 @@ public class MakeABillSceneController implements Initializable {
     @FXML
     private void addBillOnClick(ActionEvent event) {
         
-        Boolean addStatus = Accountant.addNewBill(Integer.valueOf(patientIdTextField.getText()), Integer.valueOf(addAccountantId.getText()), Integer.valueOf(totalOutputTextField.getText()), DueByDatePicker.getValue());
+        Boolean addStatus = Accountant.addNewBill(Integer.valueOf(patientIdTextField.getText()), accountant.getID(), Integer.valueOf(totalOutputTextField.getText()), DueByDatePicker.getValue());
         if (addStatus) {
             Alert a = new Alert(AlertType.INFORMATION);
             a.setContentText("New Bill added");
@@ -184,21 +182,20 @@ public class MakeABillSceneController implements Initializable {
 
     }
     @FXML
-    private void backButtonOnClick(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("BillMenuItemScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+    private void backButtonOnClick(ActionEvent event) throws IOException {
+
+        Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("BillMenuItemScene.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        BillMenuItemSceneController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
+
     }
 
     @FXML
