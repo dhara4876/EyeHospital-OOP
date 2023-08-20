@@ -98,7 +98,7 @@ private void searchButtonOnClick(ActionEvent event) {
     ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
     ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
 
-    Accountant.readBillLists(paidBillList, pendingBillList);
+    this.accountant.readBillLists(paidBillList, pendingBillList);
 
     FilteredList<Bill> filteredPaidBillList = new FilteredList<>(paidBillList);
     filteredPaidBillList.setPredicate(bill -> {
@@ -143,7 +143,7 @@ private void loadAllOnClick(ActionEvent event) {
      ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
     ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
 
-    Accountant.readBillLists(paidBillList, pendingBillList);
+    this.accountant.readBillLists(paidBillList, pendingBillList);
     billRecodsTableView.setItems(paidBillList); 
     searchPatientidTextfield.clear();
 }

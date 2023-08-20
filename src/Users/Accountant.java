@@ -85,7 +85,7 @@ public class Accountant extends Employee implements Serializable{
         }
     }
     //goal 2
-public  static void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill> pendingBillList) {
+public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill> pendingBillList) {
     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("BillObjects.bin"))) {
         while (true) {
             Bill bill = (Bill) ois.readObject();
@@ -364,7 +364,7 @@ public  static void readBillLists(ObservableList<Bill> paidBillList, ObservableL
 
     @Override
     public String toString() {
-        return "Accountant{" + '}';
+        return super.toString();
     }
 
 

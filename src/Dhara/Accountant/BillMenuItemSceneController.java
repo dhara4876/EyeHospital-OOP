@@ -43,6 +43,7 @@ private Accountant accountant;
 
     public void setAccountant(Accountant accountant) {
         this.accountant = accountant;
+        System.out.println("Bill menu:"+accountant.toString());
     }
 
     public Accountant getAccountant() {
@@ -65,7 +66,7 @@ private Accountant accountant;
 
     @FXML
     private void onClickUpdatePendingBillStatusButton(ActionEvent event) throws IOException {
-         Parent parent = null;
+        Parent parent = null;
         FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("UpdateBillStatusScene.fxml"));
         parent = (Parent) accountantLoader.load();
         Scene accountantScene = new Scene(parent);
