@@ -39,7 +39,7 @@ public class Accountant extends Employee implements Serializable{
     private static final long serialVersionUID = 345L;
     
    //goal 1
-    public static boolean addNewBill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
+    public boolean addNewBill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
         
         Bill newBill = new Bill(
                 patientId,
@@ -137,7 +137,7 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
   
           //goal 7
         
-        public static ObservableList<Bill> readAllBillsList(){
+    public static ObservableList<Bill> readAllBillsList(){
         ObservableList<Bill> billList = FXCollections.observableArrayList();
         Bill i;
         ObjectInputStream ois = null;

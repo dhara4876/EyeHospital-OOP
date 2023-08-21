@@ -16,6 +16,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
@@ -26,6 +27,8 @@ import javafx.collections.ObservableList;
  */
 public class Patient extends User implements Serializable {
     private static final long serialVersionUID = 345L;
+
+    
     private Boolean admittedStatus;
     private String patientNotes;
    
@@ -132,7 +135,22 @@ public class Patient extends User implements Serializable {
         }
     }
     return false;
-}
-
-
     }
+
+    public static ArrayList<Integer> loadPatientIDs() {
+        ArrayList<Integer> idList = new ArrayList<>();
+        Patient i;
+        ObjectInputStream ois = null;
+        try{
+            ois = new ObjectInputStream (new FileInputStream("Patient.bin"));
+            while(true){
+                i = (Patient) ois.readObject();
+                System.out.println("The patient u read: "+ i.toString());
+                idList.add(i.getID());
+            }
+        }
+        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
+        System.out.println(idList);
+        return idList;
+    }
+}

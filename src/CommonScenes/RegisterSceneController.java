@@ -87,7 +87,7 @@ private Patient toAdd;
             idNumError.show();
             return;
         }
-        if (User.userLogin(Integer.parseInt(id), "") == 2) {
+        if (User.tryToLogin(Integer.parseInt(id), "") == 2) {
             idExistsError.show();
             return;
         }
@@ -124,7 +124,7 @@ private Patient toAdd;
             failureNull.show();
             return;
         }
-         toAdd = new Patient(name, ID, password, email, gender, DOB);
+        toAdd = new Patient(name, ID, password, email, gender, DOB);
 
         if (toAdd.Register(toAdd)) {
             success.show();
