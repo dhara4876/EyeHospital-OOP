@@ -20,6 +20,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#viewAssignmentOnClick" text="View AssignedTasks" />
                   <MenuItem mnemonicParsing="false" onAction="#requestForDocOnClick" text="Request for Doctor" />
+                  <MenuItem mnemonicParsing="false" onAction="#signOutOnClick" text="Sign Out" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Patient">
@@ -33,11 +34,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#lineChartOnClick" text="Admitted over time" />
                </items>
             </Menu>
-          <Menu mnemonicParsing="false" text="SignOut">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
         </menus>
       </MenuBar>
    </top>

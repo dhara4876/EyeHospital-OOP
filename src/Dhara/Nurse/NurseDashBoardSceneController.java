@@ -240,5 +240,24 @@ public class NurseDashBoardSceneController implements Initializable {
         Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
     }
     }
+
+    @FXML
+    private void signOutOnClick(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SignOut.fxml"));
+        Parent root = loader.load();
+
+       
+        SignOutController b = loader.getController();
+
+        
+        b.setNurse(nurse);
+
+        nurseDashboardBorderpane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+    }
     
 }

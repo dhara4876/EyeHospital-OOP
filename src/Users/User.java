@@ -5,7 +5,9 @@
 package Users;
 
 import CommonScenes.RegisterSceneController;
+import Model.FeedBack;
 import Model.LoginInfo;
+import Model.Resignation;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -263,5 +265,95 @@ public abstract class User implements Serializable{
         } catch(NumberFormatException e){return false;}
     }
 
+    public static boolean addNewResignation(Integer employeeID, String resignationReason){
+        
+        Resignation newResignation = new Resignation(
+                employeeID,
+                resignationReason
+                );
+               
+                
+                
+        System.out.println("Resignation made:"+newResignation.toString());
+
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+
+            f = new File("Resignation.bin");
+
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            oos.writeObject(newResignation);
+            oos.close();
+            return true;
+            
+        } catch (IOException e) {
+            if(oos!=null){
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            return false;
+       
+        }
+    }
+    
+    public static boolean addFeedBack(String FeedBack){
+        
+        FeedBack newFeedBack = new FeedBack(
+               FeedBack
+                );
+               
+                
+                
+        System.out.println("FeedBack made:"+newFeedBack.toString());
+
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+
+            f = new File("FeedBack.bin");
+
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            oos.writeObject(newFeedBack);
+            oos.close();
+            return true;
+            
+        } catch (IOException e) {
+            if(oos!=null){
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            return false;
+       
+        }
+    }
+    
+    
 }
 
