@@ -125,35 +125,6 @@ public class NurseDashBoardSceneController implements Initializable {
  
     
 
-    private void admitPatientOnClick(ActionEvent event) {
-        
-    }
-    
-
-    private void viewAdmittedPatientOnClick(ActionEvent event) {
-         
-    }
-
-    
-
-    @FXML
-    private void patientDetailsOnClick(ActionEvent event) {
-         try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewPatientDetailsScene.fxml"));
-        Parent root = loader.load();
-
-       
-        ViewPatientDetailsSceneController b = loader.getController();
-
-        
-        b.setNurse(nurse);
-
-        nurseDashboardBorderpane.setCenter(root);
-    } catch (IOException ex) {
-        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    
-    }
 
  
 
@@ -209,6 +180,60 @@ public class NurseDashBoardSceneController implements Initializable {
 
          
             // System.out.println("nurse pased"+ nurse.getName());
+
+        nurseDashboardBorderpane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+
+    @FXML
+    private void patientChartOnClick(ActionEvent event) {
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PatientPieChart.fxml"));
+        Parent root = loader.load();
+
+       
+        PatientPieChartController b = loader.getController();
+
+        
+        b.setNurse(nurse);
+
+        nurseDashboardBorderpane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+
+    @FXML
+    private void patientInfoPdf(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PatientPieChart.fxml"));
+        Parent root = loader.load();
+
+       
+        PatientPieChartController b = loader.getController();
+
+        
+        b.setNurse(nurse);
+
+        nurseDashboardBorderpane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+
+    @FXML
+    private void lineChartOnClick(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LineChartPatientAdmission.fxml"));
+        Parent root = loader.load();
+
+       
+        LineChartPatientAdmissionController b = loader.getController();
+
+        
+        b.setNurse(nurse);
 
         nurseDashboardBorderpane.setCenter(root);
     } catch (IOException ex) {

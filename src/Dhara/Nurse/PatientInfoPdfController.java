@@ -4,42 +4,33 @@
  */
 package Dhara.Nurse;
 
-import Users.Nurse;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
  *
  * @author Asus
  */
-public class ViewPatientDetailsSceneController implements Initializable {
-  private Nurse nurse; 
+public class PatientInfoPdfController implements Initializable {
 
-    public Nurse getNurse() {
-        return nurse;
-    }
-
-    public void setNurse(Nurse nurse) {
-        this.nurse = nurse;
-    }
     @FXML
-    private TextField enterPatientIdTextField;
+    private TableView<?> patientTableView;
     @FXML
-    private TableColumn<?, ?> patientIdTableColoumn;
+    private TableColumn<?, ?> IdTableColoumn;
     @FXML
-    private TableColumn<?, ?> patientNameTableColoumn;
+    private TableColumn<?, ?> NameTableColoumn;
     @FXML
-    private TableColumn<?, ?> gendertableColoumn;
+    private TableColumn<?, ?> genderTableColoumn;
     @FXML
-    private TableColumn<?, ?> DOBtablecoloumn;
+    private TableColumn<?, ?> DOBTableColoumn;
     @FXML
-    private TableColumn<?, ?> admittedStatusTableColoumn;
+    private TableColumn<?, ?> emailTableColoumn;
 
     /**
      * Initializes the controller class.
@@ -50,7 +41,7 @@ public class ViewPatientDetailsSceneController implements Initializable {
     }    
 
     @FXML
-    private void searchButtonOnClick(ActionEvent event) {
+    private void onClickMakePdf(ActionEvent event) {
     }
     
 }

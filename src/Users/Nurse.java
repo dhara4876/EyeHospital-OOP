@@ -6,6 +6,7 @@ package Users;
 
 import Model.Bill;
 import Model.LoginInfo;
+import Model.PatientDetails;
 import Model.Task;
 import java.io.EOFException;
 import java.io.File;
@@ -16,11 +17,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 
 /**
  *
@@ -199,11 +202,191 @@ public class Nurse extends Employee implements Serializable{
         }
     }
     
-      
-      
-       
-       
+public boolean editPatientDetails(int patientId, String updatedDetails) {
+    // Load the patient with the specified ID
+    Patient patientToUpdate = null;
+    
+    List<Patient> updatedPatients = new ArrayList<>();
+
+    // Load existing patients and update the one to be changed
+    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("patient.bin"))) {
+        List<Patient> patients = (List<Patient>) ois.readObject();
+
+        for (Patient patient : patients) {
+            if (patient.getID() == patientId) {
+               
+                patientToUpdate = patient;
+            }
+            updatedPatients.add(patient);
+        }
+    } catch (IOException | ClassNotFoundException e) {
+        e.printStackTrace();
+        System.err.println("Error loading patient data.");
+        return false; // Return false to indicate failure
+    }
+    
+    // If the patient exists, update and save the list
+    if (patientToUpdate != null) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("patient.bin"))) {
+            oos.writeObject(updatedPatients);
+            System.out.println("Patient details updated and saved successfully.");
+            return true; // Return true to indicate success
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error saving patient data.");
+        }
+    } else {
+        System.out.println("Patient not found.");
+    }
+    
+    return false; // Return false if the patient was not found
 }
+ 
+  public boolean addPatientDetails(Integer patientID, String patientDetails, Integer nurseId){
+        
+        PatientDetails newDetails = new PatientDetails(
+                patientID,
+                patientDetails,
+                nurseId
+                );
+               
+                
+                
+        System.out.println("PatientDetails made:"+newDetails.toString());
+
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+
+            f = new File("PatientDetails.bin");
+
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            oos.writeObject(newDetails);
+            oos.close();
+            return true;
+            
+        } catch (IOException e) {
+            if(oos!=null){
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Nurse.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            return false;
+       
+        }
+  }
+     
+          public static ObservableList<Patient> readPatientList(){
+        ObservableList<Patient> patientList = FXCollections.observableArrayList();
+        Patient i;
+        ObjectInputStream ois = null;
+        try{
+            ois = new ObjectInputStream (new FileInputStream("Patient.bin"));
+            while(true){
+                i = (Patient) ois.readObject();
+                System.out.println("The patient u read: "+i.toString());
+                patientList.add(i);
+            }
+        }
+        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
+        System.out.println(patientList);
+        return patientList;
+        
+    }
+          
+    public ObservableList<Task> getTasksForNurse() {
+        ObservableList<Task> nurseTasks = FXCollections.observableArrayList();
+        
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Task.bin"))) {
+            while (true) {
+                Task task = (Task) ois.readObject();
+                if (task.getReciverId().equals(this.getID())) { 
+                    nurseTasks.add(task);
+                }
+            }
+        } catch (EOFException e) {
+            // End of file reached
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error reading Task.bin: " + e.getMessage());
+        }
+        
+        return nurseTasks;
+    }
+
+    private void updateTaskFile() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Task.bin"))) {
+            ObservableList<Task> nurseTasks = getTasksForNurse(); // Get the tasks associated with the nurse
+            for (Task task : nurseTasks) {
+                oos.writeObject(task);
+            }
+            System.out.println("Task list updated and written to Task.bin");
+        } catch (IOException e) {
+            System.out.println("Error writing updated task list to file");
+        }
+    }
+    
+    public void markTaskCompleted(Task task) {
+        ObservableList<Task> nurseTasks = getTasksForNurse();
+        nurseTasks.remove(task);
+        updateTaskFile();
+    }
+ 
+   public static List<XYChart.Data<LocalDate, Integer>> getAdmittedPatientsChartData() {
+    List<XYChart.Data<LocalDate, Integer>> chartData = new ArrayList<>();
+
+    ObservableList<Patient> admittedPatientList = Nurse.getAdmittedPatientsFromPatientFile();
+
+    for (Patient patient : admittedPatientList) {
+        if (patient.getAdmittedStatus() && patient.getAdmittedDate() != null) {
+            LocalDate admissionDate = patient.getAdmittedDate();
+            int patientId = patient.getID(); // Replace with the actual patient ID property
+
+            XYChart.Data<LocalDate, Integer> dataPoint = new XYChart.Data<>(admissionDate, patientId);
+            chartData.add(dataPoint);
+        }
+    }
+
+    return chartData;
+} 
+    
+    public static ObservableList<Patient> getAdmittedPatientsFromPatientFile() {
+        List<Patient> admittedPatients = new ArrayList<>();
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Patient.bin"))) {
+            while (true) {
+                Patient patient = (Patient) ois.readObject();
+                if (patient.getAdmittedStatus()) {
+                    admittedPatients.add(patient);
+                }
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error reading Patient.bin: " + e.getMessage());
+        }
+
+        // Create an ObservableList from the List
+        ObservableList<Patient> admittedPatientsObservableList = FXCollections.observableArrayList(admittedPatients);
+        return admittedPatientsObservableList;
+    }
+    
+    
+}
+  
+  
+  
+  
+
 
 //public static boolean addPatientDetails
 //public static boolean viewPatientDetails

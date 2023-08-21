@@ -24,7 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author Asus
  */
 public class DischargePatientController implements Initializable {
- private Nurse nurse; 
+
     @FXML
     private TableColumn<Patient, Integer> patientIDTableColoumn;
     @FXML
@@ -34,7 +34,7 @@ public class DischargePatientController implements Initializable {
     ObservableList<Patient> nonAdmittedPatientList = FXCollections.observableArrayList();
     @FXML
     private TableView<Patient> patientTableView;
-
+ private Nurse nurse; 
     public Nurse getNurse() {
         return nurse;
     }
@@ -63,10 +63,10 @@ public class DischargePatientController implements Initializable {
         Patient selectedPatient = patientTableView.getSelectionModel().getSelectedItem();
         if (selectedPatient != null) {
 
-            selectedPatient.markAsadmitted();
+            selectedPatient.markAsaDischarged();
 
-            nonAdmittedPatientList.remove(selectedPatient);
-            admittedPatientList.add(selectedPatient);
+            admittedPatientList.remove(selectedPatient);
+            nonAdmittedPatientList.add(selectedPatient);
 
             Nurse.updatePatientAdmittedStatus(admittedPatientList, nonAdmittedPatientList);
 

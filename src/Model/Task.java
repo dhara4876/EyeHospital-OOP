@@ -15,13 +15,13 @@ public class Task implements Serializable{
     private Integer reciverId;
     private Integer senderId;
     private String details;
-    private Boolean completedStatus;
-
+    
+ 
     public Task(Integer reciverId, Integer senderId, String details) {
         this.reciverId = reciverId;
         this.senderId = senderId;
         this.details = details;
-        this.completedStatus = false;
+        
     }
 
     public Integer getReciverId() {
@@ -48,19 +48,13 @@ public class Task implements Serializable{
         this.details = details;
     }
 
-    public Boolean getCompletedStatus() {
-        return completedStatus;
-    }
-
-    public void setCompletedStatus(Boolean completedStatus) {
-        this.completedStatus = completedStatus;
-    }
-
     @Override
     public String toString() {
-        return "Task{" + "reciverId=" + reciverId + ", senderId=" + senderId + ", details=" + details + ", completedStatus=" + completedStatus + '}';
+        return "Task{" + "reciverId=" + reciverId + ", senderId=" + senderId + ", details=" + details + '}';
     }
-    
+
+   
+
     
     
 }

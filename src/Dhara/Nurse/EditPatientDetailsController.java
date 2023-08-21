@@ -15,8 +15,7 @@ import javafx.fxml.Initializable;
  * @author Asus
  */
 public class EditPatientDetailsController implements Initializable {
- private Nurse nurse; 
-
+private Nurse nurse; 
     public Nurse getNurse() {
         return nurse;
     }

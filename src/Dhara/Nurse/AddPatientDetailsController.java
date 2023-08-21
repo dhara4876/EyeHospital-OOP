@@ -4,13 +4,16 @@
  */
 package Dhara.Nurse;
 
+import Model.Cart;
 import Users.Nurse;
 import Users.Patient;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
@@ -20,13 +23,11 @@ import javafx.scene.control.TextArea;
  * @author Asus
  */
 public class AddPatientDetailsController implements Initializable {
-
-    private Nurse nurse; 
+private Nurse nurse; 
     @FXML
-    private ComboBox<Integer> patientidComboBox;
+    private ComboBox<Integer> patientIDComboBox;
     @FXML
-    private TextArea detailsTextArea;
-
+    private TextArea detailsTextField;
     public Nurse getNurse() {
         return nurse;
     }
@@ -37,14 +38,32 @@ public class AddPatientDetailsController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         patientidComboBox.getItems().addAll(Patient.loadPatientIDs());
+        System.out.println("nurse read"+ this.nurse.getName());
+         patientIDComboBox.getItems().addAll(Patient.loadPatientIDs());
+
         // TODO
     }    
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
+       
+        
+
+        Integer patientIdRead = patientIDComboBox.getValue();
+        if (patientIdRead==null) {unfill.show(); return;}
+        String details = detailsTextField.getText();
+        if (details.isEmpty()){unfill.show(); return;}
+       
+        
+        Boolean addStatus = this.nurse.addPatientDetails(patientIdRead, details, this.nurse.getID());
+        if (addStatus) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("patient Details added");
+            a.showAndWait();
+        }
     }
     
 }

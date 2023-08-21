@@ -17,6 +17,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
@@ -30,17 +31,30 @@ public class Patient extends User implements Serializable {
 
     
     private Boolean admittedStatus;
-    private String patientNotes;
+    private LocalDate admittedDate;
+
+    public LocalDate getAdmittedDate() {
+        return admittedDate;
+    }
+
+    public void setAdmittedDate(LocalDate admittedDate) {
+        this.admittedDate = admittedDate;
+    }
    
     
     public void markAsadmitted() {
         this.admittedStatus = true;
+        this.admittedDate = LocalDate.now();
+    }
+    
+     public void markAsaDischarged() {
+        this.admittedStatus = false;
     }
 
     public Patient(String name, int ID, String password, String email, String gender, LocalDate DOB) {
         super(name, ID, password, email, gender, DOB);
         this.admittedStatus = false;
-        this.patientNotes = "";
+        this.admittedDate = null;
     }
 
     public Boolean getAdmittedStatus() {
@@ -51,14 +65,23 @@ public class Patient extends User implements Serializable {
         this.admittedStatus = admittedStatus;
     }
 
-    public String getPatientNotes() {
-        return patientNotes;
+    public LocalDate getAdmmittedDate() {
+        return admittedDate;
     }
 
-    public void setPatientNotes(String patientNotes) {
-        this.patientNotes = patientNotes;
+    public void setAdmmittedDate(LocalDate admmittedDate) {
+        this.admittedDate = admmittedDate;
     }
-    
+
+    public static List<Patient> getPatientList() {
+        return patientList;
+    }
+
+    public static void setPatientList(List<Patient> patientList) {
+        Patient.patientList = patientList;
+    }
+
+   
         
         
     
@@ -153,4 +176,17 @@ public class Patient extends User implements Serializable {
         System.out.println(idList);
         return idList;
     }
+    
+    private static List<Patient> patientList = new ArrayList<>();
+
+    public static Patient getPatientById(int patientId) {
+        for (Patient patient : patientList) {
+            if (patient.getID() == patientId) {
+                return patient;
+            }
+        }
+        return null; // Patient not found
+    }
+    
+    
 }
