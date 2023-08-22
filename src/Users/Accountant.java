@@ -232,13 +232,13 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
         
      //goal 5
     
-    public boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue){
+    public boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue, String Details){
         
         
         InsuranceRecord newInsurance = new InsuranceRecord(
                 item,
                 insuranceAmount,
-                dateOfIssue);
+                dateOfIssue, Details);
         System.out.println("Insurance made:"+newInsurance.toString());
 
         File f = null;
@@ -284,7 +284,7 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
         InsuranceRecord i;
         ObjectInputStream ois = null;
         try{
-            ois = new ObjectInputStream (new FileInputStream("InsuranceObjects.bin"));
+            ois = new ObjectInputStream (new FileInputStream("InsuranceRecords.bin"));
             while(true){
                 i = (InsuranceRecord) ois.readObject();
                 System.out.println("The Insurance u read: "+i.toString());

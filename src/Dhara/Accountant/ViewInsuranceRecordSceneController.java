@@ -5,6 +5,7 @@
 package Dhara.Accountant;
 
 import CommonScenes.StartSceneController;
+import Model.ExpenseRecord;
 import Model.InsuranceRecord;
 import Users.Accountant;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -33,6 +35,8 @@ import javafx.stage.Stage;
 public class ViewInsuranceRecordSceneController implements Initializable {
     
     private Accountant accountant; 
+    @FXML
+    private TextArea detailsTextField;
 
     public void setAccountant(Accountant accountant) {
         this.accountant = accountant;
@@ -64,7 +68,6 @@ public class ViewInsuranceRecordSceneController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void addInsuranceInstanceonClick(ActionEvent event) {
         try {
             Parent scene2Parent = FXMLLoader.load(getClass().getResource("CreateInsuranceRecordScene.fxml"));
@@ -83,6 +86,12 @@ public class ViewInsuranceRecordSceneController implements Initializable {
 
     @FXML
     private void viewDetailsOnButton(ActionEvent event) {
+         InsuranceRecord selectedRecord = InsuranceTableView.getSelectionModel().getSelectedItem();
+    
+    if (selectedRecord != null) {
+       
+        detailsTextField.setText(selectedRecord.getDetails());
+    }
         
     }
 

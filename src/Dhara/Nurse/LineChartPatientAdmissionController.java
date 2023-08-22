@@ -33,7 +33,7 @@ public class LineChartPatientAdmissionController implements Initializable {
     }
 
     @FXML
-    private LineChart<LocalDate, Integer> patientAdmittedLineChart;
+    private LineChart<String, Integer> patientAdmittedLineChart;
     @FXML
     private NumberAxis patientsYaxis;
     @FXML
@@ -50,10 +50,10 @@ public class LineChartPatientAdmissionController implements Initializable {
     }    
 
     private void initializeChart() {
-         List<XYChart.Data<LocalDate, Integer>> chartData = Nurse.getAdmittedPatientsChartData();
+         List<XYChart.Data<String, Integer>> chartData = Nurse.getAdmittedPatientsChartData();
 
         
-        XYChart.Series<LocalDate, Integer> series = new XYChart.Series<>();
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
         series.setName("Admitted Patients");
         series.getData().addAll(chartData);
 

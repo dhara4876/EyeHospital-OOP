@@ -51,8 +51,8 @@ public class AdmitPatientSceneController implements Initializable {
         //System.out.println("passed nurse check" + staticNurse.getName());
         //System.out.println("this is nusre name" + nurse.getName());
         // TODO
-        patientIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("senderId"));
-        admittedStatusTableColoumn.setCellValueFactory(new PropertyValueFactory<>("details"));
+        patientIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        admittedStatusTableColoumn.setCellValueFactory(new PropertyValueFactory<>("admittedStatus"));
 
         Nurse.readPatientLists(admittedPatientList, nonAdmittedPatientList);
         System.out.println("printing" + admittedPatientList + "list 2" + nonAdmittedPatientList);

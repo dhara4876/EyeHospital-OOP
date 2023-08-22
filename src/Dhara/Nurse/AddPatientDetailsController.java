@@ -41,7 +41,7 @@ private Nurse nurse;
     Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("nurse read"+ this.nurse.getName());
+        
          patientIDComboBox.getItems().addAll(Patient.loadPatientIDs());
 
         // TODO

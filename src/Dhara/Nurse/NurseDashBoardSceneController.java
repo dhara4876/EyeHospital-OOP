@@ -208,11 +208,11 @@ public class NurseDashBoardSceneController implements Initializable {
     @FXML
     private void patientInfoPdf(ActionEvent event) {
          try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PatientPieChart.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PatientInfoPdf.fxml"));
         Parent root = loader.load();
 
        
-        PatientPieChartController b = loader.getController();
+        PatientInfoPdfController b = loader.getController();
 
         
         b.setNurse(nurse);
