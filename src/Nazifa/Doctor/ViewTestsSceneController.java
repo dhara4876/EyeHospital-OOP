@@ -59,17 +59,18 @@ public class ViewTestsSceneController implements Initializable {
     }    
 
     @FXML
-    private void backButtonOnClick(ActionEvent event) {
-        Parent login=null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("Tests.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(ViewTestsSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
+    private void backButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("Tests.fxml"));
+        parent = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(parent);
+
+        PrescriptionController d = doctorLoader.getController();
+        d.setDoctor(this.doctor);
+
+        Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
     }
     
 }
