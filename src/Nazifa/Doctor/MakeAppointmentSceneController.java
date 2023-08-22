@@ -4,6 +4,7 @@
  */
 package Nazifa.Doctor;
 
+import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -27,6 +29,15 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class MakeAppointmentSceneController implements Initializable {
+    
+    private Doctor doctor;
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     @FXML
     private TextField doctorIDTextField;
@@ -58,7 +69,13 @@ public class MakeAppointmentSceneController implements Initializable {
     }
 
     @FXML
-    private void postAppointmentButtonOnClick(ActionEvent event) {
-    }
-    
+    private void postAppointmentButtonOnClick(ActionEvent event) { /*
+        Boolean addAppointment = Doctor.addAppointment(ItemTextField.getText(), Double.parseDouble((amtTextField.getText())), DOIdatepicker.getValue());
+        if (addStatus) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("New Expense added");
+            a.showAndWait();
+        }*/
+    } 
+
 }

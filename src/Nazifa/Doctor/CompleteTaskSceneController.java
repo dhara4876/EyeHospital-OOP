@@ -4,6 +4,7 @@
  */
 package Nazifa.Doctor;
 
+import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +25,15 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class CompleteTaskSceneController implements Initializable {
+    
+    private Doctor doctor;
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     /**
      * Initializes the controller class.

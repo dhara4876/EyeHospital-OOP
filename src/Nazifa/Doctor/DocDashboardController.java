@@ -4,7 +4,7 @@
  */
 package Nazifa.Doctor;
 
-import Dhara.Accountant.AccountantDashboardController;
+
 import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
@@ -26,10 +26,8 @@ import javafx.scene.layout.BorderPane;
 
 
 public class DocDashboardController implements Initializable {
-    
-        private Doctor doctor;
-    @FXML
-    private BorderPane doctorDashBoardBorderPane;
+
+    private Doctor doctor;
 
     public Doctor getDoctor() {
         return doctor;
@@ -38,6 +36,9 @@ public class DocDashboardController implements Initializable {
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
+
+    @FXML
+    private BorderPane doctorDashBoardBorderPane;
 
     /**
      * Initializes the controller class.
@@ -54,6 +55,7 @@ public class DocDashboardController implements Initializable {
             doctorDashBoardBorderPane.setCenter(root);
         } catch (IOException ex) {
             Logger.getLogger(DocDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
 

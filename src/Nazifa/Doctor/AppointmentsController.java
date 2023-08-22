@@ -4,6 +4,7 @@
  */
 package Nazifa.Doctor;
 
+import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,54 +26,70 @@ import javafx.stage.Stage;
  */
 public class AppointmentsController implements Initializable {
 
+    private Doctor doctor;
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void makeAppointmentButtonOnClick(ActionEvent event) {
-        Parent login = null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("MakeAppointmentScene.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(PrescriptionController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
     }
 
     @FXML
-    private void viewAppointmentsButtonOnClick(ActionEvent event) {
-        Parent login = null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("viewAppointments.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(PrescriptionController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
+    private void makeAppointmentButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("MakeAppointmentScene.fxml"));
+        parent = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(parent);
+
+        MakeAppointmentSceneController d = doctorLoader.getController();
+        d.setDoctor(this.doctor);
+
+        Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
+
     }
 
     @FXML
-    private void backButtonOnClick(ActionEvent event) {
-        Parent login = null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("DocDashboard.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(AppointmentsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
+    private void viewAppointmentsButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("ViewAppointments.fxml"));
+        parent = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(parent);
+
+        ViewAppointmentsController d = doctorLoader.getController();
+        d.setDoctor(this.doctor);
+
+        Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
+
     }
-    
+
+    @FXML
+    private void backButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DocDashboard.fxml"));
+        parent = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(parent);
+
+        DocDashboardController d = doctorLoader.getController();
+        d.setDoctor(this.doctor);
+
+        Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
+
+    }
+
 }

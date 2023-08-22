@@ -4,6 +4,7 @@
  */
 package Nazifa.Doctor;
 
+import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +27,15 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class AddTreatmentController implements Initializable {
+    
+    private Doctor doctor;
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     @FXML
     private TextField treatmentNameTextField;
@@ -42,17 +52,19 @@ public class AddTreatmentController implements Initializable {
 
 
     @FXML
-    private void backButtonOnclick(ActionEvent event) {
-        Parent login = null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("DocDashboard.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(AddTreatmentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
+    private void backButtonOnclick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DocDashboard.fxml"));
+        parent = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(parent);
+
+        DocDashboardController d = doctorLoader.getController();
+        d.setDoctor(this.doctor);
+
+        Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
+        
     }
 
     @FXML

@@ -4,6 +4,8 @@
  */
 package Users;
 
+import Model.Appointment;
+import Model.Bill;
 import Model.LoginInfo;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -63,13 +65,47 @@ public class Doctor extends Employee implements Serializable {
     }
     
     
-    
+       public static boolean addNewAppointment(Integer DoctorID, LocalDate Date, String Time) {
 
-    
+        Appointment newAppointment = new Appointment(
+                DoctorID,
+                Date,
+                Time);
+
+        System.out.println("Appointment made:" + newAppointment.toString());
+
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+
+            f = new File("Appointment.bin");
+
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            oos.writeObject(newAppointment);
+            oos.close();
+            return true;
+
+        } catch (IOException e) {
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Doctor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            return false;
+
+        }
     }
-    
-   
-    
 
-
-    
+}

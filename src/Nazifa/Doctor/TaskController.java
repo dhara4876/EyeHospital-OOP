@@ -4,6 +4,7 @@
  */
 package Nazifa.Doctor;
 
+import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +27,15 @@ import javafx.stage.Stage;
  */
 public class TaskController implements Initializable {
 
+    private Doctor doctor;
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     /**
      * Initializes the controller class.
@@ -33,49 +43,54 @@ public class TaskController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void backButtonOnClick(ActionEvent event) {
-        Parent login = null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("DocDashboard.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(TaskController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
-    
     }
 
     @FXML
-    private void completeTasksButtonOnClick(ActionEvent event) {
-        Parent login = null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("CompleteTaskScene.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(TaskController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
+    private void backButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DocDashboard.fxml"));
+        parent = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(parent);
+
+        DocDashboardController d = doctorLoader.getController();
+        d.setDoctor(this.doctor);
+
+        Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
+
     }
 
     @FXML
-    private void assignTasksButtonOnClick(ActionEvent event) {
-        Parent login = null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("AssignTaskToNurseScene.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(TaskController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
+    private void completeTasksButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("CompleteTaskScene.fxml"));
+        parent = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(parent);
+
+        CompleteTaskSceneController d = doctorLoader.getController();
+        d.setDoctor(this.doctor);
+
+        Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
+
     }
-    
+
+    @FXML
+    private void assignTasksButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("AssignTaskToNurseScene.fxml"));
+        parent = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(parent);
+
+        AssignTaskToNurseSceneController d = doctorLoader.getController();
+        d.setDoctor(this.doctor);
+
+        Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
+
+    }
+
 }

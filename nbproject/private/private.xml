@@ -3,20 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/CommonScenes/LoginSceneController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/CommonScenes/StartSceneController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/AdmiitedPatient.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/UpdateBillStatusSceneController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/SeeMedicineBillChartReportController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/Resignation.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/PatientDetails.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/DocDashboardController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/ViewBillRecordsSceneController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/HROfficer.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Accountant.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/User.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/DocDashboard.fxml</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Director.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/DocDashboardController.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/AppointmentsController.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Doctor.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/MakeAppointmentSceneController.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/CreateInsuranceRecordSceneController.java</file>
         </group>
     </open-files>
 </project-private>

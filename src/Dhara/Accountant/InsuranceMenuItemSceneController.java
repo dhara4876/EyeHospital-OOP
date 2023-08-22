@@ -48,7 +48,7 @@ public class InsuranceMenuItemSceneController implements Initializable {
     @FXML
     private void makeNewInsuranceOnClick(ActionEvent event) throws IOException {
        
- Parent parent = null;
+        Parent parent = null;
         FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("CreateInsuranceRecordScene.fxml"));
         parent = (Parent) accountantLoader.load();
         Scene accountantScene = new Scene(parent);
@@ -56,7 +56,7 @@ public class InsuranceMenuItemSceneController implements Initializable {
         CreateInsuranceRecordSceneController d = accountantLoader.getController();
         d.setAccountant(this.accountant);
 
-        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        Stage accountantStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         accountantStage.setScene(accountantScene);
         accountantStage.show();
     }

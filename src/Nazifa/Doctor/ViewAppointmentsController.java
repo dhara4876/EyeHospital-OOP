@@ -4,7 +4,8 @@
  */
 package Nazifa.Doctor;
 
-import Model.Appointments;
+import Model.Appointment;
+import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -28,19 +29,29 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class ViewAppointmentsController implements Initializable {
+    
+    private Doctor doctor;
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
 
     @FXML
-    private TableView<Appointments> viewAppointmentsTableView;
+    private TableView<Appointment> viewAppointmentsTableView;
     @FXML
-    private TableColumn<Appointments, Integer> patientIDTableView;
+    private TableColumn<Appointment, Integer> patientIDTableView;
     @FXML
-    private TableColumn<Appointments, String> patientNameTableView;
+    private TableColumn<Appointment, String> patientNameTableView;
     @FXML
-    private TableColumn<Appointments, String> slotTableView;
+    private TableColumn<Appointment, String> slotTableView;
     @FXML
-    private TableColumn<Appointments, Integer> doctorIDTableView;
+    private TableColumn<Appointment, Integer> doctorIDTableView;
     @FXML
-    private TableColumn<Appointments, LocalDate> dateTableView;
+    private TableColumn<Appointment, LocalDate> dateTableView;
 
     /**
      * Initializes the controller class.
