@@ -31,12 +31,16 @@ import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
-
-
-
-
 
 /**
  * FXML Controller class
@@ -45,8 +49,8 @@ import javafx.stage.FileChooser;
  */
 public class PatientInfoPdfController implements Initializable {
 
-   
- private Nurse nurse;
+    private Nurse nurse;
+
     public Nurse getNurse() {
         return nurse;
     }
@@ -73,20 +77,76 @@ public class PatientInfoPdfController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         IdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        IdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
         NameTableColoumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         genderTableColoumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
         DOBTableColoumn.setCellValueFactory(new PropertyValueFactory<>("DOB"));
         emailTableColoumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-        
+
         patientTableView.setItems(Nurse.readAllPatientsList());
         // TODO
-    }    
+    }
 
     @FXML
-    private void onClickMakePdf(ActionEvent event) {
-        
-        
+    private void onClickMakePdf(ActionEvent event) throws FileNotFoundException, IOException, ClassNotFoundException {
+
+        String paraText = "";
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files", "*.pdf"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image files", ".jpg", ".bmp", "*.png"));
+        File f = fc.showSaveDialog(null);
+        if (f != null) {
+            PdfWriter pw = new PdfWriter(new FileOutputStream(f));
+            PdfDocument pdf = new PdfDocument(pw);
+            pdf.addNewPage();
+            Document doc = new Document(pdf);
+            doc.setLeftMargin(70);
+
+            // Read from a file and set the paratext to file read string.
+            try (FileInputStream fileInputStream = new FileInputStream("Patient.bin"); ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+
+                while (true) {
+
+                    Patient patient = (Patient) objectInputStream.readObject(); // Assuming your object class is named "Bill"
+
+                    // Display information from the Bill object in the TextField
+                    paraText += patient.toString() + "\n";
+                }
+            } // try block ends
+            catch (EOFException e) {
+                // End of file reached (EOFException thrown)
+                // No more objects to read, so we stop the loop
+
+                System.out.println("File has been read to the end.");
+            }
+
+            Paragraph para1 = new Paragraph(paraText);
+
+            // Custom behavior if you want then use
+            Text titleText = new Text("This is the TITLE of the pdf");
+            titleText.setFontSize(18f);
+            Paragraph pageTitle = new Paragraph(titleText);
+            pageTitle.setBold();    //OR titleText.setBold();
+
+            PdfFont font2 = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
+            PdfFont fontBold = PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
+
+            // Most important part here
+            doc.add(para1);
+
+            doc.close();
+
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("PDF Generated successfully!");
+            a.showAndWait();
+
+        } else {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("PDF Generation failed!");
+            a.showAndWait();
+        }
+
     }
-    
+
 }
+ 

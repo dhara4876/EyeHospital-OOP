@@ -42,6 +42,7 @@ public class ViewAssignedtasksSceneController implements Initializable {
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
          taskTableView.setItems(nurse.getTasksForNurse());
+         System.out.println("nusre"+ this.nurse.getName());
     }
     
 

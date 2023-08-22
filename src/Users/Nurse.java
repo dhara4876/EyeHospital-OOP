@@ -86,7 +86,7 @@ public class Nurse extends Employee implements Serializable{
 
     @Override
     public String toString() {
-        return "Nurse{" + '}';
+       return super.toString();
     }
 //common goal
    

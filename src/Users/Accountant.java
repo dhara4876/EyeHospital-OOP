@@ -6,7 +6,7 @@ package Users;
 
 import CommonScenes.RegisterSceneController;
 import Model.Bill;
-import Model.ChartData;
+
 import Model.ExpenseRecord;
 import Model.InsuranceRecord;
 import Model.LoginInfo;
