@@ -26,7 +26,6 @@
             <Menu mnemonicParsing="false" text="Patient">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#addPatientDetailsOnClick" text="Add Patient Details" />
-                  <MenuItem mnemonicParsing="false" onAction="#editDetailsOnClick" text="edit patient details" />
                   <MenuItem mnemonicParsing="false" onAction="#admitPatientOnClickYas" text="AdmitPatient" />
                   <MenuItem mnemonicParsing="false" onAction="#patientInfoPdf" text="Patient Info" />
                   <MenuItem mnemonicParsing="false" onAction="#patientChartOnClick" text="Admitted Chart" />
@@ -44,4 +43,7 @@
          </font>
       </Label>
    </center>
+   <bottom>
+      <Label fx:id="nurseDashboardLabel" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

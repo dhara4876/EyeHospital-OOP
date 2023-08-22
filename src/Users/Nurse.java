@@ -86,7 +86,7 @@ public class Nurse extends Employee implements Serializable{
 
     @Override
     public String toString() {
-        return "Nurse{" + '}';
+       return super.toString();
     }
 //common goal
    
@@ -249,7 +249,7 @@ public boolean editPatientDetails(int patientId, String updatedDetails) {
         PatientDetails newDetails = new PatientDetails(
                 patientID,
                 patientDetails,
-                nurseId
+                this.ID
                 );
                
                 

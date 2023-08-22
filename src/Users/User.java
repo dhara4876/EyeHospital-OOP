@@ -84,7 +84,7 @@ public abstract class User implements Serializable{
 
     @Override
     public String toString() {
-        return "User{" + "name=" + name + ", ID=" + ID + ", password=" + password + ", email=" + email + ", gender=" + gender + ", DOB=" + DOB + '}';
+        return "Name=" + name + ", ID=" + ID + ", password=" + password + ", email=" + email + ", gender=" + gender + ", DOB=" + DOB + '}';
     }
     //common 1
     public static int tryToLogin(int idcheck, String passcheck){

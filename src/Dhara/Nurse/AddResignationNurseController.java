@@ -4,9 +4,10 @@
  */
 package Dhara.Nurse;
 
-import Users.Nurse;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -14,15 +15,8 @@ import javafx.fxml.Initializable;
  *
  * @author Asus
  */
-public class EditPatientDetailsController implements Initializable {
-private Nurse nurse; 
-    public Nurse getNurse() {
-        return nurse;
-    }
+public class AddResignationNurseController implements Initializable {
 
-    public void setNurse(Nurse nurse) {
-        this.nurse = nurse;
-    }
     /**
      * Initializes the controller class.
      */
@@ -30,5 +24,9 @@ private Nurse nurse;
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void addResignationOnClick(ActionEvent event) {
+    }
     
 }

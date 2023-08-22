@@ -112,8 +112,10 @@ public class Patient extends User implements Serializable {
 
     @Override
     public String toString() {
-        return "Patient{" + '}';
+        return "Patient: " + super.toString() + "admittedStatus =" + admittedStatus + ", admittedDate = " + admittedDate + '}';
     }
+
+ 
 
    
     public boolean Register(Patient toAdd) {

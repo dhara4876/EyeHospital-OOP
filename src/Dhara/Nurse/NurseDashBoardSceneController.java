@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -28,12 +29,17 @@ public class NurseDashBoardSceneController implements Initializable {
     @FXML
     private BorderPane nurseDashboardBorderpane;
  private Nurse nurse;
+    @FXML
+    private Label nurseDashboardLabel;
     public Nurse getNurse() {
         return nurse;
     }
 
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
+        System.out.println("nurse set in dashboard"+ this.nurse.getName());
+         nurseDashboardLabel.setText("Name: "+ this.nurse.getName() + "  " + "ID: " + this.nurse.getID());
+        
     }
     
     
@@ -44,6 +50,8 @@ public class NurseDashBoardSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
+        
         // TODO
     }    
 
@@ -105,15 +113,16 @@ public class NurseDashBoardSceneController implements Initializable {
 
     @FXML
     private void addPatientDetailsOnClick(ActionEvent event) {
-          try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddPatientDetails.fxml"));
+         System.out.println("Nusre in button" + this.nurse.getName());
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddDetailsToPatient.fxml"));
         Parent root = loader.load();
 
        
-        AddPatientDetailsController b = loader.getController();
+        AddDetailsToPatientController b = loader.getController();
 
-        
-        b.setNurse(nurse);
+              System.out.println("nurse thats being passed" + this.nurse.getName());
+        b.setNurse(this.nurse);
 
         nurseDashboardBorderpane.setCenter(root);
     } catch (IOException ex) {
@@ -129,23 +138,7 @@ public class NurseDashBoardSceneController implements Initializable {
  
 
 
-    @FXML
-    private void editDetailsOnClick(ActionEvent event) {
-          try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditPatientDetails.fxml"));
-        Parent root = loader.load();
-
-       
-        EditPatientDetailsController b = loader.getController();
-
-        
-        b.setNurse(nurse);
-
-        nurseDashboardBorderpane.setCenter(root);
-    } catch (IOException ex) {
-        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    }
+    
 
     @FXML
     private void dischargePatientOnClick(ActionEvent event) {

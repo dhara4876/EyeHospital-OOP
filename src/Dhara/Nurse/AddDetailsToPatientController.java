@@ -4,11 +4,9 @@
  */
 package Dhara.Nurse;
 
-import Model.Cart;
 import Users.Nurse;
 import Users.Patient;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,39 +20,38 @@ import javafx.scene.control.TextArea;
  *
  * @author Asus
  */
-public class AddPatientDetailsController implements Initializable {
-private Nurse nurse; 
+public class AddDetailsToPatientController implements Initializable {
+    private Nurse nurse;
     @FXML
-    private ComboBox<Integer> patientIDComboBox;
+    private ComboBox<Integer> patientIDCB;
     @FXML
-    private TextArea detailsTextField;
+    private TextArea patientDetailsTextArea;
     public Nurse getNurse() {
         return nurse;
     }
 
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
+        System.out.println("nurse set in patientdeats"+ this.nurse.getName());
+        
     }
+    Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
+
+
     /**
      * Initializes the controller class.
      */
-    Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-         patientIDComboBox.getItems().addAll(Patient.loadPatientIDs());
-
         // TODO
+         patientIDCB.getItems().addAll(Patient.loadPatientIDs());
     }    
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
-       
-        
-
-        Integer patientIdRead = patientIDComboBox.getValue();
+       Integer patientIdRead = patientIDCB.getValue();
         if (patientIdRead==null) {unfill.show(); return;}
-        String details = detailsTextField.getText();
+        String details = patientDetailsTextArea.getText();
         if (details.isEmpty()){unfill.show(); return;}
        
         
@@ -65,5 +62,7 @@ private Nurse nurse;
             a.showAndWait();
         }
     }
+  
+    }
     
-}
+
