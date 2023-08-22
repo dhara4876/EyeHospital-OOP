@@ -249,7 +249,7 @@ public boolean editPatientDetails(int patientId, String updatedDetails) {
         PatientDetails newDetails = new PatientDetails(
                 patientID,
                 patientDetails,
-                nurseId
+                this.ID
                 );
                
                 

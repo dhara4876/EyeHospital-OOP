@@ -34,6 +34,7 @@ public class NurseDashBoardSceneController implements Initializable {
 
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
+        
     }
     
     
@@ -44,6 +45,7 @@ public class NurseDashBoardSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         // TODO
     }    
 
@@ -112,8 +114,8 @@ public class NurseDashBoardSceneController implements Initializable {
        
         AddPatientDetailsController b = loader.getController();
 
-        
-        b.setNurse(nurse);
+              System.out.println("nurse thats being passed" + this.nurse.getName());
+        b.setNurse(this.nurse);
 
         nurseDashboardBorderpane.setCenter(root);
     } catch (IOException ex) {

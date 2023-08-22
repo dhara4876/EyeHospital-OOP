@@ -34,6 +34,7 @@ private Nurse nurse;
 
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
+        System.out.println("nurse thats been passed in setter" + this.nurse.getName());
     }
     /**
      * Initializes the controller class.
@@ -41,7 +42,7 @@ private Nurse nurse;
     Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        System.out.println("nurse thats being passed in initalize" + this.nurse.getName());
          patientIDComboBox.getItems().addAll(Patient.loadPatientIDs());
 
         // TODO
