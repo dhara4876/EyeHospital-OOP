@@ -80,34 +80,38 @@ public class HROfficer extends Employee implements Serializable {
 
 public boolean addNewEmployee(String usertype, String name, int ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ) {
         String path = "";
-        Employee toAdd = null;
-        if (usertype=="Accountant"){
-            path = "Accountant.bin";
-            toAdd = new Accountant(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
-        }
-        else if (usertype=="Director"){
-            path = "Director.bin";
-            toAdd = new Director(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
-        }
-        else if (usertype=="Doctor"){
-            path = "Doctor.bin";
-            toAdd = new Doctor(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
-        }
-        else if (usertype=="HROfficer"){
-            path = "HROfficer.bin";
-            toAdd = new HROfficer(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
-        }
-        else if (usertype=="Optometrist"){
-            path = "Optometrist.bin";
-            toAdd = new Optometrist(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
-        }
-        else if (usertype=="Nurse"){
-            path = "Nurse.bin";
-            toAdd = new Nurse(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
-        }
-        else if (usertype=="Pharmacist"){
-            path = "Pharmacist.bin";
-            toAdd = new Pharmacist(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+        Employee employeeToAdd = null;
+        if (usertype != null) switch (usertype) {
+            case "Accountant":
+                path = "Accountant.bin";
+                employeeToAdd = new Accountant(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "Director":
+                path = "Director.bin";
+                employeeToAdd = new Director(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "Doctor":
+                path = "Doctor.bin";
+                employeeToAdd = new Doctor(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "HROfficer":
+                path = "HROfficer.bin";
+                employeeToAdd = new HROfficer(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "Optometrist":
+                path = "Optometrist.bin";
+                employeeToAdd = new Optometrist(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "Nurse":
+                path = "Nurse.bin";
+                employeeToAdd = new Nurse(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "Pharmacist":
+                path = "Pharmacist.bin";
+                employeeToAdd = new Pharmacist(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            default:
+                break;
         }
         
         
@@ -136,9 +140,9 @@ public boolean addNewEmployee(String usertype, String name, int ID, String passw
                 fos2 = new FileOutputStream(f2);
                 oos2 = new ObjectOutputStream(fos2);               
             }
-            LoginInfo toAddLogin = new LoginInfo(toAdd.getID(), toAdd.getPassword(), usertype);
-            oos.writeObject(toAdd);
-            oos2.writeObject(toAddLogin);
+            LoginInfo employeeToAddLogin = new LoginInfo(employeeToAdd.getID(), employeeToAdd.getPassword(), usertype);
+            oos.writeObject(employeeToAdd);
+            oos2.writeObject(employeeToAddLogin);
             oos.close();
             oos2.close();
             System.out.println("Employee add success");
@@ -153,8 +157,5 @@ public boolean addNewEmployee(String usertype, String name, int ID, String passw
             }
         }
         return false;
-      
-}}
-    
-
-    
+    }
+}

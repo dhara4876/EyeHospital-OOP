@@ -39,6 +39,7 @@ public class AccountantDashboardController implements Initializable {
 
     public void setAccountant(Accountant accountant) {
         this.accountant = accountant;
+        System.out.println("loaded:"+accountant.toString());
     }
 
     @FXML

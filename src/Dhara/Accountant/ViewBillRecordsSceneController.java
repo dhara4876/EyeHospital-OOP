@@ -38,11 +38,15 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class ViewBillRecordsSceneController implements Initializable {
-    
-    private Accountant accountant; 
+
+    private Accountant accountant;
 
     public void setAccountant(Accountant accountant) {
         this.accountant = accountant;
+        ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
+        ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
+        accountant.readBillLists(paidBillList, pendingBillList);
+        billRecodsTableView.setItems(paidBillList);
     }
 
     public Accountant getAccountant() {
@@ -71,57 +75,39 @@ public class ViewBillRecordsSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
-    ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
-
-    accountantIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("accountantId"));
-    billedOntableColoumn.setCellValueFactory(new PropertyValueFactory<>("billedOn"));
-     patientIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
-      totalTableColoumn.setCellValueFactory(new PropertyValueFactory<>("totalDue"));
-      billedByTableColoumn.setCellValueFactory(new PropertyValueFactory<>("dueBy"));
-      paidStatusTableColoumn.setCellValueFactory(new PropertyValueFactory<>("paidStatus"));
-    
-    accountant.readBillLists(paidBillList, pendingBillList);
-    
-    
-    billRecodsTableView.setItems(paidBillList);
+        accountantIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("accountantId"));
+        billedOntableColoumn.setCellValueFactory(new PropertyValueFactory<>("billedOn"));
+        patientIdTableColoumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
+        totalTableColoumn.setCellValueFactory(new PropertyValueFactory<>("totalDue"));
+        billedByTableColoumn.setCellValueFactory(new PropertyValueFactory<>("dueBy"));
+        paidStatusTableColoumn.setCellValueFactory(new PropertyValueFactory<>("paidStatus"));
     }
-        // TODO
 
-   
- 
-   
-@FXML
-private void searchButtonOnClick(ActionEvent event) {
-    String searchText = searchPatientidTextfield.getText().trim().toLowerCase();
+    @FXML
+    private void searchButtonOnClick(ActionEvent event) {
+        String searchText = searchPatientidTextfield.getText().trim().toLowerCase();
 
-    ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
-    ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
+        ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
+        ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
 
-    Accountant.readBillLists(paidBillList, pendingBillList);
+        this.accountant.readBillLists(paidBillList, pendingBillList);
 
-    FilteredList<Bill> filteredPaidBillList = new FilteredList<>(paidBillList);
-    filteredPaidBillList.setPredicate(bill -> {
-        if (searchText.isEmpty()) {
-            return true;
-        }
-        return String.valueOf(bill.getPatientId()).contains(searchText) ||
-               String.valueOf(bill.getTotalDue()).contains(searchText) ||
-               String.valueOf(bill.getBilledOn()).contains(searchText) ||
-               String.valueOf(bill.getDueBy()).contains(searchText) ||
-               String.valueOf(bill.getAccountantId()).contains(searchText) ||
-               String.valueOf(bill.getPaidStatus()).toLowerCase().contains(searchText);
-    });
+        FilteredList<Bill> filteredPaidBillList = new FilteredList<>(paidBillList);
+        filteredPaidBillList.setPredicate(bill -> {
+            if (searchText.isEmpty()) {
+                return true;
+            }
+            return String.valueOf(bill.getPatientId()).contains(searchText)
+                    || String.valueOf(bill.getTotalDue()).contains(searchText)
+                    || String.valueOf(bill.getBilledOn()).contains(searchText)
+                    || String.valueOf(bill.getDueBy()).contains(searchText)
+                    || String.valueOf(bill.getAccountantId()).contains(searchText)
+                    || String.valueOf(bill.getPaidStatus()).toLowerCase().contains(searchText);
+        });
 
-    billRecodsTableView.setItems(filteredPaidBillList);
-}
+        billRecodsTableView.setItems(filteredPaidBillList);
+    }
 
-
-
-
-        
-    
-            
     @FXML
     private void backButtonOnClick(ActionEvent event) throws IOException {
         Parent parent = null;
@@ -138,18 +124,13 @@ private void searchButtonOnClick(ActionEvent event) {
     }
 
     @FXML
+    private void loadAllOnClick(ActionEvent event) {
+        ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
+        ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
 
-private void loadAllOnClick(ActionEvent event) {
-     ObservableList<Bill> paidBillList = FXCollections.observableArrayList();
-    ObservableList<Bill> pendingBillList = FXCollections.observableArrayList();
-
-    Accountant.readBillLists(paidBillList, pendingBillList);
-    billRecodsTableView.setItems(paidBillList); 
-    searchPatientidTextfield.clear();
-}
-
-
-
+        this.accountant.readBillLists(paidBillList, pendingBillList);
+        billRecodsTableView.setItems(paidBillList);
+        searchPatientidTextfield.clear();
     }
-    
 
+}

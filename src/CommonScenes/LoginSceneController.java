@@ -69,14 +69,15 @@ public class LoginSceneController implements Initializable {
     private void onClickLoginButton(ActionEvent event) {
         if (enterIdTextField.getText() == null || enterIdTextField.getText().trim().isEmpty() || !User.isNumeric(enterIdTextField.getText())){
             idWrong.show();
-            
         }
-        else if (passwordTextField.getText() == null || passwordTextField.getText().trim().isEmpty()) {passEmpty.show();}
+        else if (passwordTextField.getText() == null || passwordTextField.getText().trim().isEmpty()) {
+            passEmpty.show();
+        }
         else {
             try {
                 int id = Integer.parseInt(enterIdTextField.getText());
                 String pass = passwordTextField.getText();
-                int logIn = User.userLogin(id, pass);
+                int logIn = User.tryToLogin(id, pass);
                 
                 switch(logIn){
                     case 0: miscError.show(); break;        
@@ -90,7 +91,7 @@ public class LoginSceneController implements Initializable {
                         Scene doctorScene = new Scene(doctorDashboard);
                         
                         DocDashboardController d = doctorLoader.getController();
-                        d.setDoctor((Doctor) User.getInstance(id, "Doctor"));
+                        d.setDoctor((Doctor) User.findUser(id, "Doctor"));
                         
                         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         doctorStage.setScene(doctorScene);
@@ -104,7 +105,7 @@ public class LoginSceneController implements Initializable {
                         Scene patientScene = new Scene(patientDashboard);
                         
                         PatientDashboardSceneController p = patientLoader.getController();
-                        p.setPatient((Patient) User.getInstance(id, "Patient"));
+                        p.setPatient((Patient) User.findUser(id, "Patient"));
                         
                         Stage patientStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         patientStage.setScene(patientScene);
@@ -118,7 +119,7 @@ public class LoginSceneController implements Initializable {
                         Scene pharmaScene = new Scene(pharmacistDashboard);
                         
                         PharmacistDashboardSceneController ph = pharmaLoader.getController();
-                        ph.setPharmacist((Pharmacist) User.getInstance(id, "Pharmacist"));
+                        ph.setPharmacist((Pharmacist) User.findUser(id, "Pharmacist"));
                         
                         Stage pharmaStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         pharmaStage.setScene(pharmaScene);
@@ -132,7 +133,7 @@ public class LoginSceneController implements Initializable {
                         Scene nurseScene = new Scene(nurseDashboard);
                         
                         NurseDashBoardSceneController nu = nurseLoader.getController();
-                        nu.setNurse((Nurse) User.getInstance(id, "Nurse"));
+                        nu.setNurse((Nurse) User.findUser(id, "Nurse"));
                         
                         Stage nurseStage  = (Stage)((Node)event.getSource()).getScene().getWindow();
                         nurseStage.setScene(nurseScene);
@@ -146,7 +147,7 @@ public class LoginSceneController implements Initializable {
                         Scene directorScene = new Scene(directorDashboard);
                         
                         DirectorDashboardSceneController di = directorLoader.getController();
-                        di.setDirector((Director) User.getInstance(id, "Director"));
+                        di.setDirector((Director) User.findUser(id, "Director"));
                         
                         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         directorStage.setScene(directorScene);
@@ -160,35 +161,35 @@ public class LoginSceneController implements Initializable {
                         Scene accountsScene = new Scene(accountsOfficerDashboard);
                         
                         AccountantDashboardController a = accountsLoader.getController();
-                        a.setAccountant((Accountant) User.getInstance(id, "Accountant"));
+                        a.setAccountant((Accountant) User.findUser(id, "Accountant"));
                         
                         Stage accountsStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         accountsStage.setScene(accountsScene);
                         accountsStage.show();
                         break;
                     case 9:
-                        System.out.println("Login Successful - HR Officer");                       //HR Officer authenticated
+                        System.out.println("Login Successful - HR Officer");                      
                         Parent HRDashboard = null;
                         FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("/Daiyan/AddEmployee.fxml"));
                         HRDashboard = (Parent) HRLoader.load();
                         Scene HRScene = new Scene(HRDashboard);
                         
                         AddEmployeeController hr = HRLoader.getController();
-                        hr.setHrOfficer((HROfficer) User.getInstance(id, "HROfficer"));
+                        hr.setHrOfficer((HROfficer) User.findUser(id, "HROfficer"));
                         
                         Stage hrStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         hrStage.setScene(HRScene);
                         hrStage.show();
                         break;
                     case 10:
-                        System.out.println("Login Successful - Optometrist");                   //Lab Technician authenticated
+                        System.out.println("Login Successful - Optometrist");
                         Parent OptometristDashboard = null;
                         FXMLLoader labLoader = new FXMLLoader(getClass().getResource("/Nushrat/OptometristDashboardScene.fxml"));
                         OptometristDashboard = (Parent) labLoader.load();
                         Scene labScene = new Scene(OptometristDashboard);
                         
                         OptometristDashboardSceneController o = labLoader.getController();
-                        o.setOptometrist((Optometrist) User.getInstance(id, "Optometrist"));
+                        o.setOptometrist((Optometrist) User.findUser(id, "Optometrist"));
                         
                         Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         labStage.setScene(labScene);

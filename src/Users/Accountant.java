@@ -39,7 +39,7 @@ public class Accountant extends Employee implements Serializable{
     private static final long serialVersionUID = 345L;
     
    //goal 1
-    public static boolean addNewBill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
+    public boolean addNewBill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
         
         Bill newBill = new Bill(
                 patientId,
@@ -85,7 +85,7 @@ public class Accountant extends Employee implements Serializable{
         }
     }
     //goal 2
-public  static void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill> pendingBillList) {
+public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill> pendingBillList) {
     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("BillObjects.bin"))) {
         while (true) {
             Bill bill = (Bill) ois.readObject();
@@ -137,7 +137,7 @@ public  static void readBillLists(ObservableList<Bill> paidBillList, ObservableL
   
           //goal 7
         
-        public static ObservableList<Bill> readAllBillsList(){
+    public static ObservableList<Bill> readAllBillsList(){
         ObservableList<Bill> billList = FXCollections.observableArrayList();
         Bill i;
         ObjectInputStream ois = null;
@@ -232,13 +232,13 @@ public  static void readBillLists(ObservableList<Bill> paidBillList, ObservableL
         
      //goal 5
     
-    public boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue){
+    public boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue, String Details){
         
         
         InsuranceRecord newInsurance = new InsuranceRecord(
                 item,
                 insuranceAmount,
-                dateOfIssue);
+                dateOfIssue, Details);
         System.out.println("Insurance made:"+newInsurance.toString());
 
         File f = null;
@@ -284,7 +284,7 @@ public  static void readBillLists(ObservableList<Bill> paidBillList, ObservableL
         InsuranceRecord i;
         ObjectInputStream ois = null;
         try{
-            ois = new ObjectInputStream (new FileInputStream("InsuranceObjects.bin"));
+            ois = new ObjectInputStream (new FileInputStream("InsuranceRecords.bin"));
             while(true){
                 i = (InsuranceRecord) ois.readObject();
                 System.out.println("The Insurance u read: "+i.toString());
@@ -364,7 +364,7 @@ public  static void readBillLists(ObservableList<Bill> paidBillList, ObservableL
 
     @Override
     public String toString() {
-        return "Accountant{" + '}';
+        return super.toString();
     }
 
 

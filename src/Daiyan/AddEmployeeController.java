@@ -142,7 +142,7 @@ public class AddEmployeeController implements Initializable {
         String id = IDTextField.getText();
         if (id.isEmpty()) {failureNull.show();return;}
         if (!User.isNumeric(id) || id.length()>=5) {idNumError.show();return;}
-        if(User.userLogin(Integer.parseInt(id), "")==2) {idExistsError.show();return;}
+        if(User.tryToLogin(Integer.parseInt(id), "")==2) {idExistsError.show();return;}
         int ID = Integer.parseInt(id);
         
         String password = passwordTextField.getText();

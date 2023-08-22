@@ -4,14 +4,18 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Asus
  */
-public class PatientDetails {
+public class PatientDetails implements Serializable {
+    private static final long serialVersionUID = 345L;
+    
     private Integer patientID;
     private String patientDetails;
-    Integer nurseId;
+    private Integer nurseId;
 
     public PatientDetails(Integer patientID, String patientDetails, Integer nurseId) {
         this.patientID = patientID;

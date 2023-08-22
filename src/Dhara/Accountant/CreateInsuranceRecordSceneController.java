@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -31,6 +32,8 @@ import javafx.stage.Stage;
 public class CreateInsuranceRecordSceneController implements Initializable {
     
     private Accountant accountant; 
+    @FXML
+    private TextArea detailsTextArea;
 
     public void setAccountant(Accountant accountant) {
         this.accountant = accountant;
@@ -57,7 +60,7 @@ public class CreateInsuranceRecordSceneController implements Initializable {
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
-         Boolean addStatus = accountant.CreateInsuranceRecord(ItemTextField.getText(), Double.parseDouble((amtTextField.getText())),  DOIdatepicker.getValue() );
+         Boolean addStatus = accountant.CreateInsuranceRecord(ItemTextField.getText(), Double.parseDouble((amtTextField.getText())),  DOIdatepicker.getValue(), detailsTextArea.getText());
         if (addStatus) {
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setContentText("New Expense added");
