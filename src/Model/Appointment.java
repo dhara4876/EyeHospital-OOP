@@ -13,23 +13,24 @@ import java.time.LocalDate;
  */
 public class Appointment implements Serializable {
     private static final long serialVersionUID = 345L;
+
     private Integer DoctorID;
     private Integer PatientID;
     private LocalDate Date;
     private String Time;
     private Boolean CompletedStatus;
-    
+
     public void markAsBooked() {
         this.CompletedStatus = true;
     }
+
     public Appointment(Integer DoctorID, LocalDate Date, String Time) {
         this.DoctorID = DoctorID;
-       
+
         this.Date = Date;
         this.Time = Time;
-     this.PatientID = null;
+        this.PatientID = null;
         this.CompletedStatus = false;
-        }
-    
-        
+    }
+
 }
