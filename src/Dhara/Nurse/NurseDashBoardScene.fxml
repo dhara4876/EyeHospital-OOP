@@ -20,23 +20,19 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#viewAssignmentOnClick" text="View AssignedTasks" />
                   <MenuItem mnemonicParsing="false" onAction="#requestForDocOnClick" text="Request for Doctor" />
+                  <MenuItem mnemonicParsing="false" onAction="#signOutOnClick" text="Sign Out" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Patient">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#addPatientDetailsOnClick" text="Add Patient Details" />
-                  <MenuItem mnemonicParsing="false" onAction="#prescriptionPieChartOnClick" text="update prescription pie chart" />
-                  <MenuItem mnemonicParsing="false" onAction="#admitPatientOnClick" text="AdmitPatient" />
-                  <MenuItem mnemonicParsing="false" onAction="#viewAdmittedPatientOnClick" text="View Admitted Patients" />
-                  <MenuItem mnemonicParsing="false" onAction="#patientDetailsOnClick" text="View Patient Details" />
-                  <MenuItem mnemonicParsing="false" onAction="#ViewMedicineChartOnClick" text="View patient meds in chart" />
+                  <MenuItem mnemonicParsing="false" onAction="#admitPatientOnClickYas" text="AdmitPatient" />
+                  <MenuItem mnemonicParsing="false" onAction="#patientInfoPdf" text="Patient Info" />
+                  <MenuItem mnemonicParsing="false" onAction="#patientChartOnClick" text="Admitted Chart" />
+                  <MenuItem mnemonicParsing="false" onAction="#dischargePatientOnClick" text="Discharge patient" />
+                  <MenuItem mnemonicParsing="false" onAction="#lineChartOnClick" text="Admitted over time" />
                </items>
             </Menu>
-          <Menu mnemonicParsing="false" text="SignOut">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
         </menus>
       </MenuBar>
    </top>
@@ -47,4 +43,7 @@
          </font>
       </Label>
    </center>
+   <bottom>
+      <Label fx:id="nurseDashboardLabel" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

@@ -39,6 +39,7 @@ public class AccountantDashboardController implements Initializable {
 
     public void setAccountant(Accountant accountant) {
         this.accountant = accountant;
+       
     }
 
     @FXML
@@ -125,6 +126,42 @@ private void signOutOnClick(ActionEvent event) {
     }
 
 }
+
+    @FXML
+    private void resignationOnClick(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ResignationOnClick.fxml"));
+        Parent root = loader.load();
+
+       
+        ResignationOnClickController b = loader.getController();
+
+        
+        b.setAccountant(accountant);
+
+        accountantDashBoardBorderPane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+
+    @FXML
+    private void feedbackOnClick(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddFeedBackAccountant.fxml"));
+        Parent root = loader.load();
+
+       
+        AddFeedBackAccountantController b = loader.getController();
+
+        
+        b.setAccountant(accountant);
+
+        accountantDashBoardBorderPane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(AccountantDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
 
 
 }

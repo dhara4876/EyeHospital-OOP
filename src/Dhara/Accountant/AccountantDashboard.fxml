@@ -21,6 +21,8 @@
           <Menu mnemonicParsing="false" onAction="#signOutOnClick" text="Other">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#signOutOnClick" text="SignOut" />
+                  <MenuItem mnemonicParsing="false" onAction="#resignationOnClick" text="Resignation" />
+                  <MenuItem mnemonicParsing="false" onAction="#feedbackOnClick" text="Feedback" />
                </items></Menu>
         </menus>
       </MenuBar>

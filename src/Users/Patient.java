@@ -5,15 +5,22 @@
 package Users;
 
 import CommonScenes.RegisterSceneController;
+import Model.Bill;
 import Model.LoginInfo;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -21,16 +28,60 @@ import java.util.logging.Logger;
  */
 public class Patient extends User implements Serializable {
     private static final long serialVersionUID = 345L;
-    private Boolean addmitted;
-    private String patientNotes;
+
+    
+    private Boolean admittedStatus;
+    private LocalDate admittedDate;
+
+    public LocalDate getAdmittedDate() {
+        return admittedDate;
+    }
+
+    public void setAdmittedDate(LocalDate admittedDate) {
+        this.admittedDate = admittedDate;
+    }
    
+    
+    public void markAsadmitted() {
+        this.admittedStatus = true;
+        this.admittedDate = LocalDate.now();
+    }
+    
+     public void markAsaDischarged() {
+        this.admittedStatus = false;
+    }
 
     public Patient(String name, int ID, String password, String email, String gender, LocalDate DOB) {
         super(name, ID, password, email, gender, DOB);
-        this.addmitted = false;
-        this.patientNotes = "";
+        this.admittedStatus = false;
+        this.admittedDate = null;
     }
-    
+
+    public Boolean getAdmittedStatus() {
+        return admittedStatus;
+    }
+
+    public void setAdmittedStatus(Boolean admittedStatus) {
+        this.admittedStatus = admittedStatus;
+    }
+
+    public LocalDate getAdmmittedDate() {
+        return admittedDate;
+    }
+
+    public void setAdmmittedDate(LocalDate admmittedDate) {
+        this.admittedDate = admmittedDate;
+    }
+
+    public static List<Patient> getPatientList() {
+        return patientList;
+    }
+
+    public static void setPatientList(List<Patient> patientList) {
+        Patient.patientList = patientList;
+    }
+
+   
         
         
     
@@ -61,8 +112,10 @@ public class Patient extends User implements Serializable {
 
     @Override
     public String toString() {
-        return "Patient{" + '}';
+        return "Patient: " + super.toString() + "admittedStatus =" + admittedStatus + ", admittedDate = " + admittedDate + '}';
     }
+
+ 
 
    
     public boolean Register(Patient toAdd) {
@@ -107,6 +160,35 @@ public class Patient extends User implements Serializable {
         }
     }
     return false;
-}
-
     }
+
+    public static ArrayList<Integer> loadPatientIDs() {
+        ArrayList<Integer> idList = new ArrayList<>();
+        Patient i;
+        ObjectInputStream ois = null;
+        try{
+            ois = new ObjectInputStream (new FileInputStream("Patient.bin"));
+            while(true){
+                i = (Patient) ois.readObject();
+                System.out.println("The patient u read: "+ i.toString());
+                idList.add(i.getID());
+            }
+        }
+        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
+        System.out.println(idList);
+        return idList;
+    }
+    
+    private static List<Patient> patientList = new ArrayList<>();
+
+    public static Patient getPatientById(int patientId) {
+        for (Patient patient : patientList) {
+            if (patient.getID() == patientId) {
+                return patient;
+            }
+        }
+        return null; // Patient not found
+    }
+    
+    
+}

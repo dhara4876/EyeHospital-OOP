@@ -17,12 +17,24 @@ public class InsuranceRecord implements Serializable{
     private String item;
     private Double insuranceAmount;
     private LocalDate dateOfIssue;
+    private String Details;
 
-    public InsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue) {
+    public InsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue, String Details) {
         this.item = item;
         this.insuranceAmount = insuranceAmount;
         this.dateOfIssue = dateOfIssue;
+        this.Details = Details;
     }
+
+    public String getDetails() {
+        return Details;
+    }
+
+    public void setDetails(String Details) {
+        this.Details = Details;
+    }
+
+   
 
     public String getItem() {
         return item;
