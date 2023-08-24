@@ -65,9 +65,9 @@ public class ViewAssignedtasksSceneController implements Initializable {
 
     @FXML
     private void markAsDoneOnClick(ActionEvent event) {
-        Task selectedTask = taskTableView.getSelectionModel().getSelectedItem(); // Get selected task from the TableView
+        Task selectedTask = taskTableView.getSelectionModel().getSelectedItem(); 
     if (selectedTask != null) {
-        // Show a confirmation alert before marking the task as completed
+       
         Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
         confirmationAlert.setTitle("Confirm Completion");
         confirmationAlert.setHeaderText("Confirm Task Completion");

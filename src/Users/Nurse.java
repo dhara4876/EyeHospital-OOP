@@ -35,7 +35,7 @@ public class Nurse extends Employee implements Serializable{
     private static final long serialVersionUID = 345L; 
     
     
-    //public static boolean admitPatient(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
+ 
     
      
 
@@ -88,7 +88,7 @@ public class Nurse extends Employee implements Serializable{
     public String toString() {
        return super.toString();
     }
-//common goal
+
    
        public static void readPatientLists(ObservableList<Patient> admittedPatientList, ObservableList<Patient> nonAdmittedPatientList) {
     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Patient.bin"))) {
@@ -319,7 +319,7 @@ public boolean editPatientDetails(int patientId, String updatedDetails) {
                 }
             }
         } catch (EOFException e) {
-            // End of file reached
+           
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error reading Task.bin: " + e.getMessage());
         }
@@ -329,7 +329,7 @@ public boolean editPatientDetails(int patientId, String updatedDetails) {
 
     private void updateTaskFile() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Task.bin"))) {
-            ObservableList<Task> nurseTasks = getTasksForNurse(); // Get the tasks associated with the nurse
+            ObservableList<Task> nurseTasks = getTasksForNurse(); 
             for (Task task : nurseTasks) {
                 oos.writeObject(task);
             }
@@ -428,17 +428,22 @@ public boolean editPatientDetails(int patientId, String updatedDetails) {
         
     }
      
-   public String getPatientDetailsByID(int patientId) {
-        ObservableList<PatientDetails> patientDetailsList = readPatientDetailsList();
-        
-        for (PatientDetails details : patientDetailsList) {
-            if (details.getPatientID() == patientId) {
-                return details.getPatientDetails();
-            }
+   
+   
+   public List<PatientDetails> getPatientDetailsByPatientId(int patientId) {
+    ObservableList<PatientDetails> patientDetailsList = readPatientDetailsList();
+       List<PatientDetails> detailsList = new ArrayList<>();
+    
+    
+    for (PatientDetails details : patientDetailsList) {
+        if (details.getPatientID() == patientId) {
+            detailsList.add(details);
         }
-        
-        return "No details found for the patient.";
-    }  
+    }
+    
+    return detailsList;
+}
+
       
 }
   
