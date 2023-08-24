@@ -6,10 +6,11 @@ package Users;
 
 import CommonScenes.RegisterSceneController;
 import Model.Bill;
-import Model.ChartData;
+
 import Model.ExpenseRecord;
 import Model.InsuranceRecord;
 import Model.LoginInfo;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -25,6 +26,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.swing.text.Document;
+
+
+
 
 /**
  *
@@ -34,7 +39,7 @@ public class Accountant extends Employee implements Serializable{
     private static final long serialVersionUID = 345L;
     
    //goal 1
-    public static boolean addNewBill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
+    public boolean addNewBill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
         
         Bill newBill = new Bill(
                 patientId,
@@ -80,44 +85,90 @@ public class Accountant extends Employee implements Serializable{
         }
     }
     //goal 2
-    public static ObservableList<Bill> readBillList(){
-        ObservableList<Bill> BillList = FXCollections.observableArrayList();
-        Bill b;
+public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill> pendingBillList) {
+    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("BillObjects.bin"))) {
+        while (true) {
+            Bill bill = (Bill) ois.readObject();
+            System.out.println("Bill read: " + bill.toString());
+            if (bill.getPaidStatus()) {
+                paidBillList.add(bill);
+            } else {
+                pendingBillList.add(bill);
+            }
+        }
+    } catch (EOFException e) {
+        
+    } catch (IOException | ClassNotFoundException e) {
+        System.out.println("Error reading BillObjects.bin: " + e.getMessage());
+    }
+}
+    
+
+      //goal 3
+    
+  public static void editBillListAndRewrite(List<Bill> paidBillList, List<Bill> pendingBillList) {
+     try {
+        
+        File billFile = new File("BillObjects.bin");
+        if (billFile.exists()) {
+            billFile.delete();
+        }
+        
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("BillObjects.bin"))) {
+            
+            for (Bill bill : paidBillList) {
+                oos.writeObject(bill);
+            }
+            
+            
+            for (Bill bill : pendingBillList) {
+                oos.writeObject(bill);
+            }
+            
+            System.out.println("BillList updated and written to BillObjects.bin");
+        } catch (IOException e) {
+            System.out.println("Error writing updated BillList to file");
+        }
+    } catch (Exception e) {
+        System.out.println("Error deleting existing BillObjects.bin file");
+    }
+}
+  
+  
+          //goal 7
+        
+    public static ObservableList<Bill> readAllBillsList(){
+        ObservableList<Bill> billList = FXCollections.observableArrayList();
+        Bill i;
         ObjectInputStream ois = null;
         try{
             ois = new ObjectInputStream (new FileInputStream("BillObjects.bin"));
             while(true){
-                b = (Bill) ois.readObject();
-                System.out.println("The faculty u read: "+b.toString());
-                BillList.add(b);
+                i = (Bill) ois.readObject();
+                System.out.println("The Insurance u read: "+i.toString());
+                billList.add(i);
             }
         }
         catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
-        System.out.println(BillList);
-        return BillList;
+        System.out.println(billList);
+        return billList;
+        
     }
+  
+  // goal 4
+  
+
+
+
     
-   
-
-     
- 
-    
- 
-
-     
- 
-
-
-      //goal 3
-    
-    public static boolean CreateExpenseRecord(
-        Double Amount, String SpentOn, LocalDate DateSpent){
+    public boolean CreateExpenseRecord(
+        Double Amount, String SpentOn, LocalDate DateSpent, String Details){
         
         ExpenseRecord newExpense = new ExpenseRecord(
                 Amount,
                 SpentOn,
-                DateSpent
-                
+                DateSpent,
+                Details
                 );
         System.out.println("Expense record made:"+newExpense.toString());
 
@@ -126,7 +177,7 @@ public class Accountant extends Employee implements Serializable{
         ObjectOutputStream oos = null;
         try {
 
-            f = new File("BillObjects.bin");
+            f = new File("ExpenseRecords.bin");
 
             if (f.exists()) {
                 fos = new FileOutputStream(f, true);
@@ -154,8 +205,9 @@ public class Accountant extends Employee implements Serializable{
        
         }
     }
-    
-     //goal 4
+    //goal 3
+ 
+  
     
     public static ObservableList<ExpenseRecord> readExpenseRecordList() {
         ObservableList<ExpenseRecord> ExpenseList = FXCollections.observableArrayList();
@@ -175,16 +227,18 @@ public class Accountant extends Employee implements Serializable{
         return ExpenseList;
     }
         
+    
+    
         
      //goal 5
     
-    public static boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue){
+    public boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue, String Details){
         
         
         InsuranceRecord newInsurance = new InsuranceRecord(
                 item,
                 insuranceAmount,
-                dateOfIssue);
+                dateOfIssue, Details);
         System.out.println("Insurance made:"+newInsurance.toString());
 
         File f = null;
@@ -220,9 +274,8 @@ public class Accountant extends Employee implements Serializable{
        
         }
     }
-        
-        
-    
+
+      
     
   //goal 6
         
@@ -231,7 +284,7 @@ public class Accountant extends Employee implements Serializable{
         InsuranceRecord i;
         ObjectInputStream ois = null;
         try{
-            ois = new ObjectInputStream (new FileInputStream("BillObjects.bin"));
+            ois = new ObjectInputStream (new FileInputStream("InsuranceRecords.bin"));
             while(true){
                 i = (InsuranceRecord) ois.readObject();
                 System.out.println("The Insurance u read: "+i.toString());
@@ -251,6 +304,24 @@ public class Accountant extends Employee implements Serializable{
         super(name, ID, password, email, gender, DOB, Designation, Salary, DoJ);
     }
 
+    public LocalDate getDOJ() {
+        return DOJ;
+    }
+
+    public Integer getID() {
+        return ID;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public LocalDate getDOB() {
+        return DOB;
+    }
+
+    
+    
     public String getDesignation() {
         return designation;
     }
@@ -293,45 +364,10 @@ public class Accountant extends Employee implements Serializable{
 
     @Override
     public String toString() {
-        return "Accountant{" + '}';
+        return super.toString();
     }
 
-    @Override
-    public boolean Register() {
-      File f = null;
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
 
-        try {
-            f = new File("Accountant.bin");
-            if (f.exists()) {
-                fos = new FileOutputStream(f, true);
-                oos = new AppendableObjectOutputStream(fos);
-            } else {
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);
-            }
-
-            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "Accountant");
-            oos.writeObject(this);
-            oos.writeObject(toAddLogin);
-
-            oos.close();
-            System.out.println("Accountant added successfully");
-            return true;
-        } catch (IOException ex) {
-            Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (oos != null) {
-                    oos.close();
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(Accountant.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return false;
-    }
     }
     
     

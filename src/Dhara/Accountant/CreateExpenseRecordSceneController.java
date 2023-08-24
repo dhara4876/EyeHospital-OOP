@@ -11,6 +11,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -57,35 +60,41 @@ public class CreateExpenseRecordSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        //chooseSpendReasonComboBox.getItems().addAll()
-        
+      
+        ObservableList<String> items = FXCollections.observableArrayList(
+                "Machinery", "Tiles", "Bed", "Plumbing", "Electricity","Other"
+        );
+
+        chooseSpendReasonComboBox.setItems(items);
     }    
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
+        Boolean addStatus = accountant.CreateExpenseRecord(Double.parseDouble((addAmountTextField.getText())), chooseSpendReasonComboBox.getValue(),  expenseRecordDatePicker.getValue(),detailsTextField.getText() );
+        if (addStatus) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("New Expense added");
+            a.showAndWait();
+        }
         
     }
 
     @FXML
-    private void backButtonOnClick(ActionEvent event) {
-       try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("ExpenditureMenuItem.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void backButtonOnClick(ActionEvent event) throws IOException {
+      Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("ExpenditureMenuItem.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        ExpenditureMenuItemController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
+
     } 
     
 
-    @FXML
-    private void OnClickChooseSpendReason(ActionEvent event) {
-    }
     
 }

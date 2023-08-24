@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+
 public class HROfficer extends Employee implements Serializable {
     private static final long serialVersionUID = 345L;
     
@@ -76,66 +77,85 @@ public class HROfficer extends Employee implements Serializable {
   
   
     
-    public static ArrayList<Employee> getEmpList() {
-        ArrayList<Employee> empList = new ArrayList<Employee>();
-        ObjectInputStream ois = null;
-        try {
-            Employee emp;
-            ois = new ObjectInputStream(new FileInputStream("EmployeeData.bin"));
 
-            while (true) {
-                emp = (Employee) ois.readObject();
-                empList.add(emp);
-            }
-
-        } catch (Exception ex) {
-            try {
-                if (ois != null) {
-                    ois.close();
-                }
-            } catch (IOException e) {
-
-            }
-            return empList;
+public boolean addNewEmployee(String usertype, String name, int ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ) {
+        String path = "";
+        Employee employeeToAdd = null;
+        if (usertype != null) switch (usertype) {
+            case "Accountant":
+                path = "Accountant.bin";
+                employeeToAdd = new Accountant(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "Director":
+                path = "Director.bin";
+                employeeToAdd = new Director(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "Doctor":
+                path = "Doctor.bin";
+                employeeToAdd = new Doctor(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "HROfficer":
+                path = "HROfficer.bin";
+                employeeToAdd = new HROfficer(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "Optometrist":
+                path = "Optometrist.bin";
+                employeeToAdd = new Optometrist(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "Nurse":
+                path = "Nurse.bin";
+                employeeToAdd = new Nurse(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            case "Pharmacist":
+                path = "Pharmacist.bin";
+                employeeToAdd = new Pharmacist(name, ID, password, email, gender, DOB, Designation, Salary,  DoJ);
+                break;
+            default:
+                break;
         }
-    }
-
-    @Override
-    public boolean Register() {
+        
+        
         File f = null;
-        FileOutputStream fos = null;
+        FileOutputStream fos = null;      
         ObjectOutputStream oos = null;
-
+        File f2 = null;
+        FileOutputStream fos2 = null;      
+        ObjectOutputStream oos2 = null;
         try {
-            f = new File("HROfficerObjects.bin");
-            if (f.exists()) {
-                fos = new FileOutputStream(f, true);
-                oos = new AppendableObjectOutputStream(fos);
-            } else {
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);
+            f = new File(path);
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
             }
-
-            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "HROfficer");
-            oos.writeObject(this);
-            oos.writeObject(toAddLogin);
-
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+            f2 = new File("LoginInfo.bin");
+            if(f2.exists()){
+                fos2 = new FileOutputStream(f2,true);
+                oos2 = new AppendableObjectOutputStream(fos2);                
+            }
+            else{
+                fos2 = new FileOutputStream(f2);
+                oos2 = new ObjectOutputStream(fos2);               
+            }
+            LoginInfo employeeToAddLogin = new LoginInfo(employeeToAdd.getID(), employeeToAdd.getPassword(), usertype);
+            oos.writeObject(employeeToAdd);
+            oos2.writeObject(employeeToAddLogin);
             oos.close();
-            System.out.println("HROfficer added successfully");
+            oos2.close();
+            System.out.println("Employee add success");
             return true;
         } catch (IOException ex) {
             Logger.getLogger(HROfficer.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                if (oos != null) {
-                    oos.close();
-                }
+                if(oos != null) {oos.close();oos2.close();}
             } catch (IOException ex) {
                 Logger.getLogger(HROfficer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return false;
-    }}
-    
-
-    
+    }
+}

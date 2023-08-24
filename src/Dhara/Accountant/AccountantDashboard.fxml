@@ -13,14 +13,16 @@
         <menus>
           <Menu mnemonicParsing="false" text="MyDesk">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#InsuranceOnClick" text="Insurance" />
                   <MenuItem mnemonicParsing="false" onAction="#BIllOnClick" text="Bill" />
                   <MenuItem mnemonicParsing="false" onAction="#expinditureOnClick" text="Expenditure" />
+              <MenuItem mnemonicParsing="false" onAction="#InsuranceOnClick" text="Insurance" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="SignOut">
+          <Menu mnemonicParsing="false" onAction="#signOutOnClick" text="Other">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#signOutOnClick" text="sign out" />
+                  <MenuItem mnemonicParsing="false" onAction="#signOutOnClick" text="SignOut" />
+                  <MenuItem mnemonicParsing="false" onAction="#resignationOnClick" text="Resignation" />
+                  <MenuItem mnemonicParsing="false" onAction="#feedbackOnClick" text="Feedback" />
                </items></Menu>
         </menus>
       </MenuBar>
@@ -32,4 +34,7 @@
          </font>
       </Label>
    </center>
+   <bottom>
+      <Label fx:id="LabelFxid" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

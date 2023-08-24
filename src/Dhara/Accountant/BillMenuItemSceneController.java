@@ -41,113 +41,91 @@ public class BillMenuItemSceneController implements Initializable {
     }    
 private Accountant accountant; 
 
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+        System.out.println("Bill menu:"+accountant.toString());
+    }
+
     public Accountant getAccountant() {
         return accountant;
     }
     @FXML
-    private void OnClickCreateNewBillButton(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("MakeABillScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void OnClickCreateNewBillButton(ActionEvent event) throws IOException {
+         Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("MakeABillScene.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        MakeABillSceneController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
     }
 
     @FXML
-    private void onClickUpdatePendingBillStatusButton(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("UpdateBillStatusScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void onClickUpdatePendingBillStatusButton(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("UpdateBillStatusScene.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        UpdateBillStatusSceneController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
     }
 
     @FXML
-    private void OnClickViewPastRecordsButton(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("ViewBillRecordsScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void OnClickViewPastRecordsButton(ActionEvent event) throws IOException {
+         Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("ViewBillRecordsScene.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        ViewBillRecordsSceneController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
     }
 
-    void setAccountant(Accountant accountant) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   
+    @FXML
+    private void onActionChartButton(ActionEvent event) throws IOException {
+       Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("SeeMedicineBillChartReport.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        SeeMedicineBillChartReportController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
     }
+
+
 
     @FXML
-    private void onActionChartButton(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("SeeMedicineBillChartReport.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    private void BackOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("AccountantDashboard.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
 
-    private void backButtonOnClick(ActionEvent event) {
-         try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("AccountantDashboard.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        AccountantDashboardController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
 
-    @FXML
-    private void BackOnClick(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("AccountantDashboard.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
+
     }
     
 }

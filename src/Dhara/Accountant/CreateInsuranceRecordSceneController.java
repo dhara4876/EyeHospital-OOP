@@ -5,6 +5,7 @@
 package Dhara.Accountant;
 
 import CommonScenes.StartSceneController;
+import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,7 +18,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,6 +30,18 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class CreateInsuranceRecordSceneController implements Initializable {
+    
+    private Accountant accountant; 
+    @FXML
+    private TextArea detailsTextArea;
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
+
+    public Accountant getAccountant() {
+        return accountant;
+    }
 
     @FXML
     private TextField ItemTextField;
@@ -45,23 +60,26 @@ public class CreateInsuranceRecordSceneController implements Initializable {
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
+         Boolean addStatus = accountant.CreateInsuranceRecord(ItemTextField.getText(), Double.parseDouble((amtTextField.getText())),  DOIdatepicker.getValue(), detailsTextArea.getText());
+        if (addStatus) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("New Expense added");
+            a.showAndWait();
     }
-
+    }
     @FXML
-    private void backButtonOnClick(ActionEvent event) {
-        try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("InsuranceMenuItemScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void backButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("InsuranceMenuItemScene.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        InsuranceMenuItemSceneController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
     }
     
 }

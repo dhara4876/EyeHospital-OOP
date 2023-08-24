@@ -5,7 +5,9 @@
 package Users;
 
 import CommonScenes.RegisterSceneController;
+import Model.FeedBack;
 import Model.LoginInfo;
+import Model.Resignation;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -31,7 +33,7 @@ public abstract class User implements Serializable{
     
     protected final LocalDate DOB;
 
-    public User(String name, int ID, String password, String email, String gender, LocalDate DOB) {
+    public User(String name, Integer ID, String password, String email, String gender, LocalDate DOB) {
         this.name = name;
         this.ID = ID;
         this.password = password;
@@ -48,7 +50,7 @@ public abstract class User implements Serializable{
         return name;
     }
 
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 
@@ -82,15 +84,15 @@ public abstract class User implements Serializable{
 
     @Override
     public String toString() {
-        return "User{" + "name=" + name + ", ID=" + ID + ", password=" + password + ", email=" + email + ", gender=" + gender + ", DOB=" + DOB + '}';
+        return "Name=" + name + ", ID=" + ID + ", password=" + password + ", email=" + email + ", gender=" + gender + ", DOB=" + DOB + '}';
     }
     //common 1
-    public static int userLogin(int idcheck, String passcheck){
+    public static int tryToLogin(int idcheck, String passcheck){
         File f = null;
         FileInputStream fis = null;      
         ObjectInputStream ois = null;
-        int idflag=0;
-        int passflag=0;
+        boolean idFound = false;
+        boolean passMatched = false;
         int userType=0;
         try {
             f = new File("LoginInfo.bin");
@@ -100,21 +102,39 @@ public abstract class User implements Serializable{
             try{
                 System.out.println("Printing login objects");
                 while(true){
-                    if (idflag==1){break;}
+                    if (idFound){break;}
                     tempLogin = (LoginInfo) ois.readObject();
                     System.out.println(tempLogin.toString());
                     if (idcheck==tempLogin.getUserId()){
-                        idflag=1;
+                        idFound = true;
                         if (passcheck.equals(tempLogin.getUserPass())){
-                            passflag=1;
-                            if (tempLogin.getUserType().equals("Doctor")){userType=3;}
-                            else if (tempLogin.getUserType().equals("Patient")){userType=4;}
-                            else if (tempLogin.getUserType().equals("Pharmacist")){userType=5;}
-                            else if (tempLogin.getUserType().equals("Nurse")){userType=6;}
-                            else if (tempLogin.getUserType().equals("Director")){userType=7;}
-                            else if (tempLogin.getUserType().equals("Accountant")){userType=8;}
-                            else if (tempLogin.getUserType().equals("HROfficer")){userType=9;}
-                            else {userType=10;}
+                            passMatched = true;
+                            switch (tempLogin.getUserType()) {
+                                case "Doctor":
+                                    userType=3;
+                                    break;
+                                case "Patient":
+                                    userType=4;
+                                    break;
+                                case "Pharmacist":
+                                    userType=5;
+                                    break;
+                                case "Nurse":
+                                    userType=6;
+                                    break;
+                                case "Director":
+                                    userType=7;
+                                    break;
+                                case "Accountant":
+                                    userType=8;
+                                    break;
+                                case "HROfficer":
+                                    userType=9;
+                                    break;
+                                default:
+                                    userType=10;
+                                    break;
+                            }
                             break;
                         }
                     }
@@ -126,17 +146,18 @@ public abstract class User implements Serializable{
             }
             System.out.println("End of file\n");
             
-            if (idflag==1){
-                if(passflag==1){
-                    
+            if (idFound){
+                if(passMatched){
                     return userType;
                 }
-                else{return 2;}
-                
+                else{
+                    return 2;
+                }
             }
-            else{return 1;}
-                
-        
+            else{
+                return 1;
+            }
+            
         } catch (IOException ex) {
             System.out.println("IOException on entire file handling");
             return 0;
@@ -146,33 +167,34 @@ public abstract class User implements Serializable{
                 if(ois != null) ois.close();
             } catch (IOException ex) { }
         }
-        }
-       public static User getInstance(int id, String type){
+    }
+
+    public static User findUser(int id, String type){
         File f = null;
         FileInputStream fis = null;      
         ObjectInputStream ois = null;
         String path = "";
         switch(type){
             case "Doctor":
-                path="DoctorObjects.bin";
+                path="Doctor.bin";
                 break;
             case "Patient":
-                path="PatientObjects.bin";
+                path="Patient.bin";
                 break;
             case "Pharmacist":
-                path="PharmacistObjects.bin";
+                path="Pharmacist.bin";
                 break;
             case "Nurse":
-                path="NurseObjects.bin";
+                path="Nurse.bin";
                 break;
             case "Director":
-                path="DirectorObjects.bin";
+                path="Director.bin";
                 break;
             case "Accountant":
                 path="Accountant.bin";
                 break;
             case "HROfficer":
-                path="HROfficerObjects.bin";
+                path="HROfficer.bin";
                 break;
             case "Optometrist":
                 path="Optometrist.bin";
@@ -190,48 +212,31 @@ public abstract class User implements Serializable{
                     switch(type){
                         case "Doctor": 
                             tempUser = (Doctor) ois.readObject();
-                            System.out.println("Reading doc");
-                            System.out.println(tempUser.toString());
                             break;
                         case "Patient": 
                             tempUser = (Patient) ois.readObject();
-                            System.out.println("Reading pat");
-                            System.out.println(tempUser.toString());
                             break;
                         case "Pharmacist": 
                             tempUser = (Pharmacist) ois.readObject();
-                            System.out.println("Reading pharma");
-                            System.out.println(tempUser.toString());
                             break;
                         case "Nurse": 
                             tempUser = (Nurse) ois.readObject();
-                            System.out.println("Reading nurse");
-                            System.out.println(tempUser.toString());
                             break;
                         case "Director": 
                             tempUser = (Director) ois.readObject();                            
-                            System.out.println("Reading director");
-                            System.out.println(tempUser.toString());
                             break;
-                        case "AccountsOfficer": 
+                        case "Accountant": 
                             tempUser = (Accountant) ois.readObject();
-                            System.out.println("Reading accounts");
-                            System.out.println(tempUser.toString());
                             break;
                         case "HROfficer": 
                             tempUser = (HROfficer) ois.readObject();
-                            System.out.println("Reading HR");
-                            System.out.println(tempUser.toString());
                             break;
-                        case "LabTechnician": 
+                        case "Optometrist": 
                             tempUser = (Optometrist) ois.readObject();
-                            System.out.println("Reading optometrist");
-                            System.out.println(tempUser.toString());
                             break;
                     }
                     if (id==tempUser.getID()){
-                        System.out.println("User found");
-                        System.out.print("tempUser:");
+                        System.out.print("User found: ");
                         System.out.println(tempUser.toString());
                         return tempUser;
                     }
@@ -252,15 +257,103 @@ public abstract class User implements Serializable{
         }
         return null;
     }
-        
-       public abstract boolean Register();
-       
-       public static boolean isNumeric(String str) { 
+    
+    public static boolean isNumeric(String str) { 
         try {  
-          Integer.parseInt(str);  
+          Integer.valueOf(str);  
           return true;
         } catch(NumberFormatException e){return false;}
     }
 
+    public static boolean addNewResignation(Integer employeeID, String resignationReason){
+        
+        Resignation newResignation = new Resignation(
+                employeeID,
+                resignationReason
+                );
+               
+                
+                
+        System.out.println("Resignation made:"+newResignation.toString());
+
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+
+            f = new File("Resignation.bin");
+
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            oos.writeObject(newResignation);
+            oos.close();
+            return true;
+            
+        } catch (IOException e) {
+            if(oos!=null){
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            return false;
+       
+        }
+    }
+    
+    public static boolean addFeedBack(String FeedBack){
+        
+        FeedBack newFeedBack = new FeedBack(
+               FeedBack
+                );
+               
+                
+                
+        System.out.println("FeedBack made:"+newFeedBack.toString());
+
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+
+            f = new File("FeedBack.bin");
+
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            oos.writeObject(newFeedBack);
+            oos.close();
+            return true;
+            
+        } catch (IOException e) {
+            if(oos!=null){
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            return false;
+       
+        }
+    }
+    
+    
 }
 

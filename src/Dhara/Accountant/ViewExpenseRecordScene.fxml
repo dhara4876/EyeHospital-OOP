@@ -4,26 +4,29 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dhara.Accountant.ViewExpenseRecordSceneController">
    <children>
-      <TableView layoutX="148.0" layoutY="146.0" prefHeight="200.0" prefWidth="252.0">
+      <TableView fx:id="expenseRecordsTableView" layoutX="40.0" layoutY="146.0" prefHeight="200.0" prefWidth="252.0">
         <columns>
           <TableColumn fx:id="amountTableColoumn" prefWidth="75.0" text="Amount" />
           <TableColumn fx:id="spentOnTableColoumn" prefWidth="75.0" text="Spent on" />
             <TableColumn fx:id="dateSpenttableColoumn" prefWidth="101.0" text="Date spent" />
         </columns>
       </TableView>
-      <Button layoutX="364.0" layoutY="89.0" mnemonicParsing="false" text="Search" />
-      <TextField layoutX="128.0" layoutY="89.0" prefHeight="31.0" prefWidth="218.0" promptText="enter for expenditure name" />
+      <Button layoutX="364.0" layoutY="89.0" mnemonicParsing="false" onAction="#searchButtonOnClick" text="Search" />
+      <TextField fx:id="searchTextField" layoutX="128.0" layoutY="89.0" prefHeight="31.0" prefWidth="218.0" promptText="enter for expenditure name" />
       <Label layoutX="148.0" layoutY="45.0" prefHeight="35.0" prefWidth="304.0" text="VIEW EXPENSE RECORDS" wrapText="true">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
+      <Button layoutX="379.0" layoutY="146.0" mnemonicParsing="false" onAction="#viewDetailsOnClick" text="View Details" />
+      <TextArea fx:id="detailsTextField" layoutX="314.0" layoutY="186.0" prefHeight="160.0" prefWidth="242.0" />
    </children>
 </AnchorPane>

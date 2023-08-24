@@ -6,7 +6,7 @@ package Dhara.Accountant;
 
 import CommonScenes.StartSceneController;
 import Model.Bill;
-import Model.ChartData;
+
 import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
@@ -42,7 +42,15 @@ public class SeeMedicineBillChartReportController implements Initializable {
 
 
 
+private Accountant accountant; 
 
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
+
+    public Accountant getAccountant() {
+        return accountant;
+    }
     @FXML
     private BarChart<String, Integer> BillBarChart;
     @FXML
@@ -52,7 +60,7 @@ public class SeeMedicineBillChartReportController implements Initializable {
     
 @Override
 public void initialize(URL url, ResourceBundle rb) {
-    ObservableList<Bill> billList = Accountant.readBillList();
+    ObservableList<Bill> billList = Accountant.readAllBillsList();
 
     XYChart.Series<String, Integer> series = new XYChart.Series<>();
     for (Bill bill : billList) {
@@ -65,21 +73,19 @@ public void initialize(URL url, ResourceBundle rb) {
     
 
     @FXML
-    private void backButtonOnClick(ActionEvent event) {
+    private void backButtonOnClick(ActionEvent event) throws IOException {
         
-          try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("BillMenuItemScene.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
-            stg2.setScene(scene2);
-            stg2.show();
-        } catch (IOException ex) {
-            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+          Parent parent = null;
+        FXMLLoader accountantLoader = new FXMLLoader(getClass().getResource("BillMenuItemScene.fxml"));
+        parent = (Parent) accountantLoader.load();
+        Scene accountantScene = new Scene(parent);
+
+        BillMenuItemSceneController d = accountantLoader.getController();
+        d.setAccountant(this.accountant);
+
+        Stage accountantStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        accountantStage.setScene(accountantScene);
+        accountantStage.show();
     }
     }
 

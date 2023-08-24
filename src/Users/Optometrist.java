@@ -68,42 +68,7 @@ public class Optometrist extends Employee implements Serializable{
         this.email = email;
     }
 
-    @Override
-    public boolean Register() {
-        File f = null;
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
 
-        try {
-            f = new File("Optometrist.bin");
-            if (f.exists()) {
-                fos = new FileOutputStream(f, true);
-                oos = new AppendableObjectOutputStream(fos);
-            } else {
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);
-            }
-
-            LoginInfo toAddLogin = new LoginInfo(getID(), getPassword(), "Optometrist");
-            oos.writeObject(this);
-            oos.writeObject(toAddLogin);
-
-            oos.close();
-            System.out.println("Optometrist added successfully");
-            return true;
-        } catch (IOException ex) {
-            Logger.getLogger(Optometrist.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (oos != null) {
-                    oos.close();
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(Optometrist.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return false;
-    }
     }
 
 

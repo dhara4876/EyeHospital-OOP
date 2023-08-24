@@ -20,6 +20,11 @@ public class Bill implements Serializable {
     private Boolean paidStatus;
     private Integer accountantId;
     
+    
+    public void markAsPaid() {
+        this.paidStatus = true;
+        
+    }
 
     public Bill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy) {
         this.patientId = patientId;

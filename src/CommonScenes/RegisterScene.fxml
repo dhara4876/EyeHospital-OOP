@@ -3,26 +3,31 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommonScenes.RegisterSceneController">
    <children>
-      <PasswordField fx:id="passwordtextField" layoutX="207.0" layoutY="218.0" promptText="pass" />
-      <Label layoutX="136.0" layoutY="48.0" text="BANGLADESH EYE HOSPITAL">
+      <Label layoutX="161.0" layoutY="45.0" text="PATIENT REGISTRATION">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="idTextField" layoutX="207.0" layoutY="177.0" promptText="ID" />
-      <TextField fx:id="nameTextField" layoutX="207.0" layoutY="138.0" promptText="Name" />
-      <Button layoutX="422.0" layoutY="249.0" mnemonicParsing="false" onAction="#registerButtonOnClick" text="Register" />
-      <Label layoutX="229.0" layoutY="96.0" text="Patient Registration" />
-      <TextField fx:id="emailTextField" layoutX="207.0" layoutY="258.0" promptText="Email" />
-      <DatePicker fx:id="DOBDatePicker" layoutX="207.0" layoutY="337.0" prefHeight="31.0" prefWidth="187.0" promptText="Date of Birth" />
-      <TextField fx:id="genderTextField" layoutX="207.0" layoutY="297.0" promptText="gender" />
-      <Button layoutX="25.0" layoutY="26.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
+      <TextField fx:id="idTextField" layoutX="86.0" layoutY="178.0" promptText="ID" />
+      <TextField fx:id="nameTextField" layoutX="86.0" layoutY="137.0" promptText="Name" />
+      <TextField fx:id="passwordtextField" layoutX="85.0" layoutY="220.0" promptText="Password" />
+      <Button layoutX="246.0" layoutY="284.0" mnemonicParsing="false" onAction="#registerButtonOnClick" prefHeight="48.0" prefWidth="108.0" text="Register" />
+      <Label layoutX="213.0" layoutY="88.0" text="Bangladesh Eye Hospital" />
+      <TextField fx:id="emailTextField" layoutX="353.0" layoutY="220.0" promptText="email" />
+      <TextField fx:id="genderTextField" layoutX="353.0" layoutY="137.0" promptText="gender" />
+      <DatePicker fx:id="DOBDatePicker" layoutX="353.0" layoutY="178.0" prefHeight="31.0" prefWidth="187.0" promptText="DOB" />
+      <Label layoutX="294.0" layoutY="183.0" text="DOB" />
+      <Label layoutX="294.0" layoutY="142.0" text="gender" />
+      <Label layoutX="292.0" layoutY="225.0" text="Email" />
+      <Label layoutX="30.0" layoutY="225.0" text="Pass" />
+      <Label layoutX="30.0" layoutY="178.0" text="ID" />
+      <Label layoutX="27.0" layoutY="142.0" text="Name" />
+      <Button layoutX="34.0" layoutY="30.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
    </children>
 </AnchorPane>
