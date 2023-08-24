@@ -27,9 +27,9 @@ import javafx.collections.ObservableList;
  * @author Asus
  */
 public class Patient extends User implements Serializable {
+
     private static final long serialVersionUID = 345L;
 
-    
     private Boolean admittedStatus;
     private LocalDate admittedDate;
 
@@ -40,14 +40,13 @@ public class Patient extends User implements Serializable {
     public void setAdmittedDate(LocalDate admittedDate) {
         this.admittedDate = admittedDate;
     }
-   
-    
+
     public void markAsadmitted() {
         this.admittedStatus = true;
         this.admittedDate = LocalDate.now();
     }
-    
-     public void markAsaDischarged() {
+
+    public void markAsaDischarged() {
         this.admittedStatus = false;
     }
 
@@ -81,11 +80,6 @@ public class Patient extends User implements Serializable {
         Patient.patientList = patientList;
     }
 
-   
-        
-        
-    
-
     public String getName() {
         return name;
     }
@@ -115,70 +109,70 @@ public class Patient extends User implements Serializable {
         return "Patient: " + super.toString() + "admittedStatus =" + admittedStatus + ", admittedDate = " + admittedDate + '}';
     }
 
- 
-
-   
     public boolean Register(Patient toAdd) {
-    File f = null;
-    FileOutputStream fos = null;      
-    ObjectOutputStream oos = null;
-    File f2 = null;
-    FileOutputStream fos2 = null;      
-    ObjectOutputStream oos2 = null;
-    try {
-        f = new File("Patient.bin");
-        if(f.exists()){
-            fos = new FileOutputStream(f,true);
-            oos = new AppendableObjectOutputStream(fos);                
-        }
-        else{
-            fos = new FileOutputStream(f);
-            oos = new ObjectOutputStream(fos);               
-        }
-        f2 = new File("LoginInfo.bin");
-        if(f2.exists()){
-            fos2 = new FileOutputStream(f2,true);
-            oos2 = new AppendableObjectOutputStream(fos2);                
-        }
-        else{
-            fos2 = new FileOutputStream(f2);
-            oos2 = new ObjectOutputStream(fos2);               
-        }
-        LoginInfo toAddLogin = new LoginInfo(toAdd.getID(), toAdd.getPassword(), "Patient");
-        oos.writeObject(toAdd);
-        oos2.writeObject(toAddLogin);
-        System.out.println("Sign up success");
-        return true;
-    } catch (IOException ex) {
-        Logger.getLogger(RegisterSceneController.class.getName()).log(Level.SEVERE, null, ex);
-    } finally {
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        File f2 = null;
+        FileOutputStream fos2 = null;
+        ObjectOutputStream oos2 = null;
         try {
-            if(oos != null) oos.close();
-            if(oos2 != null) oos2.close();
+            f = new File("Patient.bin");
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+            f2 = new File("LoginInfo.bin");
+            if (f2.exists()) {
+                fos2 = new FileOutputStream(f2, true);
+                oos2 = new AppendableObjectOutputStream(fos2);
+            } else {
+                fos2 = new FileOutputStream(f2);
+                oos2 = new ObjectOutputStream(fos2);
+            }
+            LoginInfo toAddLogin = new LoginInfo(toAdd.getID(), toAdd.getPassword(), "Patient");
+            oos.writeObject(toAdd);
+            oos2.writeObject(toAddLogin);
+            System.out.println("Sign up success");
+            return true;
         } catch (IOException ex) {
             Logger.getLogger(RegisterSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.close();
+                }
+                if (oos2 != null) {
+                    oos2.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(RegisterSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-    }
-    return false;
+        return false;
     }
 
     public static ArrayList<Integer> loadPatientIDs() {
         ArrayList<Integer> idList = new ArrayList<>();
         Patient i;
         ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("Patient.bin"));
-            while(true){
+        try {
+            ois = new ObjectInputStream(new FileInputStream("Patient.bin"));
+            while (true) {
                 i = (Patient) ois.readObject();
-                System.out.println("The patient u read: "+ i.toString());
+                System.out.println("The patient u read: " + i.toString());
                 idList.add(i.getID());
             }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("File reading done");
         }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
         System.out.println(idList);
         return idList;
     }
-    
+
     private static List<Patient> patientList = new ArrayList<>();
 
     public static Patient getPatientById(int patientId) {
@@ -189,6 +183,19 @@ public class Patient extends User implements Serializable {
         }
         return null; // Patient not found
     }
-    
-    
+
+    /*private ObservableList<MyData> readDataFromBinaryFile() {
+        ObservableList<MyData> dataList = FXCollections.observableArrayList();
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.bin"))) {
+            while (true) {
+                MyData data = (MyData) ois.readObject();
+                dataList.add(data);
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            // Handle exceptions
+        }
+
+        return dataList;
+    }*/
 }

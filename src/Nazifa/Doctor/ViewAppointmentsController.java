@@ -5,16 +5,22 @@
 package Nazifa.Doctor;
 
 import Model.Appointment;
-import Users.Accountant;
 import Users.Doctor;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -56,7 +62,22 @@ public class ViewAppointmentsController implements Initializable {
         timeTableColumn.setCellValueFactory(new PropertyValueFactory<>("Time"));
         completedStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("CompletedStatus"));
 
-        appointmentTableView.setItems(Doctor.readAppointmentList());
+        /*appointmentTableView.setItems(Doctor.readAppointmentList()); */
     }    
+
+    @FXML
+    private void backButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("Appointments.fxml"));
+        parent = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(parent);
+
+        AppointmentsController d = doctorLoader.getController();
+        d.setDoctor(this.doctor);
+
+        Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
+    }
     
 }

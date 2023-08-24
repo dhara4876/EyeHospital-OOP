@@ -63,7 +63,7 @@ public class AssignTaskToNurseSceneController implements Initializable {
         parent = (Parent) doctorLoader.load();
         Scene doctorScene = new Scene(parent);
 
-        PrescriptionController d = doctorLoader.getController();
+        TaskController d = doctorLoader.getController();
         d.setDoctor(this.doctor);
 
         Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

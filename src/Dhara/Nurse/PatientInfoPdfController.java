@@ -16,7 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import com.itextpdf.io.font.FontConstants;
+/*import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
@@ -87,7 +87,7 @@ public class PatientInfoPdfController implements Initializable {
         // TODO
     }
 
-    @FXML
+    /*@FXML
     private void onClickMakePdf(ActionEvent event) throws FileNotFoundException, IOException, ClassNotFoundException {
 
         String paraText = "";
@@ -146,7 +146,7 @@ public class PatientInfoPdfController implements Initializable {
             a.showAndWait();
         }
 
-    }
+    }*/
 
 }
  

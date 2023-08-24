@@ -10,8 +10,9 @@ import Daiyan.HROfficerDashboardSceneController;
 import Dhara.Accountant.AccountantDashboardController;
 import Dhara.Nurse.NurseDashBoardSceneController;
 import Nazifa.Doctor.DocDashboardController;
+import Nazifa.Patient.PatientDashboardController;
 
-import Nazifa.Patient.PatientDashboardSceneController;
+import Nazifa.Patient.PatientDashboardController;
 import Nushrat.OptometristDashboardSceneController;
 import Nushrat.PharmacistDashboardSceneController;
 import Users.Accountant;
@@ -104,7 +105,7 @@ public class LoginSceneController implements Initializable {
                         patientDashboard = (Parent) patientLoader.load();
                         Scene patientScene = new Scene(patientDashboard);
                         
-                        PatientDashboardSceneController p = patientLoader.getController();
+                        PatientDashboardController p = patientLoader.getController();
                         p.setPatient((Patient) User.findUser(id, "Patient"));
                         
                         Stage patientStage = (Stage)((Node)event.getSource()).getScene().getWindow();
