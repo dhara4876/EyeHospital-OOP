@@ -88,7 +88,6 @@ public class StartSceneController implements Initializable {
     }
     
 
-    @FXML
     private void tempbuttonOnClick(ActionEvent event) throws IOException, ClassNotFoundException {
         
     
@@ -162,14 +161,14 @@ public class StartSceneController implements Initializable {
 private Patient toAdd;
     private void tempTwo(ActionEvent event) throws IOException, ClassNotFoundException {
         
-  // Create an HROfficer object
+  
         HROfficer hrOfficer = new HROfficer("John Doe", 123, "password", "john@example.com", "Male",
                 LocalDate.of(1990, 1, 15), "HR Manager", 60000.0, LocalDate.of(2020, 5, 1));
 
-        // Create a LoginInfo object for the HR Officer
+      
         LoginInfo loginInfo = new LoginInfo(hrOfficer.getID(), hrOfficer.getPassword(), "HROfficer");
 
-        // Write the HROfficer object to HROfficer.bin
+       
         try (ObjectOutputStream hrofficerOutputStream = new ObjectOutputStream(new FileOutputStream("HROfficer.bin"))) {
             hrofficerOutputStream.writeObject(hrOfficer);
             System.out.println("HROfficer object written to HROfficer.bin");
@@ -177,7 +176,7 @@ private Patient toAdd;
             e.printStackTrace();
         }
 
-        // Write the LoginInfo object to LoginInfo.bin
+       
         try (ObjectOutputStream loginInfoOutputStream = new ObjectOutputStream(new FileOutputStream("LoginInfo.bin"))) {
             loginInfoOutputStream.writeObject(loginInfo);
             System.out.println("LoginInfo object written to LoginInfo.bin");
@@ -186,6 +185,7 @@ private Patient toAdd;
         }
             
     }
+
     
     }
     

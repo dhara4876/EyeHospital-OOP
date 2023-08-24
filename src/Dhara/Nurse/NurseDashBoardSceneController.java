@@ -55,23 +55,7 @@ public class NurseDashBoardSceneController implements Initializable {
         // TODO
     }    
 
-    private void complaintOnClick(ActionEvent event) {
-        try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ComplaintScene.fxml"));
-        Parent root = loader.load();
-
-       
-        ComplaintSceneController b = loader.getController();
-
-        
-        b.setNurse(nurse);
-
-        nurseDashboardBorderpane.setCenter(root);
-    } catch (IOException ex) {
-        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    }
-
+  
     @FXML
     private void viewAssignmentOnClick(ActionEvent event) {
          try {

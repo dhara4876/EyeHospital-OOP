@@ -4,18 +4,24 @@
  */
 package Dhara.Nurse;
 
+import Model.PatientDetails;
 import Users.Nurse;
 import Users.Patient;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -30,8 +36,13 @@ public class AddDetailsToPatientController implements Initializable {
     private TextArea patientDetailsTextArea;
     @FXML
     private ComboBox<Integer> patientIDViewCB;
-    @FXML
     private Label detailsLabel;
+    @FXML
+    private TableView<PatientDetails> notesTableView;
+    @FXML
+    private TableColumn<PatientDetails, String> noteTableColoumn;
+    @FXML
+    private TableColumn<PatientDetails, Integer> nurseAddedByTableColoumn;
     public Nurse getNurse() {
         return nurse;
     }
@@ -73,23 +84,33 @@ public class AddDetailsToPatientController implements Initializable {
 
     @FXML
     private void showDetailsOnClick(ActionEvent event) {
-      Integer selectedPatientId = patientIDViewCB.getValue();
-        if (selectedPatientId == null) {
-           
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a patient ID");
-            alert.show();
-            return;
-        }
+     Integer selectedPatientId = patientIDViewCB.getValue();
+    
+    if (selectedPatientId == null) {
         
-        String patientDetails = nurse.getPatientDetailsByID(selectedPatientId);
-        
-        if (!patientDetails.equals("No details found for the patient.")) {
-            detailsLabel.setText(patientDetails);
-        } else {
-            
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "No details found for the selected patient");
-            alert.show();
-        }
+        new Alert(Alert.AlertType.WARNING, "Select a patient ID first.").show();
+        return;
+    }
+    
+    List<PatientDetails> patientDetailsList = nurse.getPatientDetailsByPatientId(selectedPatientId);
+    
+    if (patientDetailsList.isEmpty()) {
+       
+        new Alert(Alert.AlertType.INFORMATION, "No patient details found for the selected patient ID.").show();
+        return;
+    }
+    
+   
+    ObservableList<PatientDetails> observableDetailsList = FXCollections.observableArrayList(patientDetailsList);
+    
+    
+    
+    noteTableColoumn.setCellValueFactory(new PropertyValueFactory<>("patientDetails"));
+    nurseAddedByTableColoumn.setCellValueFactory(new PropertyValueFactory<>("nurseId"));
+    
+    
+    
+    notesTableView.setItems(observableDetailsList);
     }
            
         
