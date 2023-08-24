@@ -57,7 +57,7 @@ public class LineChartPatientAdmissionController implements Initializable {
         series.setName("Admitted Patients");
         series.getData().addAll(chartData);
 
-        // Add the series to the chart
+        
         patientAdmittedLineChart.getData().add(series);
     }
     

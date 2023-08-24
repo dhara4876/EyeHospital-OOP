@@ -204,45 +204,7 @@ public class Nurse extends Employee implements Serializable{
         }
     }
     
-public boolean editPatientDetails(int patientId, String updatedDetails) {
-  
-    Patient patientToUpdate = null;
-    
-    List<Patient> updatedPatients = new ArrayList<>();
 
-    
-    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("patient.bin"))) {
-        List<Patient> patients = (List<Patient>) ois.readObject();
-
-        for (Patient patient : patients) {
-            if (patient.getID() == patientId) {
-               
-                patientToUpdate = patient;
-            }
-            updatedPatients.add(patient);
-        }
-    } catch (IOException | ClassNotFoundException e) {
-        e.printStackTrace();
-        System.err.println("Error loading patient data.");
-        return false; 
-    }
-    
-   
-    if (patientToUpdate != null) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("patient.bin"))) {
-            oos.writeObject(updatedPatients);
-            System.out.println("Patient details updated and saved successfully.");
-            return true; 
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Error saving patient data.");
-        }
-    } else {
-        System.out.println("Patient not found.");
-    }
-    
-    return false; 
-}
  
   public boolean addPatientDetails(Integer patientID, String patientDetails, Integer nurseId){
         
