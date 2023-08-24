@@ -15,9 +15,9 @@
       <Button layoutX="171.0" layoutY="314.0" mnemonicParsing="false" onAction="#addButtonOnClick" text="add" />
       <Label layoutX="50.0" layoutY="213.0" prefHeight="58.0" prefWidth="70.0" text="Enter Details" wrapText="true" />
       <Line endX="100.0" layoutX="200.0" layoutY="125.0" startX="100.0" startY="206.5" />
-      <ComboBox layoutX="340.0" layoutY="144.0" prefHeight="31.0" prefWidth="174.0" promptText="patient id" />
-      <Label layoutX="345.0" layoutY="232.0" prefHeight="106.0" prefWidth="174.0" style="-fx-background-color: White;" />
-      <Button layoutX="376.0" layoutY="185.0" mnemonicParsing="false" text="show details" />
+      <ComboBox fx:id="patientIDViewCB" layoutX="340.0" layoutY="144.0" prefHeight="31.0" prefWidth="174.0" promptText="patient id" />
+      <Label fx:id="detailsLabel" layoutX="345.0" layoutY="232.0" prefHeight="106.0" prefWidth="174.0" style="-fx-background-color: White;" />
+      <Button layoutX="376.0" layoutY="185.0" mnemonicParsing="false" onAction="#showDetailsOnClick" text="show details" />
       <Label layoutX="99.0" layoutY="55.0" prefHeight="35.0" prefWidth="403.0" text="ADD AND VIEW PATIENT NOTES">
          <font>
             <Font name="System Bold" size="24.0" />

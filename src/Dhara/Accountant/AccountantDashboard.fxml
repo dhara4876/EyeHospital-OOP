@@ -34,4 +34,7 @@
          </font>
       </Label>
    </center>
+   <bottom>
+      <Label fx:id="LabelFxid" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

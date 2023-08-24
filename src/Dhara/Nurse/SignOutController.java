@@ -27,7 +27,7 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class SignOutController implements Initializable {
-  private BorderPane nurseDashboardBorderpane;
+  
  private Nurse nurse;
     public Nurse getNurse() {
         return nurse;
@@ -48,7 +48,7 @@ public class SignOutController implements Initializable {
     @FXML
     private void noButtonOnClick(ActionEvent event) throws IOException {
         Parent parent = null;
-        FXMLLoader nurseLoader = new FXMLLoader(getClass().getResource("NurseDashboardScene.fxml"));
+        FXMLLoader nurseLoader = new FXMLLoader(getClass().getResource("NurseDashBoardScene.fxml"));
         parent = (Parent) nurseLoader.load();
         Scene nurseScene = new Scene(parent);
 

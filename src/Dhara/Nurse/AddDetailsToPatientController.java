@@ -7,12 +7,14 @@ package Dhara.Nurse;
 import Users.Nurse;
 import Users.Patient;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 /**
@@ -26,6 +28,10 @@ public class AddDetailsToPatientController implements Initializable {
     private ComboBox<Integer> patientIDCB;
     @FXML
     private TextArea patientDetailsTextArea;
+    @FXML
+    private ComboBox<Integer> patientIDViewCB;
+    @FXML
+    private Label detailsLabel;
     public Nurse getNurse() {
         return nurse;
     }
@@ -45,6 +51,8 @@ public class AddDetailsToPatientController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          patientIDCB.getItems().addAll(Patient.loadPatientIDs());
+         patientIDViewCB.getItems().addAll(Patient.loadPatientIDs());
+         
     }    
 
     @FXML
@@ -62,7 +70,32 @@ public class AddDetailsToPatientController implements Initializable {
             a.showAndWait();
         }
     }
-  
+
+    @FXML
+    private void showDetailsOnClick(ActionEvent event) {
+      Integer selectedPatientId = patientIDViewCB.getValue();
+        if (selectedPatientId == null) {
+           
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a patient ID");
+            alert.show();
+            return;
+        }
+        
+        String patientDetails = nurse.getPatientDetailsByID(selectedPatientId);
+        
+        if (!patientDetails.equals("No details found for the patient.")) {
+            detailsLabel.setText(patientDetails);
+        } else {
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "No details found for the selected patient");
+            alert.show();
+        }
     }
+           
+        
+    }
+    
+  
+    
     
 
