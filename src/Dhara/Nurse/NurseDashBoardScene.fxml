@@ -11,15 +11,12 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-            <Menu mnemonicParsing="false" text="Add Complaint">
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#complaintOnClick" text="Complaint" />
-              </items>
-            </Menu>
           <Menu mnemonicParsing="false" text="MyDesk">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#viewAssignmentOnClick" text="View AssignedTasks" />
                   <MenuItem mnemonicParsing="false" onAction="#requestForDocOnClick" text="Request for Doctor" />
+                  <MenuItem mnemonicParsing="false" onAction="#FeedbackOnClick" text="Feedback" />
+                  <MenuItem mnemonicParsing="false" onAction="#ResignationOnClick" text="Resignation" />
                   <MenuItem mnemonicParsing="false" onAction="#signOutOnClick" text="Sign Out" />
             </items>
           </Menu>

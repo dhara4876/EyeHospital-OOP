@@ -350,19 +350,19 @@ public boolean editPatientDetails(int patientId, String updatedDetails) {
 
     ObservableList<Patient> admittedPatientList = Nurse.getAdmittedPatientsFromPatientFile();
 
-    // Create a map to store the count of admissions for each date
+    
     Map<String, Integer> dateCountMap = new HashMap<>();
 
     for (Patient patient : admittedPatientList) {
         if (patient.getAdmittedStatus() && patient.getAdmittedDate() != null) {
             String admissionDate = patient.getAdmittedDate().toString(); // Convert LocalDate to String
 
-            // Increment the count for this date
+            
             dateCountMap.put(admissionDate, dateCountMap.getOrDefault(admissionDate, 0) + 1);
         }
     }
 
-    // Convert the map entries to XYChart.Data
+   
     for (Map.Entry<String, Integer> entry : dateCountMap.entrySet()) {
         XYChart.Data<String, Integer> dataPoint = new XYChart.Data<>(entry.getKey(), entry.getValue());
         chartData.add(dataPoint);
@@ -387,7 +387,7 @@ public boolean editPatientDetails(int patientId, String updatedDetails) {
             System.out.println("Error reading Patient.bin: " + e.getMessage());
         }
 
-        // Create an ObservableList from the List
+       
         ObservableList<Patient> admittedPatientsObservableList = FXCollections.observableArrayList(admittedPatients);
         return admittedPatientsObservableList;
     }
@@ -410,7 +410,36 @@ public boolean editPatientDetails(int patientId, String updatedDetails) {
         return patientList;
         
     }
-    
+       public static ObservableList<PatientDetails> readPatientDetailsList(){
+        ObservableList<PatientDetails> patientDetailsList = FXCollections.observableArrayList();
+        PatientDetails i;
+        ObjectInputStream ois = null;
+        try{
+            ois = new ObjectInputStream (new FileInputStream("PatientDetails.bin"));
+            while(true){
+                i = (PatientDetails) ois.readObject();
+                System.out.println("The patient u read: "+i.toString());
+                patientDetailsList.add(i);
+            }
+        }
+        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
+        System.out.println(patientDetailsList);
+        return patientDetailsList;
+        
+    }
+     
+   public String getPatientDetailsByID(int patientId) {
+        ObservableList<PatientDetails> patientDetailsList = readPatientDetailsList();
+        
+        for (PatientDetails details : patientDetailsList) {
+            if (details.getPatientID() == patientId) {
+                return details.getPatientDetails();
+            }
+        }
+        
+        return "No details found for the patient.";
+    }  
+      
 }
   
   

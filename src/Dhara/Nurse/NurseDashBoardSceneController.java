@@ -55,7 +55,6 @@ public class NurseDashBoardSceneController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void complaintOnClick(ActionEvent event) {
         try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ComplaintScene.fxml"));
@@ -251,6 +250,43 @@ public class NurseDashBoardSceneController implements Initializable {
         Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
     }
         
+    }
+
+    @FXML
+    private void FeedbackOnClick(ActionEvent event) {
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddFeedbackNurse.fxml"));
+        Parent root = loader.load();
+
+       
+        AddFeedbackNurseController b = loader.getController();
+
+        
+        b.setNurse(nurse);
+
+        nurseDashboardBorderpane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+    }
+
+    @FXML
+    private void ResignationOnClick(ActionEvent event) {
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddResignationNurse.fxml"));
+        Parent root = loader.load();
+
+       
+        AddResignationNurseController b = loader.getController();
+
+        
+        b.setNurse(nurse);
+
+        nurseDashboardBorderpane.setCenter(root);
+    } catch (IOException ex) {
+        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
     
 }
