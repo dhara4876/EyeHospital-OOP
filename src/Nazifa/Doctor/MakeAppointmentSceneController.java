@@ -71,7 +71,7 @@ public class MakeAppointmentSceneController implements Initializable {
 
     @FXML
     private void postAppointmentButtonOnClick(ActionEvent event) { 
-        Boolean addNewAppointment = Doctor.addNewAppointment(Integer.parseInt(doctorIDTextField.getText()), appointmentDateDatePicker.getValue(),appointmentTimingCombobox.getValue());
+        Boolean addNewAppointment = Doctor.addNewAppointment(Integer.valueOf(doctorIDTextField.getText()), appointmentDateDatePicker.getValue(),appointmentTimingCombobox.getValue());
         if (addNewAppointment) {
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setContentText("New Appointment Posted");

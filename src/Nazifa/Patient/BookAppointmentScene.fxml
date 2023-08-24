@@ -15,14 +15,14 @@
          </font>
       </Label>
       <Button layoutX="26.0" layoutY="29.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
-      <TableView fx:id="appointmentBookingTableView" layoutX="169.0" layoutY="107.0" prefHeight="200.0" prefWidth="248.0">
-        <columns>
-          <TableColumn fx:id="doctorIDTableColumn" prefWidth="75.0" text="DoctorID" />
-            <TableColumn fx:id="dateTableColumn" prefWidth="75.0" text="Date" />
-            <TableColumn fx:id="timeTableColumn" prefWidth="75.0" text="Time" />
-        </columns>
-      </TableView>
       <Button layoutX="270.0" layoutY="346.0" mnemonicParsing="false" onAction="#bookButtonOnClick" text="Book" />
       <Label layoutX="189.0" layoutY="318.0" text="Select a row, then click book appointment" />
+      <TableView fx:id="appointmentBookingTableView" layoutX="40.0" layoutY="82.0" prefHeight="225.0" prefWidth="498.0">
+        <columns>
+          <TableColumn fx:id="doctorIDTableColumn" prefWidth="189.66665649414062" text="DoctorID" />
+            <TableColumn fx:id="dateTableColumn" prefWidth="154.33334350585938" text="Date" />
+            <TableColumn fx:id="timeTableColumn" prefWidth="153.66668701171875" text="Time" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

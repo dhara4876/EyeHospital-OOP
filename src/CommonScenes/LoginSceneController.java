@@ -101,7 +101,7 @@ public class LoginSceneController implements Initializable {
                     case 4:
                                            
                         Parent patientDashboard = null;
-                        FXMLLoader patientLoader = new FXMLLoader(getClass().getResource("/Nazifa/Patient/PatientDashboardScene.fxml"));
+                        FXMLLoader patientLoader = new FXMLLoader(getClass().getResource("/Nazifa/Patient/patientDashboard.fxml"));
                         patientDashboard = (Parent) patientLoader.load();
                         Scene patientScene = new Scene(patientDashboard);
                         

@@ -5,9 +5,18 @@
 package Nazifa.Patient;
 
 import Model.Appointment;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,18 +40,30 @@ public class BookAppointmentSceneController implements Initializable {
     @FXML
     private TableColumn<Appointment, String> timeTableColumn;
 
+     private ArrayList<Appointment> appointmentArrayList = new ArrayList<>();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        doctorIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("DoctorID"));
-        dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("Date"));
-        timeTableColumn.setCellValueFactory(new PropertyValueFactory<>("Time"));
+        try {
+            // TODO
+            appointmentArrayList = Appointment.readAndReturnArrayList();
+            System.out.println("appointment arrayList"+ appointmentArrayList);
+            doctorIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("DoctorID"));
+            dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("Date"));
+            timeTableColumn.setCellValueFactory(new PropertyValueFactory<>("Time"));
+            appointmentBookingTableView.setItems(FXCollections.observableArrayList(appointmentArrayList));
+        } catch (IOException ex) {
+            Logger.getLogger(BookAppointmentSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookAppointmentSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }    
 
+    
+    
     @FXML
     private void backButtonOnClick(ActionEvent event) {
         
