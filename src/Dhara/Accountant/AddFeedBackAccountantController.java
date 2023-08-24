@@ -5,11 +5,13 @@
 package Dhara.Accountant;
 
 import Users.Accountant;
+import Users.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 
 /**
@@ -28,7 +30,7 @@ public class AddFeedBackAccountantController implements Initializable {
         this.accountant = accountant;
        
     }
-
+Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     @FXML
     private TextArea feedbackTextArea;
 
@@ -42,6 +44,15 @@ public class AddFeedBackAccountantController implements Initializable {
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
+         String feedback = feedbackTextArea.getText();
+        if (feedback==null) {unfill.show(); return;}
+        
+         Boolean addStatus = User.addFeedBack(feedback);
+        if (addStatus) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("New Feedback added");
+            a.showAndWait();
+        }
     }
     
 }

@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -32,6 +33,8 @@ import javafx.stage.Stage;
  */
 public class AccountantDashboardController implements Initializable {
     private Accountant accountant;
+    @FXML
+    private Label LabelFxid;
 
     public Accountant getAccountant() {
         return accountant;
@@ -39,6 +42,7 @@ public class AccountantDashboardController implements Initializable {
 
     public void setAccountant(Accountant accountant) {
         this.accountant = accountant;
+         LabelFxid.setText("Name: "+ this.accountant.getName() + "  " + "ID: " + this.accountant.getID());
        
     }
 

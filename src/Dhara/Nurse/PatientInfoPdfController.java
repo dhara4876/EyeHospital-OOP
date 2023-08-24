@@ -16,7 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-/*import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
@@ -38,6 +38,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
@@ -87,66 +88,57 @@ public class PatientInfoPdfController implements Initializable {
         // TODO
     }
 
-    /*@FXML
+    @FXML
     private void onClickMakePdf(ActionEvent event) throws FileNotFoundException, IOException, ClassNotFoundException {
 
-        String paraText = "";
-        FileChooser fc = new FileChooser();
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files", "*.pdf"));
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image files", ".jpg", ".bmp", "*.png"));
-        File f = fc.showSaveDialog(null);
-        if (f != null) {
-            PdfWriter pw = new PdfWriter(new FileOutputStream(f));
-            PdfDocument pdf = new PdfDocument(pw);
-            pdf.addNewPage();
-            Document doc = new Document(pdf);
-            doc.setLeftMargin(70);
+     FileChooser fc = new FileChooser();
+    fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files", "*.pdf"));
+    fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image files", ".jpg", ".bmp", "*.png"));
+    File f = fc.showSaveDialog(null);
+    
+    if (f != null) {
+        PdfWriter pw = new PdfWriter(new FileOutputStream(f));
+        PdfDocument pdf = new PdfDocument(pw);
+        pdf.addNewPage();
+        Document doc = new Document(pdf);
+        doc.setLeftMargin(70);
 
-            // Read from a file and set the paratext to file read string.
-            try (FileInputStream fileInputStream = new FileInputStream("Patient.bin"); ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+        
+        ObservableList<Patient> patients = Nurse.readPatientList();
+        
+       
+        Table patientTable = new Table(5); 
+      
+        patientTable.addCell("Patient ID");
+        patientTable.addCell("Name");
+        patientTable.addCell("Admitted Status");
+        patientTable.addCell("Admitted Date");
+        patientTable.addCell("Gender");
 
-                while (true) {
-
-                    Patient patient = (Patient) objectInputStream.readObject(); // Assuming your object class is named "Bill"
-
-                    // Display information from the Bill object in the TextField
-                    paraText += patient.toString() + "\n";
-                }
-            } // try block ends
-            catch (EOFException e) {
-                // End of file reached (EOFException thrown)
-                // No more objects to read, so we stop the loop
-
-                System.out.println("File has been read to the end.");
-            }
-
-            Paragraph para1 = new Paragraph(paraText);
-
-            // Custom behavior if you want then use
-            Text titleText = new Text("This is the TITLE of the pdf");
-            titleText.setFontSize(18f);
-            Paragraph pageTitle = new Paragraph(titleText);
-            pageTitle.setBold();    //OR titleText.setBold();
-
-            PdfFont font2 = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
-            PdfFont fontBold = PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
-
-            // Most important part here
-            doc.add(para1);
-
-            doc.close();
-
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setContentText("PDF Generated successfully!");
-            a.showAndWait();
-
-        } else {
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setContentText("PDF Generation failed!");
-            a.showAndWait();
+       
+        for (Patient patient : patients) {
+            patientTable.addCell(String.valueOf(patient.getID()));
+            patientTable.addCell(patient.getName());
+            patientTable.addCell(patient.getAdmittedStatus() ? "True" : "False");
+            patientTable.addCell(patient.getAdmittedDate() != null ? patient.getAdmittedDate().toString() : "N/A");
+            patientTable.addCell(patient.getGender());
         }
 
-    }*/
+        
+        doc.add(patientTable);
 
+        doc.close();
+
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setContentText("PDF Generated successfully!");
+        a.showAndWait();
+    } else {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setContentText("PDF Generation failed!");
+        a.showAndWait();
+    }
+    }
 }
+
+
  

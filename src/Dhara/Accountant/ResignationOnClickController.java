@@ -5,11 +5,13 @@
 package Dhara.Accountant;
 
 import Users.Accountant;
+import Users.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 
 /**
@@ -38,9 +40,18 @@ public class ResignationOnClickController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     @FXML
     private void addButtonOnClick(ActionEvent event) {
+           String resignation = resignationTextArea.getText();
+        if (resignation==null) {unfill.show(); return;}
+        
+         Boolean addStatus = User.addNewResignation(this.accountant.getID(),resignation);
+        if (addStatus) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("New Resignation added");
+            a.showAndWait();
+        }
     }
     
 }
