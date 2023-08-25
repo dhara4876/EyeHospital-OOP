@@ -32,12 +32,9 @@ import javafx.stage.Stage;
  *
  * @author Asus
  */
-
- 
-
-
 public class AddEmployeeController implements Initializable {
-       private HROfficer hrOfficer;
+
+    private HROfficer hrOfficer;
 
     public HROfficer getHrOfficer() {
         return hrOfficer;
@@ -46,11 +43,6 @@ public class AddEmployeeController implements Initializable {
     public void setHrOfficer(HROfficer hrOfficer) {
         this.hrOfficer = hrOfficer;
     }
-
-   
-       
-       
-       
 
     @FXML
     private TextField DesignationTextField;
@@ -76,8 +68,7 @@ public class AddEmployeeController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-        Alert idNumError = new Alert(Alert.AlertType.WARNING, "ID must be a number less than 5 digits!");
+    Alert idNumError = new Alert(Alert.AlertType.WARNING, "ID must be a number less than 5 digits!");
     Alert salaryNumError = new Alert(Alert.AlertType.WARNING, "Salary must be a number");
     Alert idExistsError = new Alert(Alert.AlertType.WARNING, "ID already exists ");
     Alert passError = new Alert(Alert.AlertType.WARNING, "Error, password must be at least 6 characters long!");
@@ -85,13 +76,14 @@ public class AddEmployeeController implements Initializable {
     Alert failure = new Alert(Alert.AlertType.WARNING, "Error, add new employee failed!");
     Alert failureNull = new Alert(Alert.AlertType.WARNING, "Error, fill up all fields!");
     Alert success = new Alert(Alert.AlertType.INFORMATION, "Add employee successful!");
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
- String[] deptList = {"Accountant", "Director", "Doctor", "HROfficer", "LabTechnician", "Nurse", "Pharmacist"};
+        String[] deptList = {"Accountant", "Director", "Doctor", "HROfficer", "LabTechnician", "Nurse", "Pharmacist"};
         UserTypeTextField.getItems().addAll(deptList);
-        
-        DOBDatePicker.setDayCellFactory(dp -> new DateCell(){
+
+        DOBDatePicker.setDayCellFactory(dp -> new DateCell() {
             @Override
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
@@ -100,19 +92,17 @@ public class AddEmployeeController implements Initializable {
                 }
             }
         });
-    
-    }    
+
+    }
 
     @FXML
     private void BackButtonOnClick(ActionEvent event) {
-         try {
+        try {
             Parent scene2Parent = FXMLLoader.load(getClass().getResource("/CommonScenes/StartScene.fxml"));
             Scene scene2 = new Scene(scene2Parent);
-            
-            Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            
-            
+
+            Stage stg2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
             stg2.setScene(scene2);
             stg2.show();
         } catch (IOException ex) {
@@ -122,49 +112,111 @@ public class AddEmployeeController implements Initializable {
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
-                String usertype = UserTypeTextField.getSelectionModel().getSelectedItem();
-        
+        String usertype = UserTypeTextField.getSelectionModel().getSelectedItem();
+
         String designation = DesignationTextField.getText();
-        if (designation.isEmpty()) {failureNull.show();return;}
-        
+        if (designation.isEmpty()) {
+            failureNull.show();
+            return;
+        }
+
         String salaryValue = SalaryTextField.getText();
-        if (salaryValue.isEmpty()) {failureNull.show();return;}
+        if (salaryValue.isEmpty()) {
+            failureNull.show();
+            return;
+        }
         Double salary = 0.0;
         try {
             salary = Double.parseDouble(salaryValue);
-        } catch (NumberFormatException e) {salaryNumError.show();return;}
-        
-       
-        
+        } catch (NumberFormatException e) {
+            salaryNumError.show();
+            return;
+        }
+
         String name = NameTextField.getText();
-        if (name.isEmpty()) {failureNull.show();return;}
-        
+        if (name.isEmpty()) {
+            failureNull.show();
+            return;
+        }
+
         String id = IDTextField.getText();
-        if (id.isEmpty()) {failureNull.show();return;}
-        if (!User.isNumeric(id) || id.length()>=5) {idNumError.show();return;}
-        if(User.tryToLogin(Integer.parseInt(id), "")==2) {idExistsError.show();return;}
+        if (id.isEmpty()) {
+            failureNull.show();
+            return;
+        }
+        if (!User.isNumeric(id) || id.length() >= 5) {
+            idNumError.show();
+            return;
+        }
+        if (User.tryToLogin(Integer.parseInt(id), "") == 2) {
+            idExistsError.show();
+            return;
+        }
         int ID = Integer.parseInt(id);
-        
+
         String password = passwordTextField.getText();
-        if (password.isEmpty()) {failureNull.show();return;}
-        if (password.length()<6){passError.show();return;}
-        
+        if (password.isEmpty()) {
+            failureNull.show();
+            return;
+        }
+        if (password.length() < 6) {
+            passError.show();
+            return;
+        }
+
         String email = emailTextField.getText();
-        if (email.isEmpty()) {failureNull.show();return;}
-        if (!email.contains("@")){emailError.show();return;}
-        
+        if (email.isEmpty()) {
+            failureNull.show();
+            return;
+        }
+        if (!email.contains("@")) {
+            emailError.show();
+            return;
+        }
+
         String gender = genderTextField.getText();
-        if (gender.isEmpty()) {failureNull.show();return;}
-       
+        if (gender.isEmpty()) {
+            failureNull.show();
+            return;
+        }
+
         LocalDate DOB = DOBDatePicker.getValue();
         LocalDate DOJ = DOJdatepicker.getValue();
-        
-        
+
         if (hrOfficer.addNewEmployee(usertype, name, Integer.parseInt(id), password, email, gender, DOB, designation, salary, DOJ)) {
-    success.show();
-} else {
-    failure.show();
-}
+            success.show();
+        } else {
+            failure.show();
+        }
     }
     
+    public void switchToAddFeedBackSceneOnClick(ActionEvent event)
+    {
+        try {
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("AddFeedBackHR.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
+
+            Stage stg2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stg2.setScene(scene2);
+            stg2.show();
+        } catch (IOException ex) {
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void switchToAddResignationSceneOnClick (ActionEvent event)
+    {
+        try {
+            Parent scene2Parent = FXMLLoader.load(getClass().getResource("ResignationScene.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
+
+            Stage stg2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stg2.setScene(scene2);
+            stg2.show();
+        } catch (IOException ex) {
+            Logger.getLogger(StartSceneController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
