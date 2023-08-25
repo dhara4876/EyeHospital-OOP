@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package Nushrat.Optermetrist;
+package Nushrat.Pharmacist;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,16 +18,16 @@ import javafx.scene.input.MouseEvent;
  *
  * @author user
  */
-public class GeneratePieChartController implements Initializable {
+public class ViewPrescriptionChartController implements Initializable {
 
     @FXML
     private PieChart pieChart;
     @FXML
     private Label statusLabel;
     @FXML
-    private TextField percentageOfColorTextField1;
-    @FXML
     private TextField eyeConditionsTextField;
+    @FXML
+    private TextField percentageOfColorTextField1;
 
     /**
      * Initializes the controller class.

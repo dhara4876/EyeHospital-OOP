@@ -7,6 +7,8 @@ package Nushrat.Pharmacist;
 import Users.Pharmacist;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -35,5 +37,41 @@ public class PharmacistDashboardSceneController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void homeBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void calculateMedPriceBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void orderMedDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void updateMedicineListDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void updatePrescriptionDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void updateTaskDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void viewBillListDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void viewPrescritionDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void viewChartDashboardBtnOnClk(ActionEvent event) {
+    }
     
 }

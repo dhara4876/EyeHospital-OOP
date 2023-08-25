@@ -25,12 +25,13 @@ public class SubmitReportPdfController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void submitReportPdfBtnOnClick(MouseEvent event) {
-    }
 
     @FXML
     private void dashboardBtnOnClick(MouseEvent event) {
+    }
+
+    @FXML
+    private void viewPrescritionPdfBtnOnClick(MouseEvent event) {
     }
     
 }

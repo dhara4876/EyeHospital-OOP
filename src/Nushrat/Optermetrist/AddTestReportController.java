@@ -23,13 +23,11 @@ public class AddTestReportController implements Initializable {
     @FXML
     private TextField enterPatientIDTextField;
     @FXML
-    private ComboBox<?> selectTestNameComboBox;
-    @FXML
     private ComboBox<?> SelectStatusComboBox;
     @FXML
-    private TextField enterResultTextField;
-    @FXML
     private TextArea outputTextArea;
+    @FXML
+    private TextField enterDueTextField;
 
     /**
      * Initializes the controller class.
