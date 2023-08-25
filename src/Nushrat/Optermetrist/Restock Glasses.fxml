@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Nushrat.Optermetrist.RestockGlassesController">
    <children>
       <Label layoutX="211.0" layoutY="43.0" text="Restocking Glasses">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="restockingGlassesTableView" layoutX="189.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0">
-        <columns>
-          <TableColumn prefWidth="95.6666259765625" text="Item Name" />
-          <TableColumn prefWidth="103.3333740234375" text="Quantity" />
-        </columns>
-      </TableView>
-      <Button layoutX="337.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#approveRestockingGlassesBtnOnClick" text="Approve" />
-      <Button layoutX="441.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#dashboardBtnOnClick" text="Return To DashBoard" />
+      <Button layoutX="220.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#restockingGlassesAddToArrayListBtnOnClick" text="Restock" />
+      <Label layoutX="53.0" layoutY="88.0" text="Product ID:" />
+      <TextField fx:id="enterProductIDTextField" layoutX="128.0" layoutY="84.0" promptText="Enter Product ID" />
+      <Label layoutX="53.0" layoutY="121.0" text="Frame Type:" />
+      <ComboBox fx:id="frameTypeComboBox" layoutX="128.0" layoutY="117.0" prefWidth="150.0" promptText="Select Frame" />
+      <Label layoutX="53.0" layoutY="159.0" text="Lens Type:" />
+      <ComboBox fx:id="lensTypeComboBox1" layoutX="128.0" layoutY="155.0" prefWidth="150.0" promptText="Select Lens" />
+      <Label layoutX="53.0" layoutY="192.0" text="Quantity:" />
+      <TextField fx:id="enterQuantityTextField" layoutX="128.0" layoutY="188.0" promptText="Enter Product ID" text="Enter Quantity" />
+      <Button layoutX="149.0" layoutY="268.0" mnemonicParsing="false" onMouseClicked="#createFileBtnOnClick" prefHeight="25.0" prefWidth="129.0" text="Create As File" />
+      <Button layoutX="441.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#readFromTextFileBtnOnClick" prefHeight="25.0" prefWidth="129.0" text="Read From File" />
+      <TextArea fx:id="outputTextArea" layoutX="313.0" layoutY="159.0" prefHeight="200.0" prefWidth="257.0" />
    </children>
 </AnchorPane>

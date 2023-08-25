@@ -3,18 +3,22 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Nushrat.Optermetrist.GeneratePieChartController">
    <children>
-      <Label layoutX="68.0" layoutY="26.0" prefHeight="62.0" prefWidth="448.0" style="-fx-background-color: #e1def5;" text="Pattern of ocular diseases among patients attending the hospitals" textAlignment="CENTER" textFill="#cea9bc" wrapText="true">
+      <Label layoutX="68.0" layoutY="26.0" prefHeight="47.0" prefWidth="448.0" style="-fx-background-color: #e1def5;" text="Pie Chart Showing Eye-Color Of Patients" textAlignment="CENTER" textFill="#cea9bc" wrapText="true">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <PieChart layoutX="68.0" layoutY="98.0" prefHeight="237.0" prefWidth="399.0" style="-fx-background-color: #e1def5;" />
-      <Button layoutX="467.0" layoutY="351.0" mnemonicParsing="false" onMouseDragged="#dashboardBtnOnClick" text="Return To Dashboard" />
+      <PieChart fx:id="pieChart" layoutX="68.0" layoutY="83.0" prefHeight="181.0" prefWidth="448.0" style="-fx-background-color: #e1def5;" />
+      <Button layoutX="400.0" layoutY="339.0" mnemonicParsing="false" onMouseDragged="#addValuesToChartBtnOnClick" text="Add Values To Chart" />
+      <Label fx:id="statusLabel" layoutX="68.0" layoutY="271.0" prefHeight="47.0" prefWidth="307.0" style="-fx-background-color: #cea9bc;" />
+      <Button layoutX="400.0" layoutY="282.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Load Pie Chart" />
+      <TextField fx:id="eyeColorTextField" layoutX="68.0" layoutY="339.0" promptText="Eye Color" />
+      <TextField fx:id="percentageOfColorTextField1" layoutX="226.0" layoutY="339.0" promptText="Percentage" />
    </children>
 </AnchorPane>

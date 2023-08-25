@@ -17,17 +17,20 @@ public class TestDetails {
     private String testResults;
     private String testingEquipments;
     private String performedBy;
-    private String recommendation;
+    private String checkUpStatus;
 
-    public TestDetails(int patientId, String testName, LocalDate testDate, String testResults, String testingEquipments, String performedBy, String recommendation) {
+    public TestDetails(int patientId, String testName, LocalDate testDate, String testResults, String testingEquipments, String performedBy, String checkUpStatus) {
         this.patientId = patientId;
         this.testName = testName;
         this.testDate = testDate;
         this.testResults = testResults;
         this.testingEquipments = testingEquipments;
         this.performedBy = performedBy;
-        this.recommendation = recommendation;
+        this.checkUpStatus = checkUpStatus;
     }
+
+    
+    
 
     public int getPatientId() {
         return patientId;
@@ -78,16 +81,19 @@ public class TestDetails {
     }
 
     public String getRecommendation() {
-        return recommendation;
+        return checkUpStatus;
     }
 
-    public void setRecommendation(String recommendation) {
-        this.recommendation = recommendation;
+    public void setCheckUpStatus(String checkUpStatus) {
+        this.checkUpStatus = checkUpStatus;
     }
+
+    
+    
 
     @Override
     public String toString() {
-        return "TestDetails{" + "patientId=" + patientId + ", testName=" + testName + ", testDate=" + testDate + ", testResults=" + testResults + ", testingEquipments=" + testingEquipments + ", performedBy=" + performedBy + ", recommendation=" + recommendation + '}';
+        return "TestDetails{" + "patientId=" + patientId + ", testName=" + testName + ", testDate=" + testDate + ", testResults=" + testResults + ", testingEquipments=" + testingEquipments + ", performedBy=" + performedBy + ", checkUpStatus=" + checkUpStatus + '}';
     }
     
     

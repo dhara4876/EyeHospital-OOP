@@ -7,6 +7,8 @@ package Nushrat.Optermetrist;
 import Users.Optometrist;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -33,5 +35,41 @@ public class OptometristDashboardSceneController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void homeBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void feedbackDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void testReportDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void glassChartReportDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void restockGlassesDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void assignTaskDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void submitReportDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void viewTestDetailsDashboardBtnOnClk(ActionEvent event) {
+    }
+
+    @FXML
+    private void makeScheduleDashboardBtnOnClk(ActionEvent event) {
+    }
     
 }
