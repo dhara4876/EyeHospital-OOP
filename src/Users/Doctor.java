@@ -7,6 +7,7 @@ package Users;
 import Model.Appointment;
 import Model.Appointment;
 import Model.LoginInfo;
+import Model.Treatment;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -77,6 +78,13 @@ public class Doctor extends Employee implements Serializable {
         this.email = email;
     }
     
+    private static List<Treatment> treatmentList = new ArrayList<>();
+
+    public static List<Treatment> getTreatmentData() {
+        return treatmentList;
+    }
+
+    
     
         public static ArrayList<Integer> loadDocIDs() {
         ArrayList<Integer> idList = new ArrayList<>();
@@ -136,6 +144,10 @@ public class Doctor extends Employee implements Serializable {
             return false;
        
         }
+    }
+   
+    public static void addTreatmentData(Treatment treatment) {
+        treatmentList.add(treatment);
     }
 }
     

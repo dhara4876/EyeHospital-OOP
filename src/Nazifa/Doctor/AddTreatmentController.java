@@ -4,6 +4,7 @@
  */
 package Nazifa.Doctor;
 
+import Model.Treatment;
 import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
@@ -27,8 +28,9 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class AddTreatmentController implements Initializable {
-    
+
     private Doctor doctor;
+
     public Doctor getDoctor() {
         return doctor;
     }
@@ -48,8 +50,7 @@ public class AddTreatmentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
+    }
 
     @FXML
     private void backButtonOnclick(ActionEvent event) throws IOException {
@@ -64,10 +65,29 @@ public class AddTreatmentController implements Initializable {
         Stage doctorStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         doctorStage.setScene(doctorScene);
         doctorStage.show();
-        
+
     }
 
     @FXML
     private void addTreatmentButtonOnClick(ActionEvent event) {
+        String treatmentName = treatmentNameTextField.getText();
+        String priceText = treatmentPriceTextField.getText();
+
+        if (!treatmentName.isEmpty() && !priceText.isEmpty()) {
+            try {
+                int price = Integer.parseInt(priceText);
+                Treatment treatment = new Treatment(treatmentName, price); // Create a Treatment object
+                Doctor.addTreatmentData(treatment); // Add the treatment to the Doctor's treatment list
+
+                treatmentNameTextField.clear();
+                treatmentPriceTextField.clear();
+
+                // Optionally notify user of successful addition
+            } catch (NumberFormatException e) {
+                // Handle invalid price format
+            }
+        }
+
     }
+
 }

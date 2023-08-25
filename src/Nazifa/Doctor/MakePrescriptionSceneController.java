@@ -4,9 +4,13 @@
  */
 package Nazifa.Doctor;
 
+
+import Model.Treatment;
 import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +48,7 @@ public class MakePrescriptionSceneController implements Initializable {
     private ComboBox<String> medicineComboBox;
     @FXML
     private ComboBox<String> treatmentComboBox;
+    
     @FXML
     private ComboBox<String> doseComboBox;
     @FXML
@@ -63,10 +68,31 @@ public class MakePrescriptionSceneController implements Initializable {
         medicineComboBox.getItems().addAll("Square painkiller", "Beximco Eye Drop", "BD eye hospital special medicine", "Poison", "Eye Cancer drops");
         treatmentComboBox.getItems().addAll("eye cancer chemo","Lasik Surgery","Just Checkup","Normal Surgery");
         doseComboBox.getItems().addAll( "10ml", "30ml","50ml","70ml","90ml");
+        List<Treatment> doctorTreatments = Doctor.getTreatmentData();
+        List<String> treatmentNames = new ArrayList<>();
+        
+        for (Treatment treatment : doctorTreatments) {
+            treatmentNames.add(treatment.getTreatmentName()); 
+        }
+        
+        treatmentComboBox.getItems().addAll(treatmentNames);
+    
+    
     }    
 
     @FXML
     private void prescribeButtonOnClick(ActionEvent event) {
+        String diagnosis = diagnosisComboBox.getValue();
+        String medicine = medicineComboBox.getValue();
+        String TreatmentName = treatmentComboBox.getValue();
+        String dose = doseComboBox.getValue();
+        String duration = durationComboBox.getValue();
+        /*Prescription selectedPrescription = new Prescription(selectedTreatmentName, ...); // You'll need to provide the necessary parameters*/
+        diagnosisComboBox.getSelectionModel().clearSelection();
+        medicineComboBox.getSelectionModel().clearSelection();
+        treatmentComboBox.getSelectionModel().clearSelection();
+        doseComboBox.getSelectionModel().clearSelection();
+        durationComboBox.getSelectionModel().clearSelection();
     }
 
     @FXML
