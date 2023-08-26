@@ -53,5 +53,9 @@ Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
             a.showAndWait();
         }
     }
+
+    @FXML
+    private void switchToAddEmployeeScene(ActionEvent event) {
+    }
     
 }

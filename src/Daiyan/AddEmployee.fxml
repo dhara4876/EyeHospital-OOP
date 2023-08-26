@@ -27,5 +27,7 @@
       <Button layoutX="255.0" layoutY="330.0" mnemonicParsing="false" onAction="#addButtonOnClick" text="ADD" />
       <DatePicker fx:id="DOBDatePicker" layoutX="313.0" layoutY="99.0" prefHeight="31.0" prefWidth="195.0" promptText="DOB" />
       <DatePicker fx:id="DOJdatepicker" layoutX="317.0" layoutY="141.0" prefHeight="31.0" prefWidth="195.0" promptText="DOJ" />
+      <Button layoutX="349.0" layoutY="18.0" mnemonicParsing="false" onAction="#switchToAddFeedBackSceneOnClick" text="Add Feedback" />
+      <Button layoutX="469.0" layoutY="18.0" mnemonicParsing="false" onAction="#switchToAddResignationSceneOnClick" text="Add Resignation" />
    </children>
 </AnchorPane>
