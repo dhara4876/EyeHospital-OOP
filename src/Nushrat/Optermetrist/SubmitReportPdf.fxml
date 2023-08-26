@@ -12,10 +12,9 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="205.0" layoutY="132.0" mnemonicParsing="false" onMouseClicked="#submitReportPdfBtnOnClick" prefHeight="125.0" prefWidth="176.0" text="Submit Report As a PDF" textAlignment="CENTER" wrapText="true">
+      <Button layoutX="205.0" layoutY="132.0" mnemonicParsing="false" onMouseClicked="#pdfBtnOnClick" prefHeight="125.0" prefWidth="176.0" text="Submit Report As a PDF" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="System Bold" size="23.0" />
          </font></Button>
-      <Button layoutX="455.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#dashboardBtnOnClick" text="Return To Dashboard" />
    </children>
 </AnchorPane>

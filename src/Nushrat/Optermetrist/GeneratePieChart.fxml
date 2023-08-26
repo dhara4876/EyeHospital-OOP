@@ -15,9 +15,8 @@
          </font>
       </Label>
       <PieChart fx:id="pieChart" layoutX="68.0" layoutY="83.0" prefHeight="181.0" prefWidth="448.0" style="-fx-background-color: #e1def5;" />
-      <Button layoutX="400.0" layoutY="339.0" mnemonicParsing="false" onMouseDragged="#addValuesToChartBtnOnClick" text="Add Values To Chart" />
-      <Label fx:id="statusLabel" layoutX="68.0" layoutY="271.0" prefHeight="47.0" prefWidth="307.0" style="-fx-background-color: #cea9bc;" />
-      <Button layoutX="400.0" layoutY="282.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Load Pie Chart" />
+      <Label fx:id="statusLabel" layoutX="68.0" layoutY="271.0" onMouseEntered="#labelMouseEnterOnClick" prefHeight="47.0" prefWidth="307.0" style="-fx-background-color: #cea9bc;" />
+      <Button layoutX="400.0" layoutY="305.0" mnemonicParsing="false" onMouseClicked="#loadChartButtonOnClick" prefHeight="25.0" prefWidth="116.0" text="Load Pie Chart" />
       <TextField fx:id="eyeColorTextField" layoutX="68.0" layoutY="339.0" promptText="Eye Color" />
       <TextField fx:id="percentageOfColorTextField1" layoutX="226.0" layoutY="339.0" promptText="Percentage" />
    </children>

@@ -28,10 +28,10 @@
       <Button layoutX="401.0" layoutY="139.0" mnemonicParsing="false" onMouseClicked="#addScheduleToListBtnOnClk" prefHeight="25.0" prefWidth="99.0" text="Add to List" />
       <TableView fx:id="scheduleTableView" layoutX="46.0" layoutY="212.0" prefHeight="200.0" prefWidth="514.0">
         <columns>
-          <TableColumn prefWidth="117.0" text="ID" />
-          <TableColumn prefWidth="155.0" text="Task" />
-            <TableColumn prefWidth="130.66668701171875" text="Date" />
-            <TableColumn prefWidth="111.33331298828125" text="Time" />
+          <TableColumn fx:id="idTableColumn" prefWidth="117.0" text="ID" />
+          <TableColumn fx:id="taskTableColumn" prefWidth="155.0" text="Task" />
+            <TableColumn fx:id="dateTableColumn" prefWidth="130.66668701171875" text="Date" />
+            <TableColumn fx:id="timeTableColumn" prefWidth="111.33331298828125" text="Time" />
         </columns>
       </TableView>
       <Button layoutX="462.0" layoutY="435.0" mnemonicParsing="false" onMouseClicked="#clearScheduleRowBtnOnClk" text="Complete/Clear" />

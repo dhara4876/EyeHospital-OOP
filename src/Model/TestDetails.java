@@ -13,16 +13,16 @@ import java.time.LocalDate;
 public class TestDetails {
     private int patientId;
     private String testName;
-    private LocalDate testDate;
+    
     private String testResults;
     private String testingEquipments;
     private String performedBy;
     private String checkUpStatus;
 
-    public TestDetails(int patientId, String testName, LocalDate testDate, String testResults, String testingEquipments, String performedBy, String checkUpStatus) {
+    public TestDetails(int patientId, String testName, String testResults, String testingEquipments, String performedBy, String checkUpStatus) {
         this.patientId = patientId;
         this.testName = testName;
-        this.testDate = testDate;
+        
         this.testResults = testResults;
         this.testingEquipments = testingEquipments;
         this.performedBy = performedBy;
@@ -48,14 +48,7 @@ public class TestDetails {
         this.testName = testName;
     }
 
-    public LocalDate getTestDate() {
-        return testDate;
-    }
-
-    public void setTestDate(LocalDate testDate) {
-        this.testDate = testDate;
-    }
-
+    
     public String getTestResults() {
         return testResults;
     }
@@ -93,7 +86,7 @@ public class TestDetails {
 
     @Override
     public String toString() {
-        return "TestDetails{" + "patientId=" + patientId + ", testName=" + testName + ", testDate=" + testDate + ", testResults=" + testResults + ", testingEquipments=" + testingEquipments + ", performedBy=" + performedBy + ", checkUpStatus=" + checkUpStatus + '}';
+        return "TestDetails{" + "patientId=" + patientId + ", testName=" + testName + ", " + ", testResults=" + testResults + ", testingEquipments=" + testingEquipments + ", performedBy=" + performedBy + ", checkUpStatus=" + checkUpStatus + '}';
     }
     
     

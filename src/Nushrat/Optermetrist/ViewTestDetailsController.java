@@ -4,13 +4,23 @@
  */
 package Nushrat.Optermetrist;
 
+
+import Model.TestDetails;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+
 import javafx.fxml.Initializable;
+
+
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+
 
 /**
  * FXML Controller class
@@ -28,9 +38,15 @@ public class ViewTestDetailsController implements Initializable {
     @FXML
     private TextField enterDoctorNameTextField;
     @FXML
-    private ComboBox<?> selectTestNameComboBox;
+    private ComboBox<String> selectTestNameComboBox;
     @FXML
-    private ComboBox<?> selectRecommendationComboBox1;
+    private ComboBox<String> selectRecommendationComboBox1;
+    
+    
+    @FXML
+    private TextArea viewDetailsTextArea;
+    
+    private ArrayList<TestDetails>testDetailsList;
 
     /**
      * Initializes the controller class.
@@ -38,10 +54,48 @@ public class ViewTestDetailsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        selectTestNameComboBox.getItems().addAll("Visual Acuity Test","Glaucoma Test","Color Blind Test",
+                "Retinoscopy", "Ophthalmoscopy ", "Corneal Topography");
+        selectRecommendationComboBox1.getItems().addAll("Recommended", "Not Recommended");
+        
+        testDetailsList = new ArrayList();
+        
     }    
 
-    @FXML
-    private void popupViewTestDetailsBtnOnClick(MouseEvent event) {
-    }
     
+    
+
+    @FXML
+    private void viewTestDetailsBtnOnClick(MouseEvent event) {
+        TestDetails test = new TestDetails(
+                Integer.parseInt(enterPatientIdTextField.getText()),
+                enterTestResultsTextField1.getText(),
+                enterTestingEquipmentsTextField11.getText(),
+                enterDoctorNameTextField.getText(),  
+                selectTestNameComboBox.getValue(), 
+                selectRecommendationComboBox1.getValue()
+        );
+        
+        testDetailsList.add(test);
+        
+        viewDetailsTextArea.appendText(test.toString());
+    }
+
+    
+
+   
 }
+        
+    
+        
+    
+
+      
+ 
+
+    
+
+
+    
+    
+

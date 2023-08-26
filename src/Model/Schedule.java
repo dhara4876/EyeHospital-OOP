@@ -12,25 +12,27 @@ import java.time.LocalDate;
  * @author user
  */
 public class Schedule {
-    private int Id;
+    private String Id;
     private String Task;
     private LocalDate Date;
     private String Time;
 
-    public Schedule(int Id, String Task, LocalDate Date, String Time) {
+    public Schedule(String Id, String Task, LocalDate Date, String Time) {
         this.Id = Id;
         this.Task = Task;
         this.Date = Date;
         this.Time = Time;
     }
 
-    public int getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(int Id) {
+    public void setId(String Id) {
         this.Id = Id;
     }
+
+    
 
     public String getTask() {
         return Task;
