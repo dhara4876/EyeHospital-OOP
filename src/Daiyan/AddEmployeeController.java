@@ -88,7 +88,7 @@ public class AddEmployeeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
- String[] deptList = {"Accountant", "Director", "Doctor", "HROfficer", "LabTechnician", "Nurse", "Pharmacist"};
+ String[] deptList = {"Accountant", "Director", "Doctor", "HROfficer", "Optometrist", "Nurse", "Pharmacist"};
         UserTypeTextField.getItems().addAll(deptList);
         
         DOBDatePicker.setDayCellFactory(dp -> new DateCell(){
