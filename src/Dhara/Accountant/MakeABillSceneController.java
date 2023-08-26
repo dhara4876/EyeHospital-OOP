@@ -57,6 +57,7 @@ public class MakeABillSceneController implements Initializable {
     public void setAccountant(Accountant accountant) {
         this.accountant = accountant;
         System.out.println("Loaded to create: "+this.accountant.toString());
+        System.out.println("this accountants id" +this.accountant.getID());
     }
 
     @FXML
@@ -154,7 +155,8 @@ public class MakeABillSceneController implements Initializable {
         LocalDate due = DueByDatePicker.getValue();
         if (due == null) {noDate.show(); return;}
         
-        Boolean addStatus = this.accountant.addNewBill(patientIdRead, this.accountant.getID(), totalBill, due);
+        Boolean addStatus = 
+                accountant.addNewBill(patientIdRead, this.accountant.getID(), totalBill, due);
         if (addStatus) {
             Alert a = new Alert(AlertType.INFORMATION);
             a.setContentText("New Bill added");
