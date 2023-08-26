@@ -116,7 +116,7 @@ public class LoginSceneController implements Initializable {
                     case 5:
                                          
                         Parent pharmacistDashboard = null;
-                        FXMLLoader pharmaLoader = new FXMLLoader(getClass().getResource("/Nushrat/PharmacistDashboardScene.fxml"));
+                        FXMLLoader pharmaLoader = new FXMLLoader(getClass().getResource("/Nushrat/Pharmacist/PharmacistDashboardScene.fxml"));
                         pharmacistDashboard = (Parent) pharmaLoader.load();
                         Scene pharmaScene = new Scene(pharmacistDashboard);
                         
@@ -186,7 +186,7 @@ public class LoginSceneController implements Initializable {
                     case 10:
                         System.out.println("Login Successful - Optometrist");
                         Parent OptometristDashboard = null;
-                        FXMLLoader labLoader = new FXMLLoader(getClass().getResource("/Nushrat/OptometristDashboardScene.fxml"));
+                        FXMLLoader labLoader = new FXMLLoader(getClass().getResource("/Nushrat/Optermetrist/OptometristDashboardScene.fxml"));
                         OptometristDashboard = (Parent) labLoader.load();
                         Scene labScene = new Scene(OptometristDashboard);
                         
