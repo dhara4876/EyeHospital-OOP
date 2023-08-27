@@ -62,7 +62,7 @@ public class ViewAppointmentsController implements Initializable {
         timeTableColumn.setCellValueFactory(new PropertyValueFactory<>("Time"));
         completedStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("CompletedStatus"));
 
-        /*appointmentTableView.setItems(Doctor.readAppointmentList()); */
+        appointmentTableView.setItems(Doctor.readAppointmentList()); 
     }    
 
     @FXML

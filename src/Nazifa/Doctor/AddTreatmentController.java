@@ -8,6 +8,7 @@ import Model.Treatment;
 import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +45,7 @@ public class AddTreatmentController implements Initializable {
     private TextField treatmentNameTextField;
     @FXML
     private TextField treatmentPriceTextField;
-
+ Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     /**
      * Initializes the controller class.
      */
@@ -72,59 +73,21 @@ public class AddTreatmentController implements Initializable {
     @FXML
     private void addTreatmentButtonOnClick(ActionEvent event) {
 
-        String treatmentName = treatmentNameTextField.getText();
-        String priceText = treatmentPriceTextField.getText();
-
-        if (treatmentName.isEmpty() || priceText.isEmpty()) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setHeaderText(null);
-            errorAlert.setContentText("Error: Please fill in all information.");
-            errorAlert.showAndWait();
-            return;
+      
+        String treatmentname = treatmentNameTextField.getText();
+        if (treatmentname.isEmpty()){unfill.show(); return;}
+        Integer price = Integer.valueOf(treatmentPriceTextField.getText());
+       
+        
+        
+        Boolean addStatus = Doctor.addNewTreatment(treatmentname, price);
+        if (addStatus) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("New Treatment added");
+            a.showAndWait();
         }
-
-        try {
-            int price = Integer.parseInt(priceText);
-            if (price <= 0) {
-                throw new NumberFormatException();
-            }
-
-            Treatment treatment = new Treatment(treatmentName, price);
-            Doctor.addTreatmentData(treatment);
-
-            treatmentNameTextField.clear();
-            treatmentPriceTextField.clear();
-
-            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-            successAlert.setHeaderText(null);
-            successAlert.setContentText("Treatment item added successfully.");
-            successAlert.showAndWait();
-
-        } catch (NumberFormatException e) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setHeaderText(null);
-            errorAlert.setContentText("Error: Please enter a valid treatment price (positive integer).");
-            errorAlert.showAndWait();
-        }
-
-        /*String treatmentName = treatmentNameTextField.getText();
-        String priceText = treatmentPriceTextField.getText();
-
-        if (!treatmentName.isEmpty() && !priceText.isEmpty()) {
-            try {
-                int price = Integer.parseInt(priceText);
-                Treatment treatment = new Treatment(treatmentName, price); // Create a Treatment object
-                Doctor.addTreatmentData(treatment); // Add the treatment to the Doctor's treatment list
-
-                treatmentNameTextField.clear();
-                treatmentPriceTextField.clear();
-
-                // Optionally notify user of successful addition
-            } catch (NumberFormatException e) {
-                // Handle invalid price format
-            }
-        }
-
-    }*/
     }
+    
+    
+    
 }

@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,20 +64,19 @@ public class MakePrescriptionSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        diagnosisComboBox.getItems().addAll("eye cancer", "Poor eyesight", "Just Checkup", "Normal Surgery");
+       diagnosisComboBox.getItems().addAll("eye cancer", "Poor eyesight", "Just Checkup", "Normal Surgery");
         durationComboBox.getItems().addAll("one week", "one month","six months", "one year");
         medicineComboBox.getItems().addAll("Square painkiller", "Beximco Eye Drop", "BD eye hospital special medicine", "Poison", "Eye Cancer drops");
        
         doseComboBox.getItems().addAll( "10ml", "30ml","50ml","70ml","90ml");
-        List<Treatment> doctorTreatments = Doctor.getTreatmentData();
-        List<String> treatmentNames = new ArrayList<>();
+       // List<Treatment> doctorTreatments = Doctor.getTreatmentData();
+       // List<String> treatmentNames = new ArrayList<>();
         
-        for (Treatment treatment : doctorTreatments) {
-            treatmentNames.add(treatment.getTreatmentName()); 
-        }
-        
+       // for (Treatment treatment : doctorTreatments) {
+        //    treatmentNames.add(treatment.getTreatmentName()); 
+        //}
+         ArrayList<String> treatmentNames = Doctor.readTreatmentNames();
         treatmentComboBox.getItems().addAll(treatmentNames);
-    
     
     }    
 
