@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="288.0" prefWidth="481.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Nazifa.Doctor.PrescriptionController">
+   <children>
+      <Button layoutX="183.0" layoutY="154.0" mnemonicParsing="false" onAction="#makePrescriptionButtonOnClick" text="Make Prescription" />
+      <Button layoutX="185.0" layoutY="208.0" mnemonicParsing="false" onAction="#viewPrescriptionButtonOnClick" text="View Prescription" />
+      <Button layoutX="24.0" layoutY="27.0" mnemonicParsing="false" onAction="#BackButtonOnClick" text="Back" />
+      <Label layoutX="156.0" layoutY="68.0" text="PRESCRIPTION">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</AnchorPane>
