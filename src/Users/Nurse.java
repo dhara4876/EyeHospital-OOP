@@ -91,7 +91,7 @@ public class Nurse extends Employee implements Serializable{
        return super.toString();
     }
 
-   
+   //helper
        public static void readPatientLists(ObservableList<Patient> admittedPatientList, ObservableList<Patient> nonAdmittedPatientList) {
     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Patient.bin"))) {
         while (true) {
@@ -113,7 +113,7 @@ public class Nurse extends Employee implements Serializable{
     }
     
    }
-   
+   //goal
   public static void updatePatientAdmittedStatus(List<Patient> admittedPatientList, List<Patient> nonAdmittedPatientList) {
      try {
         
@@ -141,7 +141,7 @@ public class Nurse extends Employee implements Serializable{
         System.out.println("Error deleting existing Patient.bin file");
     }
 }     
-       
+     //goal  
        public static ObservableList<Patient> viewPatientDetails(){
         ObservableList<Patient> patientList = FXCollections.observableArrayList();
         Patient i;
@@ -159,7 +159,7 @@ public class Nurse extends Employee implements Serializable{
         return patientList;
         
     }  
-    
+    //goal
       public static boolean addNewTask(Integer reciverId, Integer senderId, String details){
         
         Task newTask = new Task(
@@ -206,7 +206,7 @@ public class Nurse extends Employee implements Serializable{
         }
     }
     
-
+//goal
  
   public boolean addPatientDetails(Integer patientID, String patientDetails, Integer nurseId){
         
@@ -253,7 +253,7 @@ public class Nurse extends Employee implements Serializable{
        
         }
   }
-     
+     //goal
           public static ObservableList<Patient> readPatientList(){
         ObservableList<Patient> patientList = FXCollections.observableArrayList();
         Patient i;
@@ -271,7 +271,7 @@ public class Nurse extends Employee implements Serializable{
         return patientList;
         
     }
-          
+      //goal    
     public ObservableList<Task> getTasksForNurse() {
         ObservableList<Task> nurseTasks = FXCollections.observableArrayList();
         
@@ -290,7 +290,7 @@ public class Nurse extends Employee implements Serializable{
         
         return nurseTasks;
     }
-
+//helper
     private void updateTaskFile() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Task.bin"))) {
             ObservableList<Task> nurseTasks = getTasksForNurse(); 
@@ -302,7 +302,7 @@ public class Nurse extends Employee implements Serializable{
             System.out.println("Error writing updated task list to file");
         }
     }
-    
+    //goal
     public void markTaskCompleted(Task task) {
         ObservableList<Task> nurseTasks = getTasksForNurse();
         nurseTasks.remove(task);
@@ -311,7 +311,7 @@ public class Nurse extends Employee implements Serializable{
  
 
  
-    
+   //helper 
     public static ObservableList<Patient> getAdmittedPatientsFromPatientFile() {
         List<Patient> admittedPatients = new ArrayList<>();
 
@@ -331,8 +331,8 @@ public class Nurse extends Employee implements Serializable{
         return admittedPatientsObservableList;
     }
     
-    
-     public static ObservableList<Patient> readAllPatientsList(){
+    //goal
+    /* public static ObservableList<Patient> readAllPatientsList(){
         ObservableList<Patient> patientList = FXCollections.observableArrayList();
         Patient i;
         ObjectInputStream ois = null;
@@ -348,7 +348,9 @@ public class Nurse extends Employee implements Serializable{
         System.out.println(patientList);
         return patientList;
         
-    }
+    }*/
+     
+     //helper
        public static ObservableList<PatientDetails> readPatientDetailsList(){
         ObservableList<PatientDetails> patientDetailsList = FXCollections.observableArrayList();
         PatientDetails i;
@@ -368,7 +370,7 @@ public class Nurse extends Employee implements Serializable{
     }
      
    
-   
+ //goal   
    public List<PatientDetails> getPatientDetailsByPatientId(int patientId) {
     ObservableList<PatientDetails> patientDetailsList = readPatientDetailsList();
        List<PatientDetails> detailsList = new ArrayList<>();
@@ -382,7 +384,7 @@ public class Nurse extends Employee implements Serializable{
     
     return detailsList;
 }
-
+//helper
  public static ArrayList<Integer> loadNurseIDs() {
         ArrayList<Integer> idList = new ArrayList<>();
         Nurse i;
