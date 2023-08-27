@@ -17,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 /**
@@ -27,6 +29,12 @@ import javafx.stage.Stage;
 public class CompleteTaskSceneController implements Initializable {
     
     private Doctor doctor;
+    @FXML
+    private TableView<?> taskTableView;
+    @FXML
+    private TableColumn<?, ?> senderIDTableColumn;
+    @FXML
+    private TableColumn<?, ?> taskTableColumn;
     public Doctor getDoctor() {
         return doctor;
     }
