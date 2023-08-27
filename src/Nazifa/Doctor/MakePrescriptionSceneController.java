@@ -66,7 +66,7 @@ public class MakePrescriptionSceneController implements Initializable {
         diagnosisComboBox.getItems().addAll("eye cancer", "Poor eyesight", "Just Checkup", "Normal Surgery");
         durationComboBox.getItems().addAll("one week", "one month","six months", "one year");
         medicineComboBox.getItems().addAll("Square painkiller", "Beximco Eye Drop", "BD eye hospital special medicine", "Poison", "Eye Cancer drops");
-        treatmentComboBox.getItems().addAll("eye cancer chemo","Lasik Surgery","Just Checkup","Normal Surgery");
+       
         doseComboBox.getItems().addAll( "10ml", "30ml","50ml","70ml","90ml");
         List<Treatment> doctorTreatments = Doctor.getTreatmentData();
         List<String> treatmentNames = new ArrayList<>();

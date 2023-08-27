@@ -108,5 +108,27 @@ public class DocDashboardController implements Initializable {
             Logger.getLogger(DocDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void addFeedbackOnClick(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("AddFeedBackDoctor.fxml"));
+            doctorDashBoardBorderPane.setCenter(root);
+        } catch (IOException ex) {
+            Logger.getLogger(DocDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+    }
+
+    @FXML
+    private void resignOnClick(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ResignationOnClick.fxml"));
+            doctorDashBoardBorderPane.setCenter(root);
+        } catch (IOException ex) {
+            Logger.getLogger(DocDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+    }
     
 }

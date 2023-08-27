@@ -4,15 +4,25 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Patient.java</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/ViewBillRecordsSceneController.java</file>
             <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/BookAppointmentSceneController.java</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/Appointment.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/DocDashboardController.java</file>
             <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Accountant.java</file>
             <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/CommonScenes/LoginSceneController.java</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/Bill.java</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/patientDashboard.fxml</file>
-            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Nurse/ViewAssignedtasksSceneController.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/ResignationOnClickController.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/User.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/Complaint.java</file>
             <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Doctor.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/Treatment.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/AddTreatmentController.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/ComplaintOnClickController.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/MakePrescriptionSceneController.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/Appointment.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/ComplaintOnClick.fxml</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/PatientDashboard.fxml</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/Resignation.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/MakeABillSceneController.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Patient/PatientDashboardController.java</file>
+            <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Nurse/ViewAssignedtasksSceneController.java</file>
             <file>file:/C:/Users/Asua/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/MakeAppointmentSceneController.java</file>
         </group>
     </open-files>

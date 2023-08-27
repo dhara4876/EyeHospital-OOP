@@ -10,9 +10,10 @@ import Daiyan.HROfficerDashboardSceneController;
 import Dhara.Accountant.AccountantDashboardController;
 import Dhara.Nurse.NurseDashBoardSceneController;
 import Nazifa.Doctor.DocDashboardController;
-import Nazifa.Patient.PatientDashboardController;
+import Nazifa.Patient.PatientDashController;
 
-import Nazifa.Patient.PatientDashboardController;
+
+
 import Nushrat.OptometristDashboardSceneController;
 import Nushrat.PharmacistDashboardSceneController;
 import Users.Accountant;
@@ -101,11 +102,11 @@ public class LoginSceneController implements Initializable {
                     case 4:
                                            
                         Parent patientDashboard = null;
-                        FXMLLoader patientLoader = new FXMLLoader(getClass().getResource("/Nazifa/Patient/patientDashboard.fxml"));
+                        FXMLLoader patientLoader = new FXMLLoader(getClass().getResource("/Nazifa/Patient/PatientDash.fxml"));
                         patientDashboard = (Parent) patientLoader.load();
                         Scene patientScene = new Scene(patientDashboard);
                         
-                        PatientDashboardController p = patientLoader.getController();
+                        PatientDashController p = patientLoader.getController();
                         p.setPatient((Patient) User.findUser(id, "Patient"));
                         
                         Stage patientStage = (Stage)((Node)event.getSource()).getScene().getWindow();

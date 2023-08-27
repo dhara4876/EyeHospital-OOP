@@ -18,6 +18,8 @@
                   <MenuItem mnemonicParsing="false" onAction="#addTreatmentOnClick" text="Add Treatment" />
                   <MenuItem mnemonicParsing="false" onAction="#testsOnClick" text="Tests" />
                   <MenuItem mnemonicParsing="false" onAction="#appointmentsOnClick" text="Appointments" />
+                  <MenuItem mnemonicParsing="false" onAction="#addFeedbackOnClick" text="Add Feedback" />
+                  <MenuItem mnemonicParsing="false" onAction="#resignOnClick" text="Resign" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Other">

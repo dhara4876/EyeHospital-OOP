@@ -6,7 +6,9 @@ package Users;
 
 import CommonScenes.RegisterSceneController;
 import Model.Bill;
+import Model.Complaint;
 import Model.LoginInfo;
+import Model.Complaint;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -198,4 +200,47 @@ public class Patient extends User implements Serializable {
 
         return dataList;
     }*/
+    
+        public static boolean addNewComplaint(Integer patientID, String complaintReason) {
+
+    Complaint newComplaint = new Complaint(
+            patientID, 
+            complaintReason);
+               
+    System.out.println("Complaint made: " + newComplaint.toString());
+
+    File f = null;
+    FileOutputStream fos = null;
+    ObjectOutputStream oos = null;
+    try {
+
+        f = new File("Complaint.bin");
+
+        if (f.exists()) {
+            fos = new FileOutputStream(f, true);
+            oos = new AppendableObjectOutputStream(fos);
+
+        } else {
+            fos = new FileOutputStream(f);
+            oos = new ObjectOutputStream(fos);
+        }
+
+        oos.writeObject(newComplaint);
+        oos.close();
+        return true;
+
+    } catch (IOException e) {
+        if(oos!=null){
+            try {
+                oos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        System.out.println("Error writing Object to binary file");
+        return false;
+
+    }
+}
+
 }
