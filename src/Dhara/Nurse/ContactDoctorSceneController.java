@@ -41,13 +41,11 @@ public class ContactDoctorSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+          chooseDoctorComboBox.getItems().addAll(Doctor.loadDocIDs());
+      
         // TODO
     }    
 
-    @FXML
-    private void onActionChooseDoctorComboBox(ActionEvent event) {
-        chooseDoctorComboBox.getItems().addAll(Doctor.loadDocIDs());
-    }
 
     @FXML
     private void onActionSendRequestButton(ActionEvent event) {

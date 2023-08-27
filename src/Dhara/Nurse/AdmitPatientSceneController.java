@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,6 +43,8 @@ public class AdmitPatientSceneController implements Initializable {
 
     ObservableList<Patient> admittedPatientList = FXCollections.observableArrayList();
     ObservableList<Patient> nonAdmittedPatientList = FXCollections.observableArrayList();
+    @FXML
+    private TextField idSearchText;
 
     /**
      * Initializes the controller class.
@@ -81,6 +84,28 @@ public class AdmitPatientSceneController implements Initializable {
         } else {
 
         }
+    }
+
+    @FXML
+    private void searchButtonOnClick(ActionEvent event) {
+           String searchText = idSearchText.getText();
+        FilteredList<Patient> filteredPatients = new FilteredList<>(nonAdmittedPatientList);
+        filteredPatients.setPredicate(patient -> {
+            String lowerCaseSearchText = searchText.toLowerCase();
+            return String.valueOf(patient.getID()).contains(lowerCaseSearchText);
+        });
+        patientTableView.setItems(filteredPatients);
+    }
+
+    @FXML
+    private void loadAllOnClick(ActionEvent event) {
+         ObservableList<Patient> admittedPatientList = FXCollections.observableArrayList();
+    ObservableList<Patient> nonAdmittedPatientList = FXCollections.observableArrayList();
+
+        Nurse.readPatientLists(admittedPatientList, nonAdmittedPatientList);
+        patientTableView.setItems(nonAdmittedPatientList);
+
+        idSearchText.clear();
     }
 
 }

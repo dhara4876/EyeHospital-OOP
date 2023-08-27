@@ -53,8 +53,6 @@ public class AddEmployeeController implements Initializable {
        
 
     @FXML
-    private TextField DesignationTextField;
-    @FXML
     private TextField genderTextField;
     @FXML
     private TextField emailTextField;
@@ -88,7 +86,7 @@ public class AddEmployeeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
- String[] deptList = {"Accountant", "Director", "Doctor", "HROfficer", "LabTechnician", "Nurse", "Pharmacist"};
+ String[] deptList = {"Accountant", "Director", "Doctor", "HROfficer", "Optometrist", "Nurse", "Pharmacist"};
         UserTypeTextField.getItems().addAll(deptList);
         
         DOBDatePicker.setDayCellFactory(dp -> new DateCell(){
@@ -124,8 +122,7 @@ public class AddEmployeeController implements Initializable {
     private void addButtonOnClick(ActionEvent event) {
                 String usertype = UserTypeTextField.getSelectionModel().getSelectedItem();
         
-        String designation = DesignationTextField.getText();
-        if (designation.isEmpty()) {failureNull.show();return;}
+        
         
         String salaryValue = SalaryTextField.getText();
         if (salaryValue.isEmpty()) {failureNull.show();return;}
@@ -160,7 +157,7 @@ public class AddEmployeeController implements Initializable {
         LocalDate DOJ = DOJdatepicker.getValue();
         
         
-        if (hrOfficer.addNewEmployee(usertype, name, Integer.parseInt(id), password, email, gender, DOB, designation, salary, DOJ)) {
+        if (hrOfficer.addNewEmployee(usertype, name, Integer.parseInt(id), password, email, gender, DOB, usertype, salary, DOJ)) {
     success.show();
 } else {
     failure.show();

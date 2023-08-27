@@ -24,10 +24,9 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#addPatientDetailsOnClick" text="Add Patient Details" />
                   <MenuItem mnemonicParsing="false" onAction="#admitPatientOnClickYas" text="AdmitPatient" />
+                  <MenuItem mnemonicParsing="false" onAction="#dischargePatientOnClick" text="Discharge patient" />
                   <MenuItem mnemonicParsing="false" onAction="#patientInfoPdf" text="Patient Info" />
                   <MenuItem mnemonicParsing="false" onAction="#patientChartOnClick" text="Admitted Chart" />
-                  <MenuItem mnemonicParsing="false" onAction="#dischargePatientOnClick" text="Discharge patient" />
-                  <MenuItem mnemonicParsing="false" onAction="#lineChartOnClick" text="Admitted over time" />
                </items>
             </Menu>
         </menus>

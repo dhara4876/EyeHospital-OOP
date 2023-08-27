@@ -199,23 +199,7 @@ public class NurseDashBoardSceneController implements Initializable {
     }
     }
 
-    @FXML
-    private void lineChartOnClick(ActionEvent event) {
-         try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LineChartPatientAdmission.fxml"));
-        Parent root = loader.load();
-
-       
-        LineChartPatientAdmissionController b = loader.getController();
-
-        
-        b.setNurse(nurse);
-
-        nurseDashboardBorderpane.setCenter(root);
-    } catch (IOException ex) {
-        Logger.getLogger(NurseDashBoardSceneController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    }
+    
 
     @FXML
     private void signOutOnClick(ActionEvent event) {

@@ -11,6 +11,7 @@ import Model.Medicine;
 
 import Model.Treatment;
 import Users.Accountant;
+import Users.Doctor;
 import Users.Patient;
 import java.io.IOException;
 import java.net.URL;
@@ -58,6 +59,7 @@ public class MakeABillSceneController implements Initializable {
     public void setAccountant(Accountant accountant) {
         this.accountant = accountant;
         System.out.println("Loaded to create: "+this.accountant.toString());
+        System.out.println("this accountants id" +this.accountant.getID());
     }
 
     @FXML
@@ -77,7 +79,7 @@ public class MakeABillSceneController implements Initializable {
     private Label totalOutputTextField;
 
     private ArrayList<Medicine> medList = new ArrayList<>();
-    private ArrayList<Treatment> treatmentList = new ArrayList<>();
+   
     private ArrayList<Cart> cartList = new ArrayList<>();
     @FXML
     private DatePicker DueByDatePicker;
@@ -86,6 +88,8 @@ public class MakeABillSceneController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    ArrayList<Treatment> treatmentList = Accountant.readTreatmentList();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         medList.add(new Medicine("Square painkiller", 100));
@@ -98,11 +102,11 @@ public class MakeABillSceneController implements Initializable {
             medicineComboBox.getItems().add(m.getMedicineName());
         }
 
-        treatmentList.add(new Treatment("eye cancer chemo", 40000));
+        /*treatmentList.add(new Treatment("eye cancer chemo", 40000));
         treatmentList.add(new Treatment("Lasik surgery", 50000));
         treatmentList.add(new Treatment("Just Checkup", 900));
-        treatmentList.add(new Treatment("Normal Surgery", 10000));
-
+        treatmentList.add(new Treatment("Normal Surgery", 10000));*/
+   
         for (Treatment t : treatmentList) {
             treatmentComboBox.getItems().add(t.getTreatmentName());
         }
@@ -111,6 +115,8 @@ public class MakeABillSceneController implements Initializable {
             medicineQuantityComboBox.getItems().add(Integer.toString(i));
             treatmentQuantityComboBox.getItems().add(Integer.toString(i));
         }
+        
+       
         
         patientIdComboBox.getItems().addAll(Patient.loadPatientIDs());
     }
@@ -155,7 +161,8 @@ public class MakeABillSceneController implements Initializable {
         LocalDate due = DueByDatePicker.getValue();
         if (due == null) {noDate.show(); return;}
         
-        Boolean addStatus = this.accountant.addNewBill(patientIdRead, this.accountant.getID(), totalBill, due);
+        Boolean addStatus = 
+                accountant.addNewBill(patientIdRead, this.accountant.getID(), totalBill, due);
         if (addStatus) {
             Alert a = new Alert(AlertType.INFORMATION);
             a.setContentText("New Bill added");

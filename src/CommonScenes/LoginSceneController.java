@@ -172,11 +172,11 @@ public class LoginSceneController implements Initializable {
                     case 9:
                         System.out.println("Login Successful - HR Officer");                      
                         Parent HRDashboard = null;
-                        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("/Daiyan/AddEmployee.fxml"));
+                        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("/Daiyan/HROfficerDashboardScene.fxml"));
                         HRDashboard = (Parent) HRLoader.load();
                         Scene HRScene = new Scene(HRDashboard);
                         
-                        AddEmployeeController hr = HRLoader.getController();
+                        HROfficerDashboardSceneController hr = HRLoader.getController();
                         hr.setHrOfficer((HROfficer) User.findUser(id, "HROfficer"));
                         
                         Stage hrStage = (Stage)((Node)event.getSource()).getScene().getWindow();

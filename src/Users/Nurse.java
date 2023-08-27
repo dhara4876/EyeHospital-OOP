@@ -19,8 +19,10 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -307,31 +309,6 @@ public class Nurse extends Employee implements Serializable{
         updateTaskFile();
     }
  
-  public static List<XYChart.Data<String, Integer>> getAdmittedPatientsChartData() {
-    List<XYChart.Data<String, Integer>> chartData = new ArrayList<>();
-
-    ObservableList<Patient> admittedPatientList = Nurse.getAdmittedPatientsFromPatientFile();
-
-    
-    Map<String, Integer> dateCountMap = new HashMap<>();
-
-    for (Patient patient : admittedPatientList) {
-        if (patient.getAdmittedStatus() && patient.getAdmittedDate() != null) {
-            String admissionDate = patient.getAdmittedDate().toString(); // Convert LocalDate to String
-
-            
-            dateCountMap.put(admissionDate, dateCountMap.getOrDefault(admissionDate, 0) + 1);
-        }
-    }
-
-   
-    for (Map.Entry<String, Integer> entry : dateCountMap.entrySet()) {
-        XYChart.Data<String, Integer> dataPoint = new XYChart.Data<>(entry.getKey(), entry.getValue());
-        chartData.add(dataPoint);
-    }
-
-    return chartData;
-}
 
  
     
@@ -406,7 +383,25 @@ public class Nurse extends Employee implements Serializable{
     return detailsList;
 }
 
-      
+ public static ArrayList<Integer> loadNurseIDs() {
+        ArrayList<Integer> idList = new ArrayList<>();
+        Nurse i;
+        ObjectInputStream ois = null;
+        try{
+            ois = new ObjectInputStream (new FileInputStream("Nurse.bin"));
+            while(true){
+                i = (Nurse) ois.readObject();
+                System.out.println("The Nurse u read: "+ i.toString());
+                idList.add(i.getID());
+            }
+        }
+        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
+        System.out.println(idList);
+        return idList;
+    }
+   
+   
+   
 }
   
   

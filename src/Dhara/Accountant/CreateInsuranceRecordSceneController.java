@@ -8,6 +8,7 @@ import CommonScenes.StartSceneController;
 import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +31,7 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class CreateInsuranceRecordSceneController implements Initializable {
-    
+    Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     private Accountant accountant; 
     @FXML
     private TextArea detailsTextArea;
@@ -60,12 +61,57 @@ public class CreateInsuranceRecordSceneController implements Initializable {
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
-         Boolean addStatus = accountant.CreateInsuranceRecord(ItemTextField.getText(), Double.parseDouble((amtTextField.getText())),  DOIdatepicker.getValue(), detailsTextArea.getText());
+        
+        
+        
+        
+         String amountText = amtTextField.getText();
+        if (amountText.isEmpty()) {
+            unfill.show();
+            return;
+        }
+
+        try {
+            double amount = Double.parseDouble(amountText);
+
+            if (Double.isNaN(amount)) {
+                Alert invalidAmountAlert = new Alert(Alert.AlertType.ERROR);
+                invalidAmountAlert.setContentText("Invalid amount entered. Please enter a valid number.");
+                invalidAmountAlert.showAndWait();
+                return;
+            }
+
+            String ItemSpentOn = ItemTextField.getText();
+            if (ItemSpentOn == null || ItemSpentOn.isEmpty()) {
+                unfill.show();
+                return;
+            }
+
+            LocalDate dateSpent = DOIdatepicker.getValue();
+            if (dateSpent == null) {
+                unfill.show();
+                return;
+            }
+
+            String details = detailsTextArea.getText();
+            if (details == null || details.isEmpty()) {
+                unfill.show();
+                return;
+            }
+
+             Boolean addStatus = accountant.CreateInsuranceRecord(ItemSpentOn, amount,  dateSpent, details);
         if (addStatus) {
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setContentText("New Expense added");
             a.showAndWait();
-    }
+            }
+        } catch (NumberFormatException ex) {
+            Alert invalidAmountAlert = new Alert(Alert.AlertType.ERROR);
+            invalidAmountAlert.setContentText("Invalid amount format. Please enter a valid number.");
+            invalidAmountAlert.showAndWait();
+        }
+
+    
     }
     @FXML
     private void backButtonOnClick(ActionEvent event) throws IOException {
