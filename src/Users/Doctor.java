@@ -32,6 +32,25 @@ public class Doctor extends Employee implements Serializable {
         super(name, ID, password, email, gender, DOB, designation, salary, doj);
     }
     private static List<Doctor> DocList = new ArrayList<>();
+    
+    
+        public static ArrayList<Integer> loadDocIDs() {
+        ArrayList<Integer> idList = new ArrayList<>();
+        Doctor i;
+        ObjectInputStream ois = null;
+        try{
+            ois = new ObjectInputStream (new FileInputStream("Doctor.bin"));
+            while(true){
+                i = (Doctor) ois.readObject();
+                System.out.println("The doctor u read: "+ i.toString());
+                idList.add(i.getID());
+            }
+        }
+        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
+        System.out.println(idList);
+        return idList;
+    }
+            
     public static Doctor getDoctorById(int DoctorId) {
         for (Doctor doc : DocList) {
             if (doc.getID() == DoctorId) {
@@ -89,22 +108,7 @@ public class Doctor extends Employee implements Serializable {
 
     
     
-        public static ArrayList<Integer> loadDocIDs() {
-        ArrayList<Integer> idList = new ArrayList<>();
-        Patient i;
-        ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("Doctor.bin"));
-            while(true){
-                i = (Patient) ois.readObject();
-                System.out.println("The patient u read: "+ i.toString());
-                idList.add(i.getID());
-            }
-        }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
-        System.out.println(idList);
-        return idList;
-    }
+
 
     public static boolean addNewAppointment(Integer DoctorID, LocalDate Date, String Time){
         

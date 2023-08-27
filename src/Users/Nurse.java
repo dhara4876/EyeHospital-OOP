@@ -383,7 +383,25 @@ public class Nurse extends Employee implements Serializable{
     return detailsList;
 }
 
-      
+ public static ArrayList<Integer> loadNurseIDs() {
+        ArrayList<Integer> idList = new ArrayList<>();
+        Nurse i;
+        ObjectInputStream ois = null;
+        try{
+            ois = new ObjectInputStream (new FileInputStream("Nurse.bin"));
+            while(true){
+                i = (Nurse) ois.readObject();
+                System.out.println("The Nurse u read: "+ i.toString());
+                idList.add(i.getID());
+            }
+        }
+        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
+        System.out.println(idList);
+        return idList;
+    }
+   
+   
+   
 }
   
   

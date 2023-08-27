@@ -10,6 +10,7 @@ import Model.Bill;
 import Model.ExpenseRecord;
 import Model.InsuranceRecord;
 import Model.LoginInfo;
+import Model.Treatment;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,6 +20,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -295,6 +297,24 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
         System.out.println(InRecList);
         return InRecList;
         
+    }
+        
+         public static ArrayList<Treatment> readTreatmentList() {
+        ArrayList<Treatment> treatmentList = new ArrayList<>();
+        Treatment i;
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream(new FileInputStream("Treatment.bin"));
+            while (true) {
+                i = (Treatment) ois.readObject();
+                System.out.println("The Treatment you read: " + i.toString());
+                treatmentList.add(i);
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("File reading done");
+        }
+        System.out.println(treatmentList);
+        return treatmentList;
     }
     
     
