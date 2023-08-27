@@ -8,6 +8,7 @@ import CommonScenes.StartSceneController;
 import Users.Accountant;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +33,8 @@ import javafx.stage.Stage;
  * @author Asus
  */
 public class CreateExpenseRecordSceneController implements Initializable {
+    Alert noDate = new Alert(Alert.AlertType.WARNING, "CHOOSE DATE");
+    Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     private Accountant accountant;
 
     public Accountant getAccountant() {
@@ -70,12 +73,52 @@ public class CreateExpenseRecordSceneController implements Initializable {
 
     @FXML
     private void addButtonOnClick(ActionEvent event) {
-        Boolean addStatus = accountant.CreateExpenseRecord(Double.parseDouble((addAmountTextField.getText())), chooseSpendReasonComboBox.getValue(),  expenseRecordDatePicker.getValue(),detailsTextField.getText() );
-        if (addStatus) {
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setContentText("New Expense added");
-            a.showAndWait();
+        String amountText = addAmountTextField.getText();
+        if (amountText.isEmpty()) {
+            unfill.show();
+            return;
         }
+
+        try {
+            double amount = Double.parseDouble(amountText);
+
+            if (Double.isNaN(amount)) {
+                Alert invalidAmountAlert = new Alert(Alert.AlertType.ERROR);
+                invalidAmountAlert.setContentText("Invalid amount entered. Please enter a valid number.");
+                invalidAmountAlert.showAndWait();
+                return;
+            }
+
+            String ItemSpentOn = chooseSpendReasonComboBox.getValue();
+            if (ItemSpentOn == null || ItemSpentOn.isEmpty()) {
+                unfill.show();
+                return;
+            }
+
+            LocalDate dateSpent = expenseRecordDatePicker.getValue();
+            if (dateSpent == null) {
+                noDate.show();
+                return;
+            }
+
+            String details = detailsTextField.getText();
+            if (details == null || details.isEmpty()) {
+                unfill.show();
+                return;
+            }
+
+            Boolean addStatus = accountant.CreateExpenseRecord(amount, ItemSpentOn, dateSpent, details);
+            if (addStatus) {
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setContentText("New Expense added");
+                successAlert.showAndWait();
+            }
+        } catch (NumberFormatException ex) {
+            Alert invalidAmountAlert = new Alert(Alert.AlertType.ERROR);
+            invalidAmountAlert.setContentText("Invalid amount format. Please enter a valid number.");
+            invalidAmountAlert.showAndWait();
+        }
+
         
     }
 
