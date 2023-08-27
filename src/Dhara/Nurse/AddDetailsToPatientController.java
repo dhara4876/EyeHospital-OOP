@@ -77,7 +77,7 @@ public class AddDetailsToPatientController implements Initializable {
         Boolean addStatus = this.nurse.addPatientDetails(patientIdRead, details, this.nurse.getID());
         if (addStatus) {
             Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setContentText("patient Details added");
+            a.setContentText("patient notes added");
             a.showAndWait();
         }
         patientDetailsTextArea.clear();
@@ -97,7 +97,7 @@ public class AddDetailsToPatientController implements Initializable {
     
     if (patientDetailsList.isEmpty()) {
        
-        new Alert(Alert.AlertType.INFORMATION, "No patient details found for the selected patient ID.").show();
+        new Alert(Alert.AlertType.INFORMATION, "No patient notes found for the selected patient ID.").show();
         return;
     }
     

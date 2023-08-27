@@ -53,14 +53,14 @@ public class Doctor extends Employee implements Serializable {
         return idList;
     }
             
-    public static Doctor getDoctorById(int DoctorId) {
+  /*  public static Doctor getDoctorById(int DoctorId) {
         for (Doctor doc : DocList) {
             if (doc.getID() == DoctorId) {
                 return doc;
             }
         }
         return null; 
-    }
+    }*/
 
     public String getDesignation() {
         return designation;

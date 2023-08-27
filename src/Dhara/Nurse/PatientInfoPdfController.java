@@ -84,7 +84,7 @@ public class PatientInfoPdfController implements Initializable {
         DOBTableColoumn.setCellValueFactory(new PropertyValueFactory<>("DOB"));
         emailTableColoumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        patientTableView.setItems(Nurse.readAllPatientsList());
+        patientTableView.setItems(Nurse.readPatientList());
         // TODO
     }
 

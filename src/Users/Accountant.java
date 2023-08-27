@@ -30,28 +30,24 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.text.Document;
 
-
-
-
 /**
  *
  * @author Asus
  */
-public class Accountant extends Employee implements Serializable{
+public class Accountant extends Employee implements Serializable {
+
     private static final long serialVersionUID = 345L;
-    
-   //goal 1
-    public boolean addNewBill(Integer patientId,Integer accountantId, Integer totalDue, LocalDate dueBy){
-        
+
+    //goal 1
+    public boolean addNewBill(Integer patientId, Integer accountantId, Integer totalDue, LocalDate dueBy) {
+
         Bill newBill = new Bill(
                 patientId,
                 accountantId,
                 totalDue,
                 dueBy);
-               
-                
-                
-        System.out.println("Bill made:"+newBill.toString());
+
+        System.out.println("Bill made:" + newBill.toString());
 
         File f = null;
         FileOutputStream fos = null;
@@ -72,9 +68,9 @@ public class Accountant extends Employee implements Serializable{
             oos.writeObject(newBill);
             oos.close();
             return true;
-            
+
         } catch (IOException e) {
-            if(oos!=null){
+            if (oos != null) {
                 try {
                     oos.close();
                 } catch (IOException ex) {
@@ -83,96 +79,87 @@ public class Accountant extends Employee implements Serializable{
             }
             System.out.println("Error writing Object to binary file");
             return false;
-       
+
         }
     }
     //goal 2
-public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill> pendingBillList) {
-    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("BillObjects.bin"))) {
-        while (true) {
-            Bill bill = (Bill) ois.readObject();
-            System.out.println("Bill read: " + bill.toString());
-            if (bill.getPaidStatus()) {
-                paidBillList.add(bill);
-            } else {
-                pendingBillList.add(bill);
-            }
-        }
-    } catch (EOFException e) {
-        
-    } catch (IOException | ClassNotFoundException e) {
-        System.out.println("Error reading BillObjects.bin: " + e.getMessage());
-    }
-}
-    
 
-      //goal 3
-    
-  public static void editBillListAndRewrite(List<Bill> paidBillList, List<Bill> pendingBillList) {
-     try {
-        
-        File billFile = new File("BillObjects.bin");
-        if (billFile.exists()) {
-            billFile.delete();
-        }
-        
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("BillObjects.bin"))) {
-            
-            for (Bill bill : paidBillList) {
-                oos.writeObject(bill);
+    public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill> pendingBillList) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("BillObjects.bin"))) {
+            while (true) {
+                Bill bill = (Bill) ois.readObject();
+                System.out.println("Bill read: " + bill.toString());
+                if (bill.getPaidStatus()) {
+                    paidBillList.add(bill);
+                } else {
+                    pendingBillList.add(bill);
+                }
             }
-            
-            
-            for (Bill bill : pendingBillList) {
-                oos.writeObject(bill);
-            }
-            
-            System.out.println("BillList updated and written to BillObjects.bin");
-        } catch (IOException e) {
-            System.out.println("Error writing updated BillList to file");
+        } catch (EOFException e) {
+
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error reading BillObjects.bin: " + e.getMessage());
         }
-    } catch (Exception e) {
-        System.out.println("Error deleting existing BillObjects.bin file");
     }
-}
-  
-  
-          //goal 7
-        
-    public static ObservableList<Bill> readAllBillsList(){
+
+    //goal 3
+    public static void editBillListAndRewrite(List<Bill> paidBillList, List<Bill> pendingBillList) {
+        try {
+
+            File billFile = new File("BillObjects.bin");
+            if (billFile.exists()) {
+                billFile.delete();
+            }
+
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("BillObjects.bin"))) {
+
+                for (Bill bill : paidBillList) {
+                    oos.writeObject(bill);
+                }
+
+                for (Bill bill : pendingBillList) {
+                    oos.writeObject(bill);
+                }
+
+                System.out.println("BillList updated and written to BillObjects.bin");
+            } catch (IOException e) {
+                System.out.println("Error writing updated BillList to file");
+            }
+        } catch (Exception e) {
+            System.out.println("Error deleting existing BillObjects.bin file");
+        }
+    }
+
+    //goal 
+    public static ObservableList<Bill> readAllBillsList() {
         ObservableList<Bill> billList = FXCollections.observableArrayList();
         Bill i;
         ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("BillObjects.bin"));
-            while(true){
+        try {
+            ois = new ObjectInputStream(new FileInputStream("BillObjects.bin"));
+            while (true) {
                 i = (Bill) ois.readObject();
-                System.out.println("The Insurance u read: "+i.toString());
+                System.out.println("The Bill u read: " + i.toString());
                 billList.add(i);
             }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("File reading done");
         }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
         System.out.println(billList);
         return billList;
-        
+
     }
-  
-  // goal 4
-  
 
+    // goal 
+    public boolean CreateExpenseRecord( Double Amount, String SpentOn, LocalDate DateSpent, String Details) {
 
-
-    
-    public boolean CreateExpenseRecord(
-        Double Amount, String SpentOn, LocalDate DateSpent, String Details){
-        
         ExpenseRecord newExpense = new ExpenseRecord(
                 Amount,
                 SpentOn,
                 DateSpent,
                 Details
-                );
-        System.out.println("Expense record made:"+newExpense.toString());
+        );
+        System.out.println("Expense record made:" + newExpense.toString());
 
         File f = null;
         FileOutputStream fos = null;
@@ -193,9 +180,9 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
             oos.writeObject(newExpense);
             oos.close();
             return true;
-            
+
         } catch (IOException e) {
-            if(oos!=null){
+            if (oos != null) {
                 try {
                     oos.close();
                 } catch (IOException ex) {
@@ -204,13 +191,11 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
             }
             System.out.println("Error writing Object to binary file");
             return false;
-       
+
         }
     }
-    //goal 3
- 
-  
-    
+    //goal 
+
     public static ObservableList<ExpenseRecord> readExpenseRecordList() {
         ObservableList<ExpenseRecord> ExpenseList = FXCollections.observableArrayList();
         ExpenseRecord v;
@@ -219,7 +204,7 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
             ois = new ObjectInputStream(new FileInputStream("ExpenseRecords.bin"));
             while (true) {
                 v = (ExpenseRecord) ois.readObject();
-                System.out.println("The faculty u read: " + v.toString());
+                System.out.println("The expense record u read: " + v.toString());
                 ExpenseList.add(v);
             }
         } catch (IOException | ClassNotFoundException e) {
@@ -228,20 +213,15 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
         System.out.println(ExpenseList);
         return ExpenseList;
     }
-        
-    
-    
-        
-     //goal 5
-    
-    public boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue, String Details){
-        
-        
+
+    //goal 
+    public boolean CreateInsuranceRecord(String item, Double insuranceAmount, LocalDate dateOfIssue, String Details) {
+
         InsuranceRecord newInsurance = new InsuranceRecord(
                 item,
                 insuranceAmount,
                 dateOfIssue, Details);
-        System.out.println("Insurance made:"+newInsurance.toString());
+        System.out.println("Insurance made:" + newInsurance.toString());
 
         File f = null;
         FileOutputStream fos = null;
@@ -262,9 +242,9 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
             oos.writeObject(newInsurance);
             oos.close();
             return true;
-            
+
         } catch (IOException e) {
-            if(oos!=null){
+            if (oos != null) {
                 try {
                     oos.close();
                 } catch (IOException ex) {
@@ -273,33 +253,32 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
             }
             System.out.println("Error writing Object to binary file");
             return false;
-       
+
         }
     }
 
-      
-    
-  //goal 6
-        
-        public static ObservableList<InsuranceRecord> readInsuranceRecordList(){
+    //goal 
+    public static ObservableList<InsuranceRecord> readInsuranceRecordList() {
         ObservableList<InsuranceRecord> InRecList = FXCollections.observableArrayList();
         InsuranceRecord i;
         ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("InsuranceRecords.bin"));
-            while(true){
+        try {
+            ois = new ObjectInputStream(new FileInputStream("InsuranceRecords.bin"));
+            while (true) {
                 i = (InsuranceRecord) ois.readObject();
-                System.out.println("The Insurance u read: "+i.toString());
+                System.out.println("The Insurance u read: " + i.toString());
                 InRecList.add(i);
             }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("File reading done");
         }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
         System.out.println(InRecList);
         return InRecList;
-        
+
     }
-        
-         public static ArrayList<Treatment> readTreatmentList() {
+    //helper
+
+    public static ArrayList<Treatment> readTreatmentList() {
         ArrayList<Treatment> treatmentList = new ArrayList<>();
         Treatment i;
         ObjectInputStream ois = null;
@@ -316,10 +295,7 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
         System.out.println(treatmentList);
         return treatmentList;
     }
-    
-    
-    
-    
+
     public Accountant(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ) {
         super(name, ID, password, email, gender, DOB, Designation, Salary, DoJ);
     }
@@ -340,8 +316,6 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
         return DOB;
     }
 
-    
-    
     public String getDesignation() {
         return designation;
     }
@@ -387,10 +361,4 @@ public void readBillLists(ObservableList<Bill> paidBillList, ObservableList<Bill
         return super.toString();
     }
 
-
-    }
-    
-    
-    
-    
-
+}

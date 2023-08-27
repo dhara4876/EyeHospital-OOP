@@ -22,7 +22,7 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Patient">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#addPatientDetailsOnClick" text="Add Patient Details" />
+                  <MenuItem mnemonicParsing="false" onAction="#addPatientDetailsOnClick" text=" Patient Notes" />
                   <MenuItem mnemonicParsing="false" onAction="#admitPatientOnClickYas" text="AdmitPatient" />
                   <MenuItem mnemonicParsing="false" onAction="#dischargePatientOnClick" text="Discharge patient" />
                   <MenuItem mnemonicParsing="false" onAction="#patientInfoPdf" text="Patient Info" />

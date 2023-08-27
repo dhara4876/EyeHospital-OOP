@@ -17,8 +17,7 @@
       <TableView fx:id="taskTableView" layoutX="57.0" layoutY="158.0" prefHeight="200.0" prefWidth="509.0">
         <columns>
           <TableColumn fx:id="senderIDTableColoumn" prefWidth="128.0" text="Sender Id" />
-            <TableColumn fx:id="taskTableColoumn" prefWidth="273.0" text="Task" />
-            <TableColumn fx:id="completedStatusTableColoumn" prefWidth="106.0" text="Completion" />
+            <TableColumn fx:id="taskTableColoumn" prefWidth="380.0" text="Task" />
         </columns>
       </TableView>
       <Button layoutX="437.0" layoutY="103.0" mnemonicParsing="false" onAction="#markAsDoneOnClick" text="Mark as Done" />

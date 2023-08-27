@@ -32,9 +32,7 @@ public class ViewAssignedtasksSceneController implements Initializable {
     private Nurse nurse; 
     @FXML
     private TableColumn<Task, Integer> senderIDTableColoumn;
-    @FXML
-    private TableColumn<Task, Boolean> completedStatusTableColoumn;
-
+  
     public Nurse getNurse() {
         return nurse;
     }
@@ -58,9 +56,9 @@ public class ViewAssignedtasksSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        senderIDTableColoumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        senderIDTableColoumn.setCellValueFactory(new PropertyValueFactory<>("senderId"));
         taskTableColoumn.setCellValueFactory(new PropertyValueFactory<>("details"));
-        completedStatusTableColoumn.setCellValueFactory(new PropertyValueFactory<>("completedStatus"));
+       
     }    
 
     @FXML
