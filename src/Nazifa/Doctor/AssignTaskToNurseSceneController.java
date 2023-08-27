@@ -4,7 +4,9 @@
  */
 package Nazifa.Doctor;
 
+import Model.Task;
 import Users.Doctor;
+import Users.Nurse;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +19,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -29,6 +33,8 @@ import javafx.stage.Stage;
 public class AssignTaskToNurseSceneController implements Initializable {
     
     private Doctor doctor;
+    @FXML
+    private ComboBox<Integer> nurseIDComboBox;
     public Doctor getDoctor() {
         return doctor;
     }
@@ -39,8 +45,7 @@ public class AssignTaskToNurseSceneController implements Initializable {
 
     @FXML
     private TextArea nurseTaskDetailTextArea;
-    @FXML
-    private TextField nurseIDTextField;
+    
     @FXML
     private TextField doctorIDTextField;
 
@@ -49,11 +54,24 @@ public class AssignTaskToNurseSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        nurseIDComboBox.getItems().addAll(Nurse.loadNurseIDs());
     }    
 
     @FXML
     private void assignTaskToNurseOnClick(ActionEvent event) {
+        Integer receiverId = nurseIDComboBox.getValue(); 
+        Integer senderId = Integer.valueOf(doctorIDTextField.getText());
+        String details = nurseTaskDetailTextArea.getText(); 
+
+
+        boolean taskAdded = Doctor.addNewTask(receiverId, senderId, details);
+
+        if (taskAdded) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("Task sent");
+            a.showAndWait();
+        }
+        
     }
 
     @FXML

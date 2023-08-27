@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -20,7 +21,7 @@
       <Button layoutX="274.0" layoutY="464.0" mnemonicParsing="false" onAction="#assignTaskToNurseOnClick" text="Assign" />
       <Button layoutX="38.0" layoutY="37.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Back" />
       <Label layoutX="179.0" layoutY="155.0" text="Doctor ID:" />
-      <TextField fx:id="nurseIDTextField" layoutX="264.0" layoutY="100.0" />
       <TextField fx:id="doctorIDTextField" layoutX="264.0" layoutY="151.0" />
+      <ComboBox fx:id="nurseIDComboBox" layoutX="264.0" layoutY="100.0" prefWidth="150.0" promptText="pick a nurse" />
    </children>
 </AnchorPane>
