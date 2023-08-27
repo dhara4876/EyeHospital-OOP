@@ -8,6 +8,7 @@ import Model.Appointment;
 import Model.Appointment;
 
 import Model.LoginInfo;
+import Model.Task;
 import Model.Treatment;
 import java.io.File;
 import java.io.FileInputStream;
@@ -238,7 +239,50 @@ public class Doctor extends Employee implements Serializable {
         return treatmentNames;
     }
       
-      
+    public static boolean addNewTask(Integer reciverId, Integer senderId, String details){
+        
+        Task newTask = new Task(
+                reciverId,
+                senderId,
+                details);
+               
+                
+                
+        System.out.println("Task made:"+newTask.toString());
+
+        File f = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+
+            f = new File("Task.bin");
+
+            if (f.exists()) {
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+
+            } else {
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            oos.writeObject(newTask);
+            oos.close();
+            return true;
+            
+        } catch (IOException e) {
+            if(oos!=null){
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Doctor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Error writing Object to binary file");
+            return false;
+       
+        }
+    }
       
       
       
