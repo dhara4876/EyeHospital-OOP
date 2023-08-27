@@ -6,6 +6,7 @@ package Nazifa.Doctor;
 
 import Model.Task;
 import Users.Doctor;
+import Users.Nurse;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -32,7 +34,7 @@ public class AssignTaskToNurseSceneController implements Initializable {
     
     private Doctor doctor;
     @FXML
-    private ComboBox<?> nurseIDComboBox;
+    private ComboBox<Integer> nurseIDComboBox;
     public Doctor getDoctor() {
         return doctor;
     }
@@ -43,7 +45,7 @@ public class AssignTaskToNurseSceneController implements Initializable {
 
     @FXML
     private TextArea nurseTaskDetailTextArea;
-    private TextField nurseIDTextField;
+    
     @FXML
     private TextField doctorIDTextField;
 
@@ -52,12 +54,12 @@ public class AssignTaskToNurseSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        nurseIDComboBox.getItems().addAll(Nurse.loadNurseIDs());
     }    
 
     @FXML
     private void assignTaskToNurseOnClick(ActionEvent event) {
-        Integer receiverId = Integer.valueOf(nurseIDTextField.getText()); 
+        Integer receiverId = nurseIDComboBox.getValue(); 
         Integer senderId = Integer.valueOf(doctorIDTextField.getText());
         String details = nurseTaskDetailTextArea.getText(); 
 
@@ -65,11 +67,9 @@ public class AssignTaskToNurseSceneController implements Initializable {
         boolean taskAdded = Doctor.addNewTask(receiverId, senderId, details);
 
         if (taskAdded) {
-            System.out.println("Task added successfully");
-           
-        } else {
-            System.out.println("Failed to add task");
-            
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("Task sent");
+            a.showAndWait();
         }
         
     }
