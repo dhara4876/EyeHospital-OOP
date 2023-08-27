@@ -4,6 +4,7 @@
  */
 package Nazifa.Doctor;
 
+import Model.Task;
 import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -30,11 +32,11 @@ public class CompleteTaskSceneController implements Initializable {
     
     private Doctor doctor;
     @FXML
-    private TableView<?> taskTableView;
+    private TableView<Task> taskTableView;
     @FXML
-    private TableColumn<?, ?> senderIDTableColumn;
+    private TableColumn<Task, Integer> senderIDTableColumn;
     @FXML
-    private TableColumn<?, ?> taskTableColumn;
+    private TableColumn<Task, String> taskTableColumn;
     public Doctor getDoctor() {
         return doctor;
     }
@@ -49,6 +51,8 @@ public class CompleteTaskSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        senderIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        taskTableColumn.setCellValueFactory(new PropertyValueFactory<>("details"));
     }    
 
     @FXML

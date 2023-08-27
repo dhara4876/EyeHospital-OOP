@@ -10,6 +10,7 @@ import Model.Appointment;
 import Model.LoginInfo;
 import Model.Task;
 import Model.Treatment;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -283,7 +284,25 @@ public class Doctor extends Employee implements Serializable {
        
         }
     }
-      
+    
+    public ObservableList<Task> getTasksForDoctor() {
+        ObservableList<Task> doctorTasks = FXCollections.observableArrayList();
+        
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Task.bin"))) {
+            while (true) {
+                Task task = (Task) ois.readObject();
+                if (task.getReciverId().equals(this.getID())) { 
+                    doctorTasks.add(task);
+                }
+            }
+        } catch (EOFException e) {
+           
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error reading Task.bin: " + e.getMessage());
+        }
+        
+        return doctorTasks;
+    }
       
       
 }
