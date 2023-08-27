@@ -4,6 +4,7 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDate;
 
@@ -11,7 +12,8 @@ import java.time.LocalDate;
  *
  * @author user
  */
-public class Schedule {
+public class Schedule implements Serializable{
+    private static final long serialVersionUID = 345L;
     private String Id;
     private String Task;
     private LocalDate Date;
