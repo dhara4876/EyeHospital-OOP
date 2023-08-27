@@ -42,10 +42,10 @@
       <Button layoutX="415.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#addTaskBtnOnClk" prefHeight="88.0" prefWidth="162.0" text="Add Tasks To The Table" />
       <TableView fx:id="updateTaskTableView" layoutX="58.0" layoutY="168.0" prefHeight="200.0" prefWidth="331.0">
         <columns>
-          <TableColumn prefWidth="104.33334350585938" text="Medicine Name" />
-          <TableColumn prefWidth="56.0" text="Dose" />
-            <TableColumn prefWidth="65.0" text="Time" />
-            <TableColumn prefWidth="103.66668701171875" text="Instruction" />
+          <TableColumn fx:id="medNameTableColumn" prefWidth="104.33334350585938" text="Medicine Name" />
+          <TableColumn fx:id="doseTableColumn" prefWidth="56.0" text="Dose" />
+            <TableColumn fx:id="timeTableColumn" prefWidth="65.0" text="Time" />
+            <TableColumn fx:id="instructionTableColumn" prefWidth="103.66668701171875" text="Instruction" />
         </columns>
       </TableView>
       <Button layoutX="411.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#clearTaskBtnOnClk" prefHeight="88.0" prefWidth="162.0" text="Clear Task Row if Completed" textAlignment="CENTER" wrapText="true" />

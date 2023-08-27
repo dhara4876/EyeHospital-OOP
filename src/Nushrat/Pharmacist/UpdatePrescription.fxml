@@ -17,9 +17,9 @@
       </Label>
       <TableView fx:id="updatePrescriptionTableView" layoutX="69.0" layoutY="183.0" prefHeight="185.0" prefWidth="366.0">
         <columns>
-          <TableColumn prefWidth="125.00003051757812" text="Patient ID" />
-          <TableColumn prefWidth="143.3333740234375" text="Medicine Name" />
-            <TableColumn prefWidth="95.6666259765625" text="Dose" />
+          <TableColumn fx:id="patientIdTableColumn" prefWidth="125.00003051757812" text="Patient ID" />
+          <TableColumn fx:id="medicineNameTableColumn" prefWidth="143.3333740234375" text="Medicine Name" />
+            <TableColumn fx:id="doseTableColumn" prefWidth="95.6666259765625" text="Dose" />
         </columns>
       </TableView>
       <TextField fx:id="patientIDTextField" layoutX="183.0" layoutY="85.0" promptText="Enter Patient ID" />

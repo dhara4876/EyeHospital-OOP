@@ -14,25 +14,27 @@ import java.time.LocalDate;
  */
 public class Schedule implements Serializable{
     private static final long serialVersionUID = 345L;
-    private String Id;
+    private int Id;
     private String Task;
     private LocalDate Date;
     private String Time;
 
-    public Schedule(String Id, String Task, LocalDate Date, String Time) {
+    public Schedule(int Id, String Task, LocalDate Date, String Time) {
         this.Id = Id;
         this.Task = Task;
         this.Date = Date;
         this.Time = Time;
     }
 
-    public String getId() {
+    public int getId() {
         return Id;
     }
 
-    public void setId(String Id) {
+    public void setId(int Id) {
         this.Id = Id;
     }
+
+    
 
     
 

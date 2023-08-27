@@ -19,7 +19,7 @@
       <Label layoutX="53.0" layoutY="88.0" text="Patient ID:" />
       <TextField fx:id="enterPatientIDTextField" layoutX="128.0" layoutY="84.0" promptText="Enter Patient ID" />
       <Label layoutX="47.0" layoutY="192.0" text="Paid Status" />
-      <ComboBox fx:id="SelectStatusComboBox" layoutX="129.0" layoutY="188.0" prefWidth="150.0" promptText="Select Status" />
+      <ComboBox fx:id="statusComboBox" layoutX="129.0" layoutY="188.0" prefWidth="150.0" promptText="Select Status" />
       <Label layoutX="52.0" layoutY="139.0" text="Total Due: " />
       <TextField fx:id="enterDueTextField" layoutX="128.0" layoutY="135.0" promptText="Enter Due" />
       <Button layoutX="149.0" layoutY="268.0" mnemonicParsing="false" onMouseClicked="#createFileBtnOnClick" prefHeight="25.0" prefWidth="129.0" text="Create As File" />
