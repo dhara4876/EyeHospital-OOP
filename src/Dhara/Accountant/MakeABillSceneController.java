@@ -146,6 +146,8 @@ public class MakeABillSceneController implements Initializable {
 
     @FXML
     private void addBillOnClick(ActionEvent event) {
+        
+        
         int totalpayable = 0;
         for (Cart c : cartList) {
             totalpayable += c.getTotalAmount();
@@ -248,6 +250,7 @@ public class MakeABillSceneController implements Initializable {
     
     @FXML
     private void showTotalOnClick(ActionEvent event) {
+        updateStatus.setText("");
         int totalpayable = 0;
         for (Cart c : cartList) {
             totalpayable += c.getTotalAmount();

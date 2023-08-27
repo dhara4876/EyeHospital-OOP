@@ -24,6 +24,6 @@
          </font>
       </Label>
       <Button layoutX="28.0" layoutY="18.0" mnemonicParsing="false" onAction="#BackOnClick" text="Back" />
-      <Label fx:id="detailsTextField" layoutX="414.0" layoutY="216.0" prefHeight="149.0" prefWidth="153.0" style="-fx-background-color: white;" />
+      <Label fx:id="detailsTextField" layoutX="414.0" layoutY="216.0" prefHeight="149.0" prefWidth="153.0" style="-fx-background-color: white;" wrapText="true" />
    </children>
 </AnchorPane>

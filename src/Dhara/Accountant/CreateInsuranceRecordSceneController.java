@@ -102,7 +102,7 @@ public class CreateInsuranceRecordSceneController implements Initializable {
              Boolean addStatus = accountant.CreateInsuranceRecord(ItemSpentOn, amount,  dateSpent, details);
         if (addStatus) {
             Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setContentText("New Expense added");
+            a.setContentText("New Insurance added");
             a.showAndWait();
             }
         } catch (NumberFormatException ex) {
