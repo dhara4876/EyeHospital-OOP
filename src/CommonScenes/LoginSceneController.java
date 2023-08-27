@@ -11,11 +11,13 @@ import Dhara.Accountant.AccountantDashboardController;
 import Dhara.Nurse.NurseDashBoardSceneController;
 import Nazifa.Doctor.DocDashboardController;
 import Nazifa.Patient.PatientDashController;
+import Nushrat.Optermetrist.OptometristDashboardSceneController;
 
 
 
-import Nushrat.OptometristDashboardSceneController;
-import Nushrat.PharmacistDashboardSceneController;
+
+import Nushrat.Pharmacist.PharmacistDashboardSceneController;
+
 import Users.Accountant;
 import Users.Director;
 import Users.Doctor;

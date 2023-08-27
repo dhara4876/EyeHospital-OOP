@@ -14,24 +14,18 @@ public class Medicine implements Serializable{
     private static final long serialVersionUID = 345L;
     
     private String medicineName;
-    private Integer medicinePrice;
-    private Integer dose;
+    private int medicinePrice;
 
-    public Medicine(String medicineName, Integer medicinePrice, Integer dose) {
+
+    public Medicine(String medicineName, int medicinePrice) {
         this.medicineName = medicineName;
         this.medicinePrice = medicinePrice;
-        this.dose = dose;
+        
     }
 
     
 
-    public Integer getDose() {
-        return dose;
-    }
-
-    public void setDose(Integer dose) {
-        this.dose = dose;
-    }
+    
     
 
     public String getMedicineName() {
@@ -52,12 +46,14 @@ public class Medicine implements Serializable{
 
     @Override
     public String toString() {
-        return "Medicine{" + "medicineName=" + medicineName + ", medicinePrice=" + medicinePrice + ", dose=" + dose + '}';
+        return "Medicine{" + "medicineName=" + medicineName + ", medicinePrice=" + medicinePrice + '}';
     }
+
+}
 
     
     
     
     
     
-}
+

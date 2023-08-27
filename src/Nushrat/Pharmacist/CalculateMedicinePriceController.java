@@ -59,8 +59,7 @@ public class CalculateMedicinePriceController implements Initializable {
     private void addToListBtnOnClick(MouseEvent event) {
         Medicine newSchedule = new Medicine(
                 medNameTableColumn.getText(),
-                                       Integer.parseInt(unitPriceTableColumn.getText()),
-                                       Integer.parseInt(doseTableColumn.getText())
+                                       Integer.parseInt(unitPriceTableColumn.getText())
                                        
                                     );
         //tableView.getItems().add(0,newPerson);
