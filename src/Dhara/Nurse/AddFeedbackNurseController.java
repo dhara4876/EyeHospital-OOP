@@ -47,8 +47,10 @@ public class AddFeedbackNurseController implements Initializable {
     @FXML
     private void addButtonOnClick(ActionEvent event) {
         
+        
+        
          String feedback = feedbackTextArea.getText();
-        if (feedback==null) {unfill.show(); return;}
+        if (feedback.isEmpty()) {unfill.show(); return;}
         
          Boolean addStatus = User.addFeedBack(feedback);
         if (addStatus) {

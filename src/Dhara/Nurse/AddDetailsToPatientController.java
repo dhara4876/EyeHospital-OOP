@@ -80,6 +80,7 @@ public class AddDetailsToPatientController implements Initializable {
             a.setContentText("patient Details added");
             a.showAndWait();
         }
+        patientDetailsTextArea.clear();
     }
 
     @FXML

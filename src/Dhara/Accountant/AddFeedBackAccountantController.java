@@ -45,7 +45,7 @@ Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     @FXML
     private void addButtonOnClick(ActionEvent event) {
          String feedback = feedbackTextArea.getText();
-        if (feedback==null) {unfill.show(); return;}
+       if (feedback.isEmpty()) {unfill.show(); return;}
         
          Boolean addStatus = User.addFeedBack(feedback);
         if (addStatus) {

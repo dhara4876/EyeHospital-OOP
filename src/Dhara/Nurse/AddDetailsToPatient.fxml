@@ -19,7 +19,7 @@
         </columns>
       </TableView>
       <ComboBox fx:id="patientIDCB" layoutX="37.0" layoutY="109.0" prefHeight="31.0" prefWidth="167.0" promptText="patient id" />
-      <TextArea fx:id="patientDetailsTextArea" layoutX="37.0" layoutY="167.0" prefHeight="106.0" prefWidth="167.0" />
+      <TextArea fx:id="patientDetailsTextArea" layoutX="37.0" layoutY="167.0" prefHeight="106.0" prefWidth="167.0" promptText="Can be any remarks, reminder regarding patient" />
       <Button layoutX="38.0" layoutY="280.0" mnemonicParsing="false" onAction="#addButtonOnClick" text="add" />
       <Label layoutX="38.0" layoutY="125.0" prefHeight="58.0" prefWidth="122.0" text="Enter Notes" wrapText="true" />
       <Line endX="100.0" layoutX="123.0" layoutY="97.0" startX="100.0" startY="206.5" />

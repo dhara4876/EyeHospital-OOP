@@ -4,18 +4,21 @@
  */
 package Dhara.Nurse;
 
+import Model.Bill;
 import Users.Nurse;
 import Users.Patient;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -35,6 +38,8 @@ public class DischargePatientController implements Initializable {
     @FXML
     private TableView<Patient> patientTableView;
  private Nurse nurse; 
+    @FXML
+    private TextField patientIDsearchField;
     public Nurse getNurse() {
         return nurse;
     }
@@ -79,5 +84,29 @@ public class DischargePatientController implements Initializable {
 
         }
     }
+
+    @FXML
+    private void searchButtonOnClick(ActionEvent event) {
+         String searchText = patientIDsearchField.getText();
+        FilteredList<Patient> filteredPatients = new FilteredList<>(admittedPatientList);
+        filteredPatients.setPredicate(patient -> {
+            String lowerCaseSearchText = searchText.toLowerCase();
+            return String.valueOf(patient.getID()).contains(lowerCaseSearchText);
+        });
+        patientTableView.setItems(filteredPatients);
+
+    }
+
+    @FXML
+    private void loadAllOnClick(ActionEvent event) {
+       ObservableList<Patient> admittedPatientList = FXCollections.observableArrayList();
+    ObservableList<Patient> nonAdmittedPatientList = FXCollections.observableArrayList();
+
+        Nurse.readPatientLists(admittedPatientList, nonAdmittedPatientList);
+        patientTableView.setItems(admittedPatientList);
+
+        patientIDsearchField.clear();
+    }
+    
     
 }

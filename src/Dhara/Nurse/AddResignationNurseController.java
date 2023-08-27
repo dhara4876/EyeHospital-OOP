@@ -43,7 +43,7 @@ public class AddResignationNurseController implements Initializable {
     @FXML
     private void addResignationOnClick(ActionEvent event) {
           String resignation = resignationTextArea.getText();
-        if (resignation==null) {unfill.show(); return;}
+        if (resignation.isEmpty()) {unfill.show(); return;}
         
          Boolean addStatus = User.addNewResignation(this.nurse.getID(),resignation);
         if (addStatus) {

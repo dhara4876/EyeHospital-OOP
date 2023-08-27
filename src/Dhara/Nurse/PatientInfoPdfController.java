@@ -103,7 +103,12 @@ public class PatientInfoPdfController implements Initializable {
         Document doc = new Document(pdf);
         doc.setLeftMargin(70);
 
-        
+        Text titleText = new Text("Patients currently in BD Eye Hospital");
+                titleText.setFontSize(18f);
+                Paragraph pageTitle = new Paragraph(titleText);
+                pageTitle.setBold();   
+
+
         ObservableList<Patient> patients = Nurse.readPatientList();
         
        
@@ -124,7 +129,7 @@ public class PatientInfoPdfController implements Initializable {
             patientTable.addCell(patient.getGender());
         }
 
-        
+        doc.add(pageTitle);
         doc.add(patientTable);
 
         doc.close();

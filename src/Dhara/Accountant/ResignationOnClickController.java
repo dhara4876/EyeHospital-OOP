@@ -44,7 +44,7 @@ Alert unfill = new Alert(Alert.AlertType.WARNING, "FILL UP EVERYTHING");
     @FXML
     private void addButtonOnClick(ActionEvent event) {
            String resignation = resignationTextArea.getText();
-        if (resignation==null) {unfill.show(); return;}
+        if (resignation.isEmpty()) {unfill.show(); return;}
         
          Boolean addStatus = User.addNewResignation(this.accountant.getID(),resignation);
         if (addStatus) {
