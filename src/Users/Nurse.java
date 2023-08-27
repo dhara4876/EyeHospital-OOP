@@ -33,14 +33,9 @@ import javafx.scene.chart.XYChart;
  *
  * @author Asus
  */
-public class Nurse extends Employee implements Serializable{
-    private static final long serialVersionUID = 345L; 
-    
-    
- 
-    
-     
+public class Nurse extends Employee implements Serializable {
 
+    private static final long serialVersionUID = 345L;
 
     public Nurse(String name, Integer ID, String password, String email, String gender, LocalDate DOB, String Designation, Double Salary, LocalDate DoJ) {
         super(name, ID, password, email, gender, DOB, Designation, Salary, DoJ);
@@ -88,89 +83,90 @@ public class Nurse extends Employee implements Serializable{
 
     @Override
     public String toString() {
-       return super.toString();
+        return super.toString();
     }
 
-   //helper
-       public static void readPatientLists(ObservableList<Patient> admittedPatientList, ObservableList<Patient> nonAdmittedPatientList) {
-    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Patient.bin"))) {
-        while (true) {
-            Patient patient = (Patient) ois.readObject();
-            System.out.println("Patient read: " + patient.toString());
-            if (patient.getAdmittedStatus()) {
-                admittedPatientList.add(patient);
-            } else {
-                nonAdmittedPatientList.add(patient);
+    //helper
+    public static void readPatientLists(ObservableList<Patient> admittedPatientList, ObservableList<Patient> nonAdmittedPatientList) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Patient.bin"))) {
+            while (true) {
+                Patient patient = (Patient) ois.readObject();
+                System.out.println("Patient read: " + patient.toString());
+                if (patient.getAdmittedStatus()) {
+                    admittedPatientList.add(patient);
+                } else {
+                    nonAdmittedPatientList.add(patient);
+                }
             }
+        } catch (EOFException e) {
+
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error reading BillObjects.bin: " + e.getMessage());
+        } finally {
+
+            System.out.println("printing" + admittedPatientList + "list 2" + nonAdmittedPatientList + "printing list");
         }
-    } catch (EOFException e) {
-        
-    } catch (IOException | ClassNotFoundException e) {
-        System.out.println("Error reading BillObjects.bin: " + e.getMessage());
-    } finally{
-        
-        System.out.println("printing"+ admittedPatientList + "list 2"+ nonAdmittedPatientList+ "printing list");
+
     }
-    
-   }
-   //goal
-  public static void updatePatientAdmittedStatus(List<Patient> admittedPatientList, List<Patient> nonAdmittedPatientList) {
-     try {
-        
-        File patientFile = new File("Patient.bin");
-        if (patientFile.exists()) {
-            patientFile.delete();
-        }
-        
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Patient.bin"))) {
-            
-            for (Patient patient : admittedPatientList) {
-                oos.writeObject(patient);
+    //goal
+
+    public static void updatePatientAdmittedStatus(List<Patient> admittedPatientList, List<Patient> nonAdmittedPatientList) {
+        try {
+
+            File patientFile = new File("Patient.bin");
+            if (patientFile.exists()) {
+                patientFile.delete();
             }
-            
-            
-            for (Patient patient : nonAdmittedPatientList) {
-                oos.writeObject(patient);
+
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Patient.bin"))) {
+
+                for (Patient patient : admittedPatientList) {
+                    oos.writeObject(patient);
+                }
+
+                for (Patient patient : nonAdmittedPatientList) {
+                    oos.writeObject(patient);
+                }
+
+                System.out.println("PatientList updated and written to Patient.bin");
+            } catch (IOException e) {
+                System.out.println("Error writing updated PatientList to file");
             }
-            
-            System.out.println("PatientList updated and written to Patient.bin");
-        } catch (IOException e) {
-            System.out.println("Error writing updated PatientList to file");
+        } catch (Exception e) {
+            System.out.println("Error deleting existing Patient.bin file");
         }
-    } catch (Exception e) {
-        System.out.println("Error deleting existing Patient.bin file");
     }
-}     
-     //goal  
-       public static ObservableList<Patient> viewPatientDetails(){
+    //goal  
+
+    public static ObservableList<Patient> viewPatientDetails() {
         ObservableList<Patient> patientList = FXCollections.observableArrayList();
         Patient i;
         ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("Patient.bin"));
-            while(true){
+        try {
+            ois = new ObjectInputStream(new FileInputStream("Patient.bin"));
+            while (true) {
                 i = (Patient) ois.readObject();
-                System.out.println("The patient u read: "+i.toString());
+                System.out.println("The patient u read: " + i.toString());
                 patientList.add(i);
             }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("File reading done");
         }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
         System.out.println(patientList);
         return patientList;
-        
-    }  
+
+    }
+
     //goal
-      public static boolean addNewTask(Integer reciverId, Integer senderId, String details){
-        
+    public static boolean addNewTask(Integer reciverId, Integer senderId, String details) {
+
         Task newTask = new Task(
                 reciverId,
                 senderId,
                 details
-                );
-               
-                
-                
-        System.out.println("Task made:"+newTask.toString());
+        );
+
+        System.out.println("Task made:" + newTask.toString());
 
         File f = null;
         FileOutputStream fos = null;
@@ -191,9 +187,9 @@ public class Nurse extends Employee implements Serializable{
             oos.writeObject(newTask);
             oos.close();
             return true;
-            
+
         } catch (IOException e) {
-            if(oos!=null){
+            if (oos != null) {
                 try {
                     oos.close();
                 } catch (IOException ex) {
@@ -202,23 +198,20 @@ public class Nurse extends Employee implements Serializable{
             }
             System.out.println("Error writing Object to binary file");
             return false;
-       
+
         }
     }
-    
+
 //goal
- 
-  public boolean addPatientDetails(Integer patientID, String patientDetails, Integer nurseId){
-        
+    public boolean addPatientDetails(Integer patientID, String patientDetails, Integer nurseId) {
+
         PatientDetails newDetails = new PatientDetails(
                 patientID,
                 patientDetails,
                 this.ID
-                );
-               
-                
-                
-        System.out.println("PatientDetails made:"+newDetails.toString());
+        );
+
+        System.out.println("PatientDetails made:" + newDetails.toString());
 
         File f = null;
         FileOutputStream fos = null;
@@ -239,9 +232,9 @@ public class Nurse extends Employee implements Serializable{
             oos.writeObject(newDetails);
             oos.close();
             return true;
-            
+
         } catch (IOException e) {
-            if(oos!=null){
+            if (oos != null) {
                 try {
                     oos.close();
                 } catch (IOException ex) {
@@ -250,50 +243,57 @@ public class Nurse extends Employee implements Serializable{
             }
             System.out.println("Error writing Object to binary file");
             return false;
-       
+
         }
-  }
-     //goal
-          public static ObservableList<Patient> readPatientList(){
+    }
+    
+    //goal
+
+    public static ObservableList<Patient> readPatientList() {
         ObservableList<Patient> patientList = FXCollections.observableArrayList();
         Patient i;
         ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("Patient.bin"));
-            while(true){
+        try {
+            ois = new ObjectInputStream(new FileInputStream("Patient.bin"));
+            while (true) {
                 i = (Patient) ois.readObject();
-                System.out.println("The patient u read: "+i.toString());
+                System.out.println("The patient u read: " + i.toString());
                 patientList.add(i);
             }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("File reading done");
         }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
         System.out.println(patientList);
         return patientList;
-        
+
     }
-      //goal    
+    
+    //goal    
+
     public ObservableList<Task> getTasksForNurse() {
         ObservableList<Task> nurseTasks = FXCollections.observableArrayList();
-        
+
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Task.bin"))) {
             while (true) {
                 Task task = (Task) ois.readObject();
-                if (task.getReciverId().equals(this.getID())) { 
+                if (task.getReciverId().equals(this.getID())) {
                     nurseTasks.add(task);
                 }
             }
         } catch (EOFException e) {
-           
+
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error reading Task.bin: " + e.getMessage());
         }
-        
+
         return nurseTasks;
     }
+    
 //helper
+
     private void updateTaskFile() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Task.bin"))) {
-            ObservableList<Task> nurseTasks = getTasksForNurse(); 
+            ObservableList<Task> nurseTasks = getTasksForNurse();
             for (Task task : nurseTasks) {
                 oos.writeObject(task);
             }
@@ -302,16 +302,15 @@ public class Nurse extends Employee implements Serializable{
             System.out.println("Error writing updated task list to file");
         }
     }
+
     //goal
     public void markTaskCompleted(Task task) {
         ObservableList<Task> nurseTasks = getTasksForNurse();
         nurseTasks.remove(task);
         updateTaskFile();
     }
- 
 
- 
-   //helper 
+    //helper 
     public static ObservableList<Patient> getAdmittedPatientsFromPatientFile() {
         List<Patient> admittedPatients = new ArrayList<>();
 
@@ -326,12 +325,11 @@ public class Nurse extends Employee implements Serializable{
             System.out.println("Error reading Patient.bin: " + e.getMessage());
         }
 
-       
         ObservableList<Patient> admittedPatientsObservableList = FXCollections.observableArrayList(admittedPatients);
         return admittedPatientsObservableList;
     }
+
     
-    //goal
     /* public static ObservableList<Patient> readAllPatientsList(){
         ObservableList<Patient> patientList = FXCollections.observableArrayList();
         Patient i;
@@ -349,67 +347,63 @@ public class Nurse extends Employee implements Serializable{
         return patientList;
         
     }*/
-     
-     //helper
-       public static ObservableList<PatientDetails> readPatientDetailsList(){
+    
+    
+    //helper
+    public static ObservableList<PatientDetails> readPatientDetailsList() {
         ObservableList<PatientDetails> patientDetailsList = FXCollections.observableArrayList();
         PatientDetails i;
         ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("PatientDetails.bin"));
-            while(true){
+        try {
+            ois = new ObjectInputStream(new FileInputStream("PatientDetails.bin"));
+            while (true) {
                 i = (PatientDetails) ois.readObject();
-                System.out.println("The patient u read: "+i.toString());
+                System.out.println("The patient u read: " + i.toString());
                 patientDetailsList.add(i);
             }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("File reading done");
         }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
         System.out.println(patientDetailsList);
         return patientDetailsList;
-        
+
     }
-     
-   
- //goal   
-   public List<PatientDetails> getPatientDetailsByPatientId(int patientId) {
-    ObservableList<PatientDetails> patientDetailsList = readPatientDetailsList();
-       List<PatientDetails> detailsList = new ArrayList<>();
-    
-    
-    for (PatientDetails details : patientDetailsList) {
-        if (details.getPatientID() == patientId) {
-            detailsList.add(details);
+
+    //goal   
+    public List<PatientDetails> getPatientDetailsByPatientId(int patientId) {
+        ObservableList<PatientDetails> patientDetailsList = readPatientDetailsList();
+        List<PatientDetails> detailsList = new ArrayList<>();
+
+        for (PatientDetails details : patientDetailsList) {
+            if (details.getPatientID() == patientId) {
+                detailsList.add(details);
+            }
         }
+
+        return detailsList;
     }
     
-    return detailsList;
-}
 //helper
- public static ArrayList<Integer> loadNurseIDs() {
+
+    public static ArrayList<Integer> loadNurseIDs() {
         ArrayList<Integer> idList = new ArrayList<>();
         Nurse i;
         ObjectInputStream ois = null;
-        try{
-            ois = new ObjectInputStream (new FileInputStream("Nurse.bin"));
-            while(true){
+        try {
+            ois = new ObjectInputStream(new FileInputStream("Nurse.bin"));
+            while (true) {
                 i = (Nurse) ois.readObject();
-                System.out.println("The Nurse u read: "+ i.toString());
+                System.out.println("The Nurse u read: " + i.toString());
                 idList.add(i.getID());
             }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("File reading done");
         }
-        catch(IOException | ClassNotFoundException e){System.out.println("File reading done");}
         System.out.println(idList);
         return idList;
     }
-   
-   
-   
-}
-  
-  
-  
-  
 
+}
 
 //public static boolean addPatientDetails
 //public static boolean viewPatientDetails
@@ -417,22 +411,7 @@ public class Nurse extends Employee implements Serializable{
 //public static boolean admitPatient
 //public static boolean giveTaskToDoctor
 //public static boolean viewTasksFromDoctor
-    
 //chart
 //barchart??
-    
 //postfeedback commongoal
-
-    
-
-
-
-
-
-
-    
-    
-    
-    
-    
 

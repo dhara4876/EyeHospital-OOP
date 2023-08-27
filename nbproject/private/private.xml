@@ -11,6 +11,16 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Nazifa/Doctor/MakePrescriptionSceneController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Nurse/ContactDoctorSceneController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Doctor.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Nurse.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Model/Task.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Accountant/MakeABillSceneController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Nurse/ViewAssignedtasksSceneController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Users/Patient.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/EyeHospital-OOP/src/Dhara/Nurse/AddDetailsToPatientController.java</file>
+        </group>
     </open-files>
 </project-private>

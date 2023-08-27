@@ -74,13 +74,13 @@ public class Patient extends User implements Serializable {
         this.admittedDate = admmittedDate;
     }
 
-    public static List<Patient> getPatientList() {
+    /*public static List<Patient> getPatientList() {
         return patientList;
     }
 
     public static void setPatientList(List<Patient> patientList) {
         Patient.patientList = patientList;
-    }
+    }*/
 
     public String getName() {
         return name;
@@ -175,7 +175,7 @@ public class Patient extends User implements Serializable {
         return idList;
     }
 
-    private static List<Patient> patientList = new ArrayList<>();
+    /*private static List<Patient> patientList = new ArrayList<>();
 
     public static Patient getPatientById(int patientId) {
         for (Patient patient : patientList) {
@@ -184,7 +184,7 @@ public class Patient extends User implements Serializable {
             }
         }
         return null; // Patient not found
-    }
+    }*/
 
     /*private ObservableList<MyData> readDataFromBinaryFile() {
         ObservableList<MyData> dataList = FXCollections.observableArrayList();
