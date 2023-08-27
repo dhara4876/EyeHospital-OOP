@@ -4,6 +4,7 @@
  */
 package Nazifa.Doctor;
 
+import Model.Task;
 import Users.Doctor;
 import java.io.IOException;
 import java.net.URL;
@@ -54,6 +55,21 @@ public class AssignTaskToNurseSceneController implements Initializable {
 
     @FXML
     private void assignTaskToNurseOnClick(ActionEvent event) {
+        Integer receiverId = Integer.valueOf(nurseIDTextField.getText()); 
+        Integer senderId = Integer.valueOf(doctorIDTextField.getText());
+        String details = nurseTaskDetailTextArea.getText(); 
+
+
+        boolean taskAdded = Doctor.addNewTask(receiverId, senderId, details);
+
+        if (taskAdded) {
+            System.out.println("Task added successfully");
+           
+        } else {
+            System.out.println("Failed to add task");
+            
+        }
+        
     }
 
     @FXML
