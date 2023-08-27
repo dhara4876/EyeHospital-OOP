@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -30,6 +31,8 @@ import javafx.stage.Stage;
 public class AssignTaskToNurseSceneController implements Initializable {
     
     private Doctor doctor;
+    @FXML
+    private ComboBox<?> nurseIDComboBox;
     public Doctor getDoctor() {
         return doctor;
     }
@@ -40,7 +43,6 @@ public class AssignTaskToNurseSceneController implements Initializable {
 
     @FXML
     private TextArea nurseTaskDetailTextArea;
-    @FXML
     private TextField nurseIDTextField;
     @FXML
     private TextField doctorIDTextField;
