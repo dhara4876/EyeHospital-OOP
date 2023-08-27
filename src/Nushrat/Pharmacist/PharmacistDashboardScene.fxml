@@ -11,22 +11,22 @@
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #0D1824;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#homeBtnOnClk" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Home" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <Button mnemonicParsing="false" onAction="#calculateMedPriceBtnOnClk" prefHeight="47.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Calculate Medicine Price" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#homeBtnOnClk" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Home" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#calculateMedPriceDashboardBtnOnClk" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Calculate Medicine" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
             <Button mnemonicParsing="false" onAction="#orderMedDashboardBtnOnClk" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Order Medicine" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <Button mnemonicParsing="false" onAction="#updateMedicineListDashboardBtnOnClk" prefHeight="55.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Update Medicine List" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <Button mnemonicParsing="false" onAction="#updatePrescriptionDashboardBtnOnClk" prefHeight="47.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Update Prescription" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <Button mnemonicParsing="false" onAction="#updateTaskDashboardBtnOnClk" prefHeight="41.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Update Task " textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <Button mnemonicParsing="false" onAction="#viewBillListDashboardBtnOnClk" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="View Bill List" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <Button mnemonicParsing="false" onAction="#viewPrescritionDashboardBtnOnClk" prefHeight="49.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="View Prescription" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <Button mnemonicParsing="false" onAction="#viewChartDashboardBtnOnClk" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="View Chart" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#updateMedicineListDashboardBtnOnClk" prefHeight="55.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Medicine List" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#updatePrescriptionDashboardBtnOnClk" prefHeight="55.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Update Prescription" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#updateTaskDashboardBtnOnClk" prefHeight="41.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Task " textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#viewBillListDashboardBtnOnClk" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="BillList" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#viewPrescritionDashboardBtnOnClk" prefHeight="46.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="View Prescription" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#viewChartDashboardBtnOnClk" prefHeight="42.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 0px 2px 0px;" text="Chart" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
          </children>
       </VBox>
    </left>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="86.0" layoutY="148.0" prefHeight="104.0" prefWidth="349.0" text="Welcome Mr./Mrs. Pharmacist To your Dashboard" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Label layoutX="86.0" layoutY="148.0" prefHeight="104.0" prefWidth="349.0" text="Welcome Mr./Mrs. Optometrist To your Dashboard" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>

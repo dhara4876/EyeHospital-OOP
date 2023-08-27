@@ -4,18 +4,22 @@
  */
 package Model;
 
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
  * @author user
  */
 public class UpdatePrescription {
-    private int patientId;
-    private String medicineName;
-    private int dose;
+     private SimpleStringProperty medicineName;
+    private Integer patientId;
+    
+    private Integer dose;
 
-    public UpdatePrescription(int patientId, String medicineName, int dose) {
+    public UpdatePrescription(Integer patientId, String medicineName, Integer dose) {
         this.patientId = patientId;
-        this.medicineName = medicineName;
+        this.medicineName = new SimpleStringProperty(medicineName);
+       
         this.dose = dose;
     }
 
@@ -28,11 +32,12 @@ public class UpdatePrescription {
     }
 
     public String getMedicineName() {
-        return medicineName;
+        return medicineName.get();
+        
     }
 
     public void setMedicineName(String medicineName) {
-        this.medicineName = medicineName;
+        this.medicineName = new SimpleStringProperty(medicineName);
     }
 
     public int getDose() {

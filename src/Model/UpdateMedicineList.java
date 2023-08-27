@@ -4,41 +4,49 @@
  */
 package Model;
 
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
  * @author user
  */
 public class UpdateMedicineList {
     
-    private String medicineName;
-    private int medicinePrice;
+    private SimpleStringProperty medicineName, medicinePrice;
 
-    public UpdateMedicineList(String medicineName, int medicinePrice) {
-        this.medicineName = medicineName;
-        this.medicinePrice = medicinePrice;
+    public UpdateMedicineList(String medicineName, String medicinePrice) {
+        this.medicineName = new SimpleStringProperty(medicineName);
+        this.medicineName = new SimpleStringProperty(medicinePrice);
+        
     }
+    
+    
+    
+    
+
+    
 
     public String getMedicineName() {
-        return medicineName;
+        return medicineName.get();
     }
 
     public void setMedicineName(String medicineName) {
-        this.medicineName = medicineName;
+        this.medicineName = new SimpleStringProperty(medicineName);
     }
 
-    public int getMedicinePrice() {
-        return medicinePrice;
+    public String getMedicinePrice() {
+        return medicinePrice.get();
     }
 
-    public void setMedicinePrice(int medicinePrice) {
-        this.medicinePrice = medicinePrice;
+    public void setMedicinePrice(String medicinePrice) {
+        this.medicineName = new SimpleStringProperty(medicinePrice);
     }
 
     @Override
     public String toString() {
         return "UpdateMedicineList{" + "medicineName=" + medicineName + ", medicinePrice=" + medicinePrice + '}';
     }
-    
+
     
     
     

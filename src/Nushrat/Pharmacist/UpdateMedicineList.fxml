@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Nushrat.Pharmacist.UpdateMedicineListController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Nushrat.Pharmacist.UpdateMedicineListController">
    <children>
       <Label layoutX="201.0" layoutY="29.0" text="Update Medicine List">
          <font>
@@ -23,11 +22,10 @@
       <Button layoutX="374.0" layoutY="85.0" mnemonicParsing="false" onMouseClicked="#addValuesToTableBtnOnClk" prefHeight="53.0" prefWidth="133.0" text="Add To Table" />
       <TableView fx:id="updateMedListTableView" layoutX="59.0" layoutY="165.0" prefHeight="200.0" prefWidth="249.0">
         <columns>
-          <TableColumn prefWidth="129.66665649414062" text="Medicine Name" />
-          <TableColumn prefWidth="116.33334350585938" text="Medicine Price" />
+          <TableColumn fx:id="medNameTableColumn" prefWidth="129.66665649414062" text="Medicine Name" />
+          <TableColumn fx:id="medPriceTableColumn" prefWidth="116.33334350585938" text="Medicine Price" />
         </columns>
       </TableView>
       <Button layoutX="374.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#deleteRowFromTableTableBtnOnClk" prefHeight="53.0" prefWidth="133.0" text="Delete Row From Table" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="381.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#goToCalculateMrdicinePriceBtnOnClk" prefHeight="53.0" prefWidth="133.0" text="Calculate Medicine Price" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

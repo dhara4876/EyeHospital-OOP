@@ -14,8 +14,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -57,7 +60,7 @@ public class PharmacistDashboardSceneController implements Initializable {
     }
 
     @FXML
-    private void calculateMedPriceBtnOnClk(ActionEvent event) {
+    private void calculateMedPriceDashboardBtnOnClk(ActionEvent event) {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("CalculateMedicinePrice.fxml"));
             dashboardBorderPane.setCenter(parent);
@@ -68,7 +71,7 @@ public class PharmacistDashboardSceneController implements Initializable {
 
     @FXML
     private void orderMedDashboardBtnOnClk(ActionEvent event) {
-        try {
+       try {
             Parent parent = FXMLLoader.load(getClass().getResource("OrderMedicine.fxml"));
             dashboardBorderPane.setCenter(parent);
         } catch (IOException ex) {
@@ -77,7 +80,7 @@ public class PharmacistDashboardSceneController implements Initializable {
     }
 
     @FXML
-    private void updateMedicineListDashboardBtnOnClk(ActionEvent event) {
+    private void updateMedicineListDashboardBtnOnClk(ActionEvent event)  {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("UpdateMedicineList.fxml"));
             dashboardBorderPane.setCenter(parent);
@@ -97,7 +100,7 @@ public class PharmacistDashboardSceneController implements Initializable {
     }
 
     @FXML
-    private void updateTaskDashboardBtnOnClk(ActionEvent event) {
+    private void updateTaskDashboardBtnOnClk(ActionEvent event)  {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("UpdateTask.fxml"));
             dashboardBorderPane.setCenter(parent);
@@ -105,9 +108,8 @@ public class PharmacistDashboardSceneController implements Initializable {
             Logger.getLogger(PharmacistDashboardSceneController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     @FXML
-    private void viewBillListDashboardBtnOnClk(ActionEvent event) {
+    private void viewBillListDashboardBtnOnClk(ActionEvent event)   {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("ViewBillList.fxml"));
             dashboardBorderPane.setCenter(parent);
@@ -117,8 +119,8 @@ public class PharmacistDashboardSceneController implements Initializable {
     }
 
     @FXML
-    private void viewPrescritionDashboardBtnOnClk(ActionEvent event) {
-        try {
+    private void viewPrescritionDashboardBtnOnClk(ActionEvent event)  {
+       try {
             Parent parent = FXMLLoader.load(getClass().getResource("ViewPrescription.fxml"));
             dashboardBorderPane.setCenter(parent);
         } catch (IOException ex) {
@@ -127,9 +129,9 @@ public class PharmacistDashboardSceneController implements Initializable {
     }
 
     @FXML
-    private void viewChartDashboardBtnOnClk(ActionEvent event) {
+    private void viewChartDashboardBtnOnClk(ActionEvent event)  {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("ViewPrescritionChart.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("ViewPrescriptionChart.fxml"));
             dashboardBorderPane.setCenter(parent);
         } catch (IOException ex) {
             Logger.getLogger(PharmacistDashboardSceneController.class.getName()).log(Level.SEVERE, null, ex);

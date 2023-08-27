@@ -42,7 +42,7 @@ public class makeScheduleController implements Initializable {
     //table stuffs
     private TableView<Schedule> scheduleTableView;
     @FXML
-    private TableColumn<Schedule,String> idTableColumn;
+    private TableColumn<Schedule,Integer> idTableColumn;
     @FXML
     private TableColumn<Schedule, String> taskTableColumn;
     @FXML
@@ -60,14 +60,14 @@ public class makeScheduleController implements Initializable {
         selectTaskComboBox.getItems().addAll("Eye Examination","Contact Lens Fitting"
                 ,"Color Vision Testing");
         //set up the columns in the table
-        idTableColumn.setCellValueFactory(new PropertyValueFactory<Schedule,String>("ID"));
+        idTableColumn.setCellValueFactory(new PropertyValueFactory<Schedule,Integer>("ID"));
         taskTableColumn.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Task"));
         dateTableColumn.setCellValueFactory(new PropertyValueFactory<Schedule,LocalDate>("Date"));
         timeTableColumn.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Time"));
         
            
         
-        //Allow task, date, time to be edittable
+        //Allow task, time to be edittable
         scheduleTableView.setEditable(true);
         taskTableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         timeTableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -80,7 +80,7 @@ public class makeScheduleController implements Initializable {
 
     @FXML
     private void addScheduleToListBtnOnClk(MouseEvent event) {
-        Schedule newSchedule = new Schedule(enterIDTextField.getText(),
+        Schedule newSchedule = new Schedule(Integer.parseInt(enterIDTextField.getText()),
                                        selectTaskComboBox.getValue(),
                                        dateOfScheduleDatePicker.getValue(),
                                        enterTimeTextField.getText()
@@ -111,12 +111,12 @@ public class makeScheduleController implements Initializable {
 
     @FXML
     private void clearScheduleRowBtnOnClk(MouseEvent event) {
-        ObservableList<Schedule> selectedRows, allPeople;
-        allPeople = scheduleTableView.getItems();
+        ObservableList<Schedule> selectedRows, allpatient;
+        allpatient = scheduleTableView.getItems();
         selectedRows = scheduleTableView.getSelectionModel().getSelectedItems();
         
         for(Schedule s: selectedRows){
-            allPeople.remove(s);
+            allpatient.remove(s);
         }
     }
     
